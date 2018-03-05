@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="常量&amp;amp;变量 在Swift中规定：在定义一个标识符时必须明确说明该标识符是一个常量还是变量 使用let来定义常量，定义之后不可以修改 使用var来定义变量，定义之后可以修改">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-05T13:47:34.339Z">
+<meta property="og:updated_time" content="2018-03-05T13:54:05.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift3.0之基本语法01">
 <meta name="twitter:description" content="常量&amp;amp;变量 在Swift中规定：在定义一个标识符时必须明确说明该标识符是一个常量还是变量 使用let来定义常量，定义之后不可以修改 使用var来定义变量，定义之后可以修改">
@@ -333,9 +333,6 @@
 <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-
-
-
 <h3 id="变量的基本使用"><a href="#变量的基本使用" class="headerlink" title="变量的基本使用"></a>变量的基本使用</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import <span class="built_in">UIKit</span></span><br><span class="line">let a : Int = <span class="number">10</span></span><br><span class="line"><span class="comment">// 错误写法,当一个标识符定义为常量时是不可以修改的</span></span><br><span class="line"><span class="comment">// a = 20</span></span><br><span class="line">var b : Int = <span class="number">20</span></span><br><span class="line"><span class="comment">//因为b定义为变量,因此是可以修改的</span></span><br><span class="line">b = <span class="number">30</span></span><br></pre></td></tr></table></figure>
 <h3 id="常量和变量的使用注意"><a href="#常量和变量的使用注意" class="headerlink" title="常量和变量的使用注意:"></a>常量和变量的使用注意:</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import <span class="built_in">UIKit</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 常量使用注意：</span></span><br><span class="line"><span class="comment">    1&gt; 优先使用常量</span></span><br><span class="line"><span class="comment">    2&gt; 常量的本质</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 1.注意一：在开发中let/var在选择时优先使用常量，防止不小被修改掉（let）</span></span><br><span class="line"><span class="comment">// 如果一个标识符不需要修改，但是声明称了变量，那么编译器会报警告</span></span><br><span class="line"><span class="comment">// 2.常量的本质：</span></span><br><span class="line"><span class="comment">// 含义：指向的内存地址不可以修改，但是可以通过内存地址，找到对应的对象，之后修改对象内部的属性</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> OC中创建对象：</span></span><br><span class="line"><span class="comment">    UIView *view = [[UIView alloc] init];</span></span><br><span class="line"><span class="comment">    view = [[UIView alloc] init];</span></span><br><span class="line"><span class="comment"> Swift中创建对象：</span></span><br><span class="line"><span class="comment">    var view : UIView = UIView()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 变量的做法</span></span><br><span class="line"><span class="comment">    var view : UIView = UIView()</span></span><br><span class="line"><span class="comment">    view = UIView()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 创建常量View</span></span><br><span class="line">let view = <span class="built_in">UIView</span>()</span><br><span class="line"><span class="comment">// view = UIView() 错误做法</span></span><br><span class="line">view.alpha = <span class="number">0.5</span></span><br><span class="line"><span class="comment">// Swift中创建结构体：结构体类型()</span></span><br><span class="line">view.frame = <span class="built_in">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line"><span class="comment">// Swift中调用方法，统一使用点语法</span></span><br><span class="line">view.backgroundColor = <span class="built_in">UIColor</span>.red</span><br></pre></td></tr></table></figure>
 <h3 id="创建对象补充"><a href="#创建对象补充" class="headerlink" title="创建对象补充"></a>创建对象补充</h3><ul>
@@ -488,7 +485,7 @@
         <p><span>本文标题:</span><a href="/2016/11/15/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">CoderTitan</a></p>
         <p><span>发布时间:</span>2016-11-15, 18:50:03</p>
-        <p><span>最后更新:</span>2018-03-05, 21:47:34</p>
+        <p><span>最后更新:</span>2018-03-05, 21:54:05</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/11/15/Swift3.0之基本语法01/" title="Swift3.0之基本语法01">http://yoursite.com/2016/11/15/Swift3.0之基本语法01/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/11/15/Swift3.0之基本语法01/　　作者: CoderTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -503,12 +500,12 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/11/15/Mac破解版软件大全/">
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/10/10/Mac破解版软件大全/">
                     Mac破解版软件大全
                 </a>
             </div>
-        
         
     </nav>
 
@@ -574,19 +571,19 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/11/15/Mac破解版软件大全/" title="上一篇: Mac破解版软件大全">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/10/10/Mac破解版软件大全/" title="下一篇: Mac破解版软件大全">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/Mac破解版软件大全/">Mac破解版软件大全</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
 
 
 
