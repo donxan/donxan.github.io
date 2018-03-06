@@ -108,7 +108,7 @@
 
         
             <form id="search-form">
-            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
             <i class="fa fa-times" onclick="resetSearch()"></i>
             </form>
             <div id="local-search-result"></div>
@@ -163,6 +163,8 @@
                 <section class="switch-part switch-part1">
                     <nav class="header-menu">
                         <ul>
+                        
+                            <li><a href="/">主页</a></li>
                         
                             <li><a href="/archives/">文章列表</a></li>
                         
@@ -244,6 +246,8 @@
             
             <nav class="header-menu">
                 <ul>
+                
+                    <li><a href="/">主页</a></li>
                 
                     <li><a href="/archives/">文章列表</a></li>
                 
@@ -531,13 +535,13 @@ gitment.render('git')
         var oOpenInNew = {
             
             
-             post: ".article-entry a[href], .copyright a[href]", 
+            
             
             
             
             
              miniArchives: "a.post-list-link", 
-             menu: ".header-menu a", 
+            
              friends: "#js-friends a", 
              socail: ".social a" 
         }
