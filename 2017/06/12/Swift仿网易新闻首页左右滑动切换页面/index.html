@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="CoderTitan" />
+
+
+
+<meta name="description" content="顶部标题左右滑动切换控制器是一种非常用的左右滚动切换效果,几乎每一个APP都有用到,在这里介绍一下我自己封装的一个Swift版本的简单框架;代码中注释相对详细,故文中没有做过多的解释;废话不多少,直接上效果图:">
+<meta name="keywords" content="Swift,框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift仿网易新闻首页左右滑动切换页面">
+<meta property="og:url" content="https://titanjun.top/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/index.html">
+<meta property="og:site_name" content="Titan果子的博客">
+<meta property="og:description" content="顶部标题左右滑动切换控制器是一种非常用的左右滚动切换效果,几乎每一个APP都有用到,在这里介绍一下我自己封装的一个Swift版本的简单框架;代码中注释相对详细,故文中没有做过多的解释;废话不多少,直接上效果图:">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-91d007e59b3a6ce5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-047cf052039633e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-7f8bb034a432d133.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-03-06T11:51:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift仿网易新闻首页左右滑动切换页面">
+<meta name="twitter:description" content="顶部标题左右滑动切换控制器是一种非常用的左右滚动切换效果,几乎每一个APP都有用到,在这里介绍一下我自己封装的一个Swift版本的简单框架;代码中注释相对详细,故文中没有做过多的解释;废话不多少,直接上效果图:">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4122543-91d007e59b3a6ce5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Titan果子的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Swift仿网易新闻首页左右滑动切换页面 | Titan果子的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">CoderTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">CoderTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">CoderTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Swift仿网易新闻首页左右滑动切换页面" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/" class="article-date">
+      <time datetime="2017-06-12T12:12:00.000Z" itemprop="datePublished">2017-06-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift仿网易新闻首页左右滑动切换页面
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Swiftk框架/">Swiftk框架</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>顶部标题左右滑动切换控制器是一种非常用的左右滚动切换效果,几乎每一个APP都有用到,在这里介绍一下我自己封装的一个Swift版本的简单框架;代码中注释相对详细,故文中没有做过多的解释;废话不多少,直接上效果图:</p>
+</blockquote>
+<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-91d007e59b3a6ce5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图1.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-047cf052039633e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图2.png"></p>
+<h2 id="一-框架介绍"><a href="#一-框架介绍" class="headerlink" title="一.框架介绍"></a>一.框架介绍</h2><h2 id="github地址"><a href="#github地址" class="headerlink" title="github地址"></a><a href="https://github.com/coderQuanjun/TJPageView" target="_blank" rel="noopener">github地址</a></h2><p><img src="http://upload-images.jianshu.io/upload_images/4122543-7f8bb034a432d133.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170612_18.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TJTitleStyle.swift  //控制框架所有显示样式的参数值</span><br><span class="line"></span><br><span class="line">TJTitleView.swift //顶部标题的处理view</span><br><span class="line"></span><br><span class="line">TJContentView.swift //处理所有控制器的view</span><br><span class="line"></span><br><span class="line">TJPageView.swift  //控制整体框架的总试图View</span><br></pre></td></tr></table></figure>
+<h3 id="TJTitleStyle-swift"><a href="#TJTitleStyle-swift" class="headerlink" title="TJTitleStyle.swift"></a>TJTitleStyle.swift</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/// 是否是滚动的Title</span><br><span class="line">var isScrollEnable : Bool = false</span><br><span class="line">/// 普通Title颜色</span><br><span class="line">var normalColor : UIColor = UIColor(r: 0, g: 0, b: 0)</span><br><span class="line">/// 选中Title颜色</span><br><span class="line">var selectedColor : UIColor = UIColor(r: 255, g: 127, b: 0)</span><br><span class="line">/// Title字体大小</span><br><span class="line">var font : UIFont = UIFont.systemFont(ofSize: 14.0)</span><br><span class="line">/// 滚动Title的字体间距</span><br><span class="line">var titleMargin : CGFloat = 20</span><br><span class="line">/// title的高度</span><br><span class="line">var titleHeight : CGFloat = 44</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/// 是否显示底部滚动条</span><br><span class="line">var isShowBottomLine : Bool = false</span><br><span class="line">/// 底部滚动条的颜色</span><br><span class="line">var bottomLineColor : UIColor = UIColor.orange</span><br><span class="line">/// 底部滚动条的高度</span><br><span class="line">var bottomLineH : CGFloat = 2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/// 是否进行缩放</span><br><span class="line">var isNeedScale : Bool = false</span><br><span class="line">var scaleRange : CGFloat = 1.2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/// 是否显示遮盖</span><br><span class="line">var isShowCover : Bool = false</span><br><span class="line">/// 遮盖背景颜色</span><br><span class="line">var coverBgColor : UIColor = UIColor.lightGray</span><br><span class="line">/// 文字&amp;遮盖间隙</span><br><span class="line">var coverMargin : CGFloat = 5</span><br><span class="line">/// 遮盖的高度</span><br><span class="line">var coverH : CGFloat = 25</span><br><span class="line">/// 设置圆角大小</span><br><span class="line">var coverRadius : CGFloat = 12</span><br></pre></td></tr></table></figure>
+<h3 id="TJPageCollectionLayout-swift自定义布局"><a href="#TJPageCollectionLayout-swift自定义布局" class="headerlink" title="TJPageCollectionLayout.swift自定义布局"></a>TJPageCollectionLayout.swift自定义布局</h3><blockquote>
+<p>代码如下,注释比较详尽,不做赘述</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//    在该方法中设定一些必要的layout的结构和初始需要的参数</span><br><span class="line">override func prepare() &#123;</span><br><span class="line">    super.prepare()</span><br><span class="line">    </span><br><span class="line">    //0.计算item的宽度和高度</span><br><span class="line">    let itemW = ((collectionView?.bounds.width)! - sectionInset.left - sectionInset.right - minimumInteritemSpacing * CGFloat(cols - 1)) / CGFloat(cols)</span><br><span class="line">    let itemH = ((collectionView?.bounds.height)! - sectionInset.top - sectionInset.bottom - minimumLineSpacing * CGFloat(rows - 1)) / CGFloat(rows)</span><br><span class="line">    </span><br><span class="line">    //1.获取一共多少个组</span><br><span class="line">    let sectionCount = collectionView!.numberOfSections</span><br><span class="line">    </span><br><span class="line">    //2.获取每个组中有多少个item</span><br><span class="line">    var prePageCount : Int = 0    //页数</span><br><span class="line">    for i in 0..&lt;sectionCount &#123;</span><br><span class="line">        let itemCount = collectionView!.numberOfItems(inSection: i)</span><br><span class="line">        for j in 0..&lt;itemCount &#123;</span><br><span class="line">            //2.1获取cell对应的indexPath</span><br><span class="line">            let indexpath = IndexPath(item: j, section: i)</span><br><span class="line">            //2.2根据indexPath创建UICollectionViewLayoutAttributes</span><br><span class="line">            let attr = UICollectionViewLayoutAttributes(forCellWith: indexpath)</span><br><span class="line">            // 2.3.计算j在该组中第几页</span><br><span class="line">            let page = j / (cols * rows)</span><br><span class="line">            let index = j % (cols * rows)</span><br><span class="line">            //2.4设置attrs的frame</span><br><span class="line">            let itemY = sectionInset.top + (itemH + minimumLineSpacing) * CGFloat(index / cols)</span><br><span class="line">            let itemX = CGFloat(prePageCount + page) * collectionView!.bounds.width +  sectionInset.left + (itemW + minimumInteritemSpacing) * CGFloat(index % cols)</span><br><span class="line">            attr.frame = CGRect(x: itemX, y: itemY, width: itemW, height: itemH)</span><br><span class="line">            </span><br><span class="line">            //2.5加入到数组中</span><br><span class="line">            cellAttrs.append(attr)</span><br><span class="line">        &#125;</span><br><span class="line">        prePageCount += (itemCount - 1) / (cols * rows) + 1</span><br><span class="line">    &#125;</span><br><span class="line">    //计算最大宽度</span><br><span class="line">    maxWidth = CGFloat(prePageCount) * collectionView!.bounds.width</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="TJPageCollectionView-swift"><a href="#TJPageCollectionView-swift" class="headerlink" title="TJPageCollectionView.swift"></a>TJPageCollectionView.swift</h3><blockquote>
+<p>创建collectionView显示布局内容,设置代理方法和对外暴露的方法</p>
+</blockquote>
+<h4 id="代理方法"><a href="#代理方法" class="headerlink" title="代理方法"></a>代理方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">protocol TJPageCollectionViewDateSource : class &#123;</span><br><span class="line">   //返回section的个数</span><br><span class="line">    func numberOfSections(in pageCollectionView : TJPageCollectionView) -&gt; Int</span><br><span class="line">    </span><br><span class="line">    //返回每个section中item的个数</span><br><span class="line">    func pageCollectionView(_ collectionView : TJPageCollectionView, numberOfItemsInSection section : Int) -&gt; Int</span><br><span class="line">    </span><br><span class="line">    //cell</span><br><span class="line">    func pageCollectionView(_ pageCollectionView : TJPageCollectionView, _ collectionView : UICollectionView, cellForItemAt indexPath : IndexPath) -&gt; UICollectionViewCell</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">protocol TJPageCollectionViewDelegate : class &#123;</span><br><span class="line">    //cell点击事件处理</span><br><span class="line">    func pageCollectionView(_ pageCollectionView : TJPageCollectionView, didSelectorItemAt indexPath : IndexPath)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二-首页左右滑动调用方法"><a href="#二-首页左右滑动调用方法" class="headerlink" title="二.首页左右滑动调用方法"></a>二.首页左右滑动调用方法</h2><h4 id="1-设置显示样式"><a href="#1-设置显示样式" class="headerlink" title="1.设置显示样式"></a>1.设置显示样式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let style  = TJTitleStyle()</span><br><span class="line">//是否可以滚动</span><br><span class="line">style.isScrollEnable = true</span><br><span class="line">//是否显示下划线</span><br><span class="line">style.isShowBottomLine = true</span><br><span class="line">//是否显示遮挡试图view</span><br><span class="line">style.isShowCover = true</span><br></pre></td></tr></table></figure>
+<h4 id="2-初始化方法"><a href="#2-初始化方法" class="headerlink" title="2.初始化方法"></a>2.初始化方法</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**初始化方法</span></span><br><span class="line"><span class="comment">* frame    : 坐标</span></span><br><span class="line"><span class="comment">* titles   : 标题数组</span></span><br><span class="line"><span class="comment">* style    : 样式</span></span><br><span class="line"><span class="comment">* childVcs : 自控制器数组</span></span><br><span class="line"><span class="comment">* parentVc : 父控制器</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">let pageView = TJPageView(frame: frame, titles: titles, style: style, childVcs: childVcs, parentVc: <span class="keyword">self</span>)</span><br><span class="line"></span><br><span class="line">view.addSubview(pageView)</span><br></pre></td></tr></table></figure>
+<h2 id="三-底部类似表情键盘布局调用方法"><a href="#三-底部类似表情键盘布局调用方法" class="headerlink" title="三.底部类似表情键盘布局调用方法"></a>三.底部类似表情键盘布局调用方法</h2><h3 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 1.设置显示样式</span><br><span class="line">let style = TJTitleStyle()</span><br><span class="line">style.isShowBottomLine = true</span><br><span class="line">        </span><br><span class="line">//2.设置cell布局Layout</span><br><span class="line">let layout = TJPageCollectionLayout()</span><br><span class="line">layout.cols = 7 // 列</span><br><span class="line">layout.rows = 3 // 行</span><br><span class="line">layout.minimumLineSpacing = 0</span><br><span class="line">layout.minimumInteritemSpacing = 0</span><br><span class="line">layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)</span><br><span class="line">        </span><br><span class="line">//3.创建collectionView</span><br><span class="line">let pageCollection = TJPageCollectionView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 250, width: UIScreen.main.bounds.width, height: 250), style: style, titles: [&quot;普通&quot;, &quot;粉丝&quot;], isTitleInTop: false, layout: layout)</span><br><span class="line">pageCollection.delegate = self</span><br><span class="line">pageCollection.dataSource = self</span><br><span class="line"></span><br><span class="line">//4.注册cell</span><br><span class="line">pageCollection.register(nib: UINib(nibName: &quot;EmoticonViewCell&quot;, bundle: nil), identifier: kEmoticonCellID)</span><br><span class="line"></span><br><span class="line">//5.添加到视图中</span><br><span class="line">view.addSubview(pageCollection)</span><br></pre></td></tr></table></figure>
+<h3 id="2-遵循协议"><a href="#2-遵循协议" class="headerlink" title="2.遵循协议"></a>2.遵循协议</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//MARK: TJCollectionViewDateSource</span><br><span class="line">extension NextViewController : TJPageCollectionViewDateSource&#123;</span><br><span class="line">    func numberOfSections(in pageCollectionView: TJPageCollectionView) -&gt; Int &#123;</span><br><span class="line">        return 5</span><br><span class="line">    &#125;</span><br><span class="line">    func pageCollectionView(_ collectionView: TJPageCollectionView, numberOfItemsInSection section: Int) -&gt; Int &#123;</span><br><span class="line">        return 40</span><br><span class="line">    &#125;</span><br><span class="line">    func pageCollectionView(_ pageCollectionView: TJPageCollectionView, _ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -&gt; UICollectionViewCell &#123;</span><br><span class="line">        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kEmoticonCellID, for: indexPath) as! EmoticonViewCell</span><br><span class="line">        </span><br><span class="line">        return cell</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//MARK: TJPageCollectionViewDelegate</span><br><span class="line">extension NextViewController : TJPageCollectionViewDelegate&#123;</span><br><span class="line">    func pageCollectionView(_ pageCollectionView: TJPageCollectionView, didSelectorItemAt indexPath: IndexPath) &#123;</span><br><span class="line">        print(indexPath)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="框架代码中可能还有不足之处-还望大神多多指教"><a href="#框架代码中可能还有不足之处-还望大神多多指教" class="headerlink" title="框架代码中可能还有不足之处,还望大神多多指教."></a>框架代码中可能还有不足之处,还望大神多多指教.</h3></blockquote>
+<blockquote>
+<h3 id="菜鸟一枚-多多交流"><a href="#菜鸟一枚-多多交流" class="headerlink" title="菜鸟一枚,多多交流."></a>菜鸟一枚,多多交流.</h3></blockquote>
+<h2 id="github地址-1"><a href="#github地址-1" class="headerlink" title="github地址"></a><a href="https://github.com/coderQuanjun/TJPageView" target="_blank" rel="noopener">github地址</a></h2>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">CoderTitan</a></p>
+        <p><span>发布时间:</span>2017-06-12, 20:12:00</p>
+        <p><span>最后更新:</span>2018-03-06, 19:51:59</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/" title="Swift仿网易新闻首页左右滑动切换页面">https://titanjun.top/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/　　作者: CoderTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/06/15/Swift项目创建桥接文件/">
+                    Swift项目创建桥接文件
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/10/iOS9之UIStackView的使用/">
+                    iOS9之UIStackView的使用
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-框架介绍"><span class="toc-number">1.</span> <span class="toc-text">一.框架介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github地址"><span class="toc-number">2.</span> <span class="toc-text">github地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TJTitleStyle-swift"><span class="toc-number">2.1.</span> <span class="toc-text">TJTitleStyle.swift</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TJPageCollectionLayout-swift自定义布局"><span class="toc-number">2.2.</span> <span class="toc-text">TJPageCollectionLayout.swift自定义布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TJPageCollectionView-swift"><span class="toc-number">2.3.</span> <span class="toc-text">TJPageCollectionView.swift</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代理方法"><span class="toc-number">2.3.1.</span> <span class="toc-text">代理方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-首页左右滑动调用方法"><span class="toc-number">3.</span> <span class="toc-text">二.首页左右滑动调用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-设置显示样式"><span class="toc-number">3.0.1.</span> <span class="toc-text">1.设置显示样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-初始化方法"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.初始化方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-底部类似表情键盘布局调用方法"><span class="toc-number">4.</span> <span class="toc-text">三.底部类似表情键盘布局调用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-初始化"><span class="toc-number">4.1.</span> <span class="toc-text">1.初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-遵循协议"><span class="toc-number">4.2.</span> <span class="toc-text">2.遵循协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#框架代码中可能还有不足之处-还望大神多多指教"><span class="toc-number">4.3.</span> <span class="toc-text">框架代码中可能还有不足之处,还望大神多多指教.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#菜鸟一枚-多多交流"><span class="toc-number">4.4.</span> <span class="toc-text">菜鸟一枚,多多交流.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github地址-1"><span class="toc-number">5.</span> <span class="toc-text">github地址</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Swift仿网易新闻首页左右滑动切换页面　| Titan果子的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/15/Swift项目创建桥接文件/" title="上一篇: Swift项目创建桥接文件">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/10/iOS9之UIStackView的使用/" title="下一篇: iOS9之UIStackView的使用">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 CoderTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+            
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="CoderTitan" />
+
+
+
+<meta name="description" content="1.作用:  用于收集用户信息, 让用户填写、选择相关信息">
+<meta name="keywords" content="HTML5标签,CSS,WebStorm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5学习笔记之表单标签">
+<meta property="og:url" content="https://titanjun.top/2017/06/15/HTML5学习笔记之表单标签/index.html">
+<meta property="og:site_name" content="Titan果子的博客">
+<meta property="og:description" content="1.作用:  用于收集用户信息, 让用户填写、选择相关信息">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/647982-9f6f2cfcfdf04c42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-39cbc042f6cfbdb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-141c73672aca00ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-df3952d22685cb6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-af39ca426f317aec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-5e9e1c3b75a16426.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-4973010e14b7d6c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-c9638bcbcf8e60f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-03-06T12:29:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5学习笔记之表单标签">
+<meta name="twitter:description" content="1.作用:  用于收集用户信息, 让用户填写、选择相关信息">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/647982-9f6f2cfcfdf04c42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Titan果子的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>HTML5学习笔记之表单标签 | Titan果子的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">CoderTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">CoderTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">CoderTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-HTML5学习笔记之表单标签" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/15/HTML5学习笔记之表单标签/" class="article-date">
+      <time datetime="2017-06-15T12:18:00.000Z" itemprop="datePublished">2017-06-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML5学习笔记之表单标签
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebStorm/">WebStorm</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><img src="http://upload-images.jianshu.io/upload_images/647982-9f6f2cfcfdf04c42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<ul>
+<li>1.作用: <ul>
+<li>用于收集用户信息, 让用户填写、选择相关信息</li>
+</ul>
+</li>
+</ul>
+<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<ul>
+<li><p>2.格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">    所有的表单内容，都要写在form标签里面</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.注意事项:</p>
+<ul>
+<li>所有的表单内容，都要写在form标签里面<br>form标签中有两个比较重要的属性action和method</li>
+</ul>
+</li>
+</ul>
+<h2 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a>input标签</h2><ul>
+<li><p>如果说td是表格最核心的标签, 那么input就是表单最核心的标签. nput标签有一个type属性, 这个属性有很多类型的取值, 取值的不同就决定了input标签的功能和外观不同</p>
+<h3 id="1-输入框"><a href="#1-输入框" class="headerlink" title="1.输入框"></a>1.输入框</h3><h4 id="1-1-明文输入框"><a href="#1-1-明文输入框" class="headerlink" title="1.1 明文输入框"></a>1.1 明文输入框</h4></li>
+<li><p>作用: 用户可以在输入框内输入内容</p>
+</li>
+<li>账号: <code>&lt;input type=&quot;text&quot;/&gt;</code><h4 id="1-2-暗文输入框"><a href="#1-2-暗文输入框" class="headerlink" title="1.2 暗文输入框"></a>1.2 暗文输入框</h4></li>
+<li>作用: 用户可以在输入框内输入内容</li>
+<li>密码: <code>&lt;input type=&quot;password&quot;/&gt;</code><h4 id="1-3-给输入框设置默认值"><a href="#1-3-给输入框设置默认值" class="headerlink" title="1.3 给输入框设置默认值"></a>1.3 给输入框设置默认值</h4></li>
+<li>账号: <code>&lt;input type=&quot;text&quot;  value=&quot;tqj&quot;/&gt;</code></li>
+<li>密码: <code>&lt;input type=&quot;password&quot; value=&quot;0929&quot;/&gt;</code><h4 id="1-4-规定输入字段中的字符的最大长度"><a href="#1-4-规定输入字段中的字符的最大长度" class="headerlink" title="1.4 规定输入字段中的字符的最大长度"></a>1.4 规定输入字段中的字符的最大长度</h4></li>
+<li>账号: <code>&lt;input type=&quot;text&quot; name=&quot;fullname&quot; maxlength=&quot;8&quot; /&gt;</code></li>
+</ul>
+<h4 id="1-5-代码"><a href="#1-5-代码" class="headerlink" title="1.5 代码"></a>1.5 代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">    &lt;!--明文输入框--&gt;</span><br><span class="line">    &lt;p&gt;账号: &lt;input type=&quot;text&quot; /&gt;&lt;/p&gt;</span><br><span class="line">    &lt;!--暗文输入框--&gt;</span><br><span class="line">    &lt;p&gt;密码: &lt;input type=&quot;password&quot; /&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--p标签换行--&gt;</span><br><span class="line">    &lt;p&gt;账号: &lt;input type=&quot;text&quot; value=&quot;tqj&quot; /&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;密码: &lt;input type=&quot;password&quot; value=&quot;0929&quot; /&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;p&gt;最大长度: &lt;input type=&quot;text&quot; maxlength=&quot;5&quot;/&gt;&lt;/p&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-39cbc042f6cfbdb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_22.png"></p>
+<h3 id="2-单选框-radio"><a href="#2-单选框-radio" class="headerlink" title="2. 单选框(radio)"></a>2. 单选框(radio)</h3><ul>
+<li>作用: 用户只能从众多选项中选择其中一个</li>
+<li>单选按钮，天生是不互斥的，如果想互斥，必须要有相同的name属性</li>
+</ul>
+<h3 id="3-多选框-checkbox"><a href="#3-多选框-checkbox" class="headerlink" title="3. 多选框(checkbox)"></a>3. 多选框(checkbox)</h3><ul>
+<li>作用: 用户只能从众多选项中选择多个</li>
+<li>复选框，最好也是有相同的name（虽然他不需要互斥，但是也要有相同的name）</li>
+</ul>
+<h3 id="4-label标签"><a href="#4-label标签" class="headerlink" title="4. label标签"></a>4. label标签</h3><ul>
+<li>作用: label标签不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性</li>
+<li>注意事项:<br>表单元素要有一个id，然后label标签就有一个for属性，for属性和id相同就表示绑定了<br>所有表单元素都可以通过label绑定</li>
+</ul>
+<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--单选框--&gt;</span><br><span class="line">&lt;!--checked属性,为默认值--&gt;</span><br><span class="line">&lt;label for=&quot;sex&quot;&gt;性别: &lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; checked /&gt; &lt;label for=&quot;sex&quot;&gt;男&lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; /&gt; &lt;label for=&quot;sex&quot;&gt;女&lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; /&gt; &lt;label for=&quot;sex&quot;&gt;妖&lt;/label&gt;</span><br><span class="line">&lt;p&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--多选框--&gt;</span><br><span class="line">&lt;label for=&quot;课程&quot;&gt;课程: &lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; name=&quot;课程&quot; checked /&gt; &lt;label for=&quot;课程&quot;&gt;HTML5 &lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; name=&quot;课程&quot; checked /&gt; &lt;label for=&quot;课程&quot;&gt;Swift &lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; name=&quot;课程&quot; /&gt; &lt;label for=&quot;课程&quot;&gt;OC &lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; name=&quot;课程&quot; /&gt; &lt;label for=&quot;课程&quot;&gt;CSS &lt;/label&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-141c73672aca00ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_1.png"></p>
+<h3 id="5-按钮"><a href="#5-按钮" class="headerlink" title="5. 按钮"></a>5. 按钮</h3><h4 id="5-1-普通按钮"><a href="#5-1-普通按钮" class="headerlink" title="5.1 普通按钮"></a>5.1 普通按钮</h4><ul>
+<li>作用: 定义可点击按钮（多数情况下，用于通过 JavaScript 启动脚本）<br><code>&lt;input type=&quot;button&quot; value=&quot;点我丫&quot; /&gt;</code></li>
+</ul>
+<h4 id="5-2-图片按钮"><a href="#5-2-图片按钮" class="headerlink" title="5.2 图片按钮"></a>5.2 图片按钮</h4><ul>
+<li>作用:定义图像形式的提交按钮<br><code>&lt;input type=&quot;image&quot; src=&quot;1.png&quot; /&gt;</code></li>
+</ul>
+<h4 id="5-3-还原按钮"><a href="#5-3-还原按钮" class="headerlink" title="5.3 还原按钮"></a>5.3 还原按钮</h4><ul>
+<li>作用: 定义还原按钮。还原按钮会清除表单中的所有数据<br><code>&lt;input type=&quot;reset&quot; /&gt;</code></li>
+<li>注意事项:<br>这个按钮不需要写value自动就有“还原”文字<br>reset只对form表单中表单项有效果</li>
+</ul>
+<h4 id="5-4-提交按钮"><a href="#5-4-提交按钮" class="headerlink" title="5.4 提交按钮"></a>5.4 提交按钮</h4><ul>
+<li>作用:定义提交按钮。提交按钮会把表单数据发送到action属性指定的页面<br><code>&lt;input type=&quot;submit&quot; /&gt;</code></li>
+<li>注意事项:<ul>
+<li>这个按钮不需要写value自动就有“提交”文字</li>
+<li>要想通过submit提交数据到服务器, 被提交的表单项都必须设置name属性</li>
+<li>默认明文传输(GET)不安全, 可以将method属性设置为POST改为非明文传输(学到Ajax再理解)</li>
+</ul>
+</li>
+</ul>
+<h4 id="示例代码-1"><a href="#示例代码-1" class="headerlink" title="示例代码"></a>示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--按钮--&gt;</span><br><span class="line">&lt;!--普通按钮--&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;点我有奖&quot;&gt;</span><br><span class="line">&lt;!--图片按钮--&gt;</span><br><span class="line">&lt;input type=&quot;image&quot; src=&quot;http://note.youdao.com/favicon.ico&quot;&gt;</span><br><span class="line">&lt;!--还原按钮--&gt;</span><br><span class="line">&lt;input type=&quot;reset&quot;&gt;</span><br><span class="line">&lt;!--提交按钮--&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-df3952d22685cb6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_3.png"></p>
+<h3 id="6-隐藏域"><a href="#6-隐藏域" class="headerlink" title="6. 隐藏域"></a>6. 隐藏域</h3><ul>
+<li>作用: 定义隐藏的输入字段<input type="hidden"></li>
+<li>暂时不用掌握, 在Ajax中对数据的CRUD操作有非常大的作用</li>
+</ul>
+<h3 id="7-取色器和日期选择器"><a href="#7-取色器和日期选择器" class="headerlink" title="7.取色器和日期选择器"></a>7.取色器和日期选择器</h3><ul>
+<li>取色器: <code>&lt;input type=&quot;color&quot;&gt;</code></li>
+<li>日期选色器: <code>&lt;input type=&quot;date&quot;&gt;</code></li>
+<li>HTML5中input类型增加了很多type类型, 例如color、date但是都不兼容, 后面讲到浏览器兼容时会重点讲解<blockquote>
+<ul>
+<li>亲自测试,在Mac电脑的Safari浏览器不兼容,只能用谷歌浏览器</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--取色器--&gt;</span><br><span class="line">&lt;label&gt;颜色: &lt;/label&gt; &lt;input type=&quot;color&quot;&gt;</span><br><span class="line">&lt;!--换行--&gt;</span><br><span class="line">&lt;p&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--日期选色器--&gt;</span><br><span class="line">&lt;label&gt;时间: &lt;/label&gt; &lt;input type=&quot;date&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-af39ca426f317aec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_5.png"></p>
+<h3 id="8-数据列表"><a href="#8-数据列表" class="headerlink" title="8. 数据列表"></a>8. 数据列表</h3><ul>
+<li><p>作用: 给输入框绑定待选项</p>
+</li>
+<li><p>格式:</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  &lt;option&gt;待选项内容&lt;/option&gt;</span><br><span class="line">&lt;/datalist&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如何给输入框绑定待选列表</p>
+<ul>
+<li>搞一个输入框</li>
+<li>搞一个datalist列表</li>
+<li>给datalist列表标签添加一个id</li>
+<li>给输入框添加一个list属性,将datalist的id对应的值赋值给list属性即可</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--数据列表--&gt;</span><br><span class="line">请选择车型: &lt;input type=&quot;text&quot; list=&quot;cars&quot;&gt;</span><br><span class="line">&lt;datalist id=&quot;cars&quot;&gt;</span><br><span class="line">    &lt;option&gt;奔驰&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;宝马&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;奥迪&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;别克&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;奔腾&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;奔跑&lt;/option&gt;</span><br><span class="line">&lt;/datalist&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-5e9e1c3b75a16426.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_6.png"></p>
+<ul>
+<li>当输入某一个字符时,会自动根据datalist列表查询,并显示对应的列表,如图:</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-4973010e14b7d6c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_7.png"></p>
+<h2 id="三-多行文本框-文本域"><a href="#三-多行文本框-文本域" class="headerlink" title="三. 多行文本框(文本域)"></a>三. 多行文本框(文本域)</h2><ul>
+<li><p>作用: textarea标签用于在表单中定义多行的文本输入控件</p>
+<ul>
+<li>cols属性表示columns“列”, 规定文本区内的可见宽度</li>
+<li>rows属性表示rows“行”, 规定文本区内的可见高度</li>
+</ul>
+</li>
+<li><p>格式:<br><code>&lt;textarea cols=&quot;30&quot; rows=&quot;10&quot;&gt;</code>默认<code>&lt;/textarea&gt;</code></p>
+</li>
+<li><p>注意点:</p>
+<ul>
+<li>可以通过cols和rows来指定输入框的宽度和高度</li>
+<li>默认情况下输入框是可以手动拉伸的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--禁止手动拉伸--&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">  textarea&#123;</span><br><span class="line">      resize: none;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="四-下拉列表"><a href="#四-下拉列表" class="headerlink" title="四. 下拉列表"></a>四. 下拉列表</h2><ul>
+<li>作用: select标签和ul、ol、dl一样，都是组标签. 用于创建表单中的待选列表<ul>
+<li>和radio、checkbox一样select也可以设置默认值, 通过selected属性设置(本身默认是第一个选项)</li>
+</ul>
+</li>
+<li>给下拉列表添加分组</li>
+</ul>
+<h3 id="示例代码-2"><a href="#示例代码-2" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--给下拉表添加分组--&gt;</span><br><span class="line">&lt;select&gt;</span><br><span class="line">    &lt;optgroup label=&quot;杭州市&quot;&gt;</span><br><span class="line">        &lt;option&gt;江干区&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;西湖区&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;滨江区&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;下城区&lt;/option&gt;</span><br><span class="line">    &lt;/optgroup&gt;</span><br><span class="line">    &lt;optgroup label=&quot;烟台市&quot;&gt;</span><br><span class="line">        &lt;option&gt;莱山区&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;芝罘区&lt;/option&gt;</span><br><span class="line">    &lt;/optgroup&gt;</span><br><span class="line">    &lt;option selected&gt;北京市&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-c9638bcbcf8e60f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_8.png"></p>
+<blockquote>
+<ul>
+<li><h3 id="对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><a href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新" class="headerlink" title="对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新"></a>对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频<a href="http://study.163.com/course/introduction.htm?courseId=1003864040" target="_blank" rel="noopener">HTML5 + 跨平台开发</a>,只是不知道会不会继续更新</h3></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">CoderTitan</a></p>
+        <p><span>发布时间:</span>2017-06-15, 20:18:00</p>
+        <p><span>最后更新:</span>2018-03-06, 20:29:35</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/15/HTML5学习笔记之表单标签/" title="HTML5学习笔记之表单标签">https://titanjun.top/2017/06/15/HTML5学习笔记之表单标签/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/06/15/HTML5学习笔记之表单标签/　　作者: CoderTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/06/15/HTML5学习笔记之表格标签/">
+                    HTML5学习笔记之表格标签
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/15/HTML5学习笔记之基础标签/">
+                    HTML5学习笔记之基础标签
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#input标签"><span class="toc-number">1.</span> <span class="toc-text">input标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-输入框"><span class="toc-number">1.1.</span> <span class="toc-text">1.输入框</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-明文输入框"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 明文输入框</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-暗文输入框"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 暗文输入框</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-给输入框设置默认值"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 给输入框设置默认值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-规定输入字段中的字符的最大长度"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 规定输入字段中的字符的最大长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-代码"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-单选框-radio"><span class="toc-number">1.2.</span> <span class="toc-text">2. 单选框(radio)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-多选框-checkbox"><span class="toc-number">1.3.</span> <span class="toc-text">3. 多选框(checkbox)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-label标签"><span class="toc-number">1.4.</span> <span class="toc-text">4. label标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例代码"><span class="toc-number">1.4.1.</span> <span class="toc-text">示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-按钮"><span class="toc-number">1.5.</span> <span class="toc-text">5. 按钮</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-普通按钮"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 普通按钮</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-图片按钮"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 图片按钮</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-还原按钮"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 还原按钮</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-提交按钮"><span class="toc-number">1.5.4.</span> <span class="toc-text">5.4 提交按钮</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例代码-1"><span class="toc-number">1.5.5.</span> <span class="toc-text">示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-隐藏域"><span class="toc-number">1.6.</span> <span class="toc-text">6. 隐藏域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-取色器和日期选择器"><span class="toc-number">1.7.</span> <span class="toc-text">7.取色器和日期选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-数据列表"><span class="toc-number">1.8.</span> <span class="toc-text">8. 数据列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-多行文本框-文本域"><span class="toc-number">2.</span> <span class="toc-text">三. 多行文本框(文本域)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-下拉列表"><span class="toc-number">3.</span> <span class="toc-text">四. 下拉列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码-2"><span class="toc-number">3.1.</span> <span class="toc-text">示例代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><span class="toc-number">3.2.</span> <span class="toc-text">对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"HTML5学习笔记之表单标签　| Titan果子的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/15/HTML5学习笔记之表格标签/" title="上一篇: HTML5学习笔记之表格标签">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/15/HTML5学习笔记之基础标签/" title="下一篇: HTML5学习笔记之基础标签">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 CoderTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+            
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
