@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="UICollectionView基础首先系统的分隔线有以下几种12345tableView.separatorStyle = UITableViewCellSeparatorStyleNone;-UITableViewCellSeparatorStyleNone //隐藏系统分隔线-UITableViewCellSeparatorStyleSingleLine //单分隔线-UITableView">
-<meta name="keywords" content="Objective-C,UITableView">
+<meta name="description" content="判断日期是是否是今年？今天？">
+<meta name="keywords" content="Objective-C,Category">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS之UITableView设置全屏分隔线">
-<meta property="og:url" content="https://titanjun.top/2016/11/20/iOS之UITableView设置全屏分隔线/index.html">
+<meta property="og:title" content="iOS之NSDate的Category">
+<meta property="og:url" content="https://titanjun.top/2016/11/25/iOS之NSDate的Category/index.html">
 <meta property="og:site_name" content="Titan果子的博客">
-<meta property="og:description" content="UICollectionView基础首先系统的分隔线有以下几种12345tableView.separatorStyle = UITableViewCellSeparatorStyleNone;-UITableViewCellSeparatorStyleNone //隐藏系统分隔线-UITableViewCellSeparatorStyleSingleLine //单分隔线-UITableView">
+<meta property="og:description" content="判断日期是是否是今年？今天？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T09:48:59.494Z">
+<meta property="og:updated_time" content="2018-03-06T09:26:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS之UITableView设置全屏分隔线">
-<meta name="twitter:description" content="UICollectionView基础首先系统的分隔线有以下几种12345tableView.separatorStyle = UITableViewCellSeparatorStyleNone;-UITableViewCellSeparatorStyleNone //隐藏系统分隔线-UITableViewCellSeparatorStyleSingleLine //单分隔线-UITableView">
+<meta name="twitter:title" content="iOS之NSDate的Category">
+<meta name="twitter:description" content="判断日期是是否是今年？今天？">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>iOS之UITableView设置全屏分隔线 | Titan果子的博客</title>
+<title>iOS之NSDate的Category | Titan果子的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +281,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-iOS之UITableView设置全屏分隔线" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-iOS之NSDate的Category" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/20/iOS之UITableView设置全屏分隔线/" class="article-date">
-      <time datetime="2016-11-20T05:41:14.000Z" itemprop="datePublished">2016-11-20</time>
+      <a href="/2016/11/25/iOS之NSDate的Category/" class="article-date">
+      <time datetime="2016-11-25T13:56:30.000Z" itemprop="datePublished">2016-11-25</time>
 </a>
 
 
@@ -300,7 +300,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      iOS之UITableView设置全屏分隔线
+      iOS之NSDate的Category
     </h1>
   
 
@@ -315,7 +315,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UITableView/">UITableView</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Category/">Category</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -325,34 +325,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="UICollectionView基础"><a href="#UICollectionView基础" class="headerlink" title="UICollectionView基础"></a>UICollectionView基础</h2><h4 id="首先系统的分隔线有以下几种"><a href="#首先系统的分隔线有以下几种" class="headerlink" title="首先系统的分隔线有以下几种"></a>首先系统的分隔线有以下几种</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tableView.separatorStyle = UITableViewCellSeparatorStyleNone;</span><br><span class="line"></span><br><span class="line">-UITableViewCellSeparatorStyleNone //隐藏系统分隔线</span><br><span class="line">-UITableViewCellSeparatorStyleSingleLine //单分隔线</span><br><span class="line">-UITableViewCellSeparatorStyleSingleLineEtched //被侵蚀的单分隔线</span><br></pre></td></tr></table></figure>
-<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
-<h4 id="自定义分隔线（首先要隐藏系统的分隔线）"><a href="#自定义分隔线（首先要隐藏系统的分隔线）" class="headerlink" title="自定义分隔线（首先要隐藏系统的分隔线）"></a>自定义分隔线（首先要隐藏系统的分隔线）</h4><ol>
-<li>通过xib或者代码在cell底部添加一条高度为1的UIView或者UILable分隔线。</li>
-<li>通过drawRect：方法自绘一条分割线</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 自绘分割线</span><br><span class="line">- (void)drawRect:(CGRect)rect&#123;</span><br><span class="line">    CGContextRef context = UIGraphicsGetCurrentContext();</span><br><span class="line"></span><br><span class="line">    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);</span><br><span class="line">    CGContextFillRect(context, rect);</span><br><span class="line"></span><br><span class="line">    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0xE2/255.0f green:0xE2/255.0f blue:0xE2/255.0f alpha:1].CGColor);</span><br><span class="line">    CGContextStrokeRect(context, CGRectMake(0, rect.size.height - 1, rect.size.width, 1));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3.重写cell的setFrame：方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)setFrame:(CGRect)frame&#123;</span><br><span class="line">    frame.size.height -= 1;//设置分隔线</span><br><span class="line">    </span><br><span class="line">    //设置cell的左右间距</span><br><span class="line">    frame.origin.x = 5;//左间距为5</span><br><span class="line">    frame.size.width = [UIScreen mainScreen].bounds.size.width - 2 * frame.origin.x;</span><br><span class="line">    </span><br><span class="line">    // 给cellframe赋值</span><br><span class="line">    [super setFrame:frame];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>4.利用系统属性设置(separatorInset, layoutMargins)设置</p>
-<ul>
-<li><p>对tableView的separatorInset, layoutMargins属性的设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-(void)viewDidLoad &#123;</span><br><span class="line">  [super viewDidLoad];</span><br><span class="line">  //1.调整(iOS7以上)表格分隔线边距</span><br><span class="line">  if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) &#123;</span><br><span class="line">      self.tableView.separatorInset = UIEdgeInsetsZero;</span><br><span class="line">  &#125;</span><br><span class="line">  //2.调整(iOS8以上)view边距(或者在cell中设置preservesSuperviewLayoutMargins,二者等效)</span><br><span class="line">  if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) &#123;</span><br><span class="line">      self.tableView.layoutMargins = UIEdgeInsetsZero;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对cell的LayoutMargins属性的设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//对cell的设置可以写在cellForRowAtIndexPath里,也可以写在willDisplayCell方法里</span><br><span class="line">-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    static NSString *ID = @&quot;cell&quot;;</span><br><span class="line">    FSDiscoverSpecialCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];</span><br><span class="line">    if (cell == nil) &#123;</span><br><span class="line">        cell = [[FSDiscoverSpecialCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   //2.调整(iOS8以上)tableView边距(与上面第2步等效,二选一即可)</span><br><span class="line">    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) &#123;</span><br><span class="line">        cell.preservesSuperviewLayoutMargins = NO;</span><br><span class="line">    &#125;</span><br><span class="line">   //3.调整(iOS8以上)view边距</span><br><span class="line">    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) &#123;</span><br><span class="line">        [cell setLayoutMargins:UIEdgeInsetsZero];</span><br><span class="line">    &#125;</span><br><span class="line">    return cell;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="三种方法优缺点比较："><a href="#三种方法优缺点比较：" class="headerlink" title="三种方法优缺点比较："></a>三种方法优缺点比较：</h2><ul>
-<li><p>方法1一般使用系统的cell，或者对cell没有特殊要求的情况下使用系统的分隔线；</p>
-</li>
-<li><p>方法2是比较好用的,但是有些情况下系统自带的cell就足够用了,仅仅为了分隔线却还必须再自定义cell,添加一个view,设置背景颜色和frame,又显得麻烦;</p>
-</li>
-<li><p>方法3比较取巧,但是也需要自定义cell,在某些情况下不允许改变tableView的背景色,使用场景有限;</p>
-</li>
-<li><p>方法4不需要自定义cell,对系统(iOS7,iOS8以上)做个简单判断即可.</p>
-</li>
-</ul>
-
+        <h4 id="判断日期是是否是今年？今天？"><a href="#判断日期是是否是今年？今天？" class="headerlink" title="判断日期是是否是今年？今天？"></a>判断日期是是否是今年？今天？</h4><p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<h5 id="NSDate-Extension-h"><a href="#NSDate-Extension-h" class="headerlink" title="NSDate+Extension.h"></a>NSDate+Extension.h</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line">@interface NSDate (Extension)</span><br><span class="line"></span><br><span class="line">//比较from和self的时间差值</span><br><span class="line">- (NSDateComponents *)deltaFrom:(NSDate *)from;</span><br><span class="line"></span><br><span class="line"> //是否为今年</span><br><span class="line">- (BOOL)isThisYear;</span><br><span class="line"></span><br><span class="line">//是否为今天</span><br><span class="line">- (BOOL)isToday;</span><br><span class="line"></span><br><span class="line">//是否为昨天</span><br><span class="line">- (BOOL)isYesterday;</span><br><span class="line"></span><br><span class="line">//是否为明天</span><br><span class="line">- (BOOL)isTomorrow;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h5 id="NSDate-Extension-m"><a href="#NSDate-Extension-m" class="headerlink" title="NSDate+Extension.m"></a>NSDate+Extension.m</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;NSDate+Extension.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation NSDate (Extension)</span><br><span class="line">- (NSDateComponents *)deltaFrom:(NSDate *)from</span><br><span class="line">&#123;</span><br><span class="line">    // 日历</span><br><span class="line">    NSCalendar *calendar = [NSCalendar currentCalendar];</span><br><span class="line">    </span><br><span class="line">    // 比较时间</span><br><span class="line">    NSCalendarUnit unit = NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;</span><br><span class="line">    </span><br><span class="line">    return [calendar components:unit fromDate:from toDate:self options:0];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)isThisYear</span><br><span class="line">&#123;</span><br><span class="line">    // 日历</span><br><span class="line">    NSCalendar *calendar = [NSCalendar currentCalendar];</span><br><span class="line">    </span><br><span class="line">    NSInteger nowYear = [calendar component:NSCalendarUnitYear fromDate:[NSDate date]];</span><br><span class="line">    NSInteger selfYear = [calendar component:NSCalendarUnitYear fromDate:self];</span><br><span class="line">    </span><br><span class="line">    return nowYear == selfYear;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (BOOL)isToday</span><br><span class="line">&#123;</span><br><span class="line">    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];</span><br><span class="line">    fmt.dateFormat = @&quot;yyyy-MM-dd&quot;;</span><br><span class="line">    </span><br><span class="line">    NSString *nowString = [fmt stringFromDate:[NSDate date]];</span><br><span class="line">    NSString *selfString = [fmt stringFromDate:self];</span><br><span class="line">    </span><br><span class="line">    return [nowString isEqualToString:selfString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)isYesterday</span><br><span class="line">&#123;</span><br><span class="line">    // 2014-12-31 23:59:59 -&gt; 2014-12-31</span><br><span class="line">    // 2015-01-01 00:00:01 -&gt; 2015-01-01</span><br><span class="line">    </span><br><span class="line">    // 日期格式化类</span><br><span class="line">    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];</span><br><span class="line">    fmt.dateFormat = @&quot;yyyy-MM-dd&quot;;</span><br><span class="line">    </span><br><span class="line">    NSDate *nowDate = [fmt dateFromString:[fmt stringFromDate:[NSDate date]]];</span><br><span class="line">    NSDate *selfDate = [fmt dateFromString:[fmt stringFromDate:self]];</span><br><span class="line">    </span><br><span class="line">    NSCalendar *calendar = [NSCalendar currentCalendar];</span><br><span class="line">    NSDateComponents *cmps = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:selfDate toDate:nowDate options:0];</span><br><span class="line">    </span><br><span class="line">    return cmps.year == 0</span><br><span class="line">    &amp;&amp; cmps.month == 0</span><br><span class="line">    &amp;&amp; cmps.day == 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)isTomorrow&#123;</span><br><span class="line">     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];</span><br><span class="line">    fmt.dateFormat = @&quot;yyyy-MM-dd&quot;;</span><br><span class="line">    </span><br><span class="line">    NSDate *nowDate = [fmt dateFromString:[fmt stringFromDate:[NSDate date]]];</span><br><span class="line">    NSDate *selfDate = [fmt dateFromString:[fmt stringFromDate:self]];</span><br><span class="line">    </span><br><span class="line">    NSCalendar *calendar = [NSCalendar currentCalendar];</span><br><span class="line">    NSDateComponents *cmps = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:nowDate toDate:selfDate options:0];</span><br><span class="line">    </span><br><span class="line">    return cmps.year == 0</span><br><span class="line">    &amp;&amp; cmps.month == 0</span><br><span class="line">    &amp;&amp; cmps.day == 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h3 id="简单使用TopicModel"><a href="#简单使用TopicModel" class="headerlink" title="简单使用TopicModel"></a>简单使用TopicModel</h3><h5 id="import-“TopicModel-m”文件中"><a href="#import-“TopicModel-m”文件中" class="headerlink" title="#import “TopicModel.m”文件中"></a>#import “TopicModel.m”文件中</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSString</span> *)create_time</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 日期格式化类</span></span><br><span class="line">    <span class="built_in">NSDateFormatter</span> *fmt = [[<span class="built_in">NSDateFormatter</span> alloc] init];</span><br><span class="line">    <span class="comment">// 设置日期格式(y:年,M:月,d:日,H:时,m:分,s:秒)</span></span><br><span class="line">    fmt.dateFormat = <span class="string">@"yyyy-MM-dd HH:mm:ss"</span>;</span><br><span class="line">    <span class="comment">// 帖子的创建时间</span></span><br><span class="line">    <span class="built_in">NSDate</span> *create = [fmt dateFromString:_create_time];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (create.isThisYear) &#123; <span class="comment">// 今年</span></span><br><span class="line">        <span class="keyword">if</span> (create.isToday) &#123; <span class="comment">// 今天</span></span><br><span class="line">            <span class="built_in">NSDateComponents</span> *cmps = [[<span class="built_in">NSDate</span> date] deltaFrom:create];</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (cmps.hour &gt;= <span class="number">1</span>) &#123; <span class="comment">// 时间差距 &gt;= 1小时</span></span><br><span class="line">                <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%zd小时前"</span>, cmps.hour];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cmps.minute &gt;= <span class="number">1</span>) &#123; <span class="comment">// 1小时 &gt; 时间差距 &gt;= 1分钟</span></span><br><span class="line">                <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%zd分钟前"</span>, cmps.minute];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// 1分钟 &gt; 时间差距</span></span><br><span class="line">                <span class="keyword">return</span> <span class="string">@"刚刚"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (create.isYesterday) &#123; <span class="comment">// 昨天</span></span><br><span class="line">            fmt.dateFormat = <span class="string">@"昨天 HH:mm:ss"</span>;</span><br><span class="line">            <span class="keyword">return</span> [fmt stringFromDate:create];</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(creat.isTomorrow)&#123;</span><br><span class="line">            fmt.dateFormat = <span class="string">@"明天 HH:mm:ss"</span>;</span><br><span class="line">            <span class="keyword">return</span> [fmt stringFromDate:create];</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123; <span class="comment">// 其他</span></span><br><span class="line">            fmt.dateFormat = <span class="string">@"MM-dd HH:mm:ss"</span>;</span><br><span class="line">            <span class="keyword">return</span> [fmt stringFromDate:create];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// 非今年</span></span><br><span class="line">        <span class="keyword">return</span> _create_time;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -360,13 +336,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></p>
+        <p><span>本文标题:</span><a href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">CoderTitan</a></p>
-        <p><span>发布时间:</span>2016-11-20, 13:41:14</p>
-        <p><span>最后更新:</span>2018-03-06, 17:48:59</p>
+        <p><span>发布时间:</span>2016-11-25, 21:56:30</p>
+        <p><span>最后更新:</span>2018-03-06, 17:26:49</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/11/20/iOS之UITableView设置全屏分隔线/" title="iOS之UITableView设置全屏分隔线">https://titanjun.top/2016/11/20/iOS之UITableView设置全屏分隔线/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2016/11/20/iOS之UITableView设置全屏分隔线/　　作者: CoderTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/25/iOS之NSDate的Category/" title="iOS之NSDate的Category">https://titanjun.top/2016/11/25/iOS之NSDate的Category/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2016/11/25/iOS之NSDate的Category/　　作者: CoderTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -379,15 +355,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/11/22/iOS之UIMenuController的简单使用/">
-                    iOS之UIMenuController的简单使用
+                <a href="/2016/12/25/Swift3.0之基本语法01/">
+                    Swift3.0之基本语法01
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/11/15/iOS之UICollectionView自定义布局/">
-                    iOS之UICollectionView自定义布局
+                <a href="/2016/11/22/iOS之UIMenuController的简单使用/">
+                    iOS之UIMenuController的简单使用
                 </a>
             </div>
         
@@ -399,7 +375,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#UICollectionView基础"><span class="toc-number">1.</span> <span class="toc-text">UICollectionView基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#首先系统的分隔线有以下几种"><span class="toc-number">1.0.1.</span> <span class="toc-text">首先系统的分隔线有以下几种</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义分隔线（首先要隐藏系统的分隔线）"><span class="toc-number">1.0.2.</span> <span class="toc-text">自定义分隔线（首先要隐藏系统的分隔线）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三种方法优缺点比较："><span class="toc-number">2.</span> <span class="toc-text">三种方法优缺点比较：</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#判断日期是是否是今年？今天？"><span class="toc-number">1.</span> <span class="toc-text">判断日期是是否是今年？今天？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#NSDate-Extension-h"><span class="toc-number">1.1.</span> <span class="toc-text">NSDate+Extension.h</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#NSDate-Extension-m"><span class="toc-number">1.2.</span> <span class="toc-text">NSDate+Extension.m</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单使用TopicModel"><span class="toc-number"></span> <span class="toc-text">简单使用TopicModel</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#import-“TopicModel-m”文件中"><span class="toc-number">0.1.</span> <span class="toc-text">#import “TopicModel.m”文件中</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -435,7 +411,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"iOS之UITableView设置全屏分隔线　| Titan果子的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"iOS之NSDate的Category　| Titan果子的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -477,7 +453,7 @@ gitment.render('git')
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/11/22/iOS之UIMenuController的简单使用/" title="上一篇: iOS之UIMenuController的简单使用">
+            <a href="/2016/12/25/Swift3.0之基本语法01/" title="上一篇: Swift3.0之基本语法01">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -485,7 +461,7 @@ gitment.render('git')
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/11/15/iOS之UICollectionView自定义布局/" title="下一篇: iOS之UICollectionView自定义布局">
+            <a href="/2016/11/22/iOS之UIMenuController的简单使用/" title="下一篇: iOS之UIMenuController的简单使用">
                 <i class="fa fa-angle-right"></i>
             </a>
         
