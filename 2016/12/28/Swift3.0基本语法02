@@ -11,19 +11,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no" />
-<meta name="author" content="CoderTitan" />
+<meta name="author" content="RuningTitan" />
 
 
 
 <meta name="description" content="上一篇介绍了Swift的常量/变量和循环,详情见: Swift3.0基本语法01">
-<meta name="keywords" content="Swift3.0,语法">
+<meta name="keywords" content="语法,Swift3.0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift基本语法02">
-<meta property="og:url" content="https://titanjun.top/2016/12/28/Swift3.0基本语法02/index.html">
-<meta property="og:site_name" content="Titan果子的博客">
+<meta property="og:url" content="https://titanjun.top/2016/12/28/Swift3.0基本语法02">
+<meta property="og:site_name" content="RuningTitan&#39;s Blog">
 <meta property="og:description" content="上一篇介绍了Swift的常量/变量和循环,详情见: Swift3.0基本语法01">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T09:48:23.913Z">
+<meta property="og:updated_time" content="2018-03-06T14:04:03.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift基本语法02">
 <meta name="twitter:description" content="上一篇介绍了Swift的常量/变量和循环,详情见: Swift3.0基本语法01">
@@ -31,7 +31,7 @@
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
-    <link rel="alternate" href="/atom.xml" title="Titan果子的博客" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="RuningTitan&#39;s Blog" type="application/atom+xml">
 
 
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Swift基本语法02 | Titan果子的博客</title>
+<title>Swift基本语法02 | RuningTitan&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -101,7 +101,7 @@
             <img src="/img/titanjun.png" class="animated zoomIn">
         </a>
         <hgroup>
-          <h1 class="header-author"><a href="/">CoderTitan</a></h1>
+          <h1 class="header-author"><a href="/">RuningTitan</a></h1>
         </hgroup>
 
         
@@ -233,7 +233,7 @@
       <nav id="mobile-nav">
       <div class="overlay">
           <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">CoderTitan</a></h1>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RuningTitan</a></h1>
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
@@ -241,7 +241,7 @@
                 <img src="/img/titanjun.png" class="animated zoomIn">
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">CoderTitan</a></h1>
+              <h1 class="header-author"><a href="/" title="回到主页">RuningTitan</a></h1>
             </hgroup>
             
             <nav class="header-menu">
@@ -284,7 +284,7 @@
       <div class="body-wrap"><article id="post-Swift3.0基本语法02" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/28/Swift3.0基本语法02/" class="article-date">
+      <a href="/2016/12/28/Swift3.0基本语法02" class="article-date">
       <time datetime="2016-12-28T03:44:30.000Z" itemprop="datePublished">2016-12-28</time>
 </a>
 
@@ -326,8 +326,8 @@
       
           
         <blockquote>
-<p>上一篇介绍了Swift的常量/变量和循环,详情见:</p>
-<h2 id="Swift3-0基本语法01"><a href="#Swift3-0基本语法01" class="headerlink" title="Swift3.0基本语法01"></a><a href="http://www.jianshu.com/p/35696abdaf0f" target="_blank" rel="noopener">Swift3.0基本语法01</a></h2></blockquote>
+<p>上一篇介绍了Swift的常量/变量和循环,详情见: <a href="http://www.jianshu.com/p/35696abdaf0f" target="_blank" rel="noopener">Swift3.0基本语法01</a></p>
+</blockquote>
 <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
 <h2 id="一、字符串的介绍"><a href="#一、字符串的介绍" class="headerlink" title="一、字符串的介绍"></a>一、字符串的介绍</h2><ul>
 <li>字符串在任何的开发中使用都是非常频繁的<ul>
@@ -505,13 +505,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">CoderTitan</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/28/Swift3.0基本语法02">Swift基本语法02</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2016-12-28, 11:44:30</p>
-        <p><span>最后更新:</span>2018-03-06, 17:48:23</p>
+        <p><span>最后更新:</span>2018-03-06, 22:04:03</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/28/Swift3.0基本语法02/" title="Swift基本语法02">https://titanjun.top/2016/12/28/Swift3.0基本语法02/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2016/12/28/Swift3.0基本语法02/　　作者: CoderTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/28/Swift3.0基本语法02" title="Swift基本语法02">https://titanjun.top/2016/12/28/Swift3.0基本语法02</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2016/12/28/Swift3.0基本语法02　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -524,14 +524,14 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/30/Swift3.0基本语法03/">
+                <a href="/2016/12/30/Swift3.0基本语法03">
                     Swift3.0基本语法03
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/25/Swift3.0之基本语法01/">
+                <a href="/2016/12/25/Swift3.0之基本语法01">
                     Swift3.0之基本语法01
                 </a>
             </div>
@@ -544,7 +544,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Swift3-0基本语法01"><span class="toc-number">1.</span> <span class="toc-text">Swift3.0基本语法01</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、字符串的介绍"><span class="toc-number">2.</span> <span class="toc-text">一、字符串的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串的判断"><span class="toc-number">2.0.1.</span> <span class="toc-text">字符串的判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串的截取"><span class="toc-number">2.0.2.</span> <span class="toc-text">字符串的截取</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、数组的使用"><span class="toc-number">3.</span> <span class="toc-text">三、数组的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的介绍"><span class="toc-number">3.1.</span> <span class="toc-text">数组的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的初始化"><span class="toc-number">3.2.</span> <span class="toc-text">数组的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对数组的基本操作"><span class="toc-number">3.3.</span> <span class="toc-text">对数组的基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的遍历"><span class="toc-number">3.4.</span> <span class="toc-text">数组的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的合并"><span class="toc-number">3.5.</span> <span class="toc-text">数组的合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、字典"><span class="toc-number">4.</span> <span class="toc-text">四、字典</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的介绍"><span class="toc-number">4.1.</span> <span class="toc-text">字典的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的初始化"><span class="toc-number">4.2.</span> <span class="toc-text">字典的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的基本使用"><span class="toc-number">4.3.</span> <span class="toc-text">字典的基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的遍历"><span class="toc-number">4.4.</span> <span class="toc-text">字典的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的合并"><span class="toc-number">4.5.</span> <span class="toc-text">字典的合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、元组的使用"><span class="toc-number">5.</span> <span class="toc-text">五、元组的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#元组的介绍"><span class="toc-number">5.1.</span> <span class="toc-text">元组的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元组的定义"><span class="toc-number">5.2.</span> <span class="toc-text">元组的定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、可选类型"><span class="toc-number">6.</span> <span class="toc-text">六、可选类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#可选类型的介绍"><span class="toc-number">6.1.</span> <span class="toc-text">可选类型的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义可选类型"><span class="toc-number">6.2.</span> <span class="toc-text">定义可选类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#可选类型的使用"><span class="toc-number">6.2.1.</span> <span class="toc-text">可选类型的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#真实应用场景"><span class="toc-number">6.2.2.</span> <span class="toc-text">真实应用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、类型转化"><span class="toc-number">7.</span> <span class="toc-text">七、类型转化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型转化"><span class="toc-number">7.1.</span> <span class="toc-text">类型转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">7.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、try-throw-代码实践"><span class="toc-number">8.</span> <span class="toc-text">八、try throw 代码实践</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、字符串的介绍"><span class="toc-number">1.</span> <span class="toc-text">一、字符串的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串的判断"><span class="toc-number">1.0.1.</span> <span class="toc-text">字符串的判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串的截取"><span class="toc-number">1.0.2.</span> <span class="toc-text">字符串的截取</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、数组的使用"><span class="toc-number">2.</span> <span class="toc-text">三、数组的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的介绍"><span class="toc-number">2.1.</span> <span class="toc-text">数组的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的初始化"><span class="toc-number">2.2.</span> <span class="toc-text">数组的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对数组的基本操作"><span class="toc-number">2.3.</span> <span class="toc-text">对数组的基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的遍历"><span class="toc-number">2.4.</span> <span class="toc-text">数组的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的合并"><span class="toc-number">2.5.</span> <span class="toc-text">数组的合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、字典"><span class="toc-number">3.</span> <span class="toc-text">四、字典</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的介绍"><span class="toc-number">3.1.</span> <span class="toc-text">字典的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的初始化"><span class="toc-number">3.2.</span> <span class="toc-text">字典的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的基本使用"><span class="toc-number">3.3.</span> <span class="toc-text">字典的基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的遍历"><span class="toc-number">3.4.</span> <span class="toc-text">字典的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的合并"><span class="toc-number">3.5.</span> <span class="toc-text">字典的合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、元组的使用"><span class="toc-number">4.</span> <span class="toc-text">五、元组的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#元组的介绍"><span class="toc-number">4.1.</span> <span class="toc-text">元组的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元组的定义"><span class="toc-number">4.2.</span> <span class="toc-text">元组的定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、可选类型"><span class="toc-number">5.</span> <span class="toc-text">六、可选类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#可选类型的介绍"><span class="toc-number">5.1.</span> <span class="toc-text">可选类型的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义可选类型"><span class="toc-number">5.2.</span> <span class="toc-text">定义可选类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#可选类型的使用"><span class="toc-number">5.2.1.</span> <span class="toc-text">可选类型的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#真实应用场景"><span class="toc-number">5.2.2.</span> <span class="toc-text">真实应用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、类型转化"><span class="toc-number">6.</span> <span class="toc-text">七、类型转化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型转化"><span class="toc-number">6.1.</span> <span class="toc-text">类型转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">6.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、try-throw-代码实践"><span class="toc-number">7.</span> <span class="toc-text">八、try throw 代码实践</span></a></li></ol>
         
     </div>
     <style>
@@ -580,7 +580,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Swift基本语法02　| Titan果子的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Swift基本语法02　| RuningTitan's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -622,7 +622,7 @@ gitment.render('git')
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/30/Swift3.0基本语法03/" title="上一篇: Swift3.0基本语法03">
+            <a href="/2016/12/30/Swift3.0基本语法03" title="上一篇: Swift3.0基本语法03">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -630,13 +630,13 @@ gitment.render('git')
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/25/Swift3.0之基本语法01/" title="下一篇: Swift3.0之基本语法01">
+            <a href="/2016/12/25/Swift3.0之基本语法01" title="下一篇: Swift3.0之基本语法01">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全">Mac破解版软件大全</a></li></ul>
 
 
 
@@ -650,7 +650,7 @@ gitment.render('git')
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2018 CoderTitan
+                2016-2018 RuningTitan
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
