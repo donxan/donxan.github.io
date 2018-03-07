@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="RuningTitan" />
+
+
+
+<meta name="description" content="2015年，苹果发布了iOS9以及iphone6s/iphone6s Plus，其中最具有创新的就是新的触控方式3D Touch,相对于多点触摸在平面二维空间的操作，3D Touch技术增加了对力度和手指面积的感知，可以通过长按快速预览、查看你想要的短信、图片或者超链接等内容，Peek和Pop手势的响应时间可迅捷到 10ms和15ms等。">
+<meta name="keywords" content="Swift,3DTouch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift开发之3DTouch实用演练">
+<meta property="og:url" content="https://titanjun.top/2017/10/23/Swift开发之3DTouch实用演练">
+<meta property="og:site_name" content="RuningTitan&#39;s Blog">
+<meta property="og:description" content="2015年，苹果发布了iOS9以及iphone6s/iphone6s Plus，其中最具有创新的就是新的触控方式3D Touch,相对于多点触摸在平面二维空间的操作，3D Touch技术增加了对力度和手指面积的感知，可以通过长按快速预览、查看你想要的短信、图片或者超链接等内容，Peek和Pop手势的响应时间可迅捷到 10ms和15ms等。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/maps_directions_home_2x.png">
+<meta property="og:image" content="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/preview_available_2_2x.png">
+<meta property="og:image" content="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/peek_2x.png">
+<meta property="og:image" content="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/peek_quick_actions_2x.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-e90081ad823f9859.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-50ce942abc9a5174.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-e093ea0e213ef573.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2018-03-07T14:12:49.241Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift开发之3DTouch实用演练">
+<meta name="twitter:description" content="2015年，苹果发布了iOS9以及iphone6s/iphone6s Plus，其中最具有创新的就是新的触控方式3D Touch,相对于多点触摸在平面二维空间的操作，3D Touch技术增加了对力度和手指面积的感知，可以通过长按快速预览、查看你想要的短信、图片或者超链接等内容，Peek和Pop手势的响应时间可迅捷到 10ms和15ms等。">
+<meta name="twitter:image" content="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/maps_directions_home_2x.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="RuningTitan&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Swift开发之3DTouch实用演练 | RuningTitan&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a9e4cdf8ccd2ba8"></script>
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">RuningTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CATransition/">CATransition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIFilter/">CIFilter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dictionary/">Dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook-POP/">Facebook POP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech/">Speech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift4-0/">Swift4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIBesizationv/">UIBesizationv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vision/">Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式编程/">响应式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RuningTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">RuningTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Swift开发之3DTouch实用演练" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/23/Swift开发之3DTouch实用演练" class="article-date">
+      <time datetime="2017-10-22T23:54:58.000Z" itemprop="datePublished">2017-10-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift开发之3DTouch实用演练
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>2015年，苹果发布了iOS9以及<code>iphone6s/iphone6s Plus</code>，其中最具有创新的就是新的触控方式3D Touch,相对于多点触摸在平面二维空间的操作，3D Touch技术增加了对力度和手指面积的感知，可以通过长按快速预览、查看你想要的短信、图片或者超链接等内容，Peek和Pop手势的响应时间可迅捷到 10ms和15ms等。</p>
+</blockquote>
+<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<ul>
+<li>用户现在可以按主屏幕图标立即访问应用程序提供的功能。</li>
+<li>在您的应用程序中，用户现在可以按视图来查看其他内容的预览，并获得对功能的加速访问</li>
+<li>在日常开发中,我们经常需要使用3D Touch中的两个功能<ul>
+<li>在主屏幕上对应用图标使用3DTouch操作</li>
+<li>在应用程序内对某一控件使用3DTouch操作</li>
+</ul>
+</li>
+<li>功能需要iOS9以上系统和<code>iphone6s/iphone6s Plus</code>及以上机型(模拟机现在也是可以的)</li>
+<li><a href="https://github.com/coderQuanjun/DouYuTV" target="_blank" rel="noopener">demo地址</a></li>
+</ul>
+<h2 id="一-效果演练"><a href="#一-效果演练" class="headerlink" title="一. 效果演练"></a>一. 效果演练</h2><h3 id="1-主屏幕快速操作"><a href="#1-主屏幕快速操作" class="headerlink" title="1. 主屏幕快速操作"></a>1. 主屏幕快速操作</h3><ul>
+<li>通过按下iPhone 6s或iPhone 6s Plus上的应用程序图标，用户可以获得一组快速操作。</li>
+<li>当用户选择快速操作时，您的应用程序激活或启动，并跳转到相应界面<br><img src="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/maps_directions_home_2x.png" alt="主屏幕快速操作"></li>
+</ul>
+<h3 id="2-Peek-and-Pop"><a href="#2-Peek-and-Pop" class="headerlink" title="2. Peek and Pop"></a>2. Peek and Pop</h3><blockquote>
+<ul>
+<li>对界面内某一控件的3DTouch操作</li>
+<li>Peek和Pop是应用内的一种全新交互模式,当用户不断增加力量在控件上按压,会依次进入四个阶段</li>
+</ul>
+<ul>
+<li>轻按控件,除触发Peek的控件外,其他区域全部虚化</li>
+<li>继续用力Peek被触发,展示Pop界面快照</li>
+<li>向上滑动展示快捷选项</li>
+<li>继续用力跳转进入Pop界面</li>
+</ul>
+</blockquote>
+<p><img src="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/preview_available_2_2x.png" alt="轻按控件,除触发Peek的控件外,其他区域全部虚化"></p>
+<p><img src="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/peek_2x.png" alt="继续用力Peek被触发,展示Pop界面快照"></p>
+<p><img src="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/peek_quick_actions_2x.png" alt="向上滑动展示快捷选项"></p>
+<h3 id="3-注意"><a href="#3-注意" class="headerlink" title="3. 注意"></a>3. 注意</h3><ul>
+<li>3D Touch仅在3D Touch设备上可用，如果启用。在iOS 9以上，默认情况下启用3D Touch。</li>
+<li>用户可以在设置&gt;常规&gt;辅助功能&gt; 3D触摸中关闭3D触摸。</li>
+<li>当3D Touch可用时，利用其功能。当它不可用时，提供替代方法，例如通过使用触摸和保持。</li>
+<li>3D Touch功能支持VoiceOver。</li>
+</ul>
+<h2 id="二-主屏幕操作"><a href="#二-主屏幕操作" class="headerlink" title="二. 主屏幕操作"></a>二. 主屏幕操作</h2><ul>
+<li><code>ShortcutItem</code>功能允许用户在主屏幕上对应用图标使用<code>3DTouch</code>操作,如果本次操作有效,则会给出几个快捷可选项允许用户进行操作</li>
+<li>主屏幕icon上的快捷标签的实现方式有两种，一种是在工程文件info.plist里静态设置，另一种是代码的动态实现</li>
+<li>优先显示静态添加，总数达到4个不再显示</li>
+</ul>
+<h3 id="1-静态设置"><a href="#1-静态设置" class="headerlink" title="1. 静态设置"></a>1. 静态设置</h3><ul>
+<li>在info.plist中添加<code>UIApplicationShortcutItems</code>关键字,以如下方式配置即可</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-e90081ad823f9859.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UIApplicationShortcutItems配置"></p>
+<blockquote>
+<p>其中各个关键字释义如下:</p>
+<ul>
+<li><code>UIApplicationShortcutItemType</code>: 快捷可选项的特定字符串(必填)</li>
+<li><code>UIApplicationShortcutItemTitle</code>: 快捷可选项的标题(必填)</li>
+<li><code>UIApplicationShortcutItemSubtitle</code>: 快捷可选项的子标题(可选)</li>
+<li><code>UIApplicationShortcutItemIconType</code>: 快捷可选项的图标(可选)</li>
+<li><code>UIApplicationShortcutItemIconFile</code>: 快捷可选项的自定义图标(可选)</li>
+<li><code>UIApplicationShortcutItemUserInfo</code>: 快捷可选项的附加信息(可选)</li>
+</ul>
+</blockquote>
+<h3 id="2-动态添加UIApplicationShortcutItem"><a href="#2-动态添加UIApplicationShortcutItem" class="headerlink" title="2. 动态添加UIApplicationShortcutItem"></a>2. 动态添加<code>UIApplicationShortcutItem</code></h3><h4 id="2-1-UIApplicationShortcutItem初始化方法"><a href="#2-1-UIApplicationShortcutItem初始化方法" class="headerlink" title="2-1. UIApplicationShortcutItem初始化方法"></a>2-1. <code>UIApplicationShortcutItem</code>初始化方法</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIApplicationShortcutItem</span>(type: String, localizedTitle: String, localizedSubtitle: String?, icon: <span class="built_in">UIApplicationShortcutIcon</span>?, userInfo: [AnyHashable : Any]?)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数介绍<ul>
+<li><code>type</code>: 快捷可选项的特定字符串(必填)</li>
+<li><code>localizedTitle</code>: 快捷可选项的标题(必填)</li>
+<li><code>localizedSubtitle</code>: 快捷可选项的子标题(可选)</li>
+<li><code>icon</code>: 快捷可选项的图标(可选)</li>
+<li><code>userInfo</code>: 快捷可选项的附加信息(可选)</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-图标"><a href="#2-1-图标" class="headerlink" title="2-1. 图标"></a>2-1. 图标</h4><h5 id="2-1-1-初始化方式"><a href="#2-1-1-初始化方式" class="headerlink" title="2-1-1. 初始化方式"></a>2-1-1. 初始化方式</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式一: 自定义图标</span></span><br><span class="line"><span class="comment">//注: 自定义图标需要使用镂空图标,同时建议1倍图标大小为35*35</span></span><br><span class="line"><span class="built_in">UIApplicationShortcutIcon</span>(templateImageName: String)</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式二: 使用系统图标</span></span><br><span class="line"><span class="built_in">UIApplicationShortcutIcon</span>(type: <span class="built_in">UIApplicationShortcutIconType</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="2-1-2-系统图标样式如下"><a href="#2-1-2-系统图标样式如下" class="headerlink" title="2-1-2. 系统图标样式如下"></a>2-1-2. 系统图标样式如下</h5><p><img src="http://upload-images.jianshu.io/upload_images/4122543-50ce942abc9a5174.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="系统图片一览表"></p>
+<h4 id="2-3-具体实现代码如下"><a href="#2-3-具体实现代码如下" class="headerlink" title="2-3. 具体实现代码如下"></a>2-3. 具体实现代码如下</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">func application(_ application: <span class="built_in">UIApplication</span>, didFinishLaunchingWithOptions launchOptions: [<span class="built_in">UIApplicationLaunchOptionsKey</span>: Any]?) -&gt; Bool &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//3D Touch</span></span><br><span class="line">    let homeIcon = <span class="built_in">UIApplicationShortcutIcon</span>(type: .compose)</span><br><span class="line">    let homeItem = <span class="built_in">UIApplicationShortcutItem</span>(type: <span class="string">"homeAnchor"</span>, localizedTitle: <span class="string">"首页"</span>, localizedSubtitle: <span class="string">"点击进入首页"</span>, icon: homeIcon, userInfo: <span class="literal">nil</span>)</span><br><span class="line">    let playIcon = <span class="built_in">UIApplicationShortcutIcon</span>(type: .play)</span><br><span class="line">    let playItem = <span class="built_in">UIApplicationShortcutItem</span>(type: <span class="string">"play"</span>, localizedTitle: <span class="string">"播放"</span>, localizedSubtitle: <span class="string">""</span>, icon: playIcon, userInfo: <span class="literal">nil</span>)</span><br><span class="line">    let userIcon = <span class="built_in">UIApplicationShortcutIcon</span>(type: .search)</span><br><span class="line">    let userItem = <span class="built_in">UIApplicationShortcutItem</span>(type: <span class="string">"username"</span>, localizedTitle: <span class="string">"用户名"</span>, localizedSubtitle: <span class="string">""</span>, icon: userIcon, userInfo: <span class="literal">nil</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIApplication</span>.shared.shortcutItems = [homeItem, playItem, userItem]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-item点击跳转"><a href="#2-4-item点击跳转" class="headerlink" title="2-4. item点击跳转"></a>2-4. item点击跳转</h4><ul>
+<li>可根据<code>type</code>标识判断</li>
+<li>可根据<code>localizedTitle</code>标识判断</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//菜单跳转</span></span><br><span class="line">func application(_ application: <span class="built_in">UIApplication</span>, performActionFor shortcutItem: <span class="built_in">UIApplicationShortcutItem</span>, completionHandler: @escaping (Bool) -&gt; Void) &#123;</span><br><span class="line">    guard let tabBarVC = window?.rootViewController as? MainViewController <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//根据type唯一标识进行判断跳转, 或者根据localizedTitle判断</span></span><br><span class="line">    <span class="keyword">switch</span> shortcutItem.type &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"homeAnchor"</span>:</span><br><span class="line">        tabBarVC.selectedIndex = <span class="number">1</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"play"</span>:</span><br><span class="line">        let username = ShowRoomViewController()</span><br><span class="line">        username.hidesBottomBarWhenPushed = <span class="literal">true</span></span><br><span class="line">        tabBarVC.selectedViewController?.childViewControllers.first?.present(username, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"username"</span>:</span><br><span class="line">        let username = NameViewController()</span><br><span class="line">        username.hidesBottomBarWhenPushed = <span class="literal">true</span></span><br><span class="line">        tabBarVC.selectedViewController?.childViewControllers.last?.navigationController?.pushViewController(username, animated: <span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        tabBarVC.selectedIndex = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="三-Peek-and-Pop"><a href="#三-Peek-and-Pop" class="headerlink" title="三. Peek and Pop"></a>三. Peek and Pop</h2><ul>
+<li>Peek和Pop是应用内的一种全新交互模式,当用户不断增加力量在控件上按压,会依次进入四个阶段</li>
+<li>这里小编将通过ViewController里面的UITableViewCell进行延时功能</li>
+</ul>
+<hr>
+<blockquote>
+<p>注意: 在动态添加快捷可选项前,需要用判断是否支持3D Touch功能,以免在不支持的设备上运行程序导致闪退</p>
+</blockquote>
+<h3 id="1-判断是否支持3D-Touch功能"><a href="#1-判断是否支持3D-Touch功能" class="headerlink" title="1. 判断是否支持3D Touch功能"></a>1. 判断是否支持3D Touch功能</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">func tableView(_ tableView: <span class="built_in">UITableView</span>, cellForRowAt indexPath: IndexPath) -&gt; <span class="built_in">UITableViewCell</span> &#123;</span><br><span class="line">    var cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"cell"</span>)</span><br><span class="line">    let model = happyVM.anchorGroups[indexPath.section].anchors[indexPath.row]</span><br><span class="line">    <span class="keyword">if</span> cell == <span class="literal">nil</span> &#123;</span><br><span class="line">        cell = <span class="built_in">UITableViewCell</span>(style: .default, reuseIdentifier: <span class="string">"cell"</span>)</span><br><span class="line">        cell?.textLabel?.text = model.room_name</span><br><span class="line">        cell?.accessoryType = .disclosureIndicator</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">---</span><br><span class="line">    <span class="comment">//这里是添加判断是否支持3D Touch的代码</span></span><br><span class="line">    <span class="keyword">if</span> <span class="meta">#available(iOS 9.0, *) &#123;</span></span><br><span class="line">        <span class="keyword">if</span> traitCollection.forceTouchCapability == .available &#123;</span><br><span class="line">            <span class="comment">//支持3D Touch</span></span><br><span class="line">            <span class="comment">//注册Peek &amp; Pop功能</span></span><br><span class="line">            registerForPreviewing(with: <span class="keyword">self</span>, sourceView: cell!)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cell!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>检测是否支持3D Touch：UIForceTouchCapability是一个枚举值,取值如下：</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> unknown      <span class="comment">//3D Touch检测失败</span></span><br><span class="line"><span class="keyword">case</span> unavailable <span class="comment">//3D Touch不可用</span></span><br><span class="line"><span class="keyword">case</span> available  <span class="comment">//3D Touch可用</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-给对应view注册3Dtouch事件"><a href="#2-给对应view注册3Dtouch事件" class="headerlink" title="2. 给对应view注册3Dtouch事件"></a>2. 给对应view注册3Dtouch事件</h3><ul>
+<li>在判断支持3Dtouch里面注册</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注册Peek &amp; Pop功能</span></span><br><span class="line"><span class="keyword">self</span>.registerForPreviewing(with: <span class="keyword">self</span>, sourceView: cell!)</span><br></pre></td></tr></table></figure>
+<h3 id="3-遵守UIViewControllerPreviewingDelegate协议"><a href="#3-遵守UIViewControllerPreviewingDelegate协议" class="headerlink" title="3. 遵守UIViewControllerPreviewingDelegate协议"></a>3. 遵守<code>UIViewControllerPreviewingDelegate</code>协议</h3><ul>
+<li>需要实现Peek &amp; Pop交互的控件所在的控制器遵循协议并实现两个代理方法</li>
+</ul>
+<h4 id="3-1-当进入Peek状态时-系统会回调如下方法"><a href="#3-1-当进入Peek状态时-系统会回调如下方法" class="headerlink" title="3-1. 当进入Peek状态时,系统会回调如下方法"></a>3-1. 当进入Peek状态时,系统会回调如下方法</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">func previewingContext(_ previewingContext: <span class="built_in">UIViewControllerPreviewing</span>, viewControllerForLocation location: <span class="built_in">CGPoint</span>) -&gt; <span class="built_in">UIViewController</span>? &#123;</span><br><span class="line">    <span class="comment">//1. 获取按压的cell所在的行</span></span><br><span class="line">    guard let cell = previewingContext.sourceView as? <span class="built_in">UITableViewCell</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="built_in">UIViewController</span>() &#125;</span><br><span class="line">    let indexPath = tableVIew.indexPath(<span class="keyword">for</span>: cell) ?? IndexPath(row: <span class="number">0</span>, section: <span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//2. 设定预览界面</span></span><br><span class="line">    let vc = ShowRoomViewController()</span><br><span class="line">    <span class="comment">// 预览区域大小(可不设置), 0为默认尺寸</span></span><br><span class="line">    vc.preferredContentSize = <span class="built_in">CGSize</span>(width: <span class="number">0</span>, height: <span class="number">0</span>)</span><br><span class="line">    vc.showStr =  <span class="string">"我是第\(indexPath.row)行用力按压进来的"</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//调整不被虚化的范围，按压的那个cell不被虚化（轻轻按压时周边会被虚化，再少用力展示预览，再加力跳页至设定界面）</span></span><br><span class="line">    let rect = <span class="built_in">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: kScreenWidth, height: <span class="number">44</span>)</span><br><span class="line">    <span class="comment">//设置触发操作的视图的不被虚化的区域</span></span><br><span class="line">    previewingContext.sourceRect = rect</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//返回预览界面</span></span><br><span class="line">    <span class="keyword">return</span> vc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-当进入Pop状态时-系统会回调如下方法"><a href="#3-2-当进入Pop状态时-系统会回调如下方法" class="headerlink" title="3-2. 当进入Pop状态时,系统会回调如下方法"></a>3-2. 当进入Pop状态时,系统会回调如下方法</h4><ul>
+<li>用力按压进入<code>viewControllerToCommit</code></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func previewingContext(_ previewingContext: <span class="built_in">UIViewControllerPreviewing</span>, commit viewControllerToCommit: <span class="built_in">UIViewController</span>) &#123;</span><br><span class="line">    viewControllerToCommit.hidesBottomBarWhenPushed = <span class="literal">true</span></span><br><span class="line">    show(viewControllerToCommit, sender: <span class="keyword">self</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>来看看效果</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-e093ea0e213ef573.gif?imageMogr2/auto-orient/strip" alt="3D Touch1演示.gif"></p>
+<h4 id="3-4-当弹出预览时，上滑预览视图，出现预览视图中快捷选项"><a href="#3-4-当弹出预览时，上滑预览视图，出现预览视图中快捷选项" class="headerlink" title="3-4. 当弹出预览时，上滑预览视图，出现预览视图中快捷选项"></a>3-4. 当弹出预览时，上滑预览视图，出现预览视图中快捷选项</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var previewActionItems: [UIPreviewActionItem] &#123; get &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>previewActionItems</code>用户在3D Touch预览上向上滑动时显示的快速操作</li>
+<li>在将要弹出的页面内重写previewActionItems的get属性</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">extension ShowRoomViewController &#123;</span><br><span class="line">    <span class="comment">//重写previewActionItems的get方法</span></span><br><span class="line">    override var previewActionItems: [<span class="built_in">UIPreviewActionItem</span>] &#123;</span><br><span class="line">        let action1 = <span class="built_in">UIPreviewAction</span>(title: <span class="string">"跳转"</span>, style: .default) &#123; (action, previewViewController) <span class="keyword">in</span></span><br><span class="line">            let showVC = ShowRoomViewController()</span><br><span class="line">            showVC.hidesBottomBarWhenPushed = <span class="literal">true</span></span><br><span class="line">            previewViewController.navigationController?.pushViewController(showVC, animated: <span class="literal">true</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        let action3 = <span class="built_in">UIPreviewAction</span>(title: <span class="string">"取消"</span>, style: .destructive) &#123; (action, previewViewController) <span class="keyword">in</span></span><br><span class="line">            print(<span class="string">"我是取消按钮"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">////该按钮可以是一个组，点击该组时，跳到组里面的按钮。</span></span><br><span class="line">        let subAction1 = <span class="built_in">UIPreviewAction</span>(title: <span class="string">"测试1"</span>, style: .selected) &#123; (action, previewViewController) <span class="keyword">in</span></span><br><span class="line">            print(<span class="string">"我是测试按钮1"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        let subAction2 = <span class="built_in">UIPreviewAction</span>(title: <span class="string">"测试2"</span>, style: .selected) &#123; (action, previewViewController) <span class="keyword">in</span></span><br><span class="line">            print(<span class="string">"我是测试按钮2"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        let subAction3 = <span class="built_in">UIPreviewAction</span>(title: <span class="string">"测试3"</span>, style: .selected) &#123; (action, previewViewController) <span class="keyword">in</span></span><br><span class="line">            print(<span class="string">"我是测试按钮3"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        let groupAction = <span class="built_in">UIPreviewActionGroup</span>(title: <span class="string">"更多"</span>, style: .default, actions: [subAction1, subAction2, subAction3])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> [action1, action3, groupAction]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>action的各种样式</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">enum</span> <span class="built_in">UIPreviewActionStyle</span> : Int &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//默认样式</span></span><br><span class="line">    <span class="keyword">case</span> `<span class="keyword">default</span>`</span><br><span class="line">    <span class="comment">//右侧有对勾的样式</span></span><br><span class="line">    <span class="keyword">case</span> selected</span><br><span class="line">    <span class="comment">//红色字体的样式</span></span><br><span class="line">    <span class="keyword">case</span> destructive</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-5-force-和-maximumPossibleForce"><a href="#3-5-force-和-maximumPossibleForce" class="headerlink" title="3-5. force 和 maximumPossibleForce"></a>3-5. <code>force</code> 和 <code>maximumPossibleForce</code></h4><blockquote>
+<p>到此，3DTouch在APP中的集成就先介绍这些，3DTouch中还有个重要的属性–压力属性（force 和 maximumPossibleForce）这里简单介绍下</p>
+</blockquote>
+<ul>
+<li>手指在屏幕上慢慢增加力度在减少力度，可以看到view背景色的变化</li>
+<li>程序运行后找到<code>我的</code> -&gt; <code>头像(用户名)</code>查看效果</li>
+<li>代码找到<code>NameViewController.swift</code>查看</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">override func touchesMoved(_ touches: Set&lt;<span class="built_in">UITouch</span>&gt;, with event: <span class="built_in">UIEvent</span>?) &#123;</span><br><span class="line">    let touch = touches.first ?? <span class="built_in">UITouch</span>()</span><br><span class="line">    <span class="comment">//获取重按力度</span></span><br><span class="line">    print(<span class="string">"平均触摸的力--\(touch.force)"</span>)</span><br><span class="line">    print(<span class="string">"触摸的最大可能力--\(touch.maximumPossibleForce)"</span>)</span><br><span class="line">    </span><br><span class="line">    let change = touch.force / touch.maximumPossibleForce</span><br><span class="line">        view.backgroundColor = <span class="built_in">UIColor</span>(red: <span class="number">0.5</span>, green: <span class="number">0.5</span>, blue: change, alpha: <span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>此外还有以下属性, 详细可参考<a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/3DTouchAPIs.html#//apple_ref/doc/uid/TP40016543-CH4-SW1" target="_blank" rel="noopener">3D Touch官方文档</a></p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">var tapCount: Int</span><br><span class="line"><span class="comment">//手指触摸此次触摸的次数。</span></span><br><span class="line"></span><br><span class="line">var timestamp: TimeInterval</span><br><span class="line"><span class="comment">//触摸发生的时间或最后一次突变的时间。</span></span><br><span class="line"></span><br><span class="line">var type: <span class="built_in">UITouchType</span></span><br><span class="line"><span class="comment">//触摸的类型。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> <span class="built_in">UITouchType</span></span><br><span class="line"><span class="comment">//接收的触摸类型。</span></span><br><span class="line"></span><br><span class="line">var phase: <span class="built_in">UITouchPhase</span></span><br><span class="line"><span class="comment">//触摸的阶段。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> <span class="built_in">UITouchPhase</span></span><br><span class="line"><span class="comment">//手指触摸的阶段。</span></span><br><span class="line"></span><br><span class="line">var maximumPossibleForce: <span class="built_in">CGFloat</span></span><br><span class="line"><span class="comment">//触摸的最大可能力。</span></span><br><span class="line"></span><br><span class="line">var force: <span class="built_in">CGFloat</span></span><br><span class="line"><span class="comment">//触摸力，其中值表示平均触摸的力（由系统预定，不是用户特定的）。1.0</span></span><br><span class="line"></span><br><span class="line">var altitudeAngle: <span class="built_in">CGFloat</span></span><br><span class="line"><span class="comment">//手写笔的高度（弧度）。</span></span><br><span class="line"></span><br><span class="line">func azimuthAngle(<span class="keyword">in</span>: <span class="built_in">UIView</span>?)</span><br><span class="line"><span class="comment">//返回触控笔的方位角（弧度）。</span></span><br><span class="line"></span><br><span class="line">func azimuthUnitVector(<span class="keyword">in</span>: <span class="built_in">UIView</span>?)</span><br><span class="line"><span class="comment">//返回指向触控笔方位角方向的单位向量。</span></span><br></pre></td></tr></table></figure>
+<h3 id="最后附上Demo地址"><a href="#最后附上Demo地址" class="headerlink" title="最后附上Demo地址"></a>最后附上<a href="https://github.com/coderQuanjun/DouYuTV" target="_blank" rel="noopener">Demo地址</a></h3><hr>
+<blockquote>
+<p>参考资料</p>
+</blockquote>
+<p><a href="http://liuyanwei.jumppo.com/2016/04/01/iOS-3DTouch-2.html" target="_blank" rel="noopener">iOS 3D touch开发 </a></p>
+<p><a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/3DTouchAPIs.html#//apple_ref/doc/uid/TP40016543-CH4-SW1" target="_blank" rel="noopener">3D Touch官方文档</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/10/23/Swift开发之3DTouch实用演练">Swift开发之3DTouch实用演练</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
+        <p><span>发布时间:</span>2017-10-23, 07:54:58</p>
+        <p><span>最后更新:</span>2018-03-07, 22:12:49</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/10/23/Swift开发之3DTouch实用演练" title="Swift开发之3DTouch实用演练">https://titanjun.top/2017/10/23/Swift开发之3DTouch实用演练</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/10/23/Swift开发之3DTouch实用演练　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/10/28/Swift之微信朋友圈图片浏览器">
+                    Swift之微信朋友圈图片浏览器
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/10/17/Swift之Facebook的POP动画使用和实战">
+                    Swift之Facebook的POP动画使用和实战
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-效果演练"><span class="toc-number">1.</span> <span class="toc-text">一. 效果演练</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-主屏幕快速操作"><span class="toc-number">1.1.</span> <span class="toc-text">1. 主屏幕快速操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Peek-and-Pop"><span class="toc-number">1.2.</span> <span class="toc-text">2. Peek and Pop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-注意"><span class="toc-number">1.3.</span> <span class="toc-text">3. 注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-主屏幕操作"><span class="toc-number">2.</span> <span class="toc-text">二. 主屏幕操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-静态设置"><span class="toc-number">2.1.</span> <span class="toc-text">1. 静态设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-动态添加UIApplicationShortcutItem"><span class="toc-number">2.2.</span> <span class="toc-text">2. 动态添加UIApplicationShortcutItem</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-UIApplicationShortcutItem初始化方法"><span class="toc-number">2.2.1.</span> <span class="toc-text">2-1. UIApplicationShortcutItem初始化方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-图标"><span class="toc-number">2.2.2.</span> <span class="toc-text">2-1. 图标</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-1-初始化方式"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">2-1-1. 初始化方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-2-系统图标样式如下"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">2-1-2. 系统图标样式如下</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-具体实现代码如下"><span class="toc-number">2.2.3.</span> <span class="toc-text">2-3. 具体实现代码如下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-item点击跳转"><span class="toc-number">2.2.4.</span> <span class="toc-text">2-4. item点击跳转</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-Peek-and-Pop"><span class="toc-number">3.</span> <span class="toc-text">三. Peek and Pop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-判断是否支持3D-Touch功能"><span class="toc-number">3.1.</span> <span class="toc-text">1. 判断是否支持3D Touch功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-给对应view注册3Dtouch事件"><span class="toc-number">3.2.</span> <span class="toc-text">2. 给对应view注册3Dtouch事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-遵守UIViewControllerPreviewingDelegate协议"><span class="toc-number">3.3.</span> <span class="toc-text">3. 遵守UIViewControllerPreviewingDelegate协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-当进入Peek状态时-系统会回调如下方法"><span class="toc-number">3.3.1.</span> <span class="toc-text">3-1. 当进入Peek状态时,系统会回调如下方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-当进入Pop状态时-系统会回调如下方法"><span class="toc-number">3.3.2.</span> <span class="toc-text">3-2. 当进入Pop状态时,系统会回调如下方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-当弹出预览时，上滑预览视图，出现预览视图中快捷选项"><span class="toc-number">3.3.3.</span> <span class="toc-text">3-4. 当弹出预览时，上滑预览视图，出现预览视图中快捷选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-force-和-maximumPossibleForce"><span class="toc-number">3.3.4.</span> <span class="toc-text">3-5. force 和 maximumPossibleForce</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后附上Demo地址"><span class="toc-number">3.4.</span> <span class="toc-text">最后附上Demo地址</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/10/28/Swift之微信朋友圈图片浏览器" title="上一篇: Swift之微信朋友圈图片浏览器">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/10/17/Swift之Facebook的POP动画使用和实战" title="下一篇: Swift之Facebook的POP动画使用和实战">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Swift语音和文本的转换">Swift语音和文本的转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/Swift之Vision 图像识别框架">Swift之Vision 图像识别框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/16/Swift之二维码的生成、识别和扫描">Swift之二维码的生成、识别和扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/11/Swift之删除HTML5页面的广告">Swift之删除HTML5页面的广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/Swift之微信朋友圈图片浏览器">Swift之微信朋友圈图片浏览器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/Swift开发之3DTouch实用演练">Swift开发之3DTouch实用演练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/17/Swift之Facebook的POP动画使用和实战">Swift之Facebook的POP动画使用和实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/RxSwift+Moya网络请求之项目实战">RxSwift+Moya网络请求之项目实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/21/RxSwift的使用详解02">RxSwift的使用详解02</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/15/RxSwift的使用详解01">RxSwift的使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary">Swift4.0新特性之String、Array和Dictionary</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 RuningTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+             post: ".article-entry a[href], .copyright a[href]", 
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
