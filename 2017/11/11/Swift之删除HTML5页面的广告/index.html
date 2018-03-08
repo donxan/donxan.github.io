@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="RuningTitan" />
+
+
+
+<meta name="description" content="好久没来博客了,最近工作中任务(Bug)比较多!除了改Bug之外发现最近新出的一部电视剧不错, 给大家推荐一下&amp;lt;&amp;lt;&amp;lt;&amp;lt;猎场&amp;gt;&amp;gt;&amp;gt;&amp;gt;">
+<meta name="keywords" content="Swift,HTML5,WebView">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift之删除HTML5页面的广告">
+<meta property="og:url" content="https://titanjun.top/2017/11/11/Swift之删除HTML5页面的广告/index.html">
+<meta property="og:site_name" content="RuningTitan&#39;s Blog">
+<meta property="og:description" content="好久没来博客了,最近工作中任务(Bug)比较多!除了改Bug之外发现最近新出的一部电视剧不错, 给大家推荐一下&amp;lt;&amp;lt;&amp;lt;&amp;lt;猎场&amp;gt;&amp;gt;&amp;gt;&amp;gt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-050601a063e14ce8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-146823b54ab03b8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-c3efc0cb6e21f3ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-ea333a6efa617e15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-e8c6dd62b00d9c38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-26d52ecdfceb0f52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400">
+<meta property="og:updated_time" content="2018-03-08T01:48:47.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift之删除HTML5页面的广告">
+<meta name="twitter:description" content="好久没来博客了,最近工作中任务(Bug)比较多!除了改Bug之外发现最近新出的一部电视剧不错, 给大家推荐一下&amp;lt;&amp;lt;&amp;lt;&amp;lt;猎场&amp;gt;&amp;gt;&amp;gt;&amp;gt;">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4122543-050601a063e14ce8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="RuningTitan&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Swift之删除HTML5页面的广告 | RuningTitan&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a9e4cdf8ccd2ba8"></script>
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">RuningTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AsyncStorage/">AsyncStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CATransition/">CATransition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIFilter/">CIFilter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreAnimation/">CoreAnimation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreImage/">CoreImage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dictionary/">Dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook-POP/">Facebook POP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ListView/">ListView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navigator/">Navigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NavigatorIOS/">NavigatorIOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scanner/">Scanner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScrollView/">ScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech/">Speech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift4-0/">Swift4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabBariOS/">TabBariOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabNavigator/">TabNavigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIBesizationv/">UIBesizationv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vision/">Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web服务器/">Web服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS扫描器/">iOS扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入坑/">入坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式编程/">响应式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RuningTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">RuningTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Swift之删除HTML5页面的广告" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/11/Swift之删除HTML5页面的广告/" class="article-date">
+      <time datetime="2017-11-11T07:19:34.000Z" itemprop="datePublished">2017-11-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift之删除HTML5页面的广告
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/入坑指南/">入坑指南</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebView/">WebView</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>好久没来博客了,最近工作中任务(Bug)比较多!除了改Bug之外发现最近新出的一部电视剧不错, 给大家推荐一下&lt;&lt;&lt;&lt;猎场&gt;&gt;&gt;&gt;</p>
+<a id="more"></a>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-050601a063e14ce8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="猎场.jpg"></p>
+<h2 id="一-UIWebViewDelegate"><a href="#一-UIWebViewDelegate" class="headerlink" title="一. UIWebViewDelegate"></a>一. UIWebViewDelegate</h2><ul>
+<li>好了,言归正传,今天遇到了一个关于UIWebView问题的问题,如何删除H5页面的广告问题(一般出现在第三方的H5页面的情况)</li>
+<li>APP中嵌入一个H5的网页，但出现的广告条或是无关头尾，相当大煞风景, 那该如何去掉呢?</li>
+<li>嵌入webview 一段JavaScript代码来隐藏，目前Android和iOS都支持此方法(这就是iOS中常说的js和OC交互)</li>
+<li>UIWebVIew的基本使用这里就不多做介绍了</li>
+<li>下面介绍一下UIWebViewDelegate的一些代理方法</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当网页视图被指示载入内容而得到通知。应当返回YES，这样会进行加载。通过导航类型参数可以得到请求发起的原因</span></span><br><span class="line">optional public func webView(_ webView: <span class="built_in">UIWebView</span>, shouldStartLoadWith request: URLRequest, navigationType: <span class="built_in">UIWebViewNavigationType</span>) -&gt; Bool</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//UIWebView的控件加载网页的监听函数方法：</span></span><br><span class="line"><span class="comment">//1. 当网页视图已经开始加载一个请求后，得到通知。</span></span><br><span class="line">optional public func webViewDidStartLoad(_ webView: <span class="built_in">UIWebView</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//2. 当网页视图结束加载一个请求之后，得到通知。</span></span><br><span class="line">optional public func webViewDidFinishLoad(_ webView: <span class="built_in">UIWebView</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//3. 当前请求加载中发生错误时，得到通知。</span></span><br><span class="line">optional public func webView(_ webView: <span class="built_in">UIWebView</span>, didFailLoadWithError error: Error)</span><br></pre></td></tr></table></figure>
+<h2 id="二-基于JavaScript的H5代码"><a href="#二-基于JavaScript的H5代码" class="headerlink" title="二. 基于JavaScript的H5代码"></a>二. 基于JavaScript的H5代码</h2><ul>
+<li>首先,我们先看一下HTML5在浏览器中的现实情况, <a href="http://mini.eastday.com/mobile/170818161313395.html" target="_blank" rel="noopener">参考地址</a></li>
+<li><p><img src="http://upload-images.jianshu.io/upload_images/4122543-146823b54ab03b8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="删除前的原网页"></p>
+</li>
+<li><p>下面我们就要找到广告或者其他你想删除的部分对应的HTML代码</p>
+</li>
+<li>用浏览器打开<a href="http://mini.eastday.com/mobile/170818161313395.html" target="_blank" rel="noopener">参考地址</a>, 建议使用谷歌浏览器</li>
+<li>找到浏览器的开发者工具, 按照如下操作</li>
+<li><p><img src="http://upload-images.jianshu.io/upload_images/4122543-c3efc0cb6e21f3ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查看网页代码"></p>
+</li>
+<li><p>控制网页和js源码的显示方式</p>
+</li>
+<li><p><img src="http://upload-images.jianshu.io/upload_images/4122543-ea333a6efa617e15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20171111_6.png"></p>
+<ul>
+<li>调节手机/电脑显示: 你要选择在那种情境下显示网页,通俗来说,就是模拟器</li>
+<li>放大镜:你可以通过放大镜对网页上的控件进行选取,然后找到html代码</li>
+<li>手机:转化为手机模式,但是前提必须要转换Device的模式,要不然,光是视图上的转变,没有实际的转变(注意:我现在拿手机的网页做示例,所有我需要转化,当你做的电脑的就不需要转换这些了)</li>
+</ul>
+</li>
+<li><p>下面这就是要找到广告对应的js源码了(这里以订阅按钮为例)<br><img src="http://upload-images.jianshu.io/upload_images/4122543-e8c6dd62b00d9c38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20171111_8.png"></p>
+<ul>
+<li>将右侧按钮为选中状态</li>
+<li>用鼠标选中你要删除的控件(这里以订阅按钮为例), 这时你会发现右侧代码会有一行背景颜色被加深</li>
+<li>我们要做的就是调用js语法删除这行js代码, 从而删除订阅按钮</li>
+<li>找到该控件的class标签或者id标签</li>
+<li>通过以下代码控制删除</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//class类型</span><br><span class="line">document.getElementsByClassName(&apos;gg-item news-gg-img3&apos;).style.display = &apos;none&apos;</span><br><span class="line">//id类型</span><br><span class="line">document.getElementsById(&apos;gg-item news-gg-img3&apos;).style.display = &apos;none&apos;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果找到的该控件所在的js代码没有class或者id标志, 可以继续找到其父控件,通过以下方式删除</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementsByClassName(&apos;gg-item news-gg-img3&apos;)[0].style.display=&apos;none&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="三-具体核心代码如下"><a href="#三-具体核心代码如下" class="headerlink" title="三. 具体核心代码如下"></a>三. 具体核心代码如下</h2><ul>
+<li>删除广告后的效果如图</li>
+<li><p><img src="http://upload-images.jianshu.io/upload_images/4122543-26d52ecdfceb0f52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="最终效果图"></p>
+</li>
+<li><p>核心代码</p>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">extension NoneADViewController: <span class="built_in">UIWebViewDelegate</span>&#123;</span><br><span class="line">    func webViewDidFinishLoad(_ webView: <span class="built_in">UIWebView</span>) &#123;</span><br><span class="line">        <span class="comment">//最顶部的广告</span></span><br><span class="line">        webView.stringByEvaluatingJavaScript(from: <span class="string">"document.getElementsByClassName('gg-item news-gg-img3')[0].style.display='none'"</span>)</span><br><span class="line">        <span class="comment">//删除页面浮框广告</span></span><br><span class="line">        webView.stringByEvaluatingJavaScript(from: <span class="string">"document.getElementsByClassName('dbleleven-wrap')[0].style.display='none'"</span>)</span><br><span class="line">        <span class="comment">//第一张图片下面的广告</span></span><br><span class="line">        webView.stringByEvaluatingJavaScript(from: <span class="string">"document.getElementsByClassName('baiduimageplusm-title-img-only')[0].style.display = 'none'"</span>)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func webView(_ webView: <span class="built_in">UIWebView</span>, shouldStartLoadWith request: URLRequest, navigationType: <span class="built_in">UIWebViewNavigationType</span>) -&gt; Bool &#123;</span><br><span class="line">        guard let urlStr = request.url?.absoluteString <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">true</span> &#125;</span><br><span class="line">        print(urlStr)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/11/11/Swift之删除HTML5页面的广告/">Swift之删除HTML5页面的广告</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
+        <p><span>发布时间:</span>2017-11-11, 15:19:34</p>
+        <p><span>最后更新:</span>2018-03-08, 09:48:47</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/11/11/Swift之删除HTML5页面的广告/" title="Swift之删除HTML5页面的广告">https://titanjun.top/2017/11/11/Swift之删除HTML5页面的广告/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/11/11/Swift之删除HTML5页面的广告/　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/11/16/Swift之二维码的生成、识别和扫描/">
+                    Swift之二维码的生成、识别和扫描
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/10/28/Swift之微信朋友圈图片浏览器/">
+                    Swift之微信朋友圈图片浏览器
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-UIWebViewDelegate"><span class="toc-number">1.</span> <span class="toc-text">一. UIWebViewDelegate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-基于JavaScript的H5代码"><span class="toc-number">2.</span> <span class="toc-text">二. 基于JavaScript的H5代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-具体核心代码如下"><span class="toc-number">3.</span> <span class="toc-text">三. 具体核心代码如下</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/11/16/Swift之二维码的生成、识别和扫描/" title="上一篇: Swift之二维码的生成、识别和扫描">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/10/28/Swift之微信朋友圈图片浏览器/" title="下一篇: Swift之微信朋友圈图片浏览器">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/ReactNative之AsyncStorage本地存储/">ReactNative之AsyncStorage本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Node.js搭建Web服务器/">Node.js搭建Web服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/06/ReactNative之TabBariOS和TabNavigator/">ReactNative之TabBariOS和TabNavigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/React Native之导航组件NavigatorIOS和Navigator/">React Native之导航组件NavigatorIOS和Navigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/03/ReactNaive之ScrollView和ListView/">ReactNaive之ScrollView和ListView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Swift语音和文本的转换/">Swift语音和文本的转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/Swift之Vision 图像识别框架/">Swift之Vision 图像识别框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(AVFoundation)动态人脸识别(二)/">iOS黑科技之(AVFoundation)动态人脸识别(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(CoreImage)静态人脸识别(一)/">iOS黑科技之(CoreImage)静态人脸识别(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/16/Swift之二维码的生成、识别和扫描/">Swift之二维码的生成、识别和扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/11/Swift之删除HTML5页面的广告/">Swift之删除HTML5页面的广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/Swift之微信朋友圈图片浏览器/">Swift之微信朋友圈图片浏览器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/Swift开发之3DTouch实用演练/">Swift开发之3DTouch实用演练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/ReactNaive之CSS和Flex布局/">ReactNaive之CSS和Flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/17/Swift之Facebook的POP动画使用和实战/">Swift之Facebook的POP动画使用和实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/iOS出门必备之CoreAnimation(核心动画)/">iOS出门必备之CoreAnimation(核心动画)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/RxSwift+Moya网络请求之项目实战/">RxSwift+Moya网络请求之项目实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/21/RxSwift的使用详解02/">RxSwift的使用详解02</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/15/RxSwift的使用详解01/">RxSwift的使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/iOS之Scanner字符串扫描类/">iOS之Scanner字符串扫描类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/升级Swift4.0遇到的坑/">升级Swift4.0遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/09/JavaScript基本语法01/">JavaScript基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary/">Swift4.0新特性之String、Array和Dictionary</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 RuningTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

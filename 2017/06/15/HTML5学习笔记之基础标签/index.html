@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="RuningTitan" />
+
+
+
+<meta name="description" content="一.列表标签1.无序列表(unordered list) 无序 : 没有先后之分  1) 作用: 给一堆内容添加无序列表语义(一个没有先后顺序整体), 列表中的条目是不分先后  2) 格式: li 英文是 list item, 翻译为列表项">
+<meta name="keywords" content="HTML5标签,CSS,WebStorm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5学习笔记之基础标签">
+<meta property="og:url" content="https://titanjun.top/2017/06/15/HTML5学习笔记之基础标签/index.html">
+<meta property="og:site_name" content="RuningTitan&#39;s Blog">
+<meta property="og:description" content="一.列表标签1.无序列表(unordered list) 无序 : 没有先后之分  1) 作用: 给一堆内容添加无序列表语义(一个没有先后顺序整体), 列表中的条目是不分先后  2) 格式: li 英文是 list item, 翻译为列表项">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-6170aa7da4bd362f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-3e921651c9eb3c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-13f9b32478195bac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-4429f20791990a71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-1ebb54835bf8f28b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-9ff009b644bc64cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-b60bbd6bcf56af2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-03-06T12:25:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5学习笔记之基础标签">
+<meta name="twitter:description" content="一.列表标签1.无序列表(unordered list) 无序 : 没有先后之分  1) 作用: 给一堆内容添加无序列表语义(一个没有先后顺序整体), 列表中的条目是不分先后  2) 格式: li 英文是 list item, 翻译为列表项">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4122543-6170aa7da4bd362f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="RuningTitan&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>HTML5学习笔记之基础标签 | RuningTitan&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a9e4cdf8ccd2ba8"></script>
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">RuningTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AsyncStorage/">AsyncStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CATransition/">CATransition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIFilter/">CIFilter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreAnimation/">CoreAnimation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreImage/">CoreImage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dictionary/">Dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook-POP/">Facebook POP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ListView/">ListView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navigator/">Navigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NavigatorIOS/">NavigatorIOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scanner/">Scanner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScrollView/">ScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech/">Speech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift4-0/">Swift4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabBariOS/">TabBariOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabNavigator/">TabNavigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIBesizationv/">UIBesizationv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vision/">Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web服务器/">Web服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS扫描器/">iOS扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入坑/">入坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式编程/">响应式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RuningTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">RuningTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-HTML5学习笔记之基础标签" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/15/HTML5学习笔记之基础标签/" class="article-date">
+      <time datetime="2017-06-15T12:17:00.000Z" itemprop="datePublished">2017-06-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML5学习笔记之基础标签
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebStorm/">WebStorm</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一-列表标签"><a href="#一-列表标签" class="headerlink" title="一.列表标签"></a>一.列表标签</h2><h3 id="1-无序列表-unordered-list"><a href="#1-无序列表-unordered-list" class="headerlink" title="1.无序列表(unordered list)"></a>1.无序列表(unordered list)</h3><ul>
+<li>无序 : 没有先后之分</li>
+</ul>
+<h4 id="1-作用"><a href="#1-作用" class="headerlink" title="1) 作用:"></a>1) 作用:</h4><ul>
+<li>给一堆内容添加无序列表语义(一个没有先后顺序整体), 列表中的条目是不分先后</li>
+</ul>
+<h4 id="2-格式"><a href="#2-格式" class="headerlink" title="2) 格式:"></a>2) 格式:</h4><ul>
+<li>li 英文是 list item, 翻译为列表项</li>
+</ul>
+<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    &lt;h4&gt;中国城市列举(CN)&lt;/h4&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;北京&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;上海&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;广州&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;杭州&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-6170aa7da4bd362f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_4.png"></p>
+<h4 id="3-ul应用场景"><a href="#3-ul应用场景" class="headerlink" title="3) ul应用场景:"></a>3) ul应用场景:</h4><ul>
+<li>导航条</li>
+<li>商品列表等</li>
+<li>新闻列表</li>
+<li><h4 id="4-注意"><a href="#4-注意" class="headerlink" title="4) 注意:"></a>4) 注意:</h4></li>
+<li>其实ul还有一个type属性, 可以修改先导符号的样式, 取值有disc、square、circle几种<ul>
+<li>但是由于样式将来都是通过css来完成, 所以这里就不给大家介绍了</li>
+</ul>
+</li>
+<li>ul是一个组标签, 一定是一坨一坨的出现, 也就是说li标签不能单独存在, 必须包裹在ul里面</li>
+<li>由于ul和li是一个整体, 所以ul里面不推荐包裹其它标签, 永远记住ul里面最好只写li标签</li>
+<li>虽然ul中推荐只能写li标签, 但是li标签是一个容器标签, li标签中可以添加任意标签, 甚至可以添加ul标签</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;h4&gt;课程安排&lt;/h4&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">        上午</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;HTML5&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;CSS&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">        下午</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;OC&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;Swift&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line"></span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-3e921651c9eb3c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_5.png"></p>
+<h3 id="2-有序列表-ordered-list"><a href="#2-有序列表-ordered-list" class="headerlink" title="2.有序列表(ordered list)"></a>2.有序列表(ordered list)</h3><h4 id="1-作用-给一堆内容添加有序列表语义-一个有顺序整体-列表中的条目有先后之分"><a href="#1-作用-给一堆内容添加有序列表语义-一个有顺序整体-列表中的条目有先后之分" class="headerlink" title="1) 作用: 给一堆内容添加有序列表语义(一个有顺序整体), 列表中的条目有先后之分"></a>1) 作用: 给一堆内容添加有序列表语义(一个有顺序整体), 列表中的条目有先后之分</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;h4&gt;中国房价排行榜&lt;/h4&gt;</span><br><span class="line">&lt;ol&gt;</span><br><span class="line">    &lt;li&gt;北京&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;上海&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;杭州&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;广州&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;深圳&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-13f9b32478195bac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_6.png"></p>
+<h4 id="2-ol应用场景"><a href="#2-ol应用场景" class="headerlink" title="2) ol应用场景:"></a>2) ol应用场景:</h4><ul>
+<li>xxx排行榜</li>
+<li>其实ol应用场景并不多, 因为能用ol做的用ul都能做</li>
+<li>ul的常见属性start、type属性, 可以修改先导符号的样式和序号</li>
+</ul>
+<h2 id="二-定义列表-definition-list"><a href="#二-定义列表-definition-list" class="headerlink" title="二.定义列表(definition list)"></a>二.定义列表(definition list)</h2><h4 id="1-作用-1"><a href="#1-作用-1" class="headerlink" title="1) 作用:"></a>1) 作用:</h4><ul>
+<li><p>给一堆内容添加列表语义, 通过dt罗列出列表的条目, 然后再通过dd给每个条目进行相应的描述</p>
+<h4 id="2-格式-1"><a href="#2-格式-1" class="headerlink" title="2) 格式:"></a>2) 格式:</h4></li>
+<li><p>dt英文definition title, 翻译为定义标题</p>
+</li>
+<li>dd英文definition description, 翻译为定义描述信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;北京&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;国家的首都&lt;/dd&gt;</span><br><span class="line">    &lt;dt&gt;杭州&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;坑爹,房价上涨最快的地方&lt;/dd&gt;</span><br><span class="line">&lt;/dl&gt;</span><br><span class="line"></span><br><span class="line">![Snip20170614_7.png](http://upload-images.jianshu.io/upload_images/4122543-2d304b7b5f58b8c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br></pre></td></tr></table></figure>
+<h4 id="3-dl应用场景"><a href="#3-dl应用场景" class="headerlink" title="3) dl应用场景:"></a>3) dl应用场景:</h4><ul>
+<li>网站底部相关信息<ul>
+<li>但凡看到一堆内容都是用于描述某一个内容的时候就要想到dl</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-4429f20791990a71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_9.png"></p>
+<h4 id="4-注意事项"><a href="#4-注意事项" class="headerlink" title="4) 注意事项:"></a>4) 注意事项:</h4><ul>
+<li>dl是一个<code>组标签</code>, 一定是一坨一坨的出现, 也就是说<code>dt</code>和<code>dd</code>标签不能单独存在, 必须包裹在<code>dl</code>里面</li>
+<li>由于<code>dl</code>和<code>dt</code>、<code>dd</code>是一个整体, 所以<code>dl</code>里面不推荐包裹其它标签</li>
+<li><code>dd</code>和<code>dt</code>和<code>li</code>标签一样是容器标签, 里面可以添加任意标签</li>
+<li>定义列表非常灵活, 可以给一个<code>dt</code>配置多个<code>dd</code>, 但是最好不要出现多个<code>dt</code>对应一个<code>dd</code>, <code>dd</code>的语义是描述离它最近的一个<code>dt</code>, 所以其它<code>dt</code>相当于没有描述, 而定义列表存在的意义就是既可以列出每一个条目又可以对每一个条目进行描述</li>
+<li>定义列表非常灵活, 可以将多个<code>dt+dd</code>组合拆分为多个<code>dl</code></li>
+</ul>
+<h2 id="三-H系列标签-Header-1-Header-6"><a href="#三-H系列标签-Header-1-Header-6" class="headerlink" title="三.H系列标签(Header 1~Header 6)"></a>三.H系列标签(Header 1~Header 6)</h2><h4 id="1-作用-2"><a href="#1-作用-2" class="headerlink" title="1.作用:"></a>1.作用:</h4><ul>
+<li>用于给文本添加标题语义</li>
+<li>格式:</li>
+<li><h1>xxxxxx</h1><h4 id="2-注意点"><a href="#2-注意点" class="headerlink" title="2.注意点:"></a>2.注意点:</h4></li>
+<li>H标签是用来给文本添加标题语义的, 而不是用来修改文本的样式的</li>
+<li>H标签一共有6个, 从H1~H6, 最多就只能到6, 超过6则无效</li>
+<li>被H系列标签包裹的内容会独占一行</li>
+<li>在H系列的标签中, H1最大, H6最小</li>
+<li>在企业开发中, 一定要慎用H系列的标签, 特别是H1标签. 在企业开发中一般情况下一个界面中只能出现一个H1标签(和SEO有关)</li>
+</ul>
+<h2 id="四-P标签-Paragraph"><a href="#四-P标签-Paragraph" class="headerlink" title="四.P标签(Paragraph)"></a>四.P标签(Paragraph)</h2><h4 id="1-作用-3"><a href="#1-作用-3" class="headerlink" title="1.作用:"></a>1.作用:</h4><ul>
+<li>告诉浏览器哪些文字是一个段落</li>
+<li>格式:</li>
+<li><p>xxxxxxxx</p><h4 id="2-注意点-1"><a href="#2-注意点-1" class="headerlink" title="2.注意点:"></a>2.注意点:</h4></li>
+<li>在浏览器中会单独占一行</li>
+</ul>
+<h2 id="五-Hr标签-Horizontal-Rule"><a href="#五-Hr标签-Horizontal-Rule" class="headerlink" title="五.Hr标签(Horizontal Rule)"></a>五.Hr标签(Horizontal Rule)</h2><h4 id="1-作用-4"><a href="#1-作用-4" class="headerlink" title="1.作用:"></a>1.作用:</h4><ul>
+<li>在浏览器上显示一条分割线</li>
+<li>格式:</li>
+<li><hr><h4 id="2-注意点-2"><a href="#2-注意点-2" class="headerlink" title="2.注意点:"></a>2.注意点:</h4></li>
+<li>在浏览器中会单独占一行</li>
+<li>通过我的观察发现HR标签可以写/也可以不写<ul>
+<li>如果不写/那么就是按照HTML的规范来编写</li>
+<li>如果写上/那么就是按照XHTML的规范来编写.</li>
+</ul>
+</li>
+<li>由于hr标签是用来修改样式的, 所以不推荐使用. 今后开发中添加水平线一般都使用CSS盒子来做</li>
+</ul>
+<h2 id="六-HTML注释-Annotation"><a href="#六-HTML注释-Annotation" class="headerlink" title="六.HTML注释(Annotation)"></a>六.HTML注释(Annotation)</h2><h4 id="1-什么是注释"><a href="#1-什么是注释" class="headerlink" title="1.什么是注释?"></a>1.什么是注释?</h4><h4 id="1-注释格式"><a href="#1-注释格式" class="headerlink" title="1.注释格式"></a>1.注释格式</h4><p><code>&lt;!--被注释的内容--&gt;</code></p>
+<h4 id="2-注意点-3"><a href="#2-注意点-3" class="headerlink" title="2.注意点:"></a>2.注意点:</h4><ul>
+<li>被注释的内容不会在浏览器中显示, 注释是写给我们自己看的<ul>
+<li>注释不能嵌套使用</li>
+</ul>
+</li>
+</ul>
+<p><code>&lt;!--&lt;!--被注释的内容--&gt;--&gt;</code></p>
+<h4 id="3-快捷键-ctrl"><a href="#3-快捷键-ctrl" class="headerlink" title="3.快捷键: ctrl + /"></a>3.快捷键: <code>ctrl + /</code></h4><h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;标题1&lt;/h1&gt;</span><br><span class="line">&lt;h2&gt;标题2&lt;/h2&gt;</span><br><span class="line">&lt;h3&gt;标题3&lt;/h3&gt;</span><br><span class="line">&lt;h4&gt;标题4&lt;/h4&gt;</span><br><span class="line">&lt;h5&gt;标题5&lt;/h5&gt;</span><br><span class="line">&lt;h6&gt;标题6&lt;/h6&gt;</span><br><span class="line">&lt;h7&gt;我是假的,标题7&lt;/h7&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--我是注释--&gt;</span><br><span class="line">&lt;hr /&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;告诉浏览器哪些文字是一个段落&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--下面是分割线--&gt;</span><br><span class="line">&lt;hr /&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-1ebb54835bf8f28b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_10.png"></p>
+<h2 id="七-img标签-image"><a href="#七-img标签-image" class="headerlink" title="七.img标签(image)"></a>七.img标签(image)</h2><h3 id="1-作用-5"><a href="#1-作用-5" class="headerlink" title="1) 作用:"></a>1) 作用:</h3><ul>
+<li>在网页上插入一张图片</li>
+</ul>
+<h3 id="2-格式-2"><a href="#2-格式-2" class="headerlink" title="2) 格式:"></a>2) 格式:</h3><ul>
+<li><code>![image](http://note.youdao.com/favicon.ico)</code></li>
+</ul>
+<h3 id="3-标签的属性"><a href="#3-标签的属性" class="headerlink" title="3) 标签的属性"></a>3) 标签的属性</h3><ul>
+<li>写在标签中K=”V”这种格式的文本我们称之为标签属性</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src(source)</td>
+<td>告诉浏览器需要插入的图片路径, 以便于浏览器到该路径下找到需要插入的图片</td>
+</tr>
+<tr>
+<td>alt(alternate)</td>
+<td>规定图像的替代文本, 只有在src指定的路径下找不到图片,才会显示alt指定的文本</td>
+</tr>
+<tr>
+<td>title</td>
+<td>悬停文本(介绍这张图片, 只有在鼠标移动到图片上时才会显示)</td>
+</tr>
+<tr>
+<td>height</td>
+<td>设置图片显示的高度</td>
+</tr>
+<tr>
+<td>width</td>
+<td>设置图片显示的宽度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-注意点"><a href="#4-注意点" class="headerlink" title="4) 注意点:"></a>4) 注意点:</h3><ul>
+<li>img标签添加的图片默认不是占一整行空间<br>如果想让图片等比拉伸,只写高度或者宽度即可</li>
+</ul>
+<h3 id="5-示例代码"><a href="#5-示例代码" class="headerlink" title="5) 示例代码"></a>5) 示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--图片标签--&gt;</span><br><span class="line">![](http://note.youdao.com/favicon.ico)</span><br><span class="line">![有道云笔记](http://note.youdao.com/favicon.ico)</span><br><span class="line">![有道云笔记](http://note.youdao.com/favicon.ico)</span><br><span class="line">![有道云笔记](http://note.youdao.com/favicon.ico)</span><br><span class="line">![有道云笔记](http://note.youdao.com/favicon.ico)</span><br><span class="line">![有道云笔记](http://note.youdao.com/favicon.ico)</span><br><span class="line">&lt;img src=&quot;&quot; alt=&quot;找不到图片&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="5-运行结果"><a href="#5-运行结果" class="headerlink" title="5) 运行结果"></a>5) 运行结果</h3><p><img src="http://upload-images.jianshu.io/upload_images/4122543-9ff009b644bc64cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_12.png"></p>
+<h2 id="八-br标签-Break"><a href="#八-br标签-Break" class="headerlink" title="八.br标签(Break)"></a>八.br标签(Break)</h2><h3 id="1-作用-6"><a href="#1-作用-6" class="headerlink" title="1) 作用:"></a>1) 作用:</h3><ul>
+<li>让内容换行<h3 id="2-格式-3"><a href="#2-格式-3" class="headerlink" title="2) 格式:"></a>2) 格式:</h3></li>
+<li><code>&lt;br/&gt;</code><h3 id="3-注意点"><a href="#3-注意点" class="headerlink" title="3) 注意点:"></a>3) 注意点:</h3></li>
+<li>br的意思是不另起一个段落进行换行, 而网页中99.99%需要换行时都是因为另起了一个段落, 所以应该用p来做</li>
+</ul>
+<h2 id="九-a标签-anchor"><a href="#九-a标签-anchor" class="headerlink" title="九.a标签(anchor)"></a>九.a标签(anchor)</h2><h3 id="1-格式"><a href="#1-格式" class="headerlink" title="1) 格式:"></a>1) 格式:</h3><ul>
+<li><code>&lt;a href=&quot;http://www.jianshu.com/u/5bd5e9ed569e&quot;&gt;我的简书&lt;/a&gt;</code><h3 id="2-作用"><a href="#2-作用" class="headerlink" title="2) 作用:"></a>2) 作用:</h3></li>
+<li>用于从一个页面链接到另一个页面<h3 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3) 注意事项:"></a>3) 注意事项:</h3></li>
+<li>在a标签之间一定要写上文字, 如果没有, 那么在页面上找不到这个标签<br>a标签也叫做超级链接或超链接<h3 id="4-a标签的属性"><a href="#4-a标签的属性" class="headerlink" title="4) a标签的属性"></a>4) a标签的属性</h3></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>href(hypertext reference)</td>
+<td>指定跳转的目标地址</td>
+</tr>
+<tr>
+<td>target</td>
+<td>告诉浏览器是否保留原始界面, _blank保留, _self不保留</td>
+</tr>
+<tr>
+<td>title</td>
+<td>悬停文本(介绍这个链接, 只有在鼠标移动到超链接上时才会显示)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-代码示例"><a href="#4-代码示例" class="headerlink" title="4) 代码示例"></a>4) 代码示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--a标签--&gt;</span><br><span class="line">&lt;a href=&quot;http://www.jianshu.com/u/5bd5e9ed569e&quot;&gt;我的简书&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.jianshu.com/u/5bd5e9ed569e&quot; title=&quot;我的简书&quot;&gt;我的简书&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.jianshu.com/u/5bd5e9ed569e&quot; title=&quot;我的简书&quot; target=&quot;_blank&quot;&gt;我的简书&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-b60bbd6bcf56af2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_13.png"></p>
+<h3 id="5-base标签和a标签结合使用"><a href="#5-base标签和a标签结合使用" class="headerlink" title="5) base标签和a标签结合使用"></a>5) base标签和a标签结合使用</h3><ul>
+<li>如果每个a标签都想在新页面中打开,那么逐个设置a标签的<code>target</code>属性比较麻烦, 这时我们可以使用base和a标签结合的方式,一次性设置有a标签都在新页面中打开<ul>
+<li>格式: <code>&lt;base target=&quot;_blank&quot; /&gt;</code></li>
+</ul>
+</li>
+<li>注意事项:<ul>
+<li><code>base</code>必须嵌套在<code>head</code>标签里面</li>
+<li>如果标签上指定了<code>target</code>,<code>base</code>中也指定了<code>target</code>,那么会按照标签上指定的来执行<h3 id="6-a标签其它用法"><a href="#6-a标签其它用法" class="headerlink" title="6) a标签其它用法"></a>6) a标签其它用法</h3></li>
+</ul>
+</li>
+<li>假链接(本质是跳转到当前页面)<ul>
+<li>格式<code>&lt;a href=&quot;#&quot;&gt;我的简书&lt;/a&gt;</code></li>
+<li>格式<code>&lt;a href=&quot;javascript:&quot;&gt;我的简书&lt;/a&gt;</code><ul>
+<li>跳转到当前页面指定位置(锚点链接)</li>
+<li>1.格式<code>&lt;a href=&quot;#location&quot;&gt;</code>跳转到指定位置<code>&lt;/a&gt;</code></li>
+<li>2.在页面的指定位置给任意标签添加一个id属性<ul>
+<li>例如 <code>&lt;p id=&quot;location&quot;&gt;</code>这个是目标<code>&lt;/p&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>跳转到指定页面的指定位置<ul>
+<li>格式: <code>&lt;a href=&quot;01-锚点链接.html#location&quot;&gt;跳转到指定位置&lt;/a&gt;</code></li>
+<li>只需要在01-锚点链接.html页面添加一个id位置即可</li>
+</ul>
+</li>
+<li>下载(极力不推荐使用)<ul>
+<li>例如<code>&lt;a href=&quot;girl.zip&quot;&gt;</code>下载福利资源<code>&lt;a/&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li><h3 id="对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><a href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新" class="headerlink" title="对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新"></a>对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频<a href="http://study.163.com/course/introduction.htm?courseId=1003864040" target="_blank" rel="noopener">HTML5 + 跨平台开发</a>,只是不知道会不会继续更新</h3></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
+        <p><span>发布时间:</span>2017-06-15, 20:17:00</p>
+        <p><span>最后更新:</span>2018-03-06, 20:25:21</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/15/HTML5学习笔记之基础标签/" title="HTML5学习笔记之基础标签">https://titanjun.top/2017/06/15/HTML5学习笔记之基础标签/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/06/15/HTML5学习笔记之基础标签/　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/06/15/HTML5学习笔记之表格标签/">
+                    HTML5学习笔记之表格标签
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/15/HTML5基本介绍/">
+                    HTML5基本介绍
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-列表标签"><span class="toc-number">1.</span> <span class="toc-text">一.列表标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-无序列表-unordered-list"><span class="toc-number">1.1.</span> <span class="toc-text">1.无序列表(unordered list)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-作用"><span class="toc-number">1.1.1.</span> <span class="toc-text">1) 作用:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-格式"><span class="toc-number">1.1.2.</span> <span class="toc-text">2) 格式:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-ul应用场景"><span class="toc-number">1.1.3.</span> <span class="toc-text">3) ul应用场景:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-注意"><span class="toc-number">1.1.4.</span> <span class="toc-text">4) 注意:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-有序列表-ordered-list"><span class="toc-number">1.2.</span> <span class="toc-text">2.有序列表(ordered list)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-作用-给一堆内容添加有序列表语义-一个有顺序整体-列表中的条目有先后之分"><span class="toc-number">1.2.1.</span> <span class="toc-text">1) 作用: 给一堆内容添加有序列表语义(一个有顺序整体), 列表中的条目有先后之分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ol应用场景"><span class="toc-number">1.2.2.</span> <span class="toc-text">2) ol应用场景:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-定义列表-definition-list"><span class="toc-number">2.</span> <span class="toc-text">二.定义列表(definition list)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-作用-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">1) 作用:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-格式-1"><span class="toc-number">2.0.2.</span> <span class="toc-text">2) 格式:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-dl应用场景"><span class="toc-number">2.0.3.</span> <span class="toc-text">3) dl应用场景:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-注意事项"><span class="toc-number">2.0.4.</span> <span class="toc-text">4) 注意事项:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-H系列标签-Header-1-Header-6"><span class="toc-number">3.</span> <span class="toc-text">三.H系列标签(Header 1~Header 6)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-作用-2"><span class="toc-number">3.0.1.</span> <span class="toc-text">1.作用:</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number"></span> <span class="toc-text">xxxxxx</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-注意点"><span class="toc-number">0.0.1.</span> <span class="toc-text">2.注意点:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-P标签-Paragraph"><span class="toc-number">1.</span> <span class="toc-text">四.P标签(Paragraph)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-作用-3"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.作用:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-注意点-1"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.注意点:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-Hr标签-Horizontal-Rule"><span class="toc-number">2.</span> <span class="toc-text">五.Hr标签(Horizontal Rule)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-作用-4"><span class="toc-number">2.0.1.</span> <span class="toc-text">1.作用:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-注意点-2"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.注意点:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-HTML注释-Annotation"><span class="toc-number">3.</span> <span class="toc-text">六.HTML注释(Annotation)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-什么是注释"><span class="toc-number">3.0.1.</span> <span class="toc-text">1.什么是注释?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-注释格式"><span class="toc-number">3.0.2.</span> <span class="toc-text">1.注释格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-注意点-3"><span class="toc-number">3.0.3.</span> <span class="toc-text">2.注意点:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-快捷键-ctrl"><span class="toc-number">3.0.4.</span> <span class="toc-text">3.快捷键: ctrl + /</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码"><span class="toc-number">3.1.</span> <span class="toc-text">示例代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-img标签-image"><span class="toc-number">4.</span> <span class="toc-text">七.img标签(image)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-作用-5"><span class="toc-number">4.1.</span> <span class="toc-text">1) 作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-格式-2"><span class="toc-number">4.2.</span> <span class="toc-text">2) 格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-标签的属性"><span class="toc-number">4.3.</span> <span class="toc-text">3) 标签的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-注意点"><span class="toc-number">4.4.</span> <span class="toc-text">4) 注意点:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-示例代码"><span class="toc-number">4.5.</span> <span class="toc-text">5) 示例代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-运行结果"><span class="toc-number">4.6.</span> <span class="toc-text">5) 运行结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八-br标签-Break"><span class="toc-number">5.</span> <span class="toc-text">八.br标签(Break)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-作用-6"><span class="toc-number">5.1.</span> <span class="toc-text">1) 作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-格式-3"><span class="toc-number">5.2.</span> <span class="toc-text">2) 格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-注意点"><span class="toc-number">5.3.</span> <span class="toc-text">3) 注意点:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九-a标签-anchor"><span class="toc-number">6.</span> <span class="toc-text">九.a标签(anchor)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-格式"><span class="toc-number">6.1.</span> <span class="toc-text">1) 格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-作用"><span class="toc-number">6.2.</span> <span class="toc-text">2) 作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-注意事项"><span class="toc-number">6.3.</span> <span class="toc-text">3) 注意事项:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-a标签的属性"><span class="toc-number">6.4.</span> <span class="toc-text">4) a标签的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-代码示例"><span class="toc-number">6.4.1.</span> <span class="toc-text">4) 代码示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-base标签和a标签结合使用"><span class="toc-number">6.5.</span> <span class="toc-text">5) base标签和a标签结合使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-a标签其它用法"><span class="toc-number">6.6.</span> <span class="toc-text">6) a标签其它用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><span class="toc-number">6.7.</span> <span class="toc-text">对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/15/HTML5学习笔记之表格标签/" title="上一篇: HTML5学习笔记之表格标签">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/15/HTML5基本介绍/" title="下一篇: HTML5基本介绍">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/ReactNative之AsyncStorage本地存储/">ReactNative之AsyncStorage本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Node.js搭建Web服务器/">Node.js搭建Web服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/06/ReactNative之TabBariOS和TabNavigator/">ReactNative之TabBariOS和TabNavigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/React Native之导航组件NavigatorIOS和Navigator/">React Native之导航组件NavigatorIOS和Navigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/03/ReactNaive之ScrollView和ListView/">ReactNaive之ScrollView和ListView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Swift语音和文本的转换/">Swift语音和文本的转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/Swift之Vision 图像识别框架/">Swift之Vision 图像识别框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(AVFoundation)动态人脸识别(二)/">iOS黑科技之(AVFoundation)动态人脸识别(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(CoreImage)静态人脸识别(一)/">iOS黑科技之(CoreImage)静态人脸识别(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/16/Swift之二维码的生成、识别和扫描/">Swift之二维码的生成、识别和扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/11/Swift之删除HTML5页面的广告/">Swift之删除HTML5页面的广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/Swift之微信朋友圈图片浏览器/">Swift之微信朋友圈图片浏览器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/Swift开发之3DTouch实用演练/">Swift开发之3DTouch实用演练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/ReactNaive之CSS和Flex布局/">ReactNaive之CSS和Flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/17/Swift之Facebook的POP动画使用和实战/">Swift之Facebook的POP动画使用和实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/iOS出门必备之CoreAnimation(核心动画)/">iOS出门必备之CoreAnimation(核心动画)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/RxSwift+Moya网络请求之项目实战/">RxSwift+Moya网络请求之项目实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/21/RxSwift的使用详解02/">RxSwift的使用详解02</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/15/RxSwift的使用详解01/">RxSwift的使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/iOS之Scanner字符串扫描类/">iOS之Scanner字符串扫描类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/升级Swift4.0遇到的坑/">升级Swift4.0遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/09/JavaScript基本语法01/">JavaScript基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary/">Swift4.0新特性之String、Array和Dictionary</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 RuningTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

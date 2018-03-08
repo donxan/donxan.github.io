@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="RuningTitan" />
+
+
+
+<meta name="description" content="注:  本文主要语法为Swift4.0  Scanner继承自NSObject，遵守NSCopying协议。是一个用于扫描指定字符串的抽象类 可以创建Scanner时制定他的String属性，然后scanner会按照你的要求从头到尾扫描这个字符串的每个字符 扫描操作从上次扫描的位置开始，并且继续往后扫描直到指定的内容出现为止（如果有的话）">
+<meta name="keywords" content="Swift,Scanner,iOS扫描器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS之Scanner字符串扫描类">
+<meta property="og:url" content="https://titanjun.top/2017/09/09/iOS之Scanner字符串扫描类/index.html">
+<meta property="og:site_name" content="RuningTitan&#39;s Blog">
+<meta property="og:description" content="注:  本文主要语法为Swift4.0  Scanner继承自NSObject，遵守NSCopying协议。是一个用于扫描指定字符串的抽象类 可以创建Scanner时制定他的String属性，然后scanner会按照你的要求从头到尾扫描这个字符串的每个字符 扫描操作从上次扫描的位置开始，并且继续往后扫描直到指定的内容出现为止（如果有的话）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-07T03:15:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS之Scanner字符串扫描类">
+<meta name="twitter:description" content="注:  本文主要语法为Swift4.0  Scanner继承自NSObject，遵守NSCopying协议。是一个用于扫描指定字符串的抽象类 可以创建Scanner时制定他的String属性，然后scanner会按照你的要求从头到尾扫描这个字符串的每个字符 扫描操作从上次扫描的位置开始，并且继续往后扫描直到指定的内容出现为止（如果有的话）">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="RuningTitan&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>iOS之Scanner字符串扫描类 | RuningTitan&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a9e4cdf8ccd2ba8"></script>
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">RuningTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AsyncStorage/">AsyncStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CATransition/">CATransition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIFilter/">CIFilter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreAnimation/">CoreAnimation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreImage/">CoreImage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dictionary/">Dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook-POP/">Facebook POP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ListView/">ListView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navigator/">Navigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NavigatorIOS/">NavigatorIOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scanner/">Scanner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScrollView/">ScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech/">Speech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift4-0/">Swift4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabBariOS/">TabBariOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabNavigator/">TabNavigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIBesizationv/">UIBesizationv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vision/">Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web服务器/">Web服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS扫描器/">iOS扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入坑/">入坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式编程/">响应式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RuningTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">RuningTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-iOS之Scanner字符串扫描类" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/09/iOS之Scanner字符串扫描类/" class="article-date">
+      <time datetime="2017-09-09T14:14:40.000Z" itemprop="datePublished">2017-09-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS之Scanner字符串扫描类
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scanner/">Scanner</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS扫描器/">iOS扫描器</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<h3 id="注-本文主要语法为Swift4-0"><a href="#注-本文主要语法为Swift4-0" class="headerlink" title="注:  本文主要语法为Swift4.0"></a>注:  本文主要语法为Swift4.0</h3></blockquote>
+<ul>
+<li><h4 id="Scanner继承自NSObject，遵守NSCopying协议。是一个用于扫描指定字符串的抽象类"><a href="#Scanner继承自NSObject，遵守NSCopying协议。是一个用于扫描指定字符串的抽象类" class="headerlink" title="Scanner继承自NSObject，遵守NSCopying协议。是一个用于扫描指定字符串的抽象类"></a>Scanner继承自NSObject，遵守NSCopying协议。是一个用于扫描指定字符串的抽象类</h4></li>
+<li><h4 id="可以创建Scanner时制定他的String属性，然后scanner会按照你的要求从头到尾扫描这个字符串的每个字符"><a href="#可以创建Scanner时制定他的String属性，然后scanner会按照你的要求从头到尾扫描这个字符串的每个字符" class="headerlink" title="可以创建Scanner时制定他的String属性，然后scanner会按照你的要求从头到尾扫描这个字符串的每个字符"></a>可以创建Scanner时制定他的String属性，然后scanner会按照你的要求从头到尾扫描这个字符串的每个字符</h4></li>
+<li>扫描操作从上次扫描的位置开始，并且继续往后扫描直到指定的内容出现为止（如果有的话）</li>
+</ul>
+<a id="more"></a>
+<h2 id="1-部分属性的相关解释"><a href="#1-部分属性的相关解释" class="headerlink" title="1. 部分属性的相关解释"></a>1. 部分属性的相关解释</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> open var string: String &#123; get &#125;</span><br><span class="line"> <span class="comment">// (只读)返回当前被扫描的字符串</span></span><br><span class="line"></span><br><span class="line">open var scanLocation: Int</span><br><span class="line"><span class="comment">// 当前扫描的位置，默认是从0开始的。通过设置这个属性值，可以自定义扫描的位置</span></span><br><span class="line"></span><br><span class="line">open var charactersToBeSkipped: CharacterSet?</span><br><span class="line"><span class="comment">// 这个集合是用来设置我们需要跳过扫描的一个字符集合</span></span><br><span class="line"></span><br><span class="line">open var caseSensitive: Bool</span><br><span class="line"><span class="comment">// 是否大小写敏感</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">public init(string: String)</span><br><span class="line"><span class="comment">// 用给定扫描字符串初始化</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-部分方法的相关解释"><a href="#2-部分方法的相关解释" class="headerlink" title="2. 部分方法的相关解释"></a>2. 部分方法的相关解释</h2><h3 id="2-1-以下方法的作用都是"><a href="#2-1-以下方法的作用都是" class="headerlink" title="2-1 以下方法的作用都是"></a>2-1 以下方法的作用都是</h3><ul>
+<li>扫描该类型的字符串,并将扫描结果赋值给result</li>
+<li>判断该字符串的第一个字符(默认第一个,可根据scanLocation属性设置)是否为该类型</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">open func scanInt32(_ result: UnsafeMutablePointer&lt;Int32&gt;?) -&gt; Bool</span><br><span class="line"></span><br><span class="line">@available(iOS <span class="number">2.0</span>, *)</span><br><span class="line">open func scanInt(_ result: UnsafeMutablePointer&lt;Int&gt;?) -&gt; Bool</span><br><span class="line"></span><br><span class="line">open func scanInt64(_ result: UnsafeMutablePointer&lt;Int64&gt;?) -&gt; Bool</span><br><span class="line"></span><br><span class="line">@available(iOS <span class="number">7.0</span>, *)</span><br><span class="line">open func scanUnsignedLongLong(_ result: UnsafeMutablePointer&lt;<span class="built_in">UInt64</span>&gt;?) -&gt; Bool</span><br><span class="line"></span><br><span class="line">open func scanFloat(_ result: UnsafeMutablePointer&lt;Float&gt;?) -&gt; Bool</span><br><span class="line"></span><br><span class="line">open func scanDouble(_ result: UnsafeMutablePointer&lt;Double&gt;?) -&gt; Bool</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-1-包含纯数字的字符串"><a href="#2-1-1-包含纯数字的字符串" class="headerlink" title="2-1-1 包含纯数字的字符串"></a>2-1-1 包含纯数字的字符串</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var int1: Int = <span class="number">0</span></span><br><span class="line">var int64: Int64 = <span class="number">0</span></span><br><span class="line">var int32: Int32 = <span class="number">0</span></span><br><span class="line">var float1: Float = <span class="number">0.0</span></span><br><span class="line">var double1: Double = <span class="number">0.0</span></span><br><span class="line"><span class="comment">//判断字符串包含的类型(输出结果为true)</span></span><br><span class="line">print(Scanner(string: <span class="string">"987"</span>).scanInt(&amp;int1))</span><br><span class="line">print(Scanner(string: <span class="string">"897"</span>).scanInt64(&amp;int64))</span><br><span class="line">print(Scanner(string: <span class="string">"99"</span>).scanInt32(&amp;int32))</span><br><span class="line">print(Scanner(string: <span class="string">"90.99"</span>).scanFloat(&amp;float1))</span><br><span class="line">print(Scanner(string: <span class="string">"98.09"</span>).scanDouble(&amp;double1))</span><br><span class="line"><span class="comment">//输出扫描后的结果</span></span><br><span class="line">int1 = <span class="number">98</span></span><br><span class="line">int64 = <span class="number">897</span></span><br><span class="line">int32 = <span class="number">99</span></span><br><span class="line"><span class="keyword">float</span> = <span class="number">90.99</span></span><br><span class="line"><span class="keyword">double</span> = <span class="number">98.09</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-1-2-非纯数字的字符串"><a href="#2-1-2-非纯数字的字符串" class="headerlink" title="2-1-2  非纯数字的字符串"></a>2-1-2  非纯数字的字符串</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var int1: Int = <span class="number">0</span></span><br><span class="line">let scanner = Scanner(string: <span class="string">"m998k23l"</span>)</span><br><span class="line">scanner.scanLocation = <span class="number">1</span></span><br><span class="line">print(scanner.scanInt(&amp;int1)) <span class="comment">// true</span></span><br><span class="line"><span class="comment">//int1 = 998</span></span><br><span class="line"></span><br><span class="line">var double1: Double = <span class="number">0.0</span></span><br><span class="line">let scanner = Scanner(string: <span class="string">"ms9.98k45l"</span>)</span><br><span class="line">scanner.scanLocation = <span class="number">1</span></span><br><span class="line">print(scanner.scanDouble(&amp;double1)) <span class="literal">false</span></span><br><span class="line"><span class="comment">//double1 = 0.0</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-以下方法的作用都是"><a href="#2-2-以下方法的作用都是" class="headerlink" title="2-2 以下方法的作用都是"></a>2-2 以下方法的作用都是</h3><ul>
+<li>扫描字符串前缀是否是”0x”或者”0X”,返回true或false</li>
+<li>将0x(0X)字符后面符合十六进制数的字符串转化成十进制数(可运用到UIColor关于十六进制数的转化)</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">open func scanHexInt32(_ result: UnsafeMutablePointer&lt;<span class="built_in">UInt32</span>&gt;?) -&gt; Bool <span class="comment">// Optionally prefixed with "0x" or "0X"</span></span><br><span class="line"></span><br><span class="line">@available(iOS <span class="number">2.0</span>, *)</span><br><span class="line">open func scanHexInt64(_ result: UnsafeMutablePointer&lt;<span class="built_in">UInt64</span>&gt;?) -&gt; Bool <span class="comment">// Optionally prefixed with "0x" or "0X"</span></span><br><span class="line"></span><br><span class="line">@available(iOS <span class="number">2.0</span>, *)</span><br><span class="line">open func scanHexFloat(_ result: UnsafeMutablePointer&lt;Float&gt;?) -&gt; Bool <span class="comment">// Corresponding to %a or %A formatting. Requires "0x" or "0X" prefix.</span></span><br><span class="line"></span><br><span class="line">@available(iOS <span class="number">2.0</span>, *)</span><br><span class="line">open func scanHexDouble(_ result: UnsafeMutablePointer&lt;Double&gt;?) -&gt; Bool <span class="comment">// Corresponding to %a or %A formatting. Requires "0x" or "0X" prefix.</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-1-代码示例"><a href="#2-2-1-代码示例" class="headerlink" title="2-2-1 代码示例"></a>2-2-1 代码示例</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">print(Scanner(string: <span class="string">"xdd"</span>).scanHexInt64(&amp;uint64))  <span class="comment">//false</span></span><br><span class="line">print(Scanner(string: <span class="string">"0xdd"</span>).scanHexInt64(&amp;uint64))  <span class="comment">//true</span></span><br><span class="line">print(uint64) <span class="comment">//221</span></span><br><span class="line">print(Scanner(string: <span class="string">"0xax"</span>).scanHexInt32(&amp;uint32))  <span class="comment">//true</span></span><br><span class="line">print(uint32)  <span class="comment">// 10</span></span><br><span class="line">print(Scanner(string: <span class="string">"0X991"</span>).scanHexFloat(&amp;float1))  <span class="comment">//true</span></span><br><span class="line">print(float1)  <span class="comment">//2449.0</span></span><br><span class="line">print(Scanner(string: <span class="string">"0X99"</span>).scanHexDouble(&amp;double1))  <span class="comment">//true</span></span><br><span class="line">print(double1)  <span class="comment">//153.0</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3-从给定的字符串中找到相同的字符"><a href="#2-3-从给定的字符串中找到相同的字符" class="headerlink" title="2-3 从给定的字符串中找到相同的字符"></a>2-3 从给定的字符串中找到相同的字符</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open func scanString(_ string: String, into result: AutoreleasingUnsafeMutablePointer&lt;<span class="built_in">NSString</span>?&gt;?) -&gt; Bool</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>代码示例</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var sstring: <span class="built_in">NSString</span>?</span><br><span class="line">let scan = Scanner(string: <span class="string">"32jingki"</span>)</span><br><span class="line"><span class="keyword">while</span> !scan.isAtEnd&#123; <span class="comment">// 判断是否扫描到最后</span></span><br><span class="line">    scan.scanLocation += <span class="number">1</span></span><br><span class="line">    print(scan.scanLocation)</span><br><span class="line">    scan.scanString(<span class="string">"i"</span>, into: &amp;sstring)</span><br><span class="line">    print(sstring)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-Scanner的其他方法"><a href="#2-4-Scanner的其他方法" class="headerlink" title="2-4 Scanner的其他方法"></a>2-4 Scanner的其他方法</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">open func scanCharacters(from set: CharacterSet, into result: AutoreleasingUnsafeMutablePointer&lt;<span class="built_in">NSString</span>?&gt;?) -&gt; Bool</span><br><span class="line"><span class="comment">////从scan中扫描出string放入result中，如果不需要存储string，则result传NULL</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">open func scanUpTo(_ string: String, into result: AutoreleasingUnsafeMutablePointer&lt;<span class="built_in">NSString</span>?&gt;?) -&gt; Bool</span><br><span class="line"><span class="comment">//从scan中扫描出string之外的数据放入result中，如果不需要存储string，则result传NULL</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">open func scanUpToCharacters(from set: CharacterSet, into result: AutoreleasingUnsafeMutablePointer&lt;<span class="built_in">NSString</span>?&gt;?) -&gt; Bool</span><br><span class="line"><span class="comment">//从scan中扫描出set之外的数据放入result中，如果不需要存储string，则result传NULL</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-5-关于使用Scanner处理UIColor十六进制数值的问题"><a href="#2-5-关于使用Scanner处理UIColor十六进制数值的问题" class="headerlink" title="2-5  关于使用Scanner处理UIColor十六进制数值的问题"></a>2-5  关于使用Scanner处理UIColor十六进制数值的问题</h2><ul>
+<li>可在UIColor的extension中添加扩展方法</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 十六进制颜色扩充</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">convenience init?(hex : String, alpha : <span class="built_in">CGFloat</span> = <span class="number">1.0</span>) &#123;</span><br><span class="line">    <span class="comment">//1.判断字符串长度是否符合</span></span><br><span class="line">    guard hex.characters.count &gt;= <span class="number">6</span> <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2.将字符串转成大写</span></span><br><span class="line">    var tempHex = hex.uppercased()</span><br><span class="line">    <span class="comment">//3.判断开头</span></span><br><span class="line">    <span class="keyword">if</span> tempHex.hasPrefix(<span class="string">"0x"</span>) || tempHex.hasPrefix(<span class="string">"##"</span>) || tempHex.hasPrefix(<span class="string">"0X"</span>) &#123;</span><br><span class="line">        <span class="comment">//去掉开头</span></span><br><span class="line">        tempHex = tempHex.dropFirst(<span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> tempHex.hasPrefix(<span class="string">"#"</span>) &#123;</span><br><span class="line">        tempHex = tempHex.dropFirst()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//4.分别截取RGB</span></span><br><span class="line">    var range = <span class="built_in">NSRange</span>(location: <span class="number">0</span>, length: <span class="number">2</span>)</span><br><span class="line">    let rHex = (tempHex as <span class="built_in">NSString</span>).substring(with: range)</span><br><span class="line">    range.location = <span class="number">2</span></span><br><span class="line">    let gHex = (tempHex as <span class="built_in">NSString</span>).substring(with: range)</span><br><span class="line">    range.location = <span class="number">4</span></span><br><span class="line">    let bHex = (tempHex as <span class="built_in">NSString</span>).substring(with: range)</span><br><span class="line">    <span class="comment">//5.将字符串转化成数字  emoji也是十六进制表示(此处也可用Float类型)</span></span><br><span class="line">    var r : <span class="built_in">UInt32</span> = <span class="number">0</span>, g : <span class="built_in">UInt32</span> = <span class="number">0</span>, b : <span class="built_in">UInt32</span> = <span class="number">0</span></span><br><span class="line">    <span class="comment">//创建扫描器,将字符串的扫描结果赋值给:r,g,b</span></span><br><span class="line">    Scanner(string: rHex).scanHexInt32(&amp;r)</span><br><span class="line">    Scanner(string: gHex).scanHexInt32(&amp;g)</span><br><span class="line">    Scanner(string: bHex).scanHexInt32(&amp;b)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.init(r : <span class="built_in">CGFloat</span>(r), g : <span class="built_in">CGFloat</span>(g), b : <span class="built_in">CGFloat</span>(b))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**RGB三原色</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">convenience init(r : <span class="built_in">CGFloat</span>, g : <span class="built_in">CGFloat</span>, b : <span class="built_in">CGFloat</span>, alpha : <span class="built_in">CGFloat</span> = <span class="number">1.0</span>) &#123;</span><br><span class="line">    <span class="keyword">self</span>.init(red: r / <span class="number">255.0</span>, green: g / <span class="number">255.0</span>, blue: b / <span class="number">255.0</span>, alpha: alpha)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/09/09/iOS之Scanner字符串扫描类/">iOS之Scanner字符串扫描类</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
+        <p><span>发布时间:</span>2017-09-09, 22:14:40</p>
+        <p><span>最后更新:</span>2018-03-07, 11:15:35</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/09/09/iOS之Scanner字符串扫描类/" title="iOS之Scanner字符串扫描类">https://titanjun.top/2017/09/09/iOS之Scanner字符串扫描类/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/09/09/iOS之Scanner字符串扫描类/　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/09/15/RxSwift的使用详解01/">
+                    RxSwift的使用详解01
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/08/25/升级Swift4.0遇到的坑/">
+                    升级Swift4.0遇到的坑
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#注-本文主要语法为Swift4-0"><span class="toc-number">1.</span> <span class="toc-text">注:  本文主要语法为Swift4.0</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Scanner继承自NSObject，遵守NSCopying协议。是一个用于扫描指定字符串的抽象类"><span class="toc-number">1.1.</span> <span class="toc-text">Scanner继承自NSObject，遵守NSCopying协议。是一个用于扫描指定字符串的抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可以创建Scanner时制定他的String属性，然后scanner会按照你的要求从头到尾扫描这个字符串的每个字符"><span class="toc-number">1.2.</span> <span class="toc-text">可以创建Scanner时制定他的String属性，然后scanner会按照你的要求从头到尾扫描这个字符串的每个字符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-部分属性的相关解释"><span class="toc-number"></span> <span class="toc-text">1. 部分属性的相关解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-部分方法的相关解释"><span class="toc-number"></span> <span class="toc-text">2. 部分方法的相关解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-以下方法的作用都是"><span class="toc-number">1.</span> <span class="toc-text">2-1 以下方法的作用都是</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-包含纯数字的字符串"><span class="toc-number">1.1.</span> <span class="toc-text">2-1-1 包含纯数字的字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-非纯数字的字符串"><span class="toc-number">1.2.</span> <span class="toc-text">2-1-2  非纯数字的字符串</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-以下方法的作用都是"><span class="toc-number">2.</span> <span class="toc-text">2-2 以下方法的作用都是</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-代码示例"><span class="toc-number">2.1.</span> <span class="toc-text">2-2-1 代码示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-从给定的字符串中找到相同的字符"><span class="toc-number">3.</span> <span class="toc-text">2-3 从给定的字符串中找到相同的字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Scanner的其他方法"><span class="toc-number">4.</span> <span class="toc-text">2-4 Scanner的其他方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-关于使用Scanner处理UIColor十六进制数值的问题"><span class="toc-number"></span> <span class="toc-text">2-5  关于使用Scanner处理UIColor十六进制数值的问题</span></a>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/09/15/RxSwift的使用详解01/" title="上一篇: RxSwift的使用详解01">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/08/25/升级Swift4.0遇到的坑/" title="下一篇: 升级Swift4.0遇到的坑">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/ReactNative之AsyncStorage本地存储/">ReactNative之AsyncStorage本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Node.js搭建Web服务器/">Node.js搭建Web服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/06/ReactNative之TabBariOS和TabNavigator/">ReactNative之TabBariOS和TabNavigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/React Native之导航组件NavigatorIOS和Navigator/">React Native之导航组件NavigatorIOS和Navigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/03/ReactNaive之ScrollView和ListView/">ReactNaive之ScrollView和ListView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Swift语音和文本的转换/">Swift语音和文本的转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/Swift之Vision 图像识别框架/">Swift之Vision 图像识别框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(AVFoundation)动态人脸识别(二)/">iOS黑科技之(AVFoundation)动态人脸识别(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(CoreImage)静态人脸识别(一)/">iOS黑科技之(CoreImage)静态人脸识别(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/16/Swift之二维码的生成、识别和扫描/">Swift之二维码的生成、识别和扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/11/Swift之删除HTML5页面的广告/">Swift之删除HTML5页面的广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/Swift之微信朋友圈图片浏览器/">Swift之微信朋友圈图片浏览器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/Swift开发之3DTouch实用演练/">Swift开发之3DTouch实用演练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/ReactNaive之CSS和Flex布局/">ReactNaive之CSS和Flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/17/Swift之Facebook的POP动画使用和实战/">Swift之Facebook的POP动画使用和实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/iOS出门必备之CoreAnimation(核心动画)/">iOS出门必备之CoreAnimation(核心动画)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/RxSwift+Moya网络请求之项目实战/">RxSwift+Moya网络请求之项目实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/21/RxSwift的使用详解02/">RxSwift的使用详解02</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/15/RxSwift的使用详解01/">RxSwift的使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/iOS之Scanner字符串扫描类/">iOS之Scanner字符串扫描类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/升级Swift4.0遇到的坑/">升级Swift4.0遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/09/JavaScript基本语法01/">JavaScript基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary/">Swift4.0新特性之String、Array和Dictionary</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 RuningTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

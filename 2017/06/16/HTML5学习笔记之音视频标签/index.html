@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="RuningTitan" />
+
+
+
+<meta name="keywords" content="HTML5标签,CSS,WebStorm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5学习笔记之音视频标签">
+<meta property="og:url" content="https://titanjun.top/2017/06/16/HTML5学习笔记之音视频标签/index.html">
+<meta property="og:site_name" content="RuningTitan&#39;s Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/647982-0d0c0be17835a633.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-3bd310e521eed10e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-6bc10b374b5e362e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-595238b7fcc8c71f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-03-06T13:37:06.988Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5学习笔记之音视频标签">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/647982-0d0c0be17835a633.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="RuningTitan&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>HTML5学习笔记之音视频标签 | RuningTitan&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a9e4cdf8ccd2ba8"></script>
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">RuningTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AsyncStorage/">AsyncStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CATransition/">CATransition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIFilter/">CIFilter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreAnimation/">CoreAnimation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreImage/">CoreImage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dictionary/">Dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook-POP/">Facebook POP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ListView/">ListView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navigator/">Navigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NavigatorIOS/">NavigatorIOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scanner/">Scanner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScrollView/">ScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech/">Speech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift4-0/">Swift4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabBariOS/">TabBariOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabNavigator/">TabNavigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIBesizationv/">UIBesizationv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vision/">Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web服务器/">Web服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS扫描器/">iOS扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入坑/">入坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式编程/">响应式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RuningTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">RuningTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-HTML5学习笔记之音视频标签" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/16/HTML5学习笔记之音视频标签/" class="article-date">
+      <time datetime="2017-06-16T12:01:00.000Z" itemprop="datePublished">2017-06-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML5学习笔记之音视频标签
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebStorm/">WebStorm</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/647982-0d0c0be17835a633.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="一-video标签"><a href="#一-video标签" class="headerlink" title="一. video标签"></a>一. video标签</h2><h3 id="1-作用-播放视频"><a href="#1-作用-播放视频" class="headerlink" title="1. 作用: 播放视频"></a>1. 作用: 播放视频</h3><h3 id="2-video标签格式1"><a href="#2-video标签格式1" class="headerlink" title="2. video标签格式1:"></a>2. video标签格式1:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;&quot;&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-video标签的属性"><a href="#3-video标签的属性" class="headerlink" title="3. video标签的属性"></a>3. video标签的属性</h3><ul>
+<li>src: 告诉video标签需要播放的视频地址</li>
+<li>autoplay: 告诉video标签是否需要自动播放视频</li>
+<li>controls:告诉video标签是否需要显示控制条</li>
+<li>poster: 告诉video标签视频没有播放之前显示的占位图片</li>
+<li>loop: 告诉video标签循环播放视频. 一般用于做广告视频</li>
+<li>preload: 告诉video标签预加载视频, 但是需要注意preload和autoplay相冲, 如果设置了autoplay属性, 那么preload属性就会失效</li>
+<li>muted:告诉video标签视频静音</li>
+<li>width/height: 和img标签中的一模一样</li>
+</ul>
+<h3 id="4-video标签格式2"><a href="#4-video标签格式2" class="headerlink" title="4. video标签格式2"></a>4. video标签格式2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;video&gt;</span><br><span class="line">  &lt;source src=&quot;&quot; type=&quot;&quot;&gt;&lt;/source&gt;</span><br><span class="line">  &lt;source src=&quot;&quot; type=&quot;&quot;&gt;&lt;/source&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>第二种格式存在的意义</p>
+<ul>
+<li>由于视频数据非常非常的重要, 所以五大浏览器厂商都不愿意支持别人的视频格式, 所以导致了没有一种视频格式是所有浏览器都支持的这个时候W3C为了解决这个问题, 所以推出了第二个video标签的格式</li>
+<li>video标签的第二种格式存在的意义就是为了解决浏览器适配问题. video 元素支持三种视频格式, 我们可以把这三种格式都通过source标签指定给video标签, 那么以后当浏览器播放视频时它就会从这三种中选择一种自己支持的格式来播放</li>
+</ul>
+</li>
+<li><p>注意点:</p>
+<ul>
+<li>当前通过video标签的第二种格式虽然能够指定所有浏览器都支持的视频格式, 但是想让所有浏览器都通过video标签播放视频还有一个前提条件, 就是浏览器必须支持HTML5标签, 否则同样无法播放</li>
+<li>在过去的一些浏览器是不支持HTML5标签的, 所以为了让过去的一些浏览器也能够通过video标签来播放视频, 那么我们以后可以通过一个JS的框架叫做html5media来实现</li>
+</ul>
+</li>
+</ul>
+<h4 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=&quot;200&quot; height=&quot;100&quot; poster=&quot;http://www.youname.com/images/first.png&quot; autoplay=&quot;autoplay&quot; preload=&quot;none&quot; controls=&quot;controls&quot;&gt;</span><br><span class="line">    &lt;!--楚乔传,好像是第4集--&gt;</span><br><span class="line">    &lt;source src=&quot;https://v.qq.com/x/cover/dhzimk1qzznf301/t0024jjys1q.html?ptag=baidu.aladdin.tv&quot; &gt;</span><br><span class="line">    &lt;source src=&quot;http://www.youname.com/images/first.ogg&quot; /&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="二-audio标签"><a href="#二-audio标签" class="headerlink" title="二.audio标签"></a>二.audio标签</h2><h3 id="1-作用-播放音频"><a href="#1-作用-播放音频" class="headerlink" title="1. 作用: 播放音频"></a>1. 作用: 播放音频</h3><h3 id="2-格式"><a href="#2-格式" class="headerlink" title="2. 格式:"></a>2. 格式:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio src=&quot;&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">&lt;audio&gt;</span><br><span class="line">&lt;source src=&quot;&quot; type=&quot;&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-注意点"><a href="#3-注意点" class="headerlink" title="3. 注意点:"></a>3. 注意点:</h3><ul>
+<li>audio标签的使用和video标签的使用基本一样</li>
+<li>video中能够使用的属性在audio标签中大部分都能够使用, 并且功能都一样</li>
+<li>只不过有3个属性不能用,<code>height/width/poster</code></li>
+</ul>
+<h2 id="三-详情和概要标签"><a href="#三-详情和概要标签" class="headerlink" title="三.详情和概要标签"></a>三.详情和概要标签</h2><h3 id="1-作用"><a href="#1-作用" class="headerlink" title="1. 作用:"></a>1. 作用:</h3><ul>
+<li>利用summary标签来描述概要信息, 利用details标签来描述详情信息</li>
+<li>默认情况下是折叠展示, 想看见详情必须点击</li>
+</ul>
+<h3 id="2-格式-1"><a href="#2-格式-1" class="headerlink" title="2. 格式:"></a>2. 格式:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">    &lt;summary&gt;概要信息&lt;/summary&gt;</span><br><span class="line">    详情信息</span><br><span class="line">&lt;/details&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-示例代码"><a href="#3-示例代码" class="headerlink" title="3. 示例代码"></a>3. 示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--详情和概要标签--&gt;</span><br><span class="line">&lt;details&gt;</span><br><span class="line">    &lt;summary&gt;概要信息&lt;/summary&gt;</span><br><span class="line">    这里是详情: 是假的呢举案说法南石道街开发病那都是独守空房技能速度加快非农数据的看法山东矿机第三方看似简单妇女节看电视呢房间看电视开始的减肥纳斯达克今年初vdsfw的看法今年圣诞节开放男</span><br><span class="line">&lt;/details&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-3bd310e521eed10e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_9.png"></p>
+<h2 id="四-marquee标签"><a href="#四-marquee标签" class="headerlink" title="四. marquee标签"></a>四. marquee标签</h2><h3 id="1-作用-跑马灯效果"><a href="#1-作用-跑马灯效果" class="headerlink" title="1. 作用: 跑马灯效果"></a>1. 作用: 跑马灯效果</h3><h3 id="2-格式-2"><a href="#2-格式-2" class="headerlink" title="2. 格式:"></a>2. 格式:</h3><p><code>&lt;marquee&gt;内容&lt;/marquee&gt;</code></p>
+<h3 id="3-属性"><a href="#3-属性" class="headerlink" title="3. 属性:"></a>3. 属性:</h3><ul>
+<li>direction: 设置滚动方向 left/right/up/down</li>
+<li>scrollamount: 设置滚动速度, 值越大就越快</li>
+<li>loop: 设置滚动次数, 默认是-1, 也就是无限滚动</li>
+<li>behavior: 设置滚动类型 slide滚动到边界就停止, alternate滚动到边界就弹回</li>
+</ul>
+<h3 id="4-注意点"><a href="#4-注意点" class="headerlink" title="4. 注意点:"></a>4. 注意点:</h3><ul>
+<li>marquee标签不是W3C推荐的标签, 在W3C官方文档中也无法查询这个标签, 但是各大浏览器对这个标签的支持非常好</li>
+</ul>
+<h4 id="5-示例代码"><a href="#5-示例代码" class="headerlink" title="5. 示例代码"></a>5. 示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--跑马灯-marquee标签--&gt;</span><br><span class="line">&lt;marquee direction=&quot;left&quot; scrollamount=&quot;5&quot;&gt;跑马灯&lt;/marquee&gt;</span><br><span class="line">&lt;marquee direction=&quot;right&quot; scrollamount=&quot;3&quot;&gt;marquee&lt;/marquee&gt;</span><br><span class="line">&lt;marquee direction=&quot;up&quot; scrollamount=&quot;1&quot;&gt;标签&lt;/marquee&gt;</span><br><span class="line">&lt;marquee direction=&quot;down&quot; scrollamount=&quot;1&quot;&gt;down&lt;/marquee&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-6bc10b374b5e362e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_10.png"></p>
+<blockquote>
+<p>注: 实际的效果中,这三个是一直在滚动的,只是图片看不到效果,自己亲自实践感受下吧!</p>
+</blockquote>
+<h2 id="五-HTML中被废弃的标签"><a href="#五-HTML中被废弃的标签" class="headerlink" title="五. HTML中被废弃的标签"></a>五. HTML中被废弃的标签</h2><blockquote>
+<p>由于HTML现在只负责语义而不负责样式.但是HTML一开始有一部分标签连样式也包揽了, 所以这部分标签都被废弃了</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b、u、i、s </span><br><span class="line">- 以上标签自己带有样式, 有浓厚的样式作用, 今后一般都只作为CSS钩子使用</span><br><span class="line">- 原则: 不到万不得已,切记不要使用如上标签. 大家可以到BAT的网站查看源代码, 几乎看不到以上标签</span><br></pre></td></tr></table></figure>
+<ul>
+<li>b(Bold)作用: 将文本字体加粗<ul>
+<li>格式:<code>&lt;b&gt;将文本字体加粗&lt;/b&gt;</code></li>
+</ul>
+</li>
+<li>u(Underlined)作用: 为文本添加下划线<ul>
+<li>格式: <code>&lt;u&gt;为文本添加下划线&lt;/u&gt;</code></li>
+</ul>
+</li>
+<li>i(Italic)作用: 显示斜体文本效果<ul>
+<li>格式: <code>&lt;i&gt;显示斜体文本效果&lt;/i&gt;</code></li>
+</ul>
+</li>
+<li>s(Strikethrough)作用: 为文本添加删除线<ul>
+<li>格式: <code>&lt;s&gt;为文本添加删除线&lt;/s&gt;</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>为了弥补 b、u、i、s标签的不足, W3C又推出了一组新的标签, 这些标签在显示上看似和buis没什么区别, 但是在语义上却有重大区别</p>
+</blockquote>
+<ul>
+<li>strong作用: 着重内容<ul>
+<li>格式:<code>&lt;strong&gt;着重内容&lt;/strong&gt;</code></li>
+</ul>
+</li>
+<li>ins(Inserted)作用: 新插入的文本<ul>
+<li>格式:<code>&lt;ins&gt;新插入的文本&lt;/ins&gt;</code></li>
+</ul>
+</li>
+<li>em(Emphasized)作用:强调内容<ul>
+<li>格式:<code>&lt;em&gt;强调内容&lt;/em&gt;</code></li>
+</ul>
+</li>
+<li>del(Deleted)作用: 已删除的文本<ul>
+<li>格式:<code>&lt;del&gt;已删除的文本&lt;/del&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--新增标签--&gt;</span><br><span class="line">&lt;strong&gt;着重内容&lt;/strong&gt;</span><br><span class="line">&lt;ins&gt;新插入的内容&lt;/ins&gt;</span><br><span class="line">&lt;em&gt;强调的内容&lt;/em&gt;</span><br><span class="line">&lt;del&gt;已经删除的内容&lt;/del&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/4122543-595238b7fcc8c71f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_11.png"></p>
+<blockquote>
+<ul>
+<li><h3 id="对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><a href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新" class="headerlink" title="对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新"></a>对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频<a href="http://study.163.com/course/introduction.htm?courseId=1003864040" target="_blank" rel="noopener">HTML5 + 跨平台开发</a>,只是不知道会不会继续更新</h3></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
+        <p><span>发布时间:</span>2017-06-16, 20:01:00</p>
+        <p><span>最后更新:</span>2018-03-06, 21:37:06</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/16/HTML5学习笔记之音视频标签/" title="HTML5学习笔记之音视频标签">https://titanjun.top/2017/06/16/HTML5学习笔记之音视频标签/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/06/16/HTML5学习笔记之音视频标签/　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/07/10/Swift版-H5页面实现长按保存图片/">
+                    Swift版-H5页面实现长按保存图片
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/15/HTML5学习笔记之表单标签/">
+                    HTML5学习笔记之表单标签
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-video标签"><span class="toc-number">1.</span> <span class="toc-text">一. video标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-作用-播放视频"><span class="toc-number">1.1.</span> <span class="toc-text">1. 作用: 播放视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-video标签格式1"><span class="toc-number">1.2.</span> <span class="toc-text">2. video标签格式1:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-video标签的属性"><span class="toc-number">1.3.</span> <span class="toc-text">3. video标签的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-video标签格式2"><span class="toc-number">1.4.</span> <span class="toc-text">4. video标签格式2</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码示例"><span class="toc-number">1.4.1.</span> <span class="toc-text">代码示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-audio标签"><span class="toc-number">2.</span> <span class="toc-text">二.audio标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-作用-播放音频"><span class="toc-number">2.1.</span> <span class="toc-text">1. 作用: 播放音频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-格式"><span class="toc-number">2.2.</span> <span class="toc-text">2. 格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-注意点"><span class="toc-number">2.3.</span> <span class="toc-text">3. 注意点:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-详情和概要标签"><span class="toc-number">3.</span> <span class="toc-text">三.详情和概要标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-作用"><span class="toc-number">3.1.</span> <span class="toc-text">1. 作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-格式-1"><span class="toc-number">3.2.</span> <span class="toc-text">2. 格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-示例代码"><span class="toc-number">3.3.</span> <span class="toc-text">3. 示例代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-marquee标签"><span class="toc-number">4.</span> <span class="toc-text">四. marquee标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-作用-跑马灯效果"><span class="toc-number">4.1.</span> <span class="toc-text">1. 作用: 跑马灯效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-格式-2"><span class="toc-number">4.2.</span> <span class="toc-text">2. 格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-属性"><span class="toc-number">4.3.</span> <span class="toc-text">3. 属性:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-注意点"><span class="toc-number">4.4.</span> <span class="toc-text">4. 注意点:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-示例代码"><span class="toc-number">4.4.1.</span> <span class="toc-text">5. 示例代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-HTML中被废弃的标签"><span class="toc-number">5.</span> <span class="toc-text">五. HTML中被废弃的标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例代码"><span class="toc-number">5.0.1.</span> <span class="toc-text">示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><span class="toc-number">5.1.</span> <span class="toc-text">对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/07/10/Swift版-H5页面实现长按保存图片/" title="上一篇: Swift版-H5页面实现长按保存图片">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/15/HTML5学习笔记之表单标签/" title="下一篇: HTML5学习笔记之表单标签">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/ReactNative之AsyncStorage本地存储/">ReactNative之AsyncStorage本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Node.js搭建Web服务器/">Node.js搭建Web服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/06/ReactNative之TabBariOS和TabNavigator/">ReactNative之TabBariOS和TabNavigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/React Native之导航组件NavigatorIOS和Navigator/">React Native之导航组件NavigatorIOS和Navigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/03/ReactNaive之ScrollView和ListView/">ReactNaive之ScrollView和ListView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Swift语音和文本的转换/">Swift语音和文本的转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/Swift之Vision 图像识别框架/">Swift之Vision 图像识别框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(AVFoundation)动态人脸识别(二)/">iOS黑科技之(AVFoundation)动态人脸识别(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(CoreImage)静态人脸识别(一)/">iOS黑科技之(CoreImage)静态人脸识别(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/16/Swift之二维码的生成、识别和扫描/">Swift之二维码的生成、识别和扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/11/Swift之删除HTML5页面的广告/">Swift之删除HTML5页面的广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/Swift之微信朋友圈图片浏览器/">Swift之微信朋友圈图片浏览器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/Swift开发之3DTouch实用演练/">Swift开发之3DTouch实用演练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/ReactNaive之CSS和Flex布局/">ReactNaive之CSS和Flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/17/Swift之Facebook的POP动画使用和实战/">Swift之Facebook的POP动画使用和实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/iOS出门必备之CoreAnimation(核心动画)/">iOS出门必备之CoreAnimation(核心动画)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/RxSwift+Moya网络请求之项目实战/">RxSwift+Moya网络请求之项目实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/21/RxSwift的使用详解02/">RxSwift的使用详解02</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/15/RxSwift的使用详解01/">RxSwift的使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/iOS之Scanner字符串扫描类/">iOS之Scanner字符串扫描类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/升级Swift4.0遇到的坑/">升级Swift4.0遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/09/JavaScript基本语法01/">JavaScript基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary/">Swift4.0新特性之String、Array和Dictionary</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 RuningTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

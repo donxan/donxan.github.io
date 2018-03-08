@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="RuningTitan" />
+
+
+
+<meta name="keywords" content="HTML5标签,CSS,WebStorm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5学习笔记之表格标签">
+<meta property="og:url" content="https://titanjun.top/2017/06/15/HTML5学习笔记之表格标签/index.html">
+<meta property="og:site_name" content="RuningTitan&#39;s Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/647982-151e7c132c68a833.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-cac6e5756352e691.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-70f5e09e43e7df60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-00a3d46f21a7cce7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-03-06T13:36:50.783Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5学习笔记之表格标签">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/647982-151e7c132c68a833.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="RuningTitan&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>HTML5学习笔记之表格标签 | RuningTitan&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a9e4cdf8ccd2ba8"></script>
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">RuningTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AsyncStorage/">AsyncStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CATransition/">CATransition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIFilter/">CIFilter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreAnimation/">CoreAnimation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreImage/">CoreImage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dictionary/">Dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook-POP/">Facebook POP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ListView/">ListView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navigator/">Navigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NavigatorIOS/">NavigatorIOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scanner/">Scanner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScrollView/">ScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech/">Speech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift4-0/">Swift4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabBariOS/">TabBariOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabNavigator/">TabNavigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIBesizationv/">UIBesizationv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vision/">Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web服务器/">Web服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS扫描器/">iOS扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入坑/">入坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式编程/">响应式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RuningTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">RuningTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-HTML5学习笔记之表格标签" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/15/HTML5学习笔记之表格标签/" class="article-date">
+      <time datetime="2017-06-15T12:18:00.000Z" itemprop="datePublished">2017-06-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML5学习笔记之表格标签
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebStorm/">WebStorm</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<h3 id="一-表格标签"><a href="#一-表格标签" class="headerlink" title="一.表格标签"></a>一.表格标签</h3><p><img src="http://upload-images.jianshu.io/upload_images/647982-151e7c132c68a833.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h3 id="1-作用"><a href="#1-作用" class="headerlink" title="1.作用:"></a>1.作用:</h3><ul>
+<li>以表格形式将数据显示出来, 当数据量非常大的时候, 表格这种展现形式被认为是最为清晰的一种展现形式</li>
+</ul>
+<h3 id="2-格式"><a href="#2-格式" class="headerlink" title="2.格式:"></a>2.格式:</h3><ul>
+<li>table定义表格</li>
+<li>tr定义行</li>
+<li>td定义单元格</li>
+</ul>
+<h3 id="3-表格中的属性"><a href="#3-表格中的属性" class="headerlink" title="3.表格中的属性"></a>3.表格中的属性</h3><ul>
+<li><p>border: 默认情况下表格的边框宽度为0看不到, 通过border属性给表格指定边框宽度</p>
+</li>
+<li><p>width: 默认情况下表格的宽度是由内容自动计算出来的, 可以通过width属性指定表格的宽度</p>
+</li>
+<li><p>height:默认情况下表格的高度是由内容自动计算出来的, 可以通过height属性指定表格的高度</p>
+</li>
+<li><p>cellspacing: 外边距. 默认情况下单元格之间有2个像素的间隙, 可以通过cellpadding指定表格之间的间隙</p>
+</li>
+<li><p>cellpadding: 内边距. 默认情况下单元格边缘距离内容有1个像素的内边距, 可以通过cellpadding属性指定单元格边缘和内容之间的内边距</p>
+</li>
+<li><p>align: 规定表格相对周围元素的对齐方式, 它的取值有center、left、right</p>
+<ul>
+<li>给table设置align属性, 是让表格在浏览器中居左/居右/居中</li>
+<li>给tr设置align属性, 是让当前行中所有内容居左/居右/居中</li>
+<li>给td设置align属性,是让当前单元格中所有内容居左/居右/居中</li>
+<li>该属性仅仅作为了解, 企业开发中用css代替, 因为HTML仅仅用于说明语义</li>
+<li>如果td中设置了align属性, tr中也设置了align属性, 那么单元格中的内容会按照td中设置的来对齐</li>
+</ul>
+</li>
+<li><p>valign: 规定表格相对周围元素的对齐方式, 它的取值有center、left、right</p>
+<ul>
+<li>给table设置valign属性, 无效<br>给tr设置valign属性, 是让当前行中所有内容居上/居中/居下</li>
+<li>给td设置valign属性,是让当前单元格中所有内容居上/居中/居下</li>
+<li>如果td中设置了valign属性, tr中也设置了valign属性, 那么单元格中的内容会按照td中设置的来对齐</li>
+</ul>
+</li>
+<li><p>bgcolor:规定表格的背景颜色</p>
+<ul>
+<li>给table设置bgcolor属性, 是给整个表格设置背景颜色</li>
+<li>给tr设置bgcolor属性, 是给当前行设置背景颜色</li>
+<li>给td设置bgcolor属性, 是给当前单元格设置背景颜色</li>
+<li>该属性仅仅作为了解, 企业开发中用css代替, 因为HTML仅仅用于说明语义</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-示例代码"><a href="#1-示例代码" class="headerlink" title="1) 示例代码"></a>1) 示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--表格标签--&gt;</span><br><span class="line">&lt;!--先定义一个表格, 然后通过tr告诉浏览器这个表格中一共有多少行, 然后再通过td告诉浏览器这一行中一共有多少个元素(一共有多少列)--&gt;</span><br><span class="line">&lt;table border=&quot;1&quot; width=&quot;500&quot; cellpadding=&quot;5&quot; cellspacing=&quot;10&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-展示样式"><a href="#2-展示样式" class="headerlink" title="2) 展示样式"></a>2) 展示样式</h4><p><img src="http://upload-images.jianshu.io/upload_images/4122543-cac6e5756352e691.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_17.png"></p>
+<h3 id="4-表格中的其它标签"><a href="#4-表格中的其它标签" class="headerlink" title="4.表格中的其它标签"></a>4.表格中的其它标签</h3><ul>
+<li><p>表单中有两种类型的单元格, 一种是标准单元格td, 一种是表头单元格th</p>
+</li>
+<li><p>th标签: 给每一列设置标题, 单元格中的内容会自动加粗，居中</p>
+</li>
+<li><p>caption标签:给整个表格设置标题</p>
+<ul>
+<li>一定要嵌套在talbe标签内部才有效</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-示例代码-1"><a href="#1-示例代码-1" class="headerlink" title="1) 示例代码"></a>1) 示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;table bgcolor=&quot;#5f9ea0&quot; cellspacing=&quot;1px&quot; width=&quot;1000&quot; align=&quot;center&quot;&gt;</span><br><span class="line">    &lt;caption&gt;</span><br><span class="line">        &lt;h2&gt;这周代码量排行榜&lt;/h2&gt;</span><br><span class="line">    &lt;/caption&gt;</span><br><span class="line">    &lt;tr bgcolor=&quot;#8a2be2&quot;&gt;</span><br><span class="line">        &lt;th&gt;排名&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;关键词&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;趋势&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;今日搜索&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;最近一天&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;最近一天相关链接&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr bgcolor=&quot;#f0ffff&quot; align=&quot;center&quot;&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;穷爸爸富爸爸&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;上涨&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;456&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;234214&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;</span><br><span class="line">            &lt;a href=&quot;#&quot;&gt;贴吧&lt;/a&gt;</span><br><span class="line">            &lt;a href=&quot;#&quot;&gt;百度&lt;/a&gt;</span><br><span class="line">            &lt;a href=&quot;#&quot;&gt;杭州&lt;/a&gt;</span><br><span class="line">        &lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr bgcolor=&quot;#f0ffff&quot; align=&quot;center&quot;&gt;</span><br><span class="line">        &lt;td&gt;2&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;穷爸爸富爸爸&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;上涨&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;234&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;3423542&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;</span><br><span class="line">            &lt;a href=&quot;#&quot;&gt;贴吧&lt;/a&gt;</span><br><span class="line">            &lt;a href=&quot;#&quot;&gt;百度&lt;/a&gt;</span><br><span class="line">            &lt;a href=&quot;#&quot;&gt;杭州&lt;/a&gt;</span><br><span class="line">        &lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-展示样式-1"><a href="#2-展示样式-1" class="headerlink" title="2) 展示样式"></a>2) 展示样式</h4><p><img src="http://upload-images.jianshu.io/upload_images/4122543-70f5e09e43e7df60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_19.png"></p>
+<h3 id="5-表格的结构"><a href="#5-表格的结构" class="headerlink" title="5.表格的结构"></a>5.表格的结构</h3><ul>
+<li><p>thead标签:用来存放当前列的表头, 如果没有加css页面默认将表头中的高度设置变小</p>
+</li>
+<li><p>tbody标签:一般用来存放页面中的主体数据, 如果不写会自动加上</p>
+</li>
+<li><p>tfoot标签:用来存放表格的页脚（脚注或表注), 如果没有加css页面默认将表头中的高度设置变小, 一般不会出现</p>
+</li>
+</ul>
+<h4 id="1-示例代码-2"><a href="#1-示例代码-2" class="headerlink" title="1) 示例代码"></a>1) 示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;table bgcolor=&quot;#7fffd4&quot; width=&quot;800&quot; cellspacing=&quot;2&quot; align=&quot;center&quot;&gt;</span><br><span class="line">    &lt;caption&gt;我是表格标题&lt;/caption&gt;</span><br><span class="line">    &lt;thead&gt;</span><br><span class="line">    &lt;tr align=&quot;center&quot;&gt;</span><br><span class="line">        &lt;th&gt;每一列的标题&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;每一列的标题&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;每一列的标题&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;每一列的标题&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;每一列的标题&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;/thead&gt;</span><br><span class="line">    &lt;tbody&gt;</span><br><span class="line">    &lt;tr align=&quot;center&quot;&gt;</span><br><span class="line">        &lt;td&gt;数据&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;数据&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;数据&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;数据&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;数据&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;/tbody&gt;</span><br><span class="line">    &lt;tfoot&gt;</span><br><span class="line">    &lt;tr align=&quot;center&quot;&gt;</span><br><span class="line">        &lt;td&gt;数据&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;数据&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;数据&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;数据&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;数据&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;/tfoot&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-展示样式-2"><a href="#2-展示样式-2" class="headerlink" title="2) 展示样式"></a>2) 展示样式</h4><p><img src="http://upload-images.jianshu.io/upload_images/4122543-00a3d46f21a7cce7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_20.png"></p>
+<h3 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5.注意事项"></a>5.注意事项</h3><ul>
+<li>表格结构的意义主要是用于SEO, 便于搜索引擎指定哪部分的内容是需要抓取的重要内容, 一般情况下搜索引擎会优先抓取tbody中的内容</li>
+<li>由于有一部分浏览器对talbe的这种结构支持不是很好, 所以在企业开发中一般都不用严格的按照这种结构来编写</li>
+</ul>
+<blockquote>
+<ul>
+<li><h3 id="对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><a href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新" class="headerlink" title="对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新"></a>对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频<a href="http://study.163.com/course/introduction.htm?courseId=1003864040" target="_blank" rel="noopener">HTML5 + 跨平台开发</a>,只是不知道会不会继续更新</h3></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
+        <p><span>发布时间:</span>2017-06-15, 20:18:00</p>
+        <p><span>最后更新:</span>2018-03-06, 21:36:50</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/15/HTML5学习笔记之表格标签/" title="HTML5学习笔记之表格标签">https://titanjun.top/2017/06/15/HTML5学习笔记之表格标签/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/06/15/HTML5学习笔记之表格标签/　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/06/15/HTML5学习笔记之表单标签/">
+                    HTML5学习笔记之表单标签
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/15/HTML5学习笔记之基础标签/">
+                    HTML5学习笔记之基础标签
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-表格标签"><span class="toc-number">1.</span> <span class="toc-text">一.表格标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-作用"><span class="toc-number">2.</span> <span class="toc-text">1.作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-格式"><span class="toc-number">3.</span> <span class="toc-text">2.格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-表格中的属性"><span class="toc-number">4.</span> <span class="toc-text">3.表格中的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-示例代码"><span class="toc-number">4.1.</span> <span class="toc-text">1) 示例代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-展示样式"><span class="toc-number">4.2.</span> <span class="toc-text">2) 展示样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-表格中的其它标签"><span class="toc-number">5.</span> <span class="toc-text">4.表格中的其它标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-示例代码-1"><span class="toc-number">5.1.</span> <span class="toc-text">1) 示例代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-展示样式-1"><span class="toc-number">5.2.</span> <span class="toc-text">2) 展示样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-表格的结构"><span class="toc-number">6.</span> <span class="toc-text">5.表格的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-示例代码-2"><span class="toc-number">6.1.</span> <span class="toc-text">1) 示例代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-展示样式-2"><span class="toc-number">6.2.</span> <span class="toc-text">2) 展示样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-注意事项"><span class="toc-number">7.</span> <span class="toc-text">5.注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><span class="toc-number">8.</span> <span class="toc-text">对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/15/HTML5学习笔记之表单标签/" title="上一篇: HTML5学习笔记之表单标签">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/15/HTML5学习笔记之基础标签/" title="下一篇: HTML5学习笔记之基础标签">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/ReactNative之AsyncStorage本地存储/">ReactNative之AsyncStorage本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Node.js搭建Web服务器/">Node.js搭建Web服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/06/ReactNative之TabBariOS和TabNavigator/">ReactNative之TabBariOS和TabNavigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/React Native之导航组件NavigatorIOS和Navigator/">React Native之导航组件NavigatorIOS和Navigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/03/ReactNaive之ScrollView和ListView/">ReactNaive之ScrollView和ListView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Swift语音和文本的转换/">Swift语音和文本的转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/Swift之Vision 图像识别框架/">Swift之Vision 图像识别框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(AVFoundation)动态人脸识别(二)/">iOS黑科技之(AVFoundation)动态人脸识别(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(CoreImage)静态人脸识别(一)/">iOS黑科技之(CoreImage)静态人脸识别(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/16/Swift之二维码的生成、识别和扫描/">Swift之二维码的生成、识别和扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/11/Swift之删除HTML5页面的广告/">Swift之删除HTML5页面的广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/Swift之微信朋友圈图片浏览器/">Swift之微信朋友圈图片浏览器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/Swift开发之3DTouch实用演练/">Swift开发之3DTouch实用演练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/ReactNaive之CSS和Flex布局/">ReactNaive之CSS和Flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/17/Swift之Facebook的POP动画使用和实战/">Swift之Facebook的POP动画使用和实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/iOS出门必备之CoreAnimation(核心动画)/">iOS出门必备之CoreAnimation(核心动画)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/RxSwift+Moya网络请求之项目实战/">RxSwift+Moya网络请求之项目实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/21/RxSwift的使用详解02/">RxSwift的使用详解02</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/15/RxSwift的使用详解01/">RxSwift的使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/iOS之Scanner字符串扫描类/">iOS之Scanner字符串扫描类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/升级Swift4.0遇到的坑/">升级Swift4.0遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/09/JavaScript基本语法01/">JavaScript基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary/">Swift4.0新特性之String、Array和Dictionary</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 RuningTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

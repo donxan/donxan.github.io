@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="RuningTitan" />
+
+
+
+<meta name="description" content="上一篇介绍了Swift的常量/变量和循环,详情见: Swift3.0基本语法01">
+<meta name="keywords" content="语法,Swift3.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift基本语法02">
+<meta property="og:url" content="https://titanjun.top/2016/12/28/Swift3.0基本语法02/index.html">
+<meta property="og:site_name" content="RuningTitan&#39;s Blog">
+<meta property="og:description" content="上一篇介绍了Swift的常量/变量和循环,详情见: Swift3.0基本语法01">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-06T14:04:03.875Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift基本语法02">
+<meta name="twitter:description" content="上一篇介绍了Swift的常量/变量和循环,详情见: Swift3.0基本语法01">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="RuningTitan&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Swift基本语法02 | RuningTitan&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a9e4cdf8ccd2ba8"></script>
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">RuningTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AsyncStorage/">AsyncStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CATransition/">CATransition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIFilter/">CIFilter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreAnimation/">CoreAnimation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreImage/">CoreImage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dictionary/">Dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook-POP/">Facebook POP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ListView/">ListView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navigator/">Navigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NavigatorIOS/">NavigatorIOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scanner/">Scanner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScrollView/">ScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech/">Speech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift4-0/">Swift4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabBariOS/">TabBariOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabNavigator/">TabNavigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIBesizationv/">UIBesizationv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vision/">Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web服务器/">Web服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS扫描器/">iOS扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入坑/">入坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式编程/">响应式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RuningTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">RuningTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Swift3.0基本语法02" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/28/Swift3.0基本语法02/" class="article-date">
+      <time datetime="2016-12-28T03:44:30.000Z" itemprop="datePublished">2016-12-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift基本语法02
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语法/">语法</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>上一篇介绍了Swift的常量/变量和循环,详情见: <a href="http://www.jianshu.com/p/35696abdaf0f" target="_blank" rel="noopener">Swift3.0基本语法01</a></p>
+</blockquote>
+<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<h2 id="一、字符串的介绍"><a href="#一、字符串的介绍" class="headerlink" title="一、字符串的介绍"></a>一、字符串的介绍</h2><ul>
+<li>字符串在任何的开发中使用都是非常频繁的<ul>
+<li>OC和Swift中字符串的区别<ul>
+<li>在OC中字符串类型时NSString,在Swift中字符串类型是String</li>
+<li>OC中字符串@””,Swift中字符串””</li>
+</ul>
+</li>
+<li>使用 String 的原因<ul>
+<li>String 是一个结构体，性能更高</li>
+<li>NSString 是一个 OC 对象，性能略差</li>
+<li>String 支持直接遍历</li>
+<li>Swift 提供了 String 和 NSString 之间的无缝转换<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1&gt; 定义不可变字符串 : 使用let修饰</span></span><br><span class="line"><span class="comment">// let str : String = "hello swift"</span></span><br><span class="line">let str = <span class="string">"Hello Swift"</span></span><br><span class="line"><span class="comment">// str = "hello Objective-C"</span></span><br><span class="line"><span class="comment">// 2&gt; 定义可变字符串 : 使用var修饰</span></span><br><span class="line">var strM = <span class="string">"Hello World"</span></span><br><span class="line">strM = <span class="string">"Hello China"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>##二、 字符串的使用</p>
+<ul>
+<li>获取字符串的长度<ul>
+<li>获取字符集合,再获取集合的count属性</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>let length = str.characters.count</p>
+</blockquote>
+<ul>
+<li>字符串拼接<ul>
+<li>两个字符串的拼接</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let str1 = <span class="string">"字符串"</span></span><br><span class="line">let str2 = <span class="string">"拼接"</span></span><br><span class="line"><span class="comment">// OC拼接方式 NSString stringwithFormat:@"%@%@", str1, str2</span></span><br><span class="line">let str3 = str1 + str2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>字符串和其他数据类型的拼接</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let name = <span class="string">"tqj"</span></span><br><span class="line">let age = <span class="number">19</span></span><br><span class="line">let height = <span class="number">1.87</span></span><br><span class="line"></span><br><span class="line">let infoStr = <span class="string">"my nams is \(name), age is \(age), height is \(height)"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>字符串的格式化::比如时间:01:02</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let min = <span class="number">3</span></span><br><span class="line">let second = <span class="number">4</span></span><br><span class="line">let timeStr = String(format: <span class="string">"%02d:%02d"</span>, min, second)</span><br></pre></td></tr></table></figure>
+<h4 id="字符串的判断"><a href="#字符串的判断" class="headerlink" title="字符串的判断"></a>字符串的判断</h4><blockquote>
+<p>判断字符串是否为空</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let str = <span class="string">"1"</span></span><br><span class="line"><span class="comment">//输出false</span></span><br><span class="line">print(str.isEmpty)</span><br><span class="line"></span><br><span class="line">let str = <span class="string">""</span></span><br><span class="line"><span class="comment">//输出为true</span></span><br><span class="line">print(str.isEmpty)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>其他判断和操作(Swift3.0特性)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//判断是否包含某字符</span><br><span class="line">let str = &quot;Hello, playground&quot;</span><br><span class="line">let is1 = str.contains(&quot;ell&quot;)</span><br><span class="line">//输出true</span><br><span class="line">print(is1)</span><br><span class="line"></span><br><span class="line">//指定字符串的替换</span><br><span class="line">let str2 = str.replacingOccurrences(of: &quot;Hello&quot;, with: &quot;HELLO&quot;)</span><br><span class="line">print(str2)   </span><br><span class="line">//输出HELLO, playground</span><br><span class="line"></span><br><span class="line">//转为大写</span><br><span class="line">let s1 = str.localizedUppercase</span><br><span class="line">//转为小写</span><br><span class="line">let s2 = str.localizedLowercase</span><br></pre></td></tr></table></figure>
+<h4 id="字符串的截取"><a href="#字符串的截取" class="headerlink" title="字符串的截取"></a>字符串的截取</h4><ul>
+<li>Swift中提供了特殊的截取方式<ul>
+<li>该方式非常麻烦</li>
+<li>Index创建较为麻烦</li>
+</ul>
+</li>
+<li>简单的方式是将String转成NSString来使用<ul>
+<li>在标识符后加:as NSString即可</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let urlString = <span class="string">"www.520it.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4.1.方式一:</span></span><br><span class="line"><span class="comment">// 将String类型转成NSString类型,再进行截取: as NSString</span></span><br><span class="line">let header1 = (urlString as <span class="built_in">NSString</span>).substring(to: <span class="number">3</span>)</span><br><span class="line">let range1 = <span class="built_in">NSMakeRange</span>(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">let middle1 = (urlString as <span class="built_in">NSString</span>).substring(with: range1)</span><br><span class="line">let footer1 = (urlString as <span class="built_in">NSString</span>).substring(from: <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>swift截取方式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 4.2.方式二:</span><br><span class="line">let headerIndex = urlString.index(urlString.startIndex, offsetBy: 3)</span><br><span class="line">let header2 = urlString.substring(to: headerIndex)</span><br><span class="line"></span><br><span class="line">let startIndex = urlString.index(urlString.startIndex, offsetBy: 4)</span><br><span class="line">let endIndex = urlString.index(urlString.startIndex, offsetBy: 9)</span><br><span class="line">let range = Range(startIndex..&lt;endIndex)</span><br><span class="line">let middle2 = urlString.substring(with: range)</span><br><span class="line"></span><br><span class="line">let footerIndex = urlString.index(urlString.endIndex, offsetBy: -3)</span><br><span class="line">let footer2 = urlString.substring(from: footerIndex)</span><br></pre></td></tr></table></figure>
+<h2 id="三、数组的使用"><a href="#三、数组的使用" class="headerlink" title="三、数组的使用"></a>三、数组的使用</h2><h3 id="数组的介绍"><a href="#数组的介绍" class="headerlink" title="数组的介绍"></a>数组的介绍</h3><ul>
+<li>数组（Array）是一串有序的由相同类型元素构成的集合<ul>
+<li>数组中的集合元素是有序的，可以重复出现</li>
+<li>Swift中的数组<ul>
+<li>swift数组类型是Array，是一个泛型集合<h3 id="数组的初始化"><a href="#数组的初始化" class="headerlink" title="数组的初始化"></a>数组的初始化</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数组分成:可变数组和不可变数组<ul>
+<li>使用let修饰的数组是不可变数组</li>
+<li>使用var修饰的数组是可变数组<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1&gt; 定义不可变数组</span></span><br><span class="line">let array : [Any] = [<span class="string">"why"</span>, <span class="number">18</span>, <span class="number">1.88</span>]</span><br><span class="line"><span class="comment">// 2&gt; 定义可变数组: 使用var修饰</span></span><br><span class="line">var arrayM = [Any]()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="对数组的基本操作"><a href="#对数组的基本操作" class="headerlink" title="对数组的基本操作"></a>对数组的基本操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 增删改查</span><br><span class="line">// 2.1.添加元素</span><br><span class="line">arrayM.append(&quot;why&quot;)</span><br><span class="line">// 2.2.删除元素</span><br><span class="line">arrayM.remove(at: 0)</span><br><span class="line">// 2.3.修改元素</span><br><span class="line">arrayM[0] = &quot;yz&quot;</span><br><span class="line">// 2.4.获取元素</span><br><span class="line">let item = arrayM[1]</span><br></pre></td></tr></table></figure>
+<h3 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 3.1.获取数组的长度</span><br><span class="line">let count = array.count</span><br><span class="line"></span><br><span class="line">// 3.2.对数组进行遍历(可以获取到下标值)</span><br><span class="line">for i in 0..&lt; count &#123;</span><br><span class="line">    print(array[i])</span><br><span class="line">&#125;</span><br><span class="line">// 3.3.对数组进行遍历(设置遍历区间)</span><br><span class="line">for item in array &#123;</span><br><span class="line">    print(item)</span><br><span class="line">&#125;</span><br><span class="line">// 3.3.对数组进行遍历(不需要获取下标值)</span><br><span class="line">for item in array[0..&lt;2] &#123;</span><br><span class="line">    print(item)</span><br><span class="line">&#125;</span><br><span class="line">// 3.5.对数组进行遍历(既获取下标值,又获取元素)</span><br><span class="line">for (index, item) in array.enumerated() &#123;</span><br><span class="line">    print(index)</span><br><span class="line">    print(item)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数组的合并"><a href="#数组的合并" class="headerlink" title="数组的合并"></a>数组的合并</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果两个数组中存放的是相同的元素,那么在swift中可以对两个数组进行相加,直接合并</span></span><br><span class="line">let array1 = [<span class="string">"why"</span>, <span class="string">"yz"</span>]</span><br><span class="line">let array2 = [<span class="string">"lmj"</span>, <span class="string">"lnj"</span>]</span><br><span class="line">let array3 = [<span class="number">12</span>, <span class="number">20</span>, <span class="number">30</span>]</span><br><span class="line"></span><br><span class="line">let resultArray = array1 + array2</span><br><span class="line"><span class="comment">// let result = array1 + array3 错误写法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不建议一个数组中存放多种类型的数据</span></span><br><span class="line">var array3 = [<span class="number">2</span>, <span class="number">3</span>, <span class="string">"why"</span>]</span><br><span class="line">var array4 = [<span class="string">"yz"</span>, <span class="number">23</span>]</span><br><span class="line">array3 + array4</span><br></pre></td></tr></table></figure>
+<h2 id="四、字典"><a href="#四、字典" class="headerlink" title="四、字典"></a>四、字典</h2><h3 id="字典的介绍"><a href="#字典的介绍" class="headerlink" title="字典的介绍"></a>字典的介绍</h3><ul>
+<li>字典允许按照某个键来访问元素<ul>
+<li>字典是由两部分集合构成的，一个是键（key）集合，一个是值（value）集合</li>
+<li>键集合是不能有重复元素的，而值集合是可以重复的，键和值是成对出现的</li>
+<li>Swift中的字典<ul>
+<li>Swift字典类型是Dictionary，也是一个泛型集合<h3 id="字典的初始化"><a href="#字典的初始化" class="headerlink" title="字典的初始化"></a>字典的初始化</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Swift中的可变和不可变字典<ul>
+<li>使用let修饰的数组是不可变字典</li>
+<li>使用var修饰的数组是可变字典<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个可变字典</span></span><br><span class="line">var dict1 : [String : Any] = [String : Any]()</span><br><span class="line"><span class="comment">// 定义一个不可变字典</span></span><br><span class="line">let dict2 : [String : Any] = [<span class="string">"name"</span> : <span class="string">"why"</span>, <span class="string">"age"</span> : <span class="number">18</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="字典的基本使用"><a href="#字典的基本使用" class="headerlink" title="字典的基本使用"></a>字典的基本使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 2.1.添加元素</span><br><span class="line">dictM[&quot;name&quot;] = &quot;why&quot;</span><br><span class="line">dictM[&quot;age&quot;] = 18</span><br><span class="line">dictM[&quot;height&quot;] = 1.88</span><br><span class="line"></span><br><span class="line">// 2.2.删除元素</span><br><span class="line">dictM.removeValue(forKey: &quot;height&quot;)</span><br><span class="line">dictM</span><br><span class="line">// 2.3.修改元素</span><br><span class="line">dictM[&quot;name&quot;] = &quot;lmj&quot;</span><br><span class="line">dictM.updateValue(&quot;lnj&quot;, forKey: &quot;name&quot;)</span><br><span class="line">dictM</span><br><span class="line">// 2.4.查找元素</span><br><span class="line">dictM[&quot;age&quot;]</span><br></pre></td></tr></table></figure>
+<h3 id="字典的遍历"><a href="#字典的遍历" class="headerlink" title="字典的遍历"></a>字典的遍历</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 3.1.遍历字典中所有的key</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> dict.keys &#123;</span><br><span class="line">    print(key)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.2.遍历字典中所有的value</span></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> dict.values &#123;</span><br><span class="line">    print(value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.3.遍历字典中所有的key/value</span></span><br><span class="line"><span class="keyword">for</span> (key, value) <span class="keyword">in</span> dict &#123;</span><br><span class="line">    print(key, value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="字典的合并"><a href="#字典的合并" class="headerlink" title="字典的合并"></a>字典的合并</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var dict1 : [String : Any] = [<span class="string">"name"</span> : <span class="string">"why"</span>, <span class="string">"age"</span> : <span class="number">18</span>]</span><br><span class="line">let dict2 : [String : Any] = [<span class="string">"height"</span> : <span class="number">1.88</span>, <span class="string">"phoneNum"</span> : <span class="string">"+86 110"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">//let resultDict = dict1 + dict2字典不可以相加合并，只能遍历</span></span><br><span class="line"><span class="keyword">for</span> (key, value) <span class="keyword">in</span> dict2 &#123;</span><br><span class="line">    dict1[key] = value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="五、元组的使用"><a href="#五、元组的使用" class="headerlink" title="五、元组的使用"></a>五、元组的使用</h2><h3 id="元组的介绍"><a href="#元组的介绍" class="headerlink" title="元组的介绍"></a>元组的介绍</h3><ul>
+<li>元组是Swift中特有的,OC中并没有相关类型</li>
+<li>它是什么呢?<ul>
+<li>它是一种数据结构，在数学中应用广泛<br>  类似于数组或者字典</li>
+<li>可以用于定义一组数据</li>
+<li>组成元组类型的数据可以称为“元素”<h3 id="元组的定义"><a href="#元组的定义" class="headerlink" title="元组的定义"></a>元组的定义</h3></li>
+</ul>
+</li>
+<li>元组的常见写法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 3.使用元组保存信息(取出数据时,更加方便)</span><br><span class="line">// 3.1.写法一:</span><br><span class="line">let infoTuple0 = (&quot;why&quot;, 18, 1.88)</span><br><span class="line">let tupleName = infoTuple0.0</span><br><span class="line">let tupleAge = infoTuple0.1</span><br><span class="line">infoTuple0.0</span><br><span class="line">infoTuple0.1</span><br><span class="line">infoTuple0.2</span><br><span class="line"></span><br><span class="line">// 3.2.写法二:</span><br><span class="line">let infoTuple1 = (name : &quot;why&quot;,age : 18, height : 1.88)</span><br><span class="line">infoTuple1.age</span><br><span class="line">infoTuple1.name</span><br><span class="line">infoTuple1.height</span><br><span class="line"></span><br><span class="line">// 3.3.写法三:</span><br><span class="line">let (name, age, height) = (&quot;why&quot;, 18, 1.88)</span><br><span class="line">name</span><br><span class="line">age</span><br><span class="line">height</span><br></pre></td></tr></table></figure>
+<h2 id="六、可选类型"><a href="#六、可选类型" class="headerlink" title="六、可选类型"></a>六、可选类型</h2><h3 id="可选类型的介绍"><a href="#可选类型的介绍" class="headerlink" title="可选类型的介绍"></a>可选类型的介绍</h3><ul>
+<li>注意:<ul>
+<li>可选类型时swift中较理解的一个知识点</li>
+<li>暂时先了解,多利用Xcode的提示来使用</li>
+<li>随着学习的深入,慢慢理解其中的原理和好处</li>
+</ul>
+</li>
+<li>概念:<ul>
+<li>在OC开发中,如果一个变量暂停不使用,可以赋值为0(基本属性类型)或者赋值为空(对象类型)</li>
+<li>在swift开发中,nil也是一个特殊的类型.因为和真实的类型不匹配是不能赋值的(swift是强类型语言)</li>
+<li>但是开发中赋值nil,在所难免.因此推出了可选类型</li>
+</ul>
+</li>
+<li>可选类型的取值:<ul>
+<li>空值</li>
+<li>有值<h3 id="定义可选类型"><a href="#定义可选类型" class="headerlink" title="定义可选类型"></a>定义可选类型</h3></li>
+</ul>
+</li>
+<li>定义一个可选类型有两种写法<ul>
+<li>最基本的写法</li>
+<li>语法糖(常用)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 错误写法</span><br><span class="line">// let string : String = nil</span><br><span class="line">// 正确写法:</span><br><span class="line">// 注意:name的类型是一个可选类型,但是该可选类型中可以存放字符串.</span><br><span class="line">// 写法一:定义可选类型</span><br><span class="line">let name : Optional&lt;String&gt; = nil</span><br><span class="line">// 写法二:定义可选类型,语法糖(常用)</span><br><span class="line">let name : String? = nil</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="可选类型的使用"><a href="#可选类型的使用" class="headerlink" title="可选类型的使用"></a>可选类型的使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 演练一:给可选类型赋值</span><br><span class="line">// 定义可选类型</span><br><span class="line">var string : Optional&lt;String&gt; = nil</span><br><span class="line">// 给可选类型赋值</span><br><span class="line">// 错误写法:因此该可选类型中只能存放字符串</span><br><span class="line">string = 123</span><br><span class="line">// 正确写法:</span><br><span class="line">string = &quot;Hello world&quot;</span><br><span class="line">// 打印结果</span><br><span class="line">print(string)</span><br><span class="line">// 结果:Optional(&quot;Hello world&quot;)\n</span><br><span class="line">// 因为打印出来的是可选类型,所有会带Optional</span><br><span class="line">// 演练二:取出可选类型的值</span><br><span class="line">// 取出可选类型的真实值(解包)</span><br><span class="line">print(string!)</span><br><span class="line">// 结果:Hello world\n</span><br><span class="line">// 注意:如果可选类型为nil,强制取出其中的值(解包),会出错</span><br><span class="line">string = nil</span><br><span class="line">print(string!) // 报错</span><br><span class="line">// 正确写法:</span><br><span class="line">if string != nil &#123;</span><br><span class="line">    print(string!)</span><br><span class="line">&#125;</span><br><span class="line">// 简单写法:为了让在if语句中可以方便使用string</span><br><span class="line">// 可选绑定</span><br><span class="line">if let str = string &#123;</span><br><span class="line">    print(str)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="真实应用场景"><a href="#真实应用场景" class="headerlink" title="真实应用场景"></a>真实应用场景</h4><ul>
+<li>目的:让代码更加严谨<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 1.将字符串类型转成Int类型</span><br><span class="line">let str = &quot;123&quot;</span><br><span class="line">let result : Int? = Int(str) // nil/Int</span><br><span class="line">// 2.根据文件名称,读取路径</span><br><span class="line">let path : String? = Bundle.main.path(forResource: &quot;123.plist&quot;, ofType: nil)</span><br><span class="line">// 3.根据string,创建URL</span><br><span class="line">let url = URL(string: &quot;http://www.520it.com/小码哥&quot;)</span><br><span class="line">// 4.从字典中取内容</span><br><span class="line">let dict : [String : Any] = [&quot;name&quot; : &quot;why&quot;, &quot;age&quot; : 18]</span><br><span class="line">dict[&quot;name&quot;]</span><br><span class="line">dict[&quot;height&quot;]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="七、类型转化"><a href="#七、类型转化" class="headerlink" title="七、类型转化"></a>七、类型转化</h2><h3 id="类型转化"><a href="#类型转化" class="headerlink" title="类型转化"></a>类型转化</h3><ul>
+<li>常见的类型转化符号<ul>
+<li>as : 将实例转成某一种类型<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.定义数组</span></span><br><span class="line">let array : [AnyObject] = [<span class="number">12</span>, <span class="string">"why"</span>, <span class="number">1.88</span>]</span><br><span class="line"><span class="comment">// 2.取出第二个元素</span></span><br><span class="line">let objc = array[<span class="number">1</span>]</span><br><span class="line"><span class="comment">// 3.将objc转成真正的类型来使用</span></span><br><span class="line"><span class="comment">// 3.1.as? 将AnyObject转成可选类型,通过判断可选类型是否有值,来决定是否转化成功了</span></span><br><span class="line">let age = objc as? Int</span><br><span class="line">print(age) <span class="comment">// 结果:Optional(12)</span></span><br><span class="line"><span class="comment">// 3.2.as! 将AnyObject转成具体的类型,但是注意:如果不是该类型,那么程序会崩溃</span></span><br><span class="line">let age1 = objc as! Int</span><br><span class="line">print(age1) <span class="comment">// 结果:12</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="八、try-throw-代码实践"><a href="#八、try-throw-代码实践" class="headerlink" title="八、try throw 代码实践"></a>八、try throw 代码实践</h2><blockquote>
+<p>throw catch 是 Xcode 7.0 对错误处理的一个非常大的变化</p>
+<ul>
+<li>代码示例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 2. 反序列化</span><br><span class="line">// 1.获取json文件路径</span><br><span class="line">        let jsonPath = NSBundle.mainBundle().pathForResource(&quot;MainVCSettings.json&quot;, ofType: nil)</span><br><span class="line">        // 2.加载json数据</span><br><span class="line">        let jsonData = NSData(contentsOfFile: jsonPath!)</span><br><span class="line">        // 3.序列化json</span><br><span class="line">        do&#123;//解析成功</span><br><span class="line">             // throw是Xcode7最明显的一个变化, Xcode7之前都是通过传入error指针捕获异常, Xocode7开始通过try/catch捕获异常</span><br><span class="line">            let dictArray = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers)</span><br><span class="line"></span><br><span class="line">            // 遍历字典时候需要明确指明数组中的数据类型</span><br><span class="line">            for dict in dictArray  as! [[String:String]]</span><br><span class="line">            &#123;</span><br><span class="line">                 // 由于addChildVC方法参数不能为nil, 但是字典中取出来的值可能是nil, 所以需要加上!</span><br><span class="line">                addChildViewController(dict[&quot;vcName&quot;]!, title: dict[&quot;title&quot;]!, imageName: dict[&quot;imageName&quot;]!)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch&#123;//解析失败</span><br><span class="line">            print(error)</span><br><span class="line">            addChildViewController(&quot;HomeTableViewController&quot;, title: &quot;首页&quot;, imageName: &quot;tabbar_home&quot;)</span><br><span class="line">            addChildViewController(&quot;MessageTableViewController&quot;, title: &quot;消息&quot;, imageName: &quot;tabbar_message_center&quot;)</span><br><span class="line">            addChildViewController(&quot;DiscoverTableViewController&quot;, title: &quot;发现&quot;, imageName: &quot;tabbar_discover&quot;)</span><br><span class="line">            addChildViewController(&quot;ProfileTableViewController&quot;, title: &quot;我&quot;, imageName: &quot;tabbar_profile&quot;)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>如果能确保代码执行正确，可以强行 try!<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let array = try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>不过需要注意的是，一旦解析错误，程序会直接崩溃！</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
+        <p><span>发布时间:</span>2016-12-28, 11:44:30</p>
+        <p><span>最后更新:</span>2018-03-06, 22:04:03</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/28/Swift3.0基本语法02/" title="Swift基本语法02">https://titanjun.top/2016/12/28/Swift3.0基本语法02/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2016/12/28/Swift3.0基本语法02/　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/30/Swift3.0基本语法03/">
+                    Swift3.0基本语法03
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/25/Swift3.0之基本语法01/">
+                    Swift3.0之基本语法01
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、字符串的介绍"><span class="toc-number">1.</span> <span class="toc-text">一、字符串的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串的判断"><span class="toc-number">1.0.1.</span> <span class="toc-text">字符串的判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串的截取"><span class="toc-number">1.0.2.</span> <span class="toc-text">字符串的截取</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、数组的使用"><span class="toc-number">2.</span> <span class="toc-text">三、数组的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的介绍"><span class="toc-number">2.1.</span> <span class="toc-text">数组的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的初始化"><span class="toc-number">2.2.</span> <span class="toc-text">数组的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对数组的基本操作"><span class="toc-number">2.3.</span> <span class="toc-text">对数组的基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的遍历"><span class="toc-number">2.4.</span> <span class="toc-text">数组的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的合并"><span class="toc-number">2.5.</span> <span class="toc-text">数组的合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、字典"><span class="toc-number">3.</span> <span class="toc-text">四、字典</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的介绍"><span class="toc-number">3.1.</span> <span class="toc-text">字典的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的初始化"><span class="toc-number">3.2.</span> <span class="toc-text">字典的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的基本使用"><span class="toc-number">3.3.</span> <span class="toc-text">字典的基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的遍历"><span class="toc-number">3.4.</span> <span class="toc-text">字典的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典的合并"><span class="toc-number">3.5.</span> <span class="toc-text">字典的合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、元组的使用"><span class="toc-number">4.</span> <span class="toc-text">五、元组的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#元组的介绍"><span class="toc-number">4.1.</span> <span class="toc-text">元组的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元组的定义"><span class="toc-number">4.2.</span> <span class="toc-text">元组的定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、可选类型"><span class="toc-number">5.</span> <span class="toc-text">六、可选类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#可选类型的介绍"><span class="toc-number">5.1.</span> <span class="toc-text">可选类型的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义可选类型"><span class="toc-number">5.2.</span> <span class="toc-text">定义可选类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#可选类型的使用"><span class="toc-number">5.2.1.</span> <span class="toc-text">可选类型的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#真实应用场景"><span class="toc-number">5.2.2.</span> <span class="toc-text">真实应用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、类型转化"><span class="toc-number">6.</span> <span class="toc-text">七、类型转化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型转化"><span class="toc-number">6.1.</span> <span class="toc-text">类型转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">6.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、try-throw-代码实践"><span class="toc-number">7.</span> <span class="toc-text">八、try throw 代码实践</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/30/Swift3.0基本语法03/" title="上一篇: Swift3.0基本语法03">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/25/Swift3.0之基本语法01/" title="下一篇: Swift3.0之基本语法01">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/ReactNative之AsyncStorage本地存储/">ReactNative之AsyncStorage本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Node.js搭建Web服务器/">Node.js搭建Web服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/06/ReactNative之TabBariOS和TabNavigator/">ReactNative之TabBariOS和TabNavigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/React Native之导航组件NavigatorIOS和Navigator/">React Native之导航组件NavigatorIOS和Navigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/03/ReactNaive之ScrollView和ListView/">ReactNaive之ScrollView和ListView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Swift语音和文本的转换/">Swift语音和文本的转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/Swift之Vision 图像识别框架/">Swift之Vision 图像识别框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(AVFoundation)动态人脸识别(二)/">iOS黑科技之(AVFoundation)动态人脸识别(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(CoreImage)静态人脸识别(一)/">iOS黑科技之(CoreImage)静态人脸识别(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/16/Swift之二维码的生成、识别和扫描/">Swift之二维码的生成、识别和扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/11/Swift之删除HTML5页面的广告/">Swift之删除HTML5页面的广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/Swift之微信朋友圈图片浏览器/">Swift之微信朋友圈图片浏览器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/Swift开发之3DTouch实用演练/">Swift开发之3DTouch实用演练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/ReactNaive之CSS和Flex布局/">ReactNaive之CSS和Flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/17/Swift之Facebook的POP动画使用和实战/">Swift之Facebook的POP动画使用和实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/iOS出门必备之CoreAnimation(核心动画)/">iOS出门必备之CoreAnimation(核心动画)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/RxSwift+Moya网络请求之项目实战/">RxSwift+Moya网络请求之项目实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/21/RxSwift的使用详解02/">RxSwift的使用详解02</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/15/RxSwift的使用详解01/">RxSwift的使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/iOS之Scanner字符串扫描类/">iOS之Scanner字符串扫描类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/升级Swift4.0遇到的坑/">升级Swift4.0遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/09/JavaScript基本语法01/">JavaScript基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary/">Swift4.0新特性之String、Array和Dictionary</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 RuningTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

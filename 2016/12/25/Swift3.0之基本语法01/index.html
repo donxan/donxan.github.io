@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="RuningTitan" />
+
+
+
+<meta name="description" content="常量&amp;amp;变量 在Swift中规定：在定义一个标识符时必须明确说明该标识符是一个常量还是变量 使用let来定义常量，定义之后不可以修改 使用var来定义变量，定义之后可以修改">
+<meta name="keywords" content="语法,Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift3.0之基本语法01">
+<meta property="og:url" content="https://titanjun.top/2016/12/25/Swift3.0之基本语法01/index.html">
+<meta property="og:site_name" content="RuningTitan&#39;s Blog">
+<meta property="og:description" content="常量&amp;amp;变量 在Swift中规定：在定义一个标识符时必须明确说明该标识符是一个常量还是变量 使用let来定义常量，定义之后不可以修改 使用var来定义变量，定义之后可以修改">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-06T09:43:06.111Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift3.0之基本语法01">
+<meta name="twitter:description" content="常量&amp;amp;变量 在Swift中规定：在定义一个标识符时必须明确说明该标识符是一个常量还是变量 使用let来定义常量，定义之后不可以修改 使用var来定义变量，定义之后可以修改">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="RuningTitan&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Swift3.0之基本语法01 | RuningTitan&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a9e4cdf8ccd2ba8"></script>
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">RuningTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AsyncStorage/">AsyncStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CATransition/">CATransition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIFilter/">CIFilter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreAnimation/">CoreAnimation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreImage/">CoreImage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dictionary/">Dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook-POP/">Facebook POP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ListView/">ListView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navigator/">Navigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NavigatorIOS/">NavigatorIOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scanner/">Scanner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScrollView/">ScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech/">Speech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift4-0/">Swift4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabBariOS/">TabBariOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabNavigator/">TabNavigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIBesizationv/">UIBesizationv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vision/">Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web服务器/">Web服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS扫描器/">iOS扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入坑/">入坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式编程/">响应式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RuningTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">RuningTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Swift3.0之基本语法01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/25/Swift3.0之基本语法01/" class="article-date">
+      <time datetime="2016-12-25T07:23:03.000Z" itemprop="datePublished">2016-12-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift3.0之基本语法01
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语法/">语法</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="常量-amp-变量"><a href="#常量-amp-变量" class="headerlink" title="常量&amp;变量"></a>常量&amp;变量</h2><ul>
+<li>在Swift中规定：在定义一个标识符时必须明确说明该标识符是一个常量还是变量</li>
+<li>使用let来定义常量，定义之后不可以修改</li>
+<li>使用var来定义变量，定义之后可以修改</li>
+</ul>
+<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<h3 id="变量的基本使用"><a href="#变量的基本使用" class="headerlink" title="变量的基本使用"></a>变量的基本使用</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import <span class="built_in">UIKit</span></span><br><span class="line">let a : Int = <span class="number">10</span></span><br><span class="line"><span class="comment">// 错误写法,当一个标识符定义为常量时是不可以修改的</span></span><br><span class="line"><span class="comment">// a = 20</span></span><br><span class="line">var b : Int = <span class="number">20</span></span><br><span class="line"><span class="comment">//因为b定义为变量,因此是可以修改的</span></span><br><span class="line">b = <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<h3 id="常量和变量的使用注意"><a href="#常量和变量的使用注意" class="headerlink" title="常量和变量的使用注意:"></a>常量和变量的使用注意:</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import <span class="built_in">UIKit</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 常量使用注意：</span></span><br><span class="line"><span class="comment">    1&gt; 优先使用常量</span></span><br><span class="line"><span class="comment">    2&gt; 常量的本质</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 1.注意一：在开发中let/var在选择时优先使用常量，防止不小被修改掉（let）</span></span><br><span class="line"><span class="comment">// 如果一个标识符不需要修改，但是声明称了变量，那么编译器会报警告</span></span><br><span class="line"><span class="comment">// 2.常量的本质：</span></span><br><span class="line"><span class="comment">// 含义：指向的内存地址不可以修改，但是可以通过内存地址，找到对应的对象，之后修改对象内部的属性</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> OC中创建对象：</span></span><br><span class="line"><span class="comment">    UIView *view = [[UIView alloc] init];</span></span><br><span class="line"><span class="comment">    view = [[UIView alloc] init];</span></span><br><span class="line"><span class="comment"> Swift中创建对象：</span></span><br><span class="line"><span class="comment">    var view : UIView = UIView()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 变量的做法</span></span><br><span class="line"><span class="comment">    var view : UIView = UIView()</span></span><br><span class="line"><span class="comment">    view = UIView()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 创建常量View</span></span><br><span class="line">let view = <span class="built_in">UIView</span>()</span><br><span class="line"><span class="comment">// view = UIView() 错误做法</span></span><br><span class="line">view.alpha = <span class="number">0.5</span></span><br><span class="line"><span class="comment">// Swift中创建结构体：结构体类型()</span></span><br><span class="line">view.frame = <span class="built_in">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line"><span class="comment">// Swift中调用方法，统一使用点语法</span></span><br><span class="line">view.backgroundColor = <span class="built_in">UIColor</span>.red</span><br></pre></td></tr></table></figure>
+<h3 id="创建对象补充"><a href="#创建对象补充" class="headerlink" title="创建对象补充"></a>创建对象补充</h3><ul>
+<li>创建UIView对象，并且在UIView中添加UIButton</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import <span class="built_in">UIKit</span></span><br><span class="line"><span class="comment">// 1.创建UIView对象</span></span><br><span class="line"><span class="comment">// OC : [[UIView alloc] initWithFrame:CGRect]</span></span><br><span class="line">let viewRect = <span class="built_in">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">let view : <span class="built_in">UIView</span> = <span class="built_in">UIView</span>(frame: viewRect)</span><br><span class="line"><span class="comment">// 2.设置UIView的属性</span></span><br><span class="line">view.backgroundColor = <span class="built_in">UIColor</span>.orange</span><br><span class="line"><span class="comment">// 3.创建UIButton</span></span><br><span class="line">let btn : <span class="built_in">UIButton</span> = <span class="built_in">UIButton</span>(type: .custom)</span><br><span class="line"><span class="comment">// 4.设置UIButton的属性</span></span><br><span class="line">btn.frame = <span class="built_in">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">50</span>, height: <span class="number">50</span>)</span><br><span class="line">btn.backgroundColor = <span class="built_in">UIColor</span>.purple</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> Swift中枚举类型：</span></span><br><span class="line"><span class="comment"> 1&gt; 如果可以根据上下文推导出类型可以直接.具体的类型</span></span><br><span class="line"><span class="comment"> 2&gt; 如果根据上下文推导不出具体的类型，则需要：类型.具体的类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">btn.setTitle(<span class="string">"按钮"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">btn.setTitleColor(<span class="built_in">UIColor</span>.white, <span class="keyword">for</span>: .normal)</span><br><span class="line"><span class="comment">// 5.将btn添加到UIView中</span></span><br><span class="line">view.addSubview(btn)</span><br></pre></td></tr></table></figure>
+<h2 id="Swift中数据类型"><a href="#Swift中数据类型" class="headerlink" title="Swift中数据类型"></a>Swift中数据类型</h2><h3 id="Swift类型的介绍"><a href="#Swift类型的介绍" class="headerlink" title="Swift类型的介绍"></a>Swift类型的介绍</h3><ul>
+<li>Swift中的数据类型也有:整型/浮点型/对象类型/结构体类型等等<ul>
+<li>先了解整型和浮点型</li>
+<li>整型<ul>
+<li>有符号<ul>
+<li>Int8 : 有符号8位整型</li>
+<li>Int16 : 有符号16位整型</li>
+<li>Int32 : 有符号32位整型</li>
+<li>Int64 : 有符号64位整型</li>
+<li>Int ： 和平台相关(默认,相当于OC的NSInteger)</li>
+</ul>
+</li>
+<li>无符号<ul>
+<li>UInt8 : 无符号8位整型</li>
+<li>UInt16 : 无符号16位整型</li>
+<li>UInt32 : 无符号32位整型</li>
+<li>UInt64 : 无符号64位整型</li>
+<li>UInt : 和平台相关(常用,相当于OC的NSUInteger)(默认)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浮点型<ul>
+<li>Float : 32位浮点型</li>
+<li>Double : 64浮点型(默认)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个Int类型的变量m,并且赋值为10</span></span><br><span class="line">var m : Int = <span class="number">10</span></span><br><span class="line"><span class="comment">// 定义一个Double类型的常量n,并且赋值为3.14</span></span><br><span class="line">let n : Double = <span class="number">3.14</span></span><br></pre></td></tr></table></figure>
+<h3 id="Swift中的类型推导"><a href="#Swift中的类型推导" class="headerlink" title="Swift中的类型推导"></a>Swift中的类型推导</h3><ul>
+<li>Swift是强类型的语言<ul>
+<li>Swift中任何一个标识符都有明确的类型</li>
+<li>注意:<ul>
+<li>如果定义一个标识符时有直接进行赋值,那么标识符后面的类型可以省略.</li>
+<li>因为Swift有类型推导,会自动根据后面的赋值来决定前面的标识符的数据类型</li>
+<li>可以通过option+鼠标左键来查看变量的数据类型</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line">let m = 20</span><br><span class="line">let n = 30.5</span><br><span class="line">// 错误写法 :</span><br><span class="line">// Swift中没有隐式转化，不会自动将一个Int类型转成Double类型，因此不同类型之间不能进行运算</span><br><span class="line">// let result = m + n</span><br><span class="line">// 正确做法</span><br><span class="line">// 1&gt; 将Int类型转成Double ： Double(标识符)</span><br><span class="line">// 2&gt; 将Double类型转成Int ： Int(标识符)</span><br><span class="line">let result1 = Double(m) + n</span><br><span class="line">let result2 = m + Int(n)</span><br></pre></td></tr></table></figure>
+<h2 id="逻辑分支"><a href="#逻辑分支" class="headerlink" title="逻辑分支"></a>逻辑分支</h2><h3 id="一-分支的介绍"><a href="#一-分支的介绍" class="headerlink" title="一. 分支的介绍"></a>一. 分支的介绍</h3><ul>
+<li>分支即if/switch/三目运算符等判断语句</li>
+<li>通过分支语句可以控制程序的执行流程</li>
+</ul>
+<h3 id="二-if分支语句"><a href="#二-if分支语句" class="headerlink" title="二. if分支语句"></a>二. if分支语句</h3><ul>
+<li>和OC中if语句有一定的区别<ul>
+<li>判断句可以不加()</li>
+<li>在Swift的判断句中必须有明确的真假<ul>
+<li>不再有非0即真</li>
+<li>必须有明确的Bool值</li>
+<li>Bool有两个取值:false/true</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 演练一:</span><br><span class="line">let a = 10</span><br><span class="line">// 错误写法:</span><br><span class="line">//if a &#123;</span><br><span class="line">//    print(&quot;a&quot;)</span><br><span class="line">//&#125;</span><br><span class="line">// 正确写法</span><br><span class="line">if a &gt; 9 &#123;</span><br><span class="line">    print(a)</span><br><span class="line">&#125;</span><br><span class="line">// 演练二:</span><br><span class="line">let score = 87</span><br><span class="line">if score &lt; 60 &#123;</span><br><span class="line">    print(&quot;不及格&quot;)</span><br><span class="line">&#125; else if score &lt;= 70 &#123;</span><br><span class="line">    print(&quot;及格&quot;)</span><br><span class="line">&#125; else if score &lt;= 80 &#123;</span><br><span class="line">    print(&quot;良好&quot;)</span><br><span class="line">&#125; else if score &lt;= 90 &#123;</span><br><span class="line">    print(&quot;优秀&quot;)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    print(&quot;完美&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三-guard的使用"><a href="#三-guard的使用" class="headerlink" title="三.guard的使用"></a>三.guard的使用</h3><ul>
+<li>guard是Swift2.0新增的语法<ul>
+<li>它与if语句非常类似，它设计的目的是提高程序的可读性</li>
+<li>guard语句必须带有else语句，它的语法如下：<ul>
+<li>当条件表达式为true时候跳过else语句中的内容，执行语句组内容</li>
+<li>条件表达式为false时候执行else语句中的内容，跳转语句一般是return、break、continue和throw</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">guard 条件表达式 else &#123;</span><br><span class="line">    // 条换语句</span><br><span class="line">    break</span><br><span class="line">&#125;</span><br><span class="line">语句组</span><br><span class="line">//---例子---</span><br><span class="line">    var age = 18</span><br><span class="line">func online(age : Int) -&gt; Void &#123;</span><br><span class="line">    guard age &gt;= 18 else &#123;</span><br><span class="line">        print(&quot;回家去&quot;)</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    print(&quot;可以上网&quot;)</span><br><span class="line">&#125;</span><br><span class="line">online(age)</span><br></pre></td></tr></table></figure>
+<h3 id="四-switch分支"><a href="#四-switch分支" class="headerlink" title="四.switch分支"></a>四.switch分支</h3><h5 id="switch的介绍"><a href="#switch的介绍" class="headerlink" title="switch的介绍"></a>switch的介绍</h5><ul>
+<li>Switch作为选择结构中必不可少的语句也被加入到了Swift中<ul>
+<li>只要有过编程经验的人对Switch语句都不会感到陌生</li>
+<li>但苹果对Switch进行了大大的增强，使其拥有其他语言中没有的特性<h5 id="switch的简单使用"><a href="#switch的简单使用" class="headerlink" title="switch的简单使用"></a>switch的简单使用</h5></li>
+</ul>
+</li>
+<li>基本用法和OC用法一致<ul>
+<li>不同之处:<ul>
+<li>switch后可以不跟()</li>
+<li>case后可以不跟break(默认会有break)</li>
+</ul>
+</li>
+<li>例子:</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;     let sex = 0</span><br><span class="line">&gt;     switch sex &#123;</span><br><span class="line">&gt;     case 0 :</span><br><span class="line">&gt;         print(&quot;男&quot;)</span><br><span class="line">&gt;     case 1 :</span><br><span class="line">&gt;         print(&quot;女&quot;)</span><br><span class="line">&gt;     default :</span><br><span class="line">&gt;         print(&quot;其他&quot;)</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li><p>简单使用补充:</p>
+<ul>
+<li>一个case判断中,可以判断多个值</li>
+<li>多个值以,隔开<blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;     let sex = <span class="number">0</span></span><br><span class="line">&gt;     <span class="keyword">switch</span> sex &#123;</span><br><span class="line">&gt;     <span class="keyword">case</span> <span class="number">0</span>, <span class="number">1</span>:</span><br><span class="line">&gt;         print(<span class="string">"正常人"</span>)</span><br><span class="line">&gt;     <span class="keyword">default</span>:</span><br><span class="line">&gt;         print(<span class="string">"其他"</span>)</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>简单使用补充:</p>
+<ul>
+<li>如果希望出现之前的case穿透,则可以使用关键字fallthrough</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let sex = 0</span><br><span class="line">switch sex &#123;</span><br><span class="line">case 0:</span><br><span class="line">    fallthrough</span><br><span class="line">case 1:</span><br><span class="line">    print(&quot;正常人&quot;)</span><br><span class="line">default:</span><br><span class="line">    print(&quot;其他&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="switch支持区间判断"><a href="#switch支持区间判断" class="headerlink" title="switch支持区间判断"></a>switch支持区间判断</h5><ul>
+<li>什么是区间?<ul>
+<li>通常我们指的是数字区间:0~10,100~200<br>swift中的区间常见有两种</li>
+<li>半开半闭区间:0..&lt;10 表示:0~9,不包括10<br>  闭区间:0…10 表示:0~10</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let score = 88</span><br><span class="line">switch score &#123;</span><br><span class="line">case 0..&lt;60:</span><br><span class="line">    print(&quot;不及格&quot;)</span><br><span class="line">case 60..&lt;80:</span><br><span class="line">    print(&quot;几个&quot;)</span><br><span class="line">case 80..&lt;90:</span><br><span class="line">    print(&quot;良好&quot;)</span><br><span class="line">case 90..&lt;100:</span><br><span class="line">    print(&quot;优秀&quot;)</span><br><span class="line">default:</span><br><span class="line">    print(&quot;满分&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="循环使用"><a href="#循环使用" class="headerlink" title="循环使用"></a>循环使用</h2><h3 id="循环的介绍"><a href="#循环的介绍" class="headerlink" title="循环的介绍"></a>循环的介绍</h3><ul>
+<li>在开发中经常会需要循环</li>
+<li>常见的循环有:for/while/do while.</li>
+<li>这里我们只介绍for/while,因为for/while最常见<h3 id="for循环的写法"><a href="#for循环的写法" class="headerlink" title="for循环的写法"></a>for循环的写法</h3></li>
+<li>区间for循环<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">for i in 0..&lt;10 &#123;</span><br><span class="line">    print(i)</span><br><span class="line">&#125;</span><br><span class="line">for i in 0...10 &#123;</span><br><span class="line">    print(i)</span><br><span class="line">&#125;</span><br><span class="line">//特殊写法:如果在for循环中不需要用到下标i</span><br><span class="line">for _ in 0..&lt;10 &#123;</span><br><span class="line">print(&quot;hello&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><a href="http://www.jianshu.com/p/0f75c23773b5" target="_blank" rel="noopener">Swift中遍历方法for in 和 forEach的区别</a></p>
+</blockquote>
+<h3 id="while和do-while循环"><a href="#while和do-while循环" class="headerlink" title="while和do while循环"></a>while和do while循环</h3><ul>
+<li>while循环<ul>
+<li>while的判断句必须有正确的真假,没有非0即真</li>
+<li>while后面的()可以省略<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var a = 0</span><br><span class="line">while a &lt; 10 &#123;</span><br><span class="line">    a++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//--do while循环:使用repeat关键字来代替了do--</span><br><span class="line">    let b = 0</span><br><span class="line">repeat &#123;</span><br><span class="line">    print(b)</span><br><span class="line">    b++</span><br><span class="line">&#125; while b &lt; 20</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
+        <p><span>发布时间:</span>2016-12-25, 15:23:03</p>
+        <p><span>最后更新:</span>2018-03-06, 17:43:06</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/25/Swift3.0之基本语法01/" title="Swift3.0之基本语法01">https://titanjun.top/2016/12/25/Swift3.0之基本语法01/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2016/12/25/Swift3.0之基本语法01/　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/28/Swift3.0基本语法02/">
+                    Swift基本语法02
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/11/25/iOS之NSDate的Category/">
+                    iOS之NSDate的Category
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常量-amp-变量"><span class="toc-number">1.</span> <span class="toc-text">常量&amp;变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量的基本使用"><span class="toc-number">1.1.</span> <span class="toc-text">变量的基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常量和变量的使用注意"><span class="toc-number">1.2.</span> <span class="toc-text">常量和变量的使用注意:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建对象补充"><span class="toc-number">1.3.</span> <span class="toc-text">创建对象补充</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swift中数据类型"><span class="toc-number">2.</span> <span class="toc-text">Swift中数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Swift类型的介绍"><span class="toc-number">2.1.</span> <span class="toc-text">Swift类型的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Swift中的类型推导"><span class="toc-number">2.2.</span> <span class="toc-text">Swift中的类型推导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑分支"><span class="toc-number">3.</span> <span class="toc-text">逻辑分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-分支的介绍"><span class="toc-number">3.1.</span> <span class="toc-text">一. 分支的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-if分支语句"><span class="toc-number">3.2.</span> <span class="toc-text">二. if分支语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-guard的使用"><span class="toc-number">3.3.</span> <span class="toc-text">三.guard的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-switch分支"><span class="toc-number">3.4.</span> <span class="toc-text">四.switch分支</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#switch的介绍"><span class="toc-number">3.4.0.1.</span> <span class="toc-text">switch的介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#switch的简单使用"><span class="toc-number">3.4.0.2.</span> <span class="toc-text">switch的简单使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#switch支持区间判断"><span class="toc-number">3.4.0.3.</span> <span class="toc-text">switch支持区间判断</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#循环使用"><span class="toc-number">4.</span> <span class="toc-text">循环使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环的介绍"><span class="toc-number">4.1.</span> <span class="toc-text">循环的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for循环的写法"><span class="toc-number">4.2.</span> <span class="toc-text">for循环的写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#while和do-while循环"><span class="toc-number">4.3.</span> <span class="toc-text">while和do while循环</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/28/Swift3.0基本语法02/" title="上一篇: Swift基本语法02">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/11/25/iOS之NSDate的Category/" title="下一篇: iOS之NSDate的Category">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/ReactNative之AsyncStorage本地存储/">ReactNative之AsyncStorage本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Node.js搭建Web服务器/">Node.js搭建Web服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/06/ReactNative之TabBariOS和TabNavigator/">ReactNative之TabBariOS和TabNavigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/React Native之导航组件NavigatorIOS和Navigator/">React Native之导航组件NavigatorIOS和Navigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/03/ReactNaive之ScrollView和ListView/">ReactNaive之ScrollView和ListView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Swift语音和文本的转换/">Swift语音和文本的转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/Swift之Vision 图像识别框架/">Swift之Vision 图像识别框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(AVFoundation)动态人脸识别(二)/">iOS黑科技之(AVFoundation)动态人脸识别(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(CoreImage)静态人脸识别(一)/">iOS黑科技之(CoreImage)静态人脸识别(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/16/Swift之二维码的生成、识别和扫描/">Swift之二维码的生成、识别和扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/11/Swift之删除HTML5页面的广告/">Swift之删除HTML5页面的广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/Swift之微信朋友圈图片浏览器/">Swift之微信朋友圈图片浏览器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/Swift开发之3DTouch实用演练/">Swift开发之3DTouch实用演练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/ReactNaive之CSS和Flex布局/">ReactNaive之CSS和Flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/17/Swift之Facebook的POP动画使用和实战/">Swift之Facebook的POP动画使用和实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/iOS出门必备之CoreAnimation(核心动画)/">iOS出门必备之CoreAnimation(核心动画)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/RxSwift+Moya网络请求之项目实战/">RxSwift+Moya网络请求之项目实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/21/RxSwift的使用详解02/">RxSwift的使用详解02</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/15/RxSwift的使用详解01/">RxSwift的使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/iOS之Scanner字符串扫描类/">iOS之Scanner字符串扫描类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/升级Swift4.0遇到的坑/">升级Swift4.0遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/09/JavaScript基本语法01/">JavaScript基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary/">Swift4.0新特性之String、Array和Dictionary</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 RuningTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
