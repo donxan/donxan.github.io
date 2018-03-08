@@ -613,114 +613,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<p><img src="http://upload-images.jianshu.io/upload_images/647982-0d0c0be17835a633.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="一-video标签"><a href="#一-video标签" class="headerlink" title="一. video标签"></a>一. video标签</h2><h3 id="1-作用-播放视频"><a href="#1-作用-播放视频" class="headerlink" title="1. 作用: 播放视频"></a>1. 作用: 播放视频</h3><h3 id="2-video标签格式1"><a href="#2-video标签格式1" class="headerlink" title="2. video标签格式1:"></a>2. video标签格式1:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;&quot;&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="3-video标签的属性"><a href="#3-video标签的属性" class="headerlink" title="3. video标签的属性"></a>3. video标签的属性</h3><ul>
-<li>src: 告诉video标签需要播放的视频地址</li>
-<li>autoplay: 告诉video标签是否需要自动播放视频</li>
-<li>controls:告诉video标签是否需要显示控制条</li>
-<li>poster: 告诉video标签视频没有播放之前显示的占位图片</li>
-<li>loop: 告诉video标签循环播放视频. 一般用于做广告视频</li>
-<li>preload: 告诉video标签预加载视频, 但是需要注意preload和autoplay相冲, 如果设置了autoplay属性, 那么preload属性就会失效</li>
-<li>muted:告诉video标签视频静音</li>
-<li>width/height: 和img标签中的一模一样</li>
-</ul>
-<h3 id="4-video标签格式2"><a href="#4-video标签格式2" class="headerlink" title="4. video标签格式2"></a>4. video标签格式2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;video&gt;</span><br><span class="line">  &lt;source src=&quot;&quot; type=&quot;&quot;&gt;&lt;/source&gt;</span><br><span class="line">  &lt;source src=&quot;&quot; type=&quot;&quot;&gt;&lt;/source&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>第二种格式存在的意义</p>
-<ul>
-<li>由于视频数据非常非常的重要, 所以五大浏览器厂商都不愿意支持别人的视频格式, 所以导致了没有一种视频格式是所有浏览器都支持的这个时候W3C为了解决这个问题, 所以推出了第二个video标签的格式</li>
-<li>video标签的第二种格式存在的意义就是为了解决浏览器适配问题. video 元素支持三种视频格式, 我们可以把这三种格式都通过source标签指定给video标签, 那么以后当浏览器播放视频时它就会从这三种中选择一种自己支持的格式来播放</li>
-</ul>
-</li>
-<li><p>注意点:</p>
-<ul>
-<li>当前通过video标签的第二种格式虽然能够指定所有浏览器都支持的视频格式, 但是想让所有浏览器都通过video标签播放视频还有一个前提条件, 就是浏览器必须支持HTML5标签, 否则同样无法播放</li>
-<li>在过去的一些浏览器是不支持HTML5标签的, 所以为了让过去的一些浏览器也能够通过video标签来播放视频, 那么我们以后可以通过一个JS的框架叫做html5media来实现</li>
-</ul>
-</li>
-</ul>
-<h4 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=&quot;200&quot; height=&quot;100&quot; poster=&quot;http://www.youname.com/images/first.png&quot; autoplay=&quot;autoplay&quot; preload=&quot;none&quot; controls=&quot;controls&quot;&gt;</span><br><span class="line">    &lt;!--楚乔传,好像是第4集--&gt;</span><br><span class="line">    &lt;source src=&quot;https://v.qq.com/x/cover/dhzimk1qzznf301/t0024jjys1q.html?ptag=baidu.aladdin.tv&quot; &gt;</span><br><span class="line">    &lt;source src=&quot;http://www.youname.com/images/first.ogg&quot; /&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="二-audio标签"><a href="#二-audio标签" class="headerlink" title="二.audio标签"></a>二.audio标签</h2><h3 id="1-作用-播放音频"><a href="#1-作用-播放音频" class="headerlink" title="1. 作用: 播放音频"></a>1. 作用: 播放音频</h3><h3 id="2-格式"><a href="#2-格式" class="headerlink" title="2. 格式:"></a>2. 格式:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio src=&quot;&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">&lt;audio&gt;</span><br><span class="line">&lt;source src=&quot;&quot; type=&quot;&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="3-注意点"><a href="#3-注意点" class="headerlink" title="3. 注意点:"></a>3. 注意点:</h3><ul>
-<li>audio标签的使用和video标签的使用基本一样</li>
-<li>video中能够使用的属性在audio标签中大部分都能够使用, 并且功能都一样</li>
-<li>只不过有3个属性不能用,<code>height/width/poster</code></li>
-</ul>
-<h2 id="三-详情和概要标签"><a href="#三-详情和概要标签" class="headerlink" title="三.详情和概要标签"></a>三.详情和概要标签</h2><h3 id="1-作用"><a href="#1-作用" class="headerlink" title="1. 作用:"></a>1. 作用:</h3><ul>
-<li>利用summary标签来描述概要信息, 利用details标签来描述详情信息</li>
-<li>默认情况下是折叠展示, 想看见详情必须点击</li>
-</ul>
-<h3 id="2-格式-1"><a href="#2-格式-1" class="headerlink" title="2. 格式:"></a>2. 格式:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">    &lt;summary&gt;概要信息&lt;/summary&gt;</span><br><span class="line">    详情信息</span><br><span class="line">&lt;/details&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="3-示例代码"><a href="#3-示例代码" class="headerlink" title="3. 示例代码"></a>3. 示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--详情和概要标签--&gt;</span><br><span class="line">&lt;details&gt;</span><br><span class="line">    &lt;summary&gt;概要信息&lt;/summary&gt;</span><br><span class="line">    这里是详情: 是假的呢举案说法南石道街开发病那都是独守空房技能速度加快非农数据的看法山东矿机第三方看似简单妇女节看电视呢房间看电视开始的减肥纳斯达克今年初vdsfw的看法今年圣诞节开放男</span><br><span class="line">&lt;/details&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-3bd310e521eed10e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_9.png"></p>
-<h2 id="四-marquee标签"><a href="#四-marquee标签" class="headerlink" title="四. marquee标签"></a>四. marquee标签</h2><h3 id="1-作用-跑马灯效果"><a href="#1-作用-跑马灯效果" class="headerlink" title="1. 作用: 跑马灯效果"></a>1. 作用: 跑马灯效果</h3><h3 id="2-格式-2"><a href="#2-格式-2" class="headerlink" title="2. 格式:"></a>2. 格式:</h3><p><code>&lt;marquee&gt;内容&lt;/marquee&gt;</code></p>
-<h3 id="3-属性"><a href="#3-属性" class="headerlink" title="3. 属性:"></a>3. 属性:</h3><ul>
-<li>direction: 设置滚动方向 left/right/up/down</li>
-<li>scrollamount: 设置滚动速度, 值越大就越快</li>
-<li>loop: 设置滚动次数, 默认是-1, 也就是无限滚动</li>
-<li>behavior: 设置滚动类型 slide滚动到边界就停止, alternate滚动到边界就弹回</li>
-</ul>
-<h3 id="4-注意点"><a href="#4-注意点" class="headerlink" title="4. 注意点:"></a>4. 注意点:</h3><ul>
-<li>marquee标签不是W3C推荐的标签, 在W3C官方文档中也无法查询这个标签, 但是各大浏览器对这个标签的支持非常好</li>
-</ul>
-<h4 id="5-示例代码"><a href="#5-示例代码" class="headerlink" title="5. 示例代码"></a>5. 示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--跑马灯-marquee标签--&gt;</span><br><span class="line">&lt;marquee direction=&quot;left&quot; scrollamount=&quot;5&quot;&gt;跑马灯&lt;/marquee&gt;</span><br><span class="line">&lt;marquee direction=&quot;right&quot; scrollamount=&quot;3&quot;&gt;marquee&lt;/marquee&gt;</span><br><span class="line">&lt;marquee direction=&quot;up&quot; scrollamount=&quot;1&quot;&gt;标签&lt;/marquee&gt;</span><br><span class="line">&lt;marquee direction=&quot;down&quot; scrollamount=&quot;1&quot;&gt;down&lt;/marquee&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-6bc10b374b5e362e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_10.png"></p>
-<blockquote>
-<p>注: 实际的效果中,这三个是一直在滚动的,只是图片看不到效果,自己亲自实践感受下吧!</p>
-</blockquote>
-<h2 id="五-HTML中被废弃的标签"><a href="#五-HTML中被废弃的标签" class="headerlink" title="五. HTML中被废弃的标签"></a>五. HTML中被废弃的标签</h2><blockquote>
-<p>由于HTML现在只负责语义而不负责样式.但是HTML一开始有一部分标签连样式也包揽了, 所以这部分标签都被废弃了</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b、u、i、s </span><br><span class="line">- 以上标签自己带有样式, 有浓厚的样式作用, 今后一般都只作为CSS钩子使用</span><br><span class="line">- 原则: 不到万不得已,切记不要使用如上标签. 大家可以到BAT的网站查看源代码, 几乎看不到以上标签</span><br></pre></td></tr></table></figure>
-<ul>
-<li>b(Bold)作用: 将文本字体加粗<ul>
-<li>格式:<code>&lt;b&gt;将文本字体加粗&lt;/b&gt;</code></li>
-</ul>
-</li>
-<li>u(Underlined)作用: 为文本添加下划线<ul>
-<li>格式: <code>&lt;u&gt;为文本添加下划线&lt;/u&gt;</code></li>
-</ul>
-</li>
-<li>i(Italic)作用: 显示斜体文本效果<ul>
-<li>格式: <code>&lt;i&gt;显示斜体文本效果&lt;/i&gt;</code></li>
-</ul>
-</li>
-<li>s(Strikethrough)作用: 为文本添加删除线<ul>
-<li>格式: <code>&lt;s&gt;为文本添加删除线&lt;/s&gt;</code></li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>为了弥补 b、u、i、s标签的不足, W3C又推出了一组新的标签, 这些标签在显示上看似和buis没什么区别, 但是在语义上却有重大区别</p>
-</blockquote>
-<ul>
-<li>strong作用: 着重内容<ul>
-<li>格式:<code>&lt;strong&gt;着重内容&lt;/strong&gt;</code></li>
-</ul>
-</li>
-<li>ins(Inserted)作用: 新插入的文本<ul>
-<li>格式:<code>&lt;ins&gt;新插入的文本&lt;/ins&gt;</code></li>
-</ul>
-</li>
-<li>em(Emphasized)作用:强调内容<ul>
-<li>格式:<code>&lt;em&gt;强调内容&lt;/em&gt;</code></li>
-</ul>
-</li>
-<li>del(Deleted)作用: 已删除的文本<ul>
-<li>格式:<code>&lt;del&gt;已删除的文本&lt;/del&gt;</code></li>
-</ul>
-</li>
-</ul>
-<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--新增标签--&gt;</span><br><span class="line">&lt;strong&gt;着重内容&lt;/strong&gt;</span><br><span class="line">&lt;ins&gt;新插入的内容&lt;/ins&gt;</span><br><span class="line">&lt;em&gt;强调的内容&lt;/em&gt;</span><br><span class="line">&lt;del&gt;已经删除的内容&lt;/del&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-595238b7fcc8c71f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_11.png"></p>
-<blockquote>
-<ul>
-<li><h3 id="对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><a href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新" class="headerlink" title="对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新"></a>对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频<a href="http://study.163.com/course/introduction.htm?courseId=1003864040" target="_blank" rel="noopener">HTML5 + 跨平台开发</a>,只是不知道会不会继续更新</h3></li>
-</ul>
-</blockquote>
-
+              <p>HTML5学习笔记之音视频标签</p>
+          
       
     </div>
     
@@ -737,6 +631,80 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebStorm/">WebStorm</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2017/06/16/HTML5学习笔记之音视频标签/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-HTML5学习笔记之表单标签" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/15/HTML5学习笔记之表单标签/" class="article-date">
+      <time datetime="2017-06-15T12:18:00.000Z" itemprop="datePublished">2017-06-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>HTML5学习笔记之表单标签</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebStorm/">WebStorm</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2017/06/15/HTML5学习笔记之表单标签/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -901,207 +869,6 @@
 
 
   
-    <article id="post-HTML5学习笔记之表单标签" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/15/HTML5学习笔记之表单标签/" class="article-date">
-      <time datetime="2017-06-15T12:18:00.000Z" itemprop="datePublished">2017-06-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <a id="more"></a>
-<p><img src="http://upload-images.jianshu.io/upload_images/647982-9f6f2cfcfdf04c42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<ul>
-<li><p>1.作用: </p>
-<ul>
-<li>用于收集用户信息, 让用户填写、选择相关信息</li>
-</ul>
-</li>
-<li><p>2.格式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">    所有的表单内容，都要写在form标签里面</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>3.注意事项:</p>
-<ul>
-<li>所有的表单内容，都要写在form标签里面<br>form标签中有两个比较重要的属性action和method</li>
-</ul>
-</li>
-</ul>
-<h2 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a>input标签</h2><ul>
-<li><p>如果说td是表格最核心的标签, 那么input就是表单最核心的标签. nput标签有一个type属性, 这个属性有很多类型的取值, 取值的不同就决定了input标签的功能和外观不同</p>
-<h3 id="1-输入框"><a href="#1-输入框" class="headerlink" title="1.输入框"></a>1.输入框</h3><h4 id="1-1-明文输入框"><a href="#1-1-明文输入框" class="headerlink" title="1.1 明文输入框"></a>1.1 明文输入框</h4></li>
-<li><p>作用: 用户可以在输入框内输入内容</p>
-</li>
-<li>账号: <code>&lt;input type=&quot;text&quot;/&gt;</code><h4 id="1-2-暗文输入框"><a href="#1-2-暗文输入框" class="headerlink" title="1.2 暗文输入框"></a>1.2 暗文输入框</h4></li>
-<li>作用: 用户可以在输入框内输入内容</li>
-<li>密码: <code>&lt;input type=&quot;password&quot;/&gt;</code><h4 id="1-3-给输入框设置默认值"><a href="#1-3-给输入框设置默认值" class="headerlink" title="1.3 给输入框设置默认值"></a>1.3 给输入框设置默认值</h4></li>
-<li>账号: <code>&lt;input type=&quot;text&quot;  value=&quot;tqj&quot;/&gt;</code></li>
-<li>密码: <code>&lt;input type=&quot;password&quot; value=&quot;0929&quot;/&gt;</code><h4 id="1-4-规定输入字段中的字符的最大长度"><a href="#1-4-规定输入字段中的字符的最大长度" class="headerlink" title="1.4 规定输入字段中的字符的最大长度"></a>1.4 规定输入字段中的字符的最大长度</h4></li>
-<li>账号: <code>&lt;input type=&quot;text&quot; name=&quot;fullname&quot; maxlength=&quot;8&quot; /&gt;</code></li>
-</ul>
-<h4 id="1-5-代码"><a href="#1-5-代码" class="headerlink" title="1.5 代码"></a>1.5 代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">    &lt;!--明文输入框--&gt;</span><br><span class="line">    &lt;p&gt;账号: &lt;input type=&quot;text&quot; /&gt;&lt;/p&gt;</span><br><span class="line">    &lt;!--暗文输入框--&gt;</span><br><span class="line">    &lt;p&gt;密码: &lt;input type=&quot;password&quot; /&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--p标签换行--&gt;</span><br><span class="line">    &lt;p&gt;账号: &lt;input type=&quot;text&quot; value=&quot;tqj&quot; /&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;密码: &lt;input type=&quot;password&quot; value=&quot;0929&quot; /&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;p&gt;最大长度: &lt;input type=&quot;text&quot; maxlength=&quot;5&quot;/&gt;&lt;/p&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-39cbc042f6cfbdb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_22.png"></p>
-<h3 id="2-单选框-radio"><a href="#2-单选框-radio" class="headerlink" title="2. 单选框(radio)"></a>2. 单选框(radio)</h3><ul>
-<li>作用: 用户只能从众多选项中选择其中一个</li>
-<li>单选按钮，天生是不互斥的，如果想互斥，必须要有相同的name属性</li>
-</ul>
-<h3 id="3-多选框-checkbox"><a href="#3-多选框-checkbox" class="headerlink" title="3. 多选框(checkbox)"></a>3. 多选框(checkbox)</h3><ul>
-<li>作用: 用户只能从众多选项中选择多个</li>
-<li>复选框，最好也是有相同的name（虽然他不需要互斥，但是也要有相同的name）</li>
-</ul>
-<h3 id="4-label标签"><a href="#4-label标签" class="headerlink" title="4. label标签"></a>4. label标签</h3><ul>
-<li>作用: label标签不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性</li>
-<li>注意事项:<br>表单元素要有一个id，然后label标签就有一个for属性，for属性和id相同就表示绑定了<br>所有表单元素都可以通过label绑定</li>
-</ul>
-<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--单选框--&gt;</span><br><span class="line">&lt;!--checked属性,为默认值--&gt;</span><br><span class="line">&lt;label for=&quot;sex&quot;&gt;性别: &lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; checked /&gt; &lt;label for=&quot;sex&quot;&gt;男&lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; /&gt; &lt;label for=&quot;sex&quot;&gt;女&lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; /&gt; &lt;label for=&quot;sex&quot;&gt;妖&lt;/label&gt;</span><br><span class="line">&lt;p&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--多选框--&gt;</span><br><span class="line">&lt;label for=&quot;课程&quot;&gt;课程: &lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; name=&quot;课程&quot; checked /&gt; &lt;label for=&quot;课程&quot;&gt;HTML5 &lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; name=&quot;课程&quot; checked /&gt; &lt;label for=&quot;课程&quot;&gt;Swift &lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; name=&quot;课程&quot; /&gt; &lt;label for=&quot;课程&quot;&gt;OC &lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; name=&quot;课程&quot; /&gt; &lt;label for=&quot;课程&quot;&gt;CSS &lt;/label&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-141c73672aca00ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_1.png"></p>
-<h3 id="5-按钮"><a href="#5-按钮" class="headerlink" title="5. 按钮"></a>5. 按钮</h3><h4 id="5-1-普通按钮"><a href="#5-1-普通按钮" class="headerlink" title="5.1 普通按钮"></a>5.1 普通按钮</h4><ul>
-<li>作用: 定义可点击按钮（多数情况下，用于通过 JavaScript 启动脚本）<br><code>&lt;input type=&quot;button&quot; value=&quot;点我丫&quot; /&gt;</code></li>
-</ul>
-<h4 id="5-2-图片按钮"><a href="#5-2-图片按钮" class="headerlink" title="5.2 图片按钮"></a>5.2 图片按钮</h4><ul>
-<li>作用:定义图像形式的提交按钮<br><code>&lt;input type=&quot;image&quot; src=&quot;1.png&quot; /&gt;</code></li>
-</ul>
-<h4 id="5-3-还原按钮"><a href="#5-3-还原按钮" class="headerlink" title="5.3 还原按钮"></a>5.3 还原按钮</h4><ul>
-<li>作用: 定义还原按钮。还原按钮会清除表单中的所有数据<br><code>&lt;input type=&quot;reset&quot; /&gt;</code></li>
-<li>注意事项:<br>这个按钮不需要写value自动就有“还原”文字<br>reset只对form表单中表单项有效果</li>
-</ul>
-<h4 id="5-4-提交按钮"><a href="#5-4-提交按钮" class="headerlink" title="5.4 提交按钮"></a>5.4 提交按钮</h4><ul>
-<li>作用:定义提交按钮。提交按钮会把表单数据发送到action属性指定的页面<br><code>&lt;input type=&quot;submit&quot; /&gt;</code></li>
-<li>注意事项:<ul>
-<li>这个按钮不需要写value自动就有“提交”文字</li>
-<li>要想通过submit提交数据到服务器, 被提交的表单项都必须设置name属性</li>
-<li>默认明文传输(GET)不安全, 可以将method属性设置为POST改为非明文传输(学到Ajax再理解)</li>
-</ul>
-</li>
-</ul>
-<h4 id="示例代码-1"><a href="#示例代码-1" class="headerlink" title="示例代码"></a>示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--按钮--&gt;</span><br><span class="line">&lt;!--普通按钮--&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;点我有奖&quot;&gt;</span><br><span class="line">&lt;!--图片按钮--&gt;</span><br><span class="line">&lt;input type=&quot;image&quot; src=&quot;http://note.youdao.com/favicon.ico&quot;&gt;</span><br><span class="line">&lt;!--还原按钮--&gt;</span><br><span class="line">&lt;input type=&quot;reset&quot;&gt;</span><br><span class="line">&lt;!--提交按钮--&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-df3952d22685cb6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_3.png"></p>
-<h3 id="6-隐藏域"><a href="#6-隐藏域" class="headerlink" title="6. 隐藏域"></a>6. 隐藏域</h3><ul>
-<li>作用: 定义隐藏的输入字段<input type="hidden"></li>
-<li>暂时不用掌握, 在Ajax中对数据的CRUD操作有非常大的作用</li>
-</ul>
-<h3 id="7-取色器和日期选择器"><a href="#7-取色器和日期选择器" class="headerlink" title="7.取色器和日期选择器"></a>7.取色器和日期选择器</h3><ul>
-<li>取色器: <code>&lt;input type=&quot;color&quot;&gt;</code></li>
-<li>日期选色器: <code>&lt;input type=&quot;date&quot;&gt;</code></li>
-<li>HTML5中input类型增加了很多type类型, 例如color、date但是都不兼容, 后面讲到浏览器兼容时会重点讲解<blockquote>
-<ul>
-<li>亲自测试,在Mac电脑的Safari浏览器不兼容,只能用谷歌浏览器</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--取色器--&gt;</span><br><span class="line">&lt;label&gt;颜色: &lt;/label&gt; &lt;input type=&quot;color&quot;&gt;</span><br><span class="line">&lt;!--换行--&gt;</span><br><span class="line">&lt;p&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--日期选色器--&gt;</span><br><span class="line">&lt;label&gt;时间: &lt;/label&gt; &lt;input type=&quot;date&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-af39ca426f317aec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_5.png"></p>
-<h3 id="8-数据列表"><a href="#8-数据列表" class="headerlink" title="8. 数据列表"></a>8. 数据列表</h3><ul>
-<li><p>作用: 给输入框绑定待选项</p>
-</li>
-<li><p>格式:</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  &lt;option&gt;待选项内容&lt;/option&gt;</span><br><span class="line">&lt;/datalist&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>如何给输入框绑定待选列表</p>
-<ul>
-<li>搞一个输入框</li>
-<li>搞一个datalist列表</li>
-<li>给datalist列表标签添加一个id</li>
-<li>给输入框添加一个list属性,将datalist的id对应的值赋值给list属性即可</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--数据列表--&gt;</span><br><span class="line">请选择车型: &lt;input type=&quot;text&quot; list=&quot;cars&quot;&gt;</span><br><span class="line">&lt;datalist id=&quot;cars&quot;&gt;</span><br><span class="line">    &lt;option&gt;奔驰&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;宝马&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;奥迪&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;别克&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;奔腾&lt;/option&gt;</span><br><span class="line">    &lt;option&gt;奔跑&lt;/option&gt;</span><br><span class="line">&lt;/datalist&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-5e9e1c3b75a16426.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_6.png"></p>
-<ul>
-<li>当输入某一个字符时,会自动根据datalist列表查询,并显示对应的列表,如图:</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-4973010e14b7d6c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_7.png"></p>
-<h2 id="三-多行文本框-文本域"><a href="#三-多行文本框-文本域" class="headerlink" title="三. 多行文本框(文本域)"></a>三. 多行文本框(文本域)</h2><ul>
-<li><p>作用: textarea标签用于在表单中定义多行的文本输入控件</p>
-<ul>
-<li>cols属性表示columns“列”, 规定文本区内的可见宽度</li>
-<li>rows属性表示rows“行”, 规定文本区内的可见高度</li>
-</ul>
-</li>
-<li><p>格式:<br><code>&lt;textarea cols=&quot;30&quot; rows=&quot;10&quot;&gt;</code>默认<code>&lt;/textarea&gt;</code></p>
-</li>
-<li><p>注意点:</p>
-<ul>
-<li>可以通过cols和rows来指定输入框的宽度和高度</li>
-<li>默认情况下输入框是可以手动拉伸的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--禁止手动拉伸--&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">  textarea&#123;</span><br><span class="line">      resize: none;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="四-下拉列表"><a href="#四-下拉列表" class="headerlink" title="四. 下拉列表"></a>四. 下拉列表</h2><ul>
-<li>作用: select标签和ul、ol、dl一样，都是组标签. 用于创建表单中的待选列表<ul>
-<li>和radio、checkbox一样select也可以设置默认值, 通过selected属性设置(本身默认是第一个选项)</li>
-</ul>
-</li>
-<li>给下拉列表添加分组</li>
-</ul>
-<h3 id="示例代码-2"><a href="#示例代码-2" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--给下拉表添加分组--&gt;</span><br><span class="line">&lt;select&gt;</span><br><span class="line">    &lt;optgroup label=&quot;杭州市&quot;&gt;</span><br><span class="line">        &lt;option&gt;江干区&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;西湖区&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;滨江区&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;下城区&lt;/option&gt;</span><br><span class="line">    &lt;/optgroup&gt;</span><br><span class="line">    &lt;optgroup label=&quot;烟台市&quot;&gt;</span><br><span class="line">        &lt;option&gt;莱山区&lt;/option&gt;</span><br><span class="line">        &lt;option&gt;芝罘区&lt;/option&gt;</span><br><span class="line">    &lt;/optgroup&gt;</span><br><span class="line">    &lt;option selected&gt;北京市&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-c9638bcbcf8e60f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170615_8.png"></p>
-<blockquote>
-<ul>
-<li><h3 id="对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><a href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新" class="headerlink" title="对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新"></a>对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频<a href="http://study.163.com/course/introduction.htm?courseId=1003864040" target="_blank" rel="noopener">HTML5 + 跨平台开发</a>,只是不知道会不会继续更新</h3></li>
-</ul>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebStorm/">WebStorm</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
     <article id="post-HTML5学习笔记之基础标签" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1131,217 +898,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<h2 id="一-列表标签"><a href="#一-列表标签" class="headerlink" title="一.列表标签"></a>一.列表标签</h2><h3 id="1-无序列表-unordered-list"><a href="#1-无序列表-unordered-list" class="headerlink" title="1.无序列表(unordered list)"></a>1.无序列表(unordered list)</h3><ul>
-<li>无序 : 没有先后之分</li>
-</ul>
-<h4 id="1-作用"><a href="#1-作用" class="headerlink" title="1) 作用:"></a>1) 作用:</h4><ul>
-<li>给一堆内容添加无序列表语义(一个没有先后顺序整体), 列表中的条目是不分先后</li>
-</ul>
-<h4 id="2-格式"><a href="#2-格式" class="headerlink" title="2) 格式:"></a>2) 格式:</h4><ul>
-<li>li 英文是 list item, 翻译为列表项</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    &lt;h4&gt;中国城市列举(CN)&lt;/h4&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;北京&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;上海&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;广州&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;杭州&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-6170aa7da4bd362f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_4.png"></p>
-<h4 id="3-ul应用场景"><a href="#3-ul应用场景" class="headerlink" title="3) ul应用场景:"></a>3) ul应用场景:</h4><ul>
-<li>导航条</li>
-<li>商品列表等</li>
-<li>新闻列表</li>
-<li><h4 id="4-注意"><a href="#4-注意" class="headerlink" title="4) 注意:"></a>4) 注意:</h4></li>
-<li>其实ul还有一个type属性, 可以修改先导符号的样式, 取值有disc、square、circle几种<ul>
-<li>但是由于样式将来都是通过css来完成, 所以这里就不给大家介绍了</li>
-</ul>
-</li>
-<li>ul是一个组标签, 一定是一坨一坨的出现, 也就是说li标签不能单独存在, 必须包裹在ul里面</li>
-<li>由于ul和li是一个整体, 所以ul里面不推荐包裹其它标签, 永远记住ul里面最好只写li标签</li>
-<li>虽然ul中推荐只能写li标签, 但是li标签是一个容器标签, li标签中可以添加任意标签, 甚至可以添加ul标签</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;h4&gt;课程安排&lt;/h4&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">        上午</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;HTML5&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;CSS&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">        下午</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;OC&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;Swift&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line"></span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-3e921651c9eb3c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_5.png"></p>
-<h3 id="2-有序列表-ordered-list"><a href="#2-有序列表-ordered-list" class="headerlink" title="2.有序列表(ordered list)"></a>2.有序列表(ordered list)</h3><h4 id="1-作用-给一堆内容添加有序列表语义-一个有顺序整体-列表中的条目有先后之分"><a href="#1-作用-给一堆内容添加有序列表语义-一个有顺序整体-列表中的条目有先后之分" class="headerlink" title="1) 作用: 给一堆内容添加有序列表语义(一个有顺序整体), 列表中的条目有先后之分"></a>1) 作用: 给一堆内容添加有序列表语义(一个有顺序整体), 列表中的条目有先后之分</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;h4&gt;中国房价排行榜&lt;/h4&gt;</span><br><span class="line">&lt;ol&gt;</span><br><span class="line">    &lt;li&gt;北京&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;上海&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;杭州&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;广州&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;深圳&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-13f9b32478195bac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_6.png"></p>
-<h4 id="2-ol应用场景"><a href="#2-ol应用场景" class="headerlink" title="2) ol应用场景:"></a>2) ol应用场景:</h4><ul>
-<li>xxx排行榜</li>
-<li>其实ol应用场景并不多, 因为能用ol做的用ul都能做</li>
-<li>ul的常见属性start、type属性, 可以修改先导符号的样式和序号</li>
-</ul>
-<h2 id="二-定义列表-definition-list"><a href="#二-定义列表-definition-list" class="headerlink" title="二.定义列表(definition list)"></a>二.定义列表(definition list)</h2><h4 id="1-作用-1"><a href="#1-作用-1" class="headerlink" title="1) 作用:"></a>1) 作用:</h4><ul>
-<li><p>给一堆内容添加列表语义, 通过dt罗列出列表的条目, 然后再通过dd给每个条目进行相应的描述</p>
-<h4 id="2-格式-1"><a href="#2-格式-1" class="headerlink" title="2) 格式:"></a>2) 格式:</h4></li>
-<li><p>dt英文definition title, 翻译为定义标题</p>
-</li>
-<li>dd英文definition description, 翻译为定义描述信息</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;北京&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;国家的首都&lt;/dd&gt;</span><br><span class="line">    &lt;dt&gt;杭州&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;坑爹,房价上涨最快的地方&lt;/dd&gt;</span><br><span class="line">&lt;/dl&gt;</span><br><span class="line"></span><br><span class="line">![Snip20170614_7.png](http://upload-images.jianshu.io/upload_images/4122543-2d304b7b5f58b8c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br></pre></td></tr></table></figure>
-<h4 id="3-dl应用场景"><a href="#3-dl应用场景" class="headerlink" title="3) dl应用场景:"></a>3) dl应用场景:</h4><ul>
-<li>网站底部相关信息<ul>
-<li>但凡看到一堆内容都是用于描述某一个内容的时候就要想到dl</li>
-</ul>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-4429f20791990a71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_9.png"></p>
-<h4 id="4-注意事项"><a href="#4-注意事项" class="headerlink" title="4) 注意事项:"></a>4) 注意事项:</h4><ul>
-<li>dl是一个<code>组标签</code>, 一定是一坨一坨的出现, 也就是说<code>dt</code>和<code>dd</code>标签不能单独存在, 必须包裹在<code>dl</code>里面</li>
-<li>由于<code>dl</code>和<code>dt</code>、<code>dd</code>是一个整体, 所以<code>dl</code>里面不推荐包裹其它标签</li>
-<li><code>dd</code>和<code>dt</code>和<code>li</code>标签一样是容器标签, 里面可以添加任意标签</li>
-<li>定义列表非常灵活, 可以给一个<code>dt</code>配置多个<code>dd</code>, 但是最好不要出现多个<code>dt</code>对应一个<code>dd</code>, <code>dd</code>的语义是描述离它最近的一个<code>dt</code>, 所以其它<code>dt</code>相当于没有描述, 而定义列表存在的意义就是既可以列出每一个条目又可以对每一个条目进行描述</li>
-<li>定义列表非常灵活, 可以将多个<code>dt+dd</code>组合拆分为多个<code>dl</code></li>
-</ul>
-<h2 id="三-H系列标签-Header-1-Header-6"><a href="#三-H系列标签-Header-1-Header-6" class="headerlink" title="三.H系列标签(Header 1~Header 6)"></a>三.H系列标签(Header 1~Header 6)</h2><h4 id="1-作用-2"><a href="#1-作用-2" class="headerlink" title="1.作用:"></a>1.作用:</h4><ul>
-<li>用于给文本添加标题语义</li>
-<li>格式:</li>
-<li><h1>xxxxxx</h1><h4 id="2-注意点"><a href="#2-注意点" class="headerlink" title="2.注意点:"></a>2.注意点:</h4></li>
-<li>H标签是用来给文本添加标题语义的, 而不是用来修改文本的样式的</li>
-<li>H标签一共有6个, 从H1~H6, 最多就只能到6, 超过6则无效</li>
-<li>被H系列标签包裹的内容会独占一行</li>
-<li>在H系列的标签中, H1最大, H6最小</li>
-<li>在企业开发中, 一定要慎用H系列的标签, 特别是H1标签. 在企业开发中一般情况下一个界面中只能出现一个H1标签(和SEO有关)</li>
-</ul>
-<h2 id="四-P标签-Paragraph"><a href="#四-P标签-Paragraph" class="headerlink" title="四.P标签(Paragraph)"></a>四.P标签(Paragraph)</h2><h4 id="1-作用-3"><a href="#1-作用-3" class="headerlink" title="1.作用:"></a>1.作用:</h4><ul>
-<li>告诉浏览器哪些文字是一个段落</li>
-<li>格式:</li>
-<li><p>xxxxxxxx</p><h4 id="2-注意点-1"><a href="#2-注意点-1" class="headerlink" title="2.注意点:"></a>2.注意点:</h4></li>
-<li>在浏览器中会单独占一行</li>
-</ul>
-<h2 id="五-Hr标签-Horizontal-Rule"><a href="#五-Hr标签-Horizontal-Rule" class="headerlink" title="五.Hr标签(Horizontal Rule)"></a>五.Hr标签(Horizontal Rule)</h2><h4 id="1-作用-4"><a href="#1-作用-4" class="headerlink" title="1.作用:"></a>1.作用:</h4><ul>
-<li>在浏览器上显示一条分割线</li>
-<li>格式:</li>
-<li><hr><h4 id="2-注意点-2"><a href="#2-注意点-2" class="headerlink" title="2.注意点:"></a>2.注意点:</h4></li>
-<li>在浏览器中会单独占一行</li>
-<li>通过我的观察发现HR标签可以写/也可以不写<ul>
-<li>如果不写/那么就是按照HTML的规范来编写</li>
-<li>如果写上/那么就是按照XHTML的规范来编写.</li>
-</ul>
-</li>
-<li>由于hr标签是用来修改样式的, 所以不推荐使用. 今后开发中添加水平线一般都使用CSS盒子来做</li>
-</ul>
-<h2 id="六-HTML注释-Annotation"><a href="#六-HTML注释-Annotation" class="headerlink" title="六.HTML注释(Annotation)"></a>六.HTML注释(Annotation)</h2><h4 id="1-什么是注释"><a href="#1-什么是注释" class="headerlink" title="1.什么是注释?"></a>1.什么是注释?</h4><h4 id="1-注释格式"><a href="#1-注释格式" class="headerlink" title="1.注释格式"></a>1.注释格式</h4><p><code>&lt;!--被注释的内容--&gt;</code></p>
-<h4 id="2-注意点-3"><a href="#2-注意点-3" class="headerlink" title="2.注意点:"></a>2.注意点:</h4><ul>
-<li>被注释的内容不会在浏览器中显示, 注释是写给我们自己看的<ul>
-<li>注释不能嵌套使用</li>
-</ul>
-</li>
-</ul>
-<p><code>&lt;!--&lt;!--被注释的内容--&gt;--&gt;</code></p>
-<h4 id="3-快捷键-ctrl"><a href="#3-快捷键-ctrl" class="headerlink" title="3.快捷键: ctrl + /"></a>3.快捷键: <code>ctrl + /</code></h4><h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;标题1&lt;/h1&gt;</span><br><span class="line">&lt;h2&gt;标题2&lt;/h2&gt;</span><br><span class="line">&lt;h3&gt;标题3&lt;/h3&gt;</span><br><span class="line">&lt;h4&gt;标题4&lt;/h4&gt;</span><br><span class="line">&lt;h5&gt;标题5&lt;/h5&gt;</span><br><span class="line">&lt;h6&gt;标题6&lt;/h6&gt;</span><br><span class="line">&lt;h7&gt;我是假的,标题7&lt;/h7&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--我是注释--&gt;</span><br><span class="line">&lt;hr /&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;告诉浏览器哪些文字是一个段落&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--下面是分割线--&gt;</span><br><span class="line">&lt;hr /&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-1ebb54835bf8f28b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_10.png"></p>
-<h2 id="七-img标签-image"><a href="#七-img标签-image" class="headerlink" title="七.img标签(image)"></a>七.img标签(image)</h2><h3 id="1-作用-5"><a href="#1-作用-5" class="headerlink" title="1) 作用:"></a>1) 作用:</h3><ul>
-<li>在网页上插入一张图片</li>
-</ul>
-<h3 id="2-格式-2"><a href="#2-格式-2" class="headerlink" title="2) 格式:"></a>2) 格式:</h3><ul>
-<li><code>![image](http://note.youdao.com/favicon.ico)</code></li>
-</ul>
-<h3 id="3-标签的属性"><a href="#3-标签的属性" class="headerlink" title="3) 标签的属性"></a>3) 标签的属性</h3><ul>
-<li>写在标签中K=”V”这种格式的文本我们称之为标签属性</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>属性名称</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>src(source)</td>
-<td>告诉浏览器需要插入的图片路径, 以便于浏览器到该路径下找到需要插入的图片</td>
-</tr>
-<tr>
-<td>alt(alternate)</td>
-<td>规定图像的替代文本, 只有在src指定的路径下找不到图片,才会显示alt指定的文本</td>
-</tr>
-<tr>
-<td>title</td>
-<td>悬停文本(介绍这张图片, 只有在鼠标移动到图片上时才会显示)</td>
-</tr>
-<tr>
-<td>height</td>
-<td>设置图片显示的高度</td>
-</tr>
-<tr>
-<td>width</td>
-<td>设置图片显示的宽度</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-注意点"><a href="#4-注意点" class="headerlink" title="4) 注意点:"></a>4) 注意点:</h3><ul>
-<li>img标签添加的图片默认不是占一整行空间<br>如果想让图片等比拉伸,只写高度或者宽度即可</li>
-</ul>
-<h3 id="5-示例代码"><a href="#5-示例代码" class="headerlink" title="5) 示例代码"></a>5) 示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--图片标签--&gt;</span><br><span class="line">![](http://note.youdao.com/favicon.ico)</span><br><span class="line">![有道云笔记](http://note.youdao.com/favicon.ico)</span><br><span class="line">![有道云笔记](http://note.youdao.com/favicon.ico)</span><br><span class="line">![有道云笔记](http://note.youdao.com/favicon.ico)</span><br><span class="line">![有道云笔记](http://note.youdao.com/favicon.ico)</span><br><span class="line">![有道云笔记](http://note.youdao.com/favicon.ico)</span><br><span class="line">&lt;img src=&quot;&quot; alt=&quot;找不到图片&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="5-运行结果"><a href="#5-运行结果" class="headerlink" title="5) 运行结果"></a>5) 运行结果</h3><p><img src="http://upload-images.jianshu.io/upload_images/4122543-9ff009b644bc64cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_12.png"></p>
-<h2 id="八-br标签-Break"><a href="#八-br标签-Break" class="headerlink" title="八.br标签(Break)"></a>八.br标签(Break)</h2><h3 id="1-作用-6"><a href="#1-作用-6" class="headerlink" title="1) 作用:"></a>1) 作用:</h3><ul>
-<li>让内容换行<h3 id="2-格式-3"><a href="#2-格式-3" class="headerlink" title="2) 格式:"></a>2) 格式:</h3></li>
-<li><code>&lt;br/&gt;</code><h3 id="3-注意点"><a href="#3-注意点" class="headerlink" title="3) 注意点:"></a>3) 注意点:</h3></li>
-<li>br的意思是不另起一个段落进行换行, 而网页中99.99%需要换行时都是因为另起了一个段落, 所以应该用p来做</li>
-</ul>
-<h2 id="九-a标签-anchor"><a href="#九-a标签-anchor" class="headerlink" title="九.a标签(anchor)"></a>九.a标签(anchor)</h2><h3 id="1-格式"><a href="#1-格式" class="headerlink" title="1) 格式:"></a>1) 格式:</h3><ul>
-<li><code>&lt;a href=&quot;http://www.jianshu.com/u/5bd5e9ed569e&quot;&gt;我的简书&lt;/a&gt;</code><h3 id="2-作用"><a href="#2-作用" class="headerlink" title="2) 作用:"></a>2) 作用:</h3></li>
-<li>用于从一个页面链接到另一个页面<h3 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3) 注意事项:"></a>3) 注意事项:</h3></li>
-<li>在a标签之间一定要写上文字, 如果没有, 那么在页面上找不到这个标签<br>a标签也叫做超级链接或超链接<h3 id="4-a标签的属性"><a href="#4-a标签的属性" class="headerlink" title="4) a标签的属性"></a>4) a标签的属性</h3></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>属性名称</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>href(hypertext reference)</td>
-<td>指定跳转的目标地址</td>
-</tr>
-<tr>
-<td>target</td>
-<td>告诉浏览器是否保留原始界面, _blank保留, _self不保留</td>
-</tr>
-<tr>
-<td>title</td>
-<td>悬停文本(介绍这个链接, 只有在鼠标移动到超链接上时才会显示)</td>
-</tr>
-</tbody>
-</table>
-<h4 id="4-代码示例"><a href="#4-代码示例" class="headerlink" title="4) 代码示例"></a>4) 代码示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--a标签--&gt;</span><br><span class="line">&lt;a href=&quot;http://www.jianshu.com/u/5bd5e9ed569e&quot;&gt;我的简书&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.jianshu.com/u/5bd5e9ed569e&quot; title=&quot;我的简书&quot;&gt;我的简书&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.jianshu.com/u/5bd5e9ed569e&quot; title=&quot;我的简书&quot; target=&quot;_blank&quot;&gt;我的简书&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-b60bbd6bcf56af2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170614_13.png"></p>
-<h3 id="5-base标签和a标签结合使用"><a href="#5-base标签和a标签结合使用" class="headerlink" title="5) base标签和a标签结合使用"></a>5) base标签和a标签结合使用</h3><ul>
-<li>如果每个a标签都想在新页面中打开,那么逐个设置a标签的<code>target</code>属性比较麻烦, 这时我们可以使用base和a标签结合的方式,一次性设置有a标签都在新页面中打开<ul>
-<li>格式: <code>&lt;base target=&quot;_blank&quot; /&gt;</code></li>
-</ul>
-</li>
-<li>注意事项:<ul>
-<li><code>base</code>必须嵌套在<code>head</code>标签里面</li>
-<li>如果标签上指定了<code>target</code>,<code>base</code>中也指定了<code>target</code>,那么会按照标签上指定的来执行<h3 id="6-a标签其它用法"><a href="#6-a标签其它用法" class="headerlink" title="6) a标签其它用法"></a>6) a标签其它用法</h3></li>
-</ul>
-</li>
-<li>假链接(本质是跳转到当前页面)<ul>
-<li>格式<code>&lt;a href=&quot;#&quot;&gt;我的简书&lt;/a&gt;</code></li>
-<li>格式<code>&lt;a href=&quot;javascript:&quot;&gt;我的简书&lt;/a&gt;</code><ul>
-<li>跳转到当前页面指定位置(锚点链接)</li>
-<li>1.格式<code>&lt;a href=&quot;#location&quot;&gt;</code>跳转到指定位置<code>&lt;/a&gt;</code></li>
-<li>2.在页面的指定位置给任意标签添加一个id属性<ul>
-<li>例如 <code>&lt;p id=&quot;location&quot;&gt;</code>这个是目标<code>&lt;/p&gt;</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>跳转到指定页面的指定位置<ul>
-<li>格式: <code>&lt;a href=&quot;01-锚点链接.html#location&quot;&gt;跳转到指定位置&lt;/a&gt;</code></li>
-<li>只需要在01-锚点链接.html页面添加一个id位置即可</li>
-</ul>
-</li>
-<li>下载(极力不推荐使用)<ul>
-<li>例如<code>&lt;a href=&quot;girl.zip&quot;&gt;</code>下载福利资源<code>&lt;a/&gt;</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<ul>
-<li><h3 id="对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新"><a href="#对HTML5语言有兴趣的同学-给大家极力推荐-江哥的视频HTML5-跨平台开发-只是不知道会不会继续更新" class="headerlink" title="对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频HTML5 + 跨平台开发,只是不知道会不会继续更新"></a>对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频<a href="http://study.163.com/course/introduction.htm?courseId=1003864040" target="_blank" rel="noopener">HTML5 + 跨平台开发</a>,只是不知道会不会继续更新</h3></li>
-</ul>
-</blockquote>
-
+              <p>HTML5学习笔记之基础标签<br>
+          
       
     </div>
     
@@ -1358,6 +916,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebStorm/">WebStorm</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2017/06/15/HTML5学习笔记之基础标签/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
