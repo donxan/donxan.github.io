@@ -16,7 +16,7 @@
 
 
 <meta name="description" content="刚开始拿到需求的第一反应是:H5页面还可以保存图片?? 随即想了一下,好像微信里好多H5页面都有这样的功能 然后查阅了一下相关资料,有咨询了前端大神发现两行核心代码  123456//获取长按所在点let urlString = &quot;document.elementFromPoint(\(touchPoint.x), \(touchPoint.y)).src&quot;//根据该点的参数获取对应图片的链接l">
-<meta name="keywords" content="Swift,JavaScript,WebView">
+<meta name="keywords" content="JavaScript,Swift,WebView">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift版-H5页面实现长按保存图片">
 <meta property="og:url" content="https://titanjun.top/2017/07/10/Swift版-H5页面实现长按保存图片">

@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-e5faf93cebae945e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-9f199a027f186a5c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-895670df5fd8e2c9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400">
-<meta property="og:updated_time" content="2018-03-07T14:13:56.788Z">
+<meta property="og:updated_time" content="2018-03-08T01:41:02.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift之Vision 图像识别框架">
 <meta name="twitter:description" content="2017年苹果大大又推出了新机型iPhone 8和iPhone 8Plus, 这还不是重点, 重点是那一款价值9000RMB的iPhone X, 虽说网上吐槽声从未停止过, 但是我觉得还是不错的哈! 软件方面, 苹果大大也推出了iOS 11, 经本人iPhone 7手机亲测, 耗电快外加通知栏改不完的bug 当然了随着iOS 11的推出, 也随之推出了一些新的API，如：ARKit 、Core">
@@ -343,7 +343,7 @@
 <li>这里我们还要说的就是Apple 在 WWDC 2017 推出的图像识别框架–<code>Vison</code><a href="https://developer.apple.com/documentation/vision" target="_blank" rel="noopener">官方文档</a></li>
 <li><a href="https://github.com/coderQuanjun/JunVisionFace" target="_blank" rel="noopener">Demo地址</a></li>
 </ul>
-<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<a id="more"></a>
 <h2 id="一-Vision应用场景"><a href="#一-Vision应用场景" class="headerlink" title="一. Vision应用场景"></a>一. Vision应用场景</h2><ul>
 <li><code>Face Detection and Recognition</code> : 人脸检测<ul>
 <li>支持检测笑脸、侧脸、局部遮挡脸部、戴眼镜和帽子等场景，可以标记出人脸的矩形区域</li>
@@ -630,7 +630,7 @@
         <p><span>本文标题:</span><a href="/2017/11/29/Swift之Vision 图像识别框架">Swift之Vision 图像识别框架</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2017-11-29, 14:58:00</p>
-        <p><span>最后更新:</span>2018-03-07, 22:13:56</p>
+        <p><span>最后更新:</span>2018-03-08, 09:41:02</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/11/29/Swift之Vision 图像识别框架" title="Swift之Vision 图像识别框架">https://titanjun.top/2017/11/29/Swift之Vision 图像识别框架</a>
             <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/11/29/Swift之Vision 图像识别框架　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

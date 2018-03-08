@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="效果图   一. TabBarIOS 底部选项条, 不能跨平台,只能iOS端使用 添加如下代码, 就会出现底部选项条  123return (    &amp;lt;TabBarIOS&amp;gt;&amp;lt;/TabBarIOS&amp;gt;) 1. 相关属性123456789101112barTintColor=&amp;apos;yellow&amp;apos;//标签栏的背景颜色tintColor=&amp;apos;#ed7f30&amp;">
+<meta name="description" content="目前React Native提供的官方的Tab Bar主要是TabBarIOS, 但是该控件目前只支持IOS端">
 <meta name="keywords" content="CSS,TabBariOS,TabNavigator">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ReactNative之TabBariOS和TabNavigator">
 <meta property="og:url" content="https://titanjun.top/2018/01/06/ReactNative之TabBariOS和TabNavigator">
 <meta property="og:site_name" content="RuningTitan&#39;s Blog">
-<meta property="og:description" content="效果图   一. TabBarIOS 底部选项条, 不能跨平台,只能iOS端使用 添加如下代码, 就会出现底部选项条  123return (    &amp;lt;TabBarIOS&amp;gt;&amp;lt;/TabBarIOS&amp;gt;) 1. 相关属性123456789101112barTintColor=&amp;apos;yellow&amp;apos;//标签栏的背景颜色tintColor=&amp;apos;#ed7f30&amp;">
+<meta property="og:description" content="目前React Native提供的官方的Tab Bar主要是TabBarIOS, 但是该控件目前只支持IOS端">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-ecacb6e40602657c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200">
-<meta property="og:updated_time" content="2018-03-07T07:19:59.000Z">
+<meta property="og:updated_time" content="2018-03-08T01:38:46.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactNative之TabBariOS和TabNavigator">
-<meta name="twitter:description" content="效果图   一. TabBarIOS 底部选项条, 不能跨平台,只能iOS端使用 添加如下代码, 就会出现底部选项条  123return (    &amp;lt;TabBarIOS&amp;gt;&amp;lt;/TabBarIOS&amp;gt;) 1. 相关属性123456789101112barTintColor=&amp;apos;yellow&amp;apos;//标签栏的背景颜色tintColor=&amp;apos;#ed7f30&amp;">
+<meta name="twitter:description" content="目前React Native提供的官方的Tab Bar主要是TabBarIOS, 但是该控件目前只支持IOS端">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4122543-ecacb6e40602657c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -329,7 +329,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <blockquote>
+        <p>目前React Native提供的官方的Tab Bar主要是TabBarIOS, 但是该控件目前只支持IOS端</p>
+<a id="more"></a>
+<blockquote>
 <p>效果图</p>
 </blockquote>
 <p><img src="http://upload-images.jianshu.io/upload_images/4122543-ecacb6e40602657c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="底部选项条.png"></p>
@@ -484,7 +486,7 @@
         <p><span>本文标题:</span><a href="/2018/01/06/ReactNative之TabBariOS和TabNavigator">ReactNative之TabBariOS和TabNavigator</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2018-01-06, 15:23:00</p>
-        <p><span>最后更新:</span>2018-03-07, 15:19:59</p>
+        <p><span>最后更新:</span>2018-03-08, 09:38:46</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/01/06/ReactNative之TabBariOS和TabNavigator" title="ReactNative之TabBariOS和TabNavigator">https://titanjun.top/2018/01/06/ReactNative之TabBariOS和TabNavigator</a>
             <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2018/01/06/ReactNative之TabBariOS和TabNavigator　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="谈到语音和文本的转换, 就要说到语音转文本和文本转语音两大技术  文本转语音是iOS7以后的技术, 用到的是AVFoundation框架 语音转文本是iOS10以后, 苹果发布的一个Speech框架 下面先介绍一下简单的文本转语音 GitHub上Demo地址 项目包括 文本转语音 实时语音转文本 本地语音转文本 录音保存本地,转文本     一. 文本转语音 文本转语音技术, 简称TTS (是T">
+<meta name="description" content="谈到语音和文本的转换, 就要说到语音转文本和文本转语音两大技术  文本转语音是iOS7以后的技术, 用到的是AVFoundation框架 语音转文本是iOS10以后, 苹果发布的一个Speech框架">
 <meta name="keywords" content="Swift,Speech">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift语音和文本的转换">
 <meta property="og:url" content="https://titanjun.top/2017/12/10/Swift语音和文本的转换">
 <meta property="og:site_name" content="RuningTitan&#39;s Blog">
-<meta property="og:description" content="谈到语音和文本的转换, 就要说到语音转文本和文本转语音两大技术  文本转语音是iOS7以后的技术, 用到的是AVFoundation框架 语音转文本是iOS10以后, 苹果发布的一个Speech框架 下面先介绍一下简单的文本转语音 GitHub上Demo地址 项目包括 文本转语音 实时语音转文本 本地语音转文本 录音保存本地,转文本     一. 文本转语音 文本转语音技术, 简称TTS (是T">
+<meta property="og:description" content="谈到语音和文本的转换, 就要说到语音转文本和文本转语音两大技术  文本转语音是iOS7以后的技术, 用到的是AVFoundation框架 语音转文本是iOS10以后, 苹果发布的一个Speech框架">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-07T14:13:04.722Z">
+<meta property="og:updated_time" content="2018-03-08T01:41:59.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift语音和文本的转换">
-<meta name="twitter:description" content="谈到语音和文本的转换, 就要说到语音转文本和文本转语音两大技术  文本转语音是iOS7以后的技术, 用到的是AVFoundation框架 语音转文本是iOS10以后, 苹果发布的一个Speech框架 下面先介绍一下简单的文本转语音 GitHub上Demo地址 项目包括 文本转语音 实时语音转文本 本地语音转文本 录音保存本地,转文本     一. 文本转语音 文本转语音技术, 简称TTS (是T">
+<meta name="twitter:description" content="谈到语音和文本的转换, 就要说到语音转文本和文本转语音两大技术  文本转语音是iOS7以后的技术, 用到的是AVFoundation框架 语音转文本是iOS10以后, 苹果发布的一个Speech框架">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -332,6 +332,10 @@
 <ul>
 <li>文本转语音是iOS7以后的技术, 用到的是AVFoundation框架</li>
 <li>语音转文本是iOS10以后, 苹果发布的一个<a href="https://developer.apple.com/documentation/speech" target="_blank" rel="noopener">Speech</a>框架</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<ul>
 <li>下面先介绍一下简单的文本转语音</li>
 <li><a href="https://github.com/CoderTitan/TextAndVoice" target="_blank" rel="noopener">GitHub上Demo地址</a></li>
 <li>项目包括<ul>
@@ -342,7 +346,6 @@
 </ul>
 </li>
 </ul>
-</blockquote>
 <h2 id="一-文本转语音"><a href="#一-文本转语音" class="headerlink" title="一. 文本转语音"></a>一. 文本转语音</h2><ul>
 <li>文本转语音技术, 简称TTS (是<code>Text To Speech</code>的缩写), <a href="https://developer.apple.com/documentation/avfoundation/speech_synthesis" target="_blank" rel="noopener">语音合成苹果官方文档</a></li>
 <li>是苹果iOS7以后新增的功能, 使用AVFoundation 库</li>
@@ -483,7 +486,7 @@
         <p><span>本文标题:</span><a href="/2017/12/10/Swift语音和文本的转换">Swift语音和文本的转换</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2017-12-10, 13:40:00</p>
-        <p><span>最后更新:</span>2018-03-07, 22:13:04</p>
+        <p><span>最后更新:</span>2018-03-08, 09:41:59</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/12/10/Swift语音和文本的转换" title="Swift语音和文本的转换">https://titanjun.top/2017/12/10/Swift语音和文本的转换</a>
             <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/12/10/Swift语音和文本的转换　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
