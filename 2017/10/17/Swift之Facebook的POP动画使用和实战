@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-1efeb167ad71b59d.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-070c23772942ed82.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-737cf17a9cb95542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
-<meta property="og:updated_time" content="2018-03-07T14:13:49.384Z">
+<meta property="og:updated_time" content="2018-03-08T01:49:57.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift之Facebook的POP动画使用和实战">
 <meta name="twitter:description" content="POP是一个来自于Facebook，在iOS与OSX上通用的极具扩展性的动画引擎。它在基本的静态动画的基础上增加的弹簧动画与衰减动画，使之能创造出更真实更具物理性的交互动画。 Pop Animation在使用上和Core Animation很相似，都涉及Animation对象以及Animation的载体的概念 关于Core Animation的相关详解, 可参考我的上一篇文章Core Anima">
@@ -339,8 +339,8 @@
 <li>不同的是<code>Core Animation</code>的载体只能是<code>CALayer</code>，而<code>Pop Animation</code>可以是任意基于<code>NSObject</code>的对象</li>
 <li><a href="https://github.com/facebook/pop" target="_blank" rel="noopener">POP</a> 使用 <code>Objective-C++</code> 编写，<code>Objective-C++</code> 是对 <code>C++</code> 的扩展</li>
 </ul>
-<h3 id="GitHub项目地址"><a href="#GitHub项目地址" class="headerlink" title="GitHub项目地址"></a><a href="https://github.com/coderQuanjun/POPAnimationDemo" target="_blank" rel="noopener">GitHub项目地址</a></h3><p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4122543-a85faa1b734ebc00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<a id="more"></a>
+<h3 id="GitHub项目地址"><a href="#GitHub项目地址" class="headerlink" title="GitHub项目地址"></a><a href="https://github.com/coderQuanjun/POPAnimationDemo" target="_blank" rel="noopener">GitHub项目地址</a></h3><p><img src="http://upload-images.jianshu.io/upload_images/4122543-a85faa1b734ebc00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <h1 id="一-POP自我介绍"><a href="#一-POP自我介绍" class="headerlink" title="一. POP自我介绍"></a>一. POP自我介绍</h1><ul>
 <li><a href="https://github.com/facebook/pop" target="_blank" rel="noopener">POP</a> 目前由四部分组成：1. Animations；2. Engine；3. Utility；4. WebCore。</li>
 <li><a href="https://github.com/facebook/pop" target="_blank" rel="noopener">POP</a> 动画极为流畅，主要在于Enimator 里，POP 通过 CADisplayLink 高达 60 FPS 的特性，打造了一个游戏级的动画引擎。</li>
@@ -476,7 +476,7 @@
         <p><span>本文标题:</span><a href="/2017/10/17/Swift之Facebook的POP动画使用和实战">Swift之Facebook的POP动画使用和实战</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2017-10-17, 21:18:38</p>
-        <p><span>最后更新:</span>2018-03-07, 22:13:49</p>
+        <p><span>最后更新:</span>2018-03-08, 09:49:57</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/10/17/Swift之Facebook的POP动画使用和实战" title="Swift之Facebook的POP动画使用和实战">https://titanjun.top/2017/10/17/Swift之Facebook的POP动画使用和实战</a>
             <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/10/17/Swift之Facebook的POP动画使用和实战　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="RuningTitan&#39;s Blog">
 <meta property="og:description" content="一.创建具体步骤参考Object-C 和 swift桥接文件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T12:18:37.000Z">
+<meta property="og:updated_time" content="2018-03-08T01:50:46.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift项目创建桥接文件">
 <meta name="twitter:description" content="一.创建具体步骤参考Object-C 和 swift桥接文件">
@@ -328,7 +328,7 @@
       
           
         <h2 id="一-创建具体步骤参考"><a href="#一-创建具体步骤参考" class="headerlink" title="一.创建具体步骤参考"></a>一.创建具体步骤参考</h2><p><a href="http://www.jianshu.com/p/aa27548ce9e1" target="_blank" rel="noopener">Object-C 和 swift桥接文件</a></p>
-<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<a id="more"></a>
 <h2 id="二-报错"><a href="#二-报错" class="headerlink" title="二.报错"></a>二.报错</h2><blockquote>
 <p>如出现 xxx file not found 的错误</p>
 </blockquote>
@@ -344,7 +344,7 @@
         <p><span>本文标题:</span><a href="/2017/06/15/Swift项目创建桥接文件">Swift项目创建桥接文件</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2017-06-15, 11:16:00</p>
-        <p><span>最后更新:</span>2018-03-06, 20:18:37</p>
+        <p><span>最后更新:</span>2018-03-08, 09:50:46</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/06/15/Swift项目创建桥接文件" title="Swift项目创建桥接文件">https://titanjun.top/2017/06/15/Swift项目创建桥接文件</a>
             <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/06/15/Swift项目创建桥接文件　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

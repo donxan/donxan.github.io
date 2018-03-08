@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-20b3afa03d389bb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-a54d1b9e6d553950.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2018-03-07T14:13:41.264Z">
+<meta property="og:updated_time" content="2018-03-08T01:48:59.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift之微信朋友圈图片浏览器">
 <meta name="twitter:description" content="最近闲来无事,突然对微信, 微博, QQ等社交APP的九宫格的图片浏览功能非常感兴趣, 最近就尝试着研究了一下:   这里先附上Demo地址">
@@ -336,7 +336,7 @@
 <blockquote>
 <p>这里先附上<a href="https://github.com/coderQuanjun/JunPhotoBrowseDemo" target="_blank" rel="noopener">Demo地址</a></p>
 </blockquote>
-<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<a id="more"></a>
 <ul>
 <li>在介绍项目之前, 先介绍三个基础知识<ul>
 <li><code>CATransition</code>转场动画</li>
@@ -475,7 +475,7 @@
         <p><span>本文标题:</span><a href="/2017/10/28/Swift之微信朋友圈图片浏览器">Swift之微信朋友圈图片浏览器</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2017-10-28, 19:19:19</p>
-        <p><span>最后更新:</span>2018-03-07, 22:13:41</p>
+        <p><span>最后更新:</span>2018-03-08, 09:48:59</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/10/28/Swift之微信朋友圈图片浏览器" title="Swift之微信朋友圈图片浏览器">https://titanjun.top/2017/10/28/Swift之微信朋友圈图片浏览器</a>
             <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/10/28/Swift之微信朋友圈图片浏览器　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

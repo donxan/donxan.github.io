@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="RuningTitan&#39;s Blog">
 <meta property="og:description" content="刚开始拿到需求的第一反应是:H5页面还可以保存图片?? 随即想了一下,好像微信里好多H5页面都有这样的功能 然后查阅了一下相关资料,有咨询了前端大神发现两行核心代码  123456//获取长按所在点let urlString = &quot;document.elementFromPoint(\(touchPoint.x), \(touchPoint.y)).src&quot;//根据该点的参数获取对应图片的链接l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T12:46:58.000Z">
+<meta property="og:updated_time" content="2018-03-08T01:51:28.100Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift版-H5页面实现长按保存图片">
 <meta name="twitter:description" content="刚开始拿到需求的第一反应是:H5页面还可以保存图片?? 随即想了一下,好像微信里好多H5页面都有这样的功能 然后查阅了一下相关资料,有咨询了前端大神发现两行核心代码  123456//获取长按所在点let urlString = &quot;document.elementFromPoint(\(touchPoint.x), \(touchPoint.y)).src&quot;//根据该点的参数获取对应图片的链接l">
@@ -333,7 +333,7 @@
 <li>然后查阅了一下相关资料,有咨询了前端大神发现两行核心代码</li>
 </ul>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//获取长按所在点</span></span><br><span class="line">let urlString = <span class="string">"document.elementFromPoint(\(touchPoint.x), \(touchPoint.y)).src"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//根据该点的参数获取对应图片的链接</span></span><br><span class="line">let saveUrl = webView.stringByEvaluatingJavaScriptFromString(urlString)</span><br></pre></td></tr></table></figure>
-<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<a id="more"></a>
 <h3 id="下面来一起啊看一下完整的代码步骤"><a href="#下面来一起啊看一下完整的代码步骤" class="headerlink" title="下面来一起啊看一下完整的代码步骤"></a>下面来一起啊看一下完整的代码步骤</h3><blockquote>
 <h4 id="首先给UiWebView加一个长按手势"><a href="#首先给UiWebView加一个长按手势" class="headerlink" title="首先给UiWebView加一个长按手势"></a>首先给UiWebView加一个长按手势</h4></blockquote>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//添加长按手势</span></span><br><span class="line">let longPressGes = <span class="built_in">UILongPressGestureRecognizer</span>(target: <span class="keyword">self</span>, action: <span class="meta">#selector(longPressedGesture(_:)))</span></span><br><span class="line"><span class="comment">//一定要遵循代理</span></span><br><span class="line">longPressGes.delegate = <span class="keyword">self</span></span><br><span class="line">webView.addGestureRecognizer(longPressGes)</span><br></pre></td></tr></table></figure>
@@ -376,7 +376,7 @@
         <p><span>本文标题:</span><a href="/2017/07/10/Swift版-H5页面实现长按保存图片">Swift版-H5页面实现长按保存图片</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2017-07-10, 14:26:40</p>
-        <p><span>最后更新:</span>2018-03-06, 20:46:58</p>
+        <p><span>最后更新:</span>2018-03-08, 09:51:28</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/07/10/Swift版-H5页面实现长按保存图片" title="Swift版-H5页面实现长按保存图片">https://titanjun.top/2017/07/10/Swift版-H5页面实现长按保存图片</a>
             <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/07/10/Swift版-H5页面实现长按保存图片　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="一. RxSwift简介  推荐: RxSwift官方文档 中文: RxSwift官方文档的中文翻译    RxSwift是Swift函数响应式编程的一个开源库，由Github的ReactiveX组织开发、维护 其他语言像C#, Java 和 JS 也有，Rx.Net、RxJava、rxjs RxSwift的目的是让数据/事件流和异步任务能够更方便的序列化处理，能够使用Swift进行响应式编程">
+<meta name="description" content="一. RxSwift简介  推荐: RxSwift官方文档 中文: RxSwift官方文档的中文翻译">
 <meta name="keywords" content="Swift,RxSwift,响应式编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RxSwift的使用详解01">
 <meta property="og:url" content="https://titanjun.top/2017/09/15/RxSwift的使用详解01">
 <meta property="og:site_name" content="RuningTitan&#39;s Blog">
-<meta property="og:description" content="一. RxSwift简介  推荐: RxSwift官方文档 中文: RxSwift官方文档的中文翻译    RxSwift是Swift函数响应式编程的一个开源库，由Github的ReactiveX组织开发、维护 其他语言像C#, Java 和 JS 也有，Rx.Net、RxJava、rxjs RxSwift的目的是让数据/事件流和异步任务能够更方便的序列化处理，能够使用Swift进行响应式编程">
+<meta property="og:description" content="一. RxSwift简介  推荐: RxSwift官方文档 中文: RxSwift官方文档的中文翻译">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-07T14:12:03.707Z">
+<meta property="og:updated_time" content="2018-03-08T01:53:36.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxSwift的使用详解01">
-<meta name="twitter:description" content="一. RxSwift简介  推荐: RxSwift官方文档 中文: RxSwift官方文档的中文翻译    RxSwift是Swift函数响应式编程的一个开源库，由Github的ReactiveX组织开发、维护 其他语言像C#, Java 和 JS 也有，Rx.Net、RxJava、rxjs RxSwift的目的是让数据/事件流和异步任务能够更方便的序列化处理，能够使用Swift进行响应式编程">
+<meta name="twitter:description" content="一. RxSwift简介  推荐: RxSwift官方文档 中文: RxSwift官方文档的中文翻译">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -333,6 +333,7 @@
 <li><h4 id="中文-RxSwift官方文档的中文翻译"><a href="#中文-RxSwift官方文档的中文翻译" class="headerlink" title="中文: RxSwift官方文档的中文翻译"></a>中文: <a href="https://github.com/jhw-dev/RxSwift-CN" target="_blank" rel="noopener">RxSwift官方文档的中文翻译</a></h4></li>
 </ul>
 </blockquote>
+<a id="more"></a>
 <ul>
 <li><h3 id="RxSwift是Swift函数响应式编程的一个开源库，由Github的ReactiveX组织开发、维护"><a href="#RxSwift是Swift函数响应式编程的一个开源库，由Github的ReactiveX组织开发、维护" class="headerlink" title="RxSwift是Swift函数响应式编程的一个开源库，由Github的ReactiveX组织开发、维护"></a><a href="https://github.com/ReactiveX/RxSwift" target="_blank" rel="noopener">RxSwift</a>是Swift函数响应式编程的一个开源库，由Github的<a href="https://github.com/ReactiveX" target="_blank" rel="noopener">ReactiveX</a>组织开发、维护</h3></li>
 <li><h3 id="其他语言像C-Java-和-JS-也有，Rx-Net、RxJava、rxjs"><a href="#其他语言像C-Java-和-JS-也有，Rx-Net、RxJava、rxjs" class="headerlink" title="其他语言像C#, Java 和 JS 也有，Rx.Net、RxJava、rxjs"></a>其他语言像C#, Java 和 JS 也有，Rx.Net、RxJava、<a href="https://github.com/ReactiveX/rxjs" target="_blank" rel="noopener">rxjs</a></h3></li>
@@ -503,7 +504,7 @@
         <p><span>本文标题:</span><a href="/2017/09/15/RxSwift的使用详解01">RxSwift的使用详解01</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2017-09-15, 20:15:47</p>
-        <p><span>最后更新:</span>2018-03-07, 22:12:03</p>
+        <p><span>最后更新:</span>2018-03-08, 09:53:36</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/09/15/RxSwift的使用详解01" title="RxSwift的使用详解01">https://titanjun.top/2017/09/15/RxSwift的使用详解01</a>
             <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/09/15/RxSwift的使用详解01　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

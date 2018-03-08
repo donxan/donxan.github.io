@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-91d007e59b3a6ce5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-047cf052039633e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4122543-7f8bb034a432d133.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-06T11:51:59.000Z">
+<meta property="og:updated_time" content="2018-03-08T01:51:10.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift仿网易新闻首页左右滑动切换页面">
 <meta name="twitter:description" content="顶部标题左右滑动切换控制器是一种非常用的左右滚动切换效果,几乎每一个APP都有用到,在这里介绍一下我自己封装的一个Swift版本的简单框架;代码中注释相对详细,故文中没有做过多的解释;废话不多少,直接上效果图:">
@@ -334,7 +334,7 @@
         <blockquote>
 <p>顶部标题左右滑动切换控制器是一种非常用的左右滚动切换效果,几乎每一个APP都有用到,在这里介绍一下我自己封装的一个Swift版本的简单框架;代码中注释相对详细,故文中没有做过多的解释;废话不多少,直接上效果图:</p>
 </blockquote>
-<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<a id="more"></a>
 <p><img src="http://upload-images.jianshu.io/upload_images/4122543-91d007e59b3a6ce5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图1.png"></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/4122543-047cf052039633e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图2.png"></p>
 <h2 id="一-框架介绍"><a href="#一-框架介绍" class="headerlink" title="一.框架介绍"></a>一.框架介绍</h2><h2 id="github地址"><a href="#github地址" class="headerlink" title="github地址"></a><a href="https://github.com/coderQuanjun/TJPageView" target="_blank" rel="noopener">github地址</a></h2><p><img src="http://upload-images.jianshu.io/upload_images/4122543-7f8bb034a432d133.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Snip20170612_18.png"></p>
@@ -367,7 +367,7 @@
         <p><span>本文标题:</span><a href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面">Swift仿网易新闻首页左右滑动切换页面</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2017-06-12, 20:12:00</p>
-        <p><span>最后更新:</span>2018-03-06, 19:51:59</p>
+        <p><span>最后更新:</span>2018-03-08, 09:51:10</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面" title="Swift仿网易新闻首页左右滑动切换页面">https://titanjun.top/2017/06/12/Swift仿网易新闻首页左右滑动切换页面</a>
             <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/06/12/Swift仿网易新闻首页左右滑动切换页面　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

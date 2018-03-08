@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="RuningTitan&#39;s Blog">
 <meta property="og:description" content="推荐: Swift 编程语言 原文链接: What’s New in Swift 4? Guards翻译组: 中文地址">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-07T14:12:23.564Z">
+<meta property="og:updated_time" content="2018-03-08T01:52:05.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift4.0新特性之String、Array和Dictionary">
 <meta name="twitter:description" content="推荐: Swift 编程语言 原文链接: What’s New in Swift 4? Guards翻译组: 中文地址">
@@ -334,7 +334,7 @@
 <li>Guards翻译组: <a href="http://www.jianshu.com/p/3bedf1de5cb3" target="_blank" rel="noopener">中文地址</a></li>
 </ul>
 </blockquote>
-<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<a id="more"></a>
 <hr>
 <h4 id="Swift-4是苹果计划在2017年秋季推出的最新版本，值得关注的是其提供了与Swift-3代码很好的兼容性，并最大限度的保持了ABI稳定性"><a href="#Swift-4是苹果计划在2017年秋季推出的最新版本，值得关注的是其提供了与Swift-3代码很好的兼容性，并最大限度的保持了ABI稳定性" class="headerlink" title="Swift 4是苹果计划在2017年秋季推出的最新版本，值得关注的是其提供了与Swift 3代码很好的兼容性，并最大限度的保持了ABI稳定性."></a>Swift 4是苹果计划在2017年秋季推出的最新版本，值得关注的是其提供了与Swift 3代码很好的兼容性，并最大限度的保持了ABI稳定性.</h4><h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><blockquote>
 <p>字符串已经像之前的2.0版一样, 改为了Collection类型 。此变化消除了字符串对字符数组的依赖</p>
@@ -404,7 +404,7 @@
         <p><span>本文标题:</span><a href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary">Swift4.0新特性之String、Array和Dictionary</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
         <p><span>发布时间:</span>2017-07-19, 21:16:40</p>
-        <p><span>最后更新:</span>2018-03-07, 22:12:23</p>
+        <p><span>最后更新:</span>2018-03-08, 09:52:05</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary" title="Swift4.0新特性之String、Array和Dictionary">https://titanjun.top/2017/07/19/Swift4.0新特性之String、Array和Dictionary</a>
             <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2017/07/19/Swift4.0新特性之String、Array和Dictionary　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
