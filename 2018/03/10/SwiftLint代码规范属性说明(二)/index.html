@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="RuningTitan" />
+
+
+
+<meta name="description" content="这篇文章是继前两篇文章的继续更新 Xcode代码规范之SwiftLint配置–这篇文章对SwiftLint进行了简单介绍和针对Xcode的相关配置 SwiftLint代码规范属性说明(一)/)–这里介绍了上半部分的相关属性的介绍 下面来具体介绍一下SwiftLint的其他的代码规则的相关说明">
+<meta name="keywords" content="Swift,SwiftLint">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SwiftLint代码规范属性说明(二)">
+<meta property="og:url" content="https://titanjun.top/2018/03/10/SwiftLint代码规范属性说明(二)/index.html">
+<meta property="og:site_name" content="RuningTitan&#39;s Blog">
+<meta property="og:description" content="这篇文章是继前两篇文章的继续更新 Xcode代码规范之SwiftLint配置–这篇文章对SwiftLint进行了简单介绍和针对Xcode的相关配置 SwiftLint代码规范属性说明(一)/)–这里介绍了上半部分的相关属性的介绍 下面来具体介绍一下SwiftLint的其他的代码规则的相关说明">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-10T14:41:50.780Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SwiftLint代码规范属性说明(二)">
+<meta name="twitter:description" content="这篇文章是继前两篇文章的继续更新 Xcode代码规范之SwiftLint配置–这篇文章对SwiftLint进行了简单介绍和针对Xcode的相关配置 SwiftLint代码规范属性说明(一)/)–这里介绍了上半部分的相关属性的介绍 下面来具体介绍一下SwiftLint的其他的代码规则的相关说明">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="RuningTitan&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>SwiftLint代码规范属性说明(二) | RuningTitan&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">RuningTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AsyncStorage/">AsyncStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CATransition/">CATransition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIFilter/">CIFilter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreAnimation/">CoreAnimation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreImage/">CoreImage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dictionary/">Dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook-POP/">Facebook POP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ListView/">ListView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navigator/">Navigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NavigatorIOS/">NavigatorIOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scanner/">Scanner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScrollView/">ScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech/">Speech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift4-0/">Swift4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SwiftLint/">SwiftLint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabBariOS/">TabBariOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabNavigator/">TabNavigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIBesizationv/">UIBesizationv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vision/">Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web服务器/">Web服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS扫描器/">iOS扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入坑/">入坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式编程/">响应式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RuningTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">RuningTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/741700649" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/dan741700649" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-SwiftLint代码规范属性说明(二)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/03/10/SwiftLint代码规范属性说明(二)/" class="article-date">
+      <time datetime="2018-03-10T09:04:54.000Z" itemprop="datePublished">2018-03-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SwiftLint代码规范属性说明(二)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SwiftLint/">SwiftLint</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>这篇文章是继前两篇文章的继续更新</li>
+<li><a href="https://www.titanjun.top/2018/02/07/Xcode%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E4%B9%8BSwiftLint%E9%85%8D%E7%BD%AE/" target="_blank" rel="noopener">Xcode代码规范之SwiftLint配置</a>–这篇文章对SwiftLint进行了简单介绍和针对Xcode的相关配置</li>
+<li><a href="https://www.titanjun.top/2018/03/03/SwiftLint%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E(%E4%B8%80" target="_blank" rel="noopener">SwiftLint代码规范属性说明(一)</a>/)–这里介绍了上半部分的相关属性的介绍</li>
+<li>下面来具体介绍一下SwiftLint的其他的代码规则的相关说明</li>
+</ul>
+<a id="more"></a>
+<h3 id="规则51-legacy-cggeometry-functions"><a href="#规则51-legacy-cggeometry-functions" class="headerlink" title="规则51: legacy_cggeometry_functions"></a>规则51: legacy_cggeometry_functions</h3><p>当获取某个视图的宽、高、最小X、最大X值等等， swiftlint推荐使用swift的标准语法， 尽量不要使用从Objective-C中的遗留版本， 尽量语法swift化</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>legacy_cggeometry_functions</td>
+<td>启用</td>
+<td>yes</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 这样不推荐使用</span></span><br><span class="line"><span class="built_in">CGRectGetWidth</span>(someView.frame)</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 推荐使用下面的形式</span></span><br><span class="line">rect.width</span><br><span class="line">rect.height</span><br><span class="line">rect.minX</span><br><span class="line">rect.midX</span><br><span class="line">rect...................</span><br></pre></td></tr></table></figure>
+<h3 id="规则52-legacy-constant"><a href="#规则52-legacy-constant" class="headerlink" title="规则52: legacy_constant"></a>规则52: legacy_constant</h3><p>和属性<code>legacy_cggeometry_functions</code>一样， 结构范围常数尽量分开、明确、具体， 不要使用OC的遗留整体常数</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>legacy_constant</td>
+<td>启用</td>
+<td>yes</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 规范的写法，不会触发warning</span></span><br><span class="line"><span class="built_in">CGPoint</span>.zero</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 不规范的写法， 会触发warning</span></span><br><span class="line"><span class="built_in">CGPointZero</span></span><br><span class="line"><span class="built_in">CGRectZero</span></span><br></pre></td></tr></table></figure>
+<h3 id="规则53-legacy-constructor"><a href="#规则53-legacy-constructor" class="headerlink" title="规则53: legacy_constructor"></a>规则53: legacy_constructor</h3><p>swiftlint要求系统自带构造器， 使用swift语法化， 不要使用OC版本的构造器</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>legacy_constructor</td>
+<td>启用</td>
+<td>yes</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// swift语法，相信之后系统也会强制规定使用</span></span><br><span class="line"><span class="built_in">CGPoint</span>（x: <span class="number">10</span>， y: <span class="number">20</span>）</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 错误的构造器语法</span></span><br><span class="line"><span class="built_in">CGPointMake</span>(<span class="number">10</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="规则54-legacy-nsgeometry-functions"><a href="#规则54-legacy-nsgeometry-functions" class="headerlink" title="规则54: legacy_nsgeometry_functions"></a>规则54: legacy_nsgeometry_functions</h3><p>ns类几何函数， 和前面的几个属性一样， 使用swift点语法函数， 不使用以前的版本。</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>legacy_nsgeometry_functions</td>
+<td>启用</td>
+<td>yes</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 正确</span></span><br><span class="line">view.width/height/minX</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 错误</span></span><br><span class="line"><span class="built_in">NSWidth</span>(view.frame)</span><br></pre></td></tr></table></figure>
+<h3 id="规则55-let-var-whitespace"><a href="#规则55-let-var-whitespace" class="headerlink" title="规则55: let_var_whitespace"></a>规则55: let_var_whitespace</h3><p>let和var语句应该用空白行与其他语句分开</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>let_var_whitespace</td>
+<td>未启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//推荐这样写</span></span><br><span class="line">let a = <span class="number">0</span></span><br><span class="line">var x = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">x = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//不建议写法</span></span><br><span class="line">var x = <span class="number">1</span></span><br><span class="line">x = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h3 id="规则56-line-length"><a href="#规则56-line-length" class="headerlink" title="规则56: line_length"></a>规则56: line_length</h3><p>行的字符长度属性。这个强烈不推荐使用。官方的规定是超过120字符就给warning， 超过200个字符就直接报error！！！我们又不是写底层脚本的，所以建议这种方式禁用！！</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>line_length</td>
+<td>启用</td>
+<td>no</td>
+<td>metrics</td>
+</tr>
+</tbody>
+</table>
+<h3 id="规则57-literal-expression-end-indentation"><a href="#规则57-literal-expression-end-indentation" class="headerlink" title="规则57: literal_expression_end_indentation"></a>规则57: literal_expression_end_indentation</h3><p>字典和数组的开头和结尾要有相同的缩进格式</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>literal_expression_end_indentation</td>
+<td>未启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<h3 id="规则58-mark"><a href="#规则58-mark" class="headerlink" title="规则58: mark"></a>规则58: mark</h3><p>标记方法或者属性。这个推荐使用， 可以统一方法标记的格式， 有利于review查找某个方法或者属性的时候更清晰。使用也非常简单： “MARK”前空一格，”MARK:”后空一格。</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mark</td>
+<td>启用</td>
+<td>yes</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//推荐写法</span></span><br><span class="line"><span class="comment">// MARK: good</span></span><br><span class="line"><span class="comment">// MARK: - good</span></span><br><span class="line"><span class="comment">// MARK: -</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//不建议写法</span></span><br><span class="line"><span class="comment">//MARK: bad</span></span><br><span class="line"><span class="comment">// MARK:bad</span></span><br><span class="line"><span class="comment">//MARK:bad</span></span><br><span class="line"><span class="comment">//  MARK: bad</span></span><br><span class="line"><span class="comment">// MARK:  bad</span></span><br><span class="line"><span class="comment">// MARK: -bad</span></span><br></pre></td></tr></table></figure>
+<h3 id="规则59-multiline-arguments"><a href="#规则59-multiline-arguments" class="headerlink" title="规则59: multiline_arguments"></a>规则59: multiline_arguments</h3><p>调用函数和方法时, 其参数应该在同一行上，或者每行一个</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>multiline_arguments</td>
+<td>未启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不建议以下写法</span></span><br><span class="line">foo(<span class="number">0</span>, param1: <span class="number">1</span>, param2: <span class="literal">true</span>,</span><br><span class="line">    param3: [<span class="number">3</span>])</span><br><span class="line">    </span><br><span class="line">foo(</span><br><span class="line">    <span class="number">0</span>, param1: <span class="number">1</span>,</span><br><span class="line">    param2: <span class="literal">true</span>, param3: [<span class="number">3</span>]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="规则60-multiline-parameters"><a href="#规则60-multiline-parameters" class="headerlink" title="规则60: multiline_parameters"></a>规则60: multiline_parameters</h3><p>声明函数和方法时, 其参数应该在同一行上，或者每行一个</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>multiline_parameters</td>
+<td>未启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//不建议以下写法</span><br><span class="line">protocol Foo &#123;</span><br><span class="line">   func foo(param1: Int,</span><br><span class="line">             param2: Bool, param3: [String]) &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">protocol Foo &#123;</span><br><span class="line">   func foo(param1: Int, param2: Bool,</span><br><span class="line">             param3: [String]) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则61-multiple-closures-with-trailing-closure"><a href="#规则61-multiple-closures-with-trailing-closure" class="headerlink" title="规则61: multiple_closures_with_trailing_closure"></a>规则61: multiple_closures_with_trailing_closure</h3><p>当函数有多个闭包时, 不建议使用尾随闭包语法</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>multiple_closures_with_trailing_closure</td>
+<td>启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不建议写法</span></span><br><span class="line">foo.something(param1: &#123; $<span class="number">0</span> &#125;) &#123; $<span class="number">0</span> + <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIView</span>.animate(withDuration: <span class="number">1.0</span>, animations: &#123;</span><br><span class="line">    someView.alpha = <span class="number">0.0</span></span><br><span class="line">&#125;) &#123; _ <span class="keyword">in</span></span><br><span class="line">    someView.removeFromSuperview()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则62-nesting"><a href="#规则62-nesting" class="headerlink" title="规则62: nesting"></a>规则62: nesting</h3><p>嵌套。类型嵌套至多一级结构， 函数语句嵌套至多五级结构。</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nesting</td>
+<td>启用</td>
+<td>no</td>
+<td>metrics</td>
+</tr>
+</tbody>
+</table>
+<h3 id="规则63-nimble-operator"><a href="#规则63-nimble-operator" class="headerlink" title="规则63: nimble_operator"></a>规则63: nimble_operator</h3><p>快捷操作符。和自由匹配函数相比， 更喜欢快捷操作符， 比如：&gt;=、 ==、 &lt;=、 &lt;等等。</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nimble_operator</td>
+<td>未启用</td>
+<td>yes</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 会触发warning</span></span><br><span class="line">(person.voice).toNot(equal(<span class="string">"Hello world"</span>))     <span class="comment">// 判断字符串相同</span></span><br><span class="line"><span class="number">10.</span>to(beGreaterThan(<span class="number">5</span>))     <span class="comment">// 10比5大</span></span><br><span class="line"><span class="number">99.</span>to(beLessThan(<span class="number">100</span>))       <span class="comment">// 99比100小</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 改为以下</span></span><br><span class="line">(person.voice) != <span class="string">"Hello world"</span>   <span class="comment">// 判断字符串相同</span></span><br><span class="line"><span class="number">10</span> &gt; <span class="number">5</span>                <span class="comment">// 10比5大</span></span><br><span class="line"><span class="number">99</span> &lt; <span class="number">100</span>              <span class="comment">// 99比100小</span></span><br></pre></td></tr></table></figure>
+<h3 id="规则64-no-extension-access-modifier"><a href="#规则64-no-extension-access-modifier" class="headerlink" title="规则64: no_extension_access_modifier"></a>规则64: no_extension_access_modifier</h3><p>在extension扩展前面,不建议使用(fileprivate, public)等修饰符</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>no_extension_access_modifier</td>
+<td>未启用</td>
+<td>no</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不推荐写法</span></span><br><span class="line">private extension String &#123;&#125;</span><br><span class="line">public extension String &#123;&#125;</span><br><span class="line">open extension String &#123;&#125;</span><br><span class="line">internal extension String &#123;&#125;</span><br><span class="line">fileprivate extension String &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则65-no-grouping-extension"><a href="#规则65-no-grouping-extension" class="headerlink" title="规则65: no_grouping_extension"></a>规则65: no_grouping_extension</h3><p>只有class和protocol可以使用extension,其他类型不可使用</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>no_grouping_extension</td>
+<td>未启用</td>
+<td>no</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不推荐写法</span></span><br><span class="line"><span class="keyword">enum</span> Fruit &#123;&#125;</span><br><span class="line">extension Fruit &#123;&#125;</span><br><span class="line"></span><br><span class="line">extension Tea: Error &#123;&#125;</span><br><span class="line"><span class="keyword">struct</span> Tea &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Ham &#123; <span class="keyword">class</span> Spam &#123;&#125;&#125;</span><br><span class="line">extension Ham.Spam &#123;&#125;</span><br><span class="line"></span><br><span class="line">extension External &#123; <span class="keyword">struct</span> Gotcha &#123;&#125;&#125;</span><br><span class="line">extension External.Gotcha &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则66-notification-center-detachment"><a href="#规则66-notification-center-detachment" class="headerlink" title="规则66: notification_center_detachment"></a>规则66: notification_center_detachment</h3><p>对象移除通知只能在deinit移除self,函数中不能removeObserver(self)</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notification_center_detachment</td>
+<td>启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不会触发warning</span></span><br><span class="line"><span class="keyword">class</span> Foo &#123; </span><br><span class="line">   deinit &#123;</span><br><span class="line">       NotificationCenter.default.removeObserver(<span class="keyword">self</span>)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Foo &#123; </span><br><span class="line">   func bar() &#123;</span><br><span class="line">       NotificationCenter.default.removeObserver(otherObject)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//会触发warning</span></span><br><span class="line"><span class="keyword">class</span> Foo &#123; </span><br><span class="line">   func bar() &#123;</span><br><span class="line">       NotificationCenter.default.removeObserver(<span class="keyword">self</span>)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则67-number-separator"><a href="#规则67-number-separator" class="headerlink" title="规则67: number_separator"></a>规则67: number_separator</h3><p>数字分割线。当在大量的小数中， 应该使用下划线来作为千分位分割线</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number_separator</td>
+<td>未启用</td>
+<td>yes</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 推荐使用这种形式</span></span><br><span class="line">let xxx = <span class="number">1</span>_000_000_000<span class="number">.000</span>_1</span><br><span class="line">print(xxx)</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 不推荐使用这种形式（在swift </span></span><br><span class="line">let xxx = <span class="number">1000000000.0001</span></span><br><span class="line">print(xxx)</span><br></pre></td></tr></table></figure>
+<h3 id="规则68-object-literal"><a href="#规则68-object-literal" class="headerlink" title="规则68: object_literal"></a>规则68: object_literal</h3><p>swiftlint表示比起图片和颜色初始化，更喜欢对象初始化。因为swift初始化可以用表情，图片，颜色等，这不符合项目中的一些习惯用法</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object_literal</td>
+<td>未启用</td>
+<td>no</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不会触发warning</span></span><br><span class="line">let image = <span class="meta">#imageLiteral(resourceName: <span class="meta-string">"image.jpg"</span>)</span></span><br><span class="line">let color = <span class="meta">#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)</span></span><br><span class="line">let image = <span class="built_in">UIImage</span>(named: aVariable)</span><br><span class="line">let image = <span class="built_in">UIImage</span>(named: <span class="string">"interpolated \(variable)"</span>)</span><br><span class="line">let color = <span class="built_in">UIColor</span>(red: value, green: value, blue: value, alpha: <span class="number">1</span>)</span><br><span class="line">let image = <span class="built_in">NSImage</span>(named: aVariable)</span><br><span class="line">let image = <span class="built_in">NSImage</span>(named: <span class="string">"interpolated \(variable)"</span>)</span><br><span class="line">let color = <span class="built_in">NSColor</span>(red: value, green: value, blue: value, alpha: <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//会触发warning</span></span><br><span class="line">let image = ↓<span class="built_in">UIImage</span>(named: <span class="string">"foo"</span>)</span><br><span class="line">let color = ↓<span class="built_in">UIColor</span>(red: <span class="number">0.3</span>, green: <span class="number">0.3</span>, blue: <span class="number">0.3</span>, alpha: <span class="number">1</span>)</span><br><span class="line">let color = ↓<span class="built_in">UIColor</span>(red: <span class="number">100</span> / <span class="number">255.0</span>, green: <span class="number">50</span> / <span class="number">255.0</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</span><br><span class="line">let color = ↓<span class="built_in">UIColor</span>(white: <span class="number">0.5</span>, alpha: <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="规则69-opening-brace"><a href="#规则69-opening-brace" class="headerlink" title="规则69: opening_brace"></a>规则69: opening_brace</h3><p>花括号之前应该有一个空格,且与声明在同一行</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>opening_brace</td>
+<td>启用</td>
+<td>yes</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建议写法</span></span><br><span class="line">func abc() &#123;</span><br><span class="line">&#125;</span><br><span class="line">[].map() &#123; $<span class="number">0</span> &#125;</span><br><span class="line">[].map(&#123; &#125;)</span><br><span class="line"><span class="keyword">if</span> let a = b &#123; &#125;</span><br><span class="line"><span class="keyword">while</span> a == b &#123; &#125;</span><br><span class="line">guard let a = b <span class="keyword">else</span> &#123; &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则70-operator-usage-whitespace"><a href="#规则70-operator-usage-whitespace" class="headerlink" title="规则70: operator_usage_whitespace"></a>规则70: operator_usage_whitespace</h3><p>操作符使用规则， 操作符两边应该有空格。比如 “+” “-” “？？”</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>operator_usage_whitespace</td>
+<td>未启用</td>
+<td>yes</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建议写法</span></span><br><span class="line">let foo = <span class="number">1</span> + <span class="number">2</span></span><br><span class="line">let foo = <span class="number">1</span> &gt; <span class="number">2</span></span><br><span class="line">let foo = !<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//不推荐写法</span></span><br><span class="line">let foo = <span class="number">1</span>+<span class="number">2</span></span><br><span class="line">let foo = <span class="number">1</span>   + <span class="number">2</span></span><br><span class="line">let foo = <span class="number">1</span>   +    <span class="number">2</span></span><br><span class="line">let foo = <span class="number">1</span> +    <span class="number">2</span></span><br><span class="line">let foo=<span class="number">1</span>+<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h3 id="规则71-operator-whitespace"><a href="#规则71-operator-whitespace" class="headerlink" title="规则71: operator_whitespace"></a>规则71: operator_whitespace</h3><p>空格/空白操作符。当定义空格操作符的时候，被定义的名字或类型两边应该各有一个单行空格操作符</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>operator_whitespace</td>
+<td>启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 触发警告</span></span><br><span class="line"><span class="keyword">class</span> Something: Equatable &#123;</span><br><span class="line">    var text: String?</span><br><span class="line"></span><br><span class="line">    <span class="comment">// "=="和“(lhs: Something, rhs: Something)”之间应该有一个空格</span></span><br><span class="line">    <span class="keyword">static</span> func ==(lhs: Something, rhs: Something) -&gt; Bool &#123;</span><br><span class="line">        <span class="keyword">return</span> lhs.text == rhs.text</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则72-overridden-super-call"><a href="#规则72-overridden-super-call" class="headerlink" title="规则72: overridden_super_call"></a>规则72: overridden_super_call</h3><p>一些重写的方法应该调用super.(父类的)方法</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>overridden_super_call</td>
+<td>未启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 这样会触发警告</span></span><br><span class="line"> <span class="keyword">class</span> VCd: <span class="built_in">UIViewController</span> &#123;</span><br><span class="line">     override func viewWillAppear(_ animated: Bool) &#123;</span><br><span class="line">        <span class="comment">//没有调用父类</span></span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/// 不会触发警告</span></span><br><span class="line">  <span class="keyword">class</span> VCd: <span class="built_in">UIViewController</span> &#123;</span><br><span class="line">     override func viewWillAppear(_ animated: Bool) &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewWillAppear(animated)</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则73-override-in-extension"><a href="#规则73-override-in-extension" class="headerlink" title="规则73: override_in_extension"></a>规则73: override_in_extension</h3><p>在extension中,不能重写未声明的属性和未定义的方法</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>override_in_extension</td>
+<td>未启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//错误写法</span></span><br><span class="line">extension Person &#123;</span><br><span class="line">  <span class="comment">//该属性之前未定义, 不能重写</span></span><br><span class="line">  override var age: Int &#123; <span class="keyword">return</span> <span class="number">42</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension Person &#123;</span><br><span class="line">  <span class="comment">//该方法之前也为定义不能重写</span></span><br><span class="line">  override func celebrateBirthday() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则74-pattern-matching-keywords"><a href="#规则74-pattern-matching-keywords" class="headerlink" title="规则74: pattern_matching_keywords"></a>规则74: pattern_matching_keywords</h3><p>…<br>在switch-case语句中, 建议不要将case中的let和var等关键字放到元祖内<br>识别码 | 默认是否启用 | 是否支持自动更正 | 类型<br>—|—|—|—<br>pattern_matching_keywords | 未启用 | no | idiomatic</p>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="规则75-aaa"><a href="#规则75-aaa" class="headerlink" title="规则75: aaa"></a>规则75: aaa</h3><p>…</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aaa</td>
+<td>未启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正确写法</span></span><br><span class="line"><span class="keyword">switch</span> foo &#123;</span><br><span class="line">    <span class="keyword">case</span> let .foo(x, y): <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">switch</span> foo &#123;</span><br><span class="line">    <span class="keyword">case</span> .foo(let x), .bar(let x): <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误写法</span></span><br><span class="line"><span class="keyword">switch</span> foo &#123;</span><br><span class="line">    <span class="keyword">case</span> (↓let x,  ↓let y): <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">switch</span> foo &#123;</span><br><span class="line">    <span class="keyword">case</span> .foo(↓let x, ↓let y): <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">switch</span> foo &#123;</span><br><span class="line">    <span class="keyword">case</span> (.yamlParsing(↓let x), .yamlParsing(↓let y)): <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">switch</span> foo &#123;</span><br><span class="line">    <span class="keyword">case</span> (↓var x,  ↓var y): <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">switch</span> foo &#123;</span><br><span class="line">    <span class="keyword">case</span> .foo(↓var x, ↓var y): <span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则76-prefixed-toplevel-constant"><a href="#规则76-prefixed-toplevel-constant" class="headerlink" title="规则76: prefixed_toplevel_constant"></a>规则76: prefixed_toplevel_constant</h3><p>类似全局常量,建议前缀以k开头</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prefixed_toplevel_constant</td>
+<td>未启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//推荐写法</span></span><br><span class="line">private let kFoo = <span class="number">20.0</span></span><br><span class="line">public let kFoo = <span class="literal">false</span></span><br><span class="line">internal let kFoo = <span class="string">"Foo"</span></span><br><span class="line">let kFoo = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="规则77-private-action"><a href="#规则77-private-action" class="headerlink" title="规则77: private_action"></a>规则77: private_action</h3><p>IBActions修饰的方法,应该都是私有的</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private_action</td>
+<td>未启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//推荐写法</span></span><br><span class="line"><span class="keyword">class</span> Foo &#123;</span><br><span class="line">	@IBAction private func barButtonTapped(_ sender: <span class="built_in">UIButton</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> Foo &#123;</span><br><span class="line">	@IBAction private func barButtonTapped(_ sender: <span class="built_in">UIButton</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> Foo &#123;</span><br><span class="line">	@IBAction fileprivate func barButtonTapped(_ sender: <span class="built_in">UIButton</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> Foo &#123;</span><br><span class="line">	@IBAction fileprivate func barButtonTapped(_ sender: <span class="built_in">UIButton</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">private extension Foo &#123;</span><br><span class="line">	@IBAction func barButtonTapped(_ sender: <span class="built_in">UIButton</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">fileprivate extension Foo &#123;</span><br><span class="line">	@IBAction func barButtonTapped(_ sender: <span class="built_in">UIButton</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则78-private-outlet"><a href="#规则78-private-outlet" class="headerlink" title="规则78: private_outlet"></a>规则78: private_outlet</h3><p>IBOutlets修饰的属性应该都是私有的</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private_outlet</td>
+<td>未启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//推荐写法</span></span><br><span class="line"><span class="keyword">class</span> Foo &#123;</span><br><span class="line">  @IBOutlet private var label: <span class="built_in">UILabel</span>?</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> Foo &#123;</span><br><span class="line">  @IBOutlet private var label: <span class="built_in">UILabel</span>!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不推荐写法</span></span><br><span class="line"><span class="keyword">class</span> Foo &#123;</span><br><span class="line">  @IBOutlet var label: <span class="built_in">UILabel</span>?</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> Foo &#123;</span><br><span class="line">  @IBOutlet var label: <span class="built_in">UILabel</span>!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则79-private-over-fileprivate"><a href="#规则79-private-over-fileprivate" class="headerlink" title="规则79: private_over_fileprivate"></a>规则79: private_over_fileprivate</h3><p>private比fileprivate的私有程度更高</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private_over_fileprivate</td>
+<td>启用</td>
+<td>yes</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<h3 id="规则80-private-unit-test"><a href="#规则80-private-unit-test" class="headerlink" title="规则80: private_unit_test"></a>规则80: private_unit_test</h3><p>私有的单元测试。被标记为private的单元测试不会被测试工具XCTest运行， 也就是说，被标记为private的单元测试会被静态跳过</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private_unit_test</td>
+<td>启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">private ↓<span class="keyword">class</span> FooTest: <span class="built_in">XCTestCase</span> &#123; ...............继承于测试用例类<span class="built_in">XCTestCase</span>, 被标记为private，所以触发warning</span><br><span class="line">     func test1() &#123;&#125;</span><br><span class="line">     internal func test2() &#123;&#125;</span><br><span class="line">     public func test3() &#123;&#125;</span><br><span class="line">     private func test4() &#123;&#125;.......另外注意这里，上面既然不会通过，那显然这里也不会通过，根本不会走这个func</span><br><span class="line"> &#125;  </span><br><span class="line"></span><br><span class="line"> internal <span class="keyword">class</span> FooTest: <span class="built_in">XCTestCase</span> &#123; ......开始通过测试，因为没有被标记为private</span><br><span class="line">     func test1() &#123;&#125;</span><br><span class="line">     internal func test2() &#123;&#125;</span><br><span class="line">     public func test3() &#123;&#125;</span><br><span class="line">     private ↓func test4() &#123;&#125;................不通过，因为被标记为private</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public <span class="keyword">class</span> FooTest: <span class="built_in">XCTestCase</span> &#123; ..........通过</span><br><span class="line">     func test1() &#123;&#125;</span><br><span class="line">     internal func test2() &#123;&#125;</span><br><span class="line">     public func test3() &#123;&#125;</span><br><span class="line">     private ↓func test4() &#123;&#125;.................不通过，因为被标记成private</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">class</span> FooTest: <span class="built_in">XCTestCase</span> &#123; ..........通过</span><br><span class="line">     func test1() &#123;&#125;</span><br><span class="line">     internal func test2() &#123;&#125;</span><br><span class="line">     public func test3() &#123;&#125;</span><br><span class="line">     private ↓func test4() &#123;&#125;.................不通过，因为被标记成private</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则81-prohibited-super-call"><a href="#规则81-prohibited-super-call" class="headerlink" title="规则81: prohibited_super_call"></a>规则81: prohibited_super_call</h3><p>一些方法不应该调用父类的方法</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prohibited_super_call</td>
+<td>未启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以下方法不建议调用父类的方法</span></span><br><span class="line"><span class="keyword">class</span> VC: <span class="built_in">UIViewController</span> &#123;</span><br><span class="line">	override func loadView() &#123;↓</span><br><span class="line">		<span class="keyword">super</span>.loadView()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> VC: <span class="built_in">NSFileProviderExtension</span> &#123;</span><br><span class="line">	override func providePlaceholder(at url: URL,completionHandler: @escaping (Error?) -&gt; Void) &#123;↓</span><br><span class="line">		<span class="keyword">self</span>.method1()</span><br><span class="line">		<span class="keyword">super</span>.providePlaceholder(at:url, completionHandler: completionHandler)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> VC: <span class="built_in">NSView</span> &#123;</span><br><span class="line">	override func updateLayer() &#123;↓</span><br><span class="line">		<span class="keyword">self</span>.method1()</span><br><span class="line">		<span class="keyword">super</span>.updateLayer()</span><br><span class="line">		<span class="keyword">self</span>.method2()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> VC: <span class="built_in">NSView</span> &#123;</span><br><span class="line">	override func updateLayer() &#123;↓</span><br><span class="line">		defer &#123;</span><br><span class="line">			<span class="keyword">super</span>.updateLayer()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则82-protocol-property-accessors-order"><a href="#规则82-protocol-property-accessors-order" class="headerlink" title="规则82: protocol_property_accessors_order"></a>规则82: protocol_property_accessors_order</h3><p>在协议中声明属性时，访问者的顺序应该是get set</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol_property_accessors_order</td>
+<td>启用</td>
+<td>yes</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建议</span></span><br><span class="line">protocol Foo &#123;</span><br><span class="line">   var bar: String &#123; get set &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//不建议</span></span><br><span class="line">protocol Foo &#123;</span><br><span class="line">   var bar: String &#123; set get &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则83-quick-discouraged-call"><a href="#规则83-quick-discouraged-call" class="headerlink" title="规则83: quick_discouraged_call"></a>规则83: quick_discouraged_call</h3><p>在单元测试中,不建议在describe和content比保重直接调用方法和类</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>quick_discouraged_call</td>
+<td>未启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<h3 id="规则84-quick-discouraged-focused-test"><a href="#规则84-quick-discouraged-focused-test" class="headerlink" title="规则84: quick_discouraged_focused_test"></a>规则84: quick_discouraged_focused_test</h3><p>在单元测试中,不建议集中测试,否则可能不能运行成功</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>quick_discouraged_focused_test</td>
+<td>未启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//官方示例, 不建议</span></span><br><span class="line"><span class="keyword">class</span> TotoTests: QuickSpec &#123;</span><br><span class="line">   override func spec() &#123;</span><br><span class="line">       ↓fdescribe(<span class="string">"foo"</span>) &#123; &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则85-quick-discouraged-pending-test"><a href="#规则85-quick-discouraged-pending-test" class="headerlink" title="规则85: quick_discouraged_pending_test"></a>规则85: quick_discouraged_pending_test</h3><p>单元测试中阻止未进行的测试单元</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>quick_discouraged_pending_test</td>
+<td>未启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<h3 id="规则86-redundant-discardable-let"><a href="#规则86-redundant-discardable-let" class="headerlink" title="规则86: redundant_discardable_let"></a>规则86: redundant_discardable_let</h3><p>不需要初始化方法返回结果时,建议使用: _ = Person(), 而不是:let _ = Person()</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>redundant_discardable_let</td>
+<td>启用</td>
+<td>yes</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//推荐</span></span><br><span class="line">_ = foo()</span><br><span class="line"><span class="keyword">if</span> let _ = foo() &#123; &#125;</span><br><span class="line">guard let _ = foo() <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不建议</span></span><br><span class="line">let _ = foo()</span><br><span class="line"><span class="keyword">if</span> _ = foo() &#123; let _ = bar() &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则87-redundant-nil-coalescing"><a href="#规则87-redundant-nil-coalescing" class="headerlink" title="规则87: redundant_nil_coalescing"></a>规则87: redundant_nil_coalescing</h3><p>使用可能为为nil的可选值时,建议使用: str ?? “”, ??左右两侧要有一个空格</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>redundant_nil_coalescing</td>
+<td>未启用</td>
+<td>yes</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建议写法</span></span><br><span class="line">var myVar: Int?; myVar ?? <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//不建议写法</span></span><br><span class="line">var myVar: Int? = <span class="literal">nil</span>; myVar  ?? <span class="literal">nil</span></span><br><span class="line">var myVar: Int? = <span class="literal">nil</span>; myVar??<span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+<h3 id="规则88-redundant-optional-initialization"><a href="#规则88-redundant-optional-initialization" class="headerlink" title="规则88: redundant_optional_initialization"></a>规则88: redundant_optional_initialization</h3><p>初始化nil变量是,不建议赋值nil</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>redundant_optional_initialization</td>
+<td>启用</td>
+<td>yes</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不会触发warning</span></span><br><span class="line">var myVar: Int?</span><br><span class="line">let myVar: Int? = <span class="literal">nil</span></span><br><span class="line">var myVar: Optional&lt;Int&gt;</span><br><span class="line">let myVar: Optional&lt;Int&gt; = <span class="literal">nil</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//会触发warning</span></span><br><span class="line">var myVar: Int?↓ = <span class="literal">nil</span></span><br><span class="line">var myVar: Optional&lt;Int&gt;↓ = <span class="literal">nil</span></span><br><span class="line">var myVar: Int?↓=<span class="literal">nil</span></span><br><span class="line">var myVar: Optional&lt;Int&gt;↓=<span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+<h3 id="规则89-redundant-string-enum-value"><a href="#规则89-redundant-string-enum-value" class="headerlink" title="规则89: redundant_string_enum_value"></a>规则89: redundant_string_enum_value</h3><p>在定义字符串枚举的时候, 当字符串枚举值等于枚举名称时，可以不用赋值</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>redundant_string_enum_value</td>
+<td>启用</td>
+<td>no</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不会触发warning</span></span><br><span class="line"><span class="keyword">enum</span> Numbers: String &#123;</span><br><span class="line"> <span class="keyword">case</span> one</span><br><span class="line"> <span class="keyword">case</span> two</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">enum</span> Numbers: Int &#123;</span><br><span class="line"> <span class="keyword">case</span> one = <span class="number">1</span></span><br><span class="line"> <span class="keyword">case</span> two = <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//会触发warning</span></span><br><span class="line"><span class="keyword">enum</span> Numbers: String &#123;</span><br><span class="line"> <span class="keyword">case</span> one = ↓<span class="string">"one"</span></span><br><span class="line"> <span class="keyword">case</span> two = ↓<span class="string">"two"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">enum</span> Numbers: String &#123;</span><br><span class="line"> <span class="keyword">case</span> one = ↓<span class="string">"one"</span>, two = ↓<span class="string">"two"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则90-redundant-void-return"><a href="#规则90-redundant-void-return" class="headerlink" title="规则90: redundant_void_return"></a>规则90: redundant_void_return</h3><p>当函数返回值为Void时,建议不谢返回值, 定义常量或者变量的时候可以</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>redundant_void_return</td>
+<td>启用</td>
+<td>yes</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不会触发warning</span></span><br><span class="line">func foo() &#123;&#125;</span><br><span class="line">func foo() -&gt; Int &#123;&#125;</span><br><span class="line">func foo() -&gt; Int -&gt; Void &#123;&#125;</span><br><span class="line">func foo() -&gt; VoidResponse</span><br><span class="line">let foo: Int -&gt; Void</span><br><span class="line"></span><br><span class="line"><span class="comment">//会触发warning</span></span><br><span class="line">func foo()↓ -&gt; Void &#123;&#125;</span><br><span class="line">protocol Foo &#123;</span><br><span class="line"> func foo()↓ -&gt; Void</span><br><span class="line">&#125;</span><br><span class="line">func foo()↓ -&gt; () &#123;&#125;</span><br><span class="line">protocol Foo &#123;</span><br><span class="line"> func foo()↓ -&gt; ()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则91-required-enum-case"><a href="#规则91-required-enum-case" class="headerlink" title="规则91: required_enum_case"></a>规则91: required_enum_case</h3><p>定义的枚举,必须有与其对应的操作实现</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>required_enum_case</td>
+<td>未启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<h3 id="规则92-return-arrow-whitespace"><a href="#规则92-return-arrow-whitespace" class="headerlink" title="规则92: return_arrow_whitespace"></a>规则92: return_arrow_whitespace</h3><p>swiftlint推荐返回箭头和返回类型应该被空格分开</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>return_arrow_whitespace</td>
+<td>启用</td>
+<td>yes</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//推荐写法</span></span><br><span class="line">func abc() -&gt; Int &#123;&#125;</span><br><span class="line">func abc() -&gt; [Int] &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不建议写法</span></span><br><span class="line">func abc()↓-&gt;Int &#123;&#125;</span><br><span class="line">func abc()↓-&gt;[Int] &#123;&#125;</span><br><span class="line">func abc()↓-&gt;(Int, Int) &#123;&#125;</span><br><span class="line">func abc()↓-&gt; Int &#123;&#125;</span><br><span class="line">func abc()↓ -&gt;Int &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则93-shorthand-operator"><a href="#规则93-shorthand-operator" class="headerlink" title="规则93: shorthand_operator"></a>规则93: shorthand_operator</h3><p>在swiftlint中， 就是我们常用的简洁操作运算符，比如：+= ， -=， *=， /= 等等。在swiftlint中，在做一些赋值操作的时候，推荐使用简短操作符</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shorthand_operator</td>
+<td>启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 不推荐使用</span></span><br><span class="line">var value = <span class="number">4</span></span><br><span class="line">value = value / <span class="number">2</span></span><br><span class="line">print(value)</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 推荐使用</span></span><br><span class="line">var value = <span class="number">4</span></span><br><span class="line">value /= <span class="number">2</span></span><br><span class="line">print(value)</span><br></pre></td></tr></table></figure>
+<h3 id="规则94-single-test-class"><a href="#规则94-single-test-class" class="headerlink" title="规则94: single_test_class"></a>规则94: single_test_class</h3><p>单元测试中,测试文件应该包含一个QuickSpec或XCTestCase类</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>single_test_class</td>
+<td>未启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<h3 id="规则95-sorted-first-last"><a href="#规则95-sorted-first-last" class="headerlink" title="规则95: sorted_first_last"></a>规则95: sorted_first_last</h3><p>在获取某数组中最大最小值时,建议使用min和max函数,而不是sorted().first和sorted().lase</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sorted_first_last</td>
+<td>未启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="规则96-aaa"><a href="#规则96-aaa" class="headerlink" title="规则96: aaa"></a>规则96: aaa</h3><p>…</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aaa</td>
+<td>未启用</td>
+<td>no</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建议</span></span><br><span class="line">let min = myList.min()</span><br><span class="line">let min = myList.min(by: &#123; $<span class="number">0</span> &lt; $<span class="number">1</span> &#125;)</span><br><span class="line">let min = myList.min(by: &gt;)</span><br><span class="line">let min = myList.max()</span><br><span class="line">let min = myList.max(by: &#123; $<span class="number">0</span> &lt; $<span class="number">1</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//不建议</span></span><br><span class="line">myList.sorted().first</span><br><span class="line">myList.sorted(by: &#123; $<span class="number">0.</span>description &lt; $<span class="number">1.</span>description &#125;).first</span><br><span class="line">myList.sorted(by: &gt;).first</span><br><span class="line">myList.map &#123; $<span class="number">0</span> + <span class="number">1</span> &#125;.sorted().first</span><br><span class="line">myList.sorted(by: someFunction).first</span><br></pre></td></tr></table></figure>
+<h3 id="规则97-sorted-imports"><a href="#规则97-sorted-imports" class="headerlink" title="规则97: sorted_imports"></a>规则97: sorted_imports</h3><p>分类/有序导入。 这个属性有些奇怪， 要求导入的时候导入的类要按顺序导入</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sorted_imports</td>
+<td>未启用</td>
+<td>yes</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//建议写法</span></span><br><span class="line">import AAA</span><br><span class="line">import BBB</span><br><span class="line">import CCC</span><br><span class="line">import DDD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import Alamofire</span><br><span class="line">import API</span><br></pre></td></tr></table></figure>
+<h3 id="规则98-statement-position"><a href="#规则98-statement-position" class="headerlink" title="规则98: statement_position"></a>规则98: statement_position</h3><p>陈述句位置， 这里主要指的是 else 和 catch 前面要加一个空格， 也不能大于1个空格， 否则就会触发警告</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>statement_position</td>
+<td>启用</td>
+<td>yes</td>
+<td>style</td>
+</tr>
+</tbody>
+</table>
+<p>代码示例:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 没有空格，触发warning</span></span><br><span class="line">let number = <span class="string">"long"</span></span><br><span class="line"><span class="keyword">if</span> number.isEmpty &#123;</span><br><span class="line">    print(<span class="string">"为空"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;.............................注意这里</span><br><span class="line">    print(<span class="string">"不为空"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 这里也会触发warning， 因为else if换行了</span></span><br><span class="line">let number = <span class="string">"long"</span></span><br><span class="line"><span class="keyword">if</span> number.isEmpty &#123;</span><br><span class="line">    print(<span class="string">"为空"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> number.contains(<span class="string">"long"</span>) &#123;............................注意这里</span><br><span class="line">    print(<span class="string">"不为空"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    print(<span class="string">"s"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 正确的写法</span></span><br><span class="line">let number = <span class="string">"long"</span></span><br><span class="line"><span class="keyword">if</span> number.isEmpty &#123;</span><br><span class="line">    print(<span class="string">"为空"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    print(<span class="string">"不为空"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="规则99-strict-fileprivate"><a href="#规则99-strict-fileprivate" class="headerlink" title="规则99: strict_fileprivate"></a>规则99: strict_fileprivate</h3><p>extension中不建议使用fileprivate 修饰方法和属性</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>strict_fileprivate</td>
+<td>未启用</td>
+<td>no</td>
+<td>idiomatic</td>
+</tr>
+</tbody>
+</table>
+<h3 id="规则100-superfluous-disable-command"><a href="#规则100-superfluous-disable-command" class="headerlink" title="规则100: superfluous_disable_command"></a>规则100: superfluous_disable_command</h3><p>被禁用的规则不会在禁用区域触发警告</p>
+<table>
+<thead>
+<tr>
+<th>识别码</th>
+<th>默认是否启用</th>
+<th>是否支持自动更正</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>superfluous_disable_command</td>
+<td>启用</td>
+<td>no</td>
+<td>lint</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>文中如有不足之处请多指教</p>
+</blockquote>
+<blockquote>
+<p>持续更新中…..</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/03/10/SwiftLint代码规范属性说明(二)/">SwiftLint代码规范属性说明(二)</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RuningTitan</a></p>
+        <p><span>发布时间:</span>2018-03-10, 17:04:54</p>
+        <p><span>最后更新:</span>2018-03-10, 22:41:50</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/10/SwiftLint代码规范属性说明(二)/" title="SwiftLint代码规范属性说明(二)">https://titanjun.top/2018/03/10/SwiftLint代码规范属性说明(二)/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2018/03/10/SwiftLint代码规范属性说明(二)/　　作者: RuningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/03/10/SwiftLint代码规范属性说明(三)/">
+                    SwiftLint代码规范属性说明(三)
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/03/08/基于GitHub和Hexo搭建个人博客/">
+                    基于GitHub和Hexo搭建个人博客
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#规则51-legacy-cggeometry-functions"><span class="toc-number">1.</span> <span class="toc-text">规则51: legacy_cggeometry_functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则52-legacy-constant"><span class="toc-number">2.</span> <span class="toc-text">规则52: legacy_constant</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则53-legacy-constructor"><span class="toc-number">3.</span> <span class="toc-text">规则53: legacy_constructor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则54-legacy-nsgeometry-functions"><span class="toc-number">4.</span> <span class="toc-text">规则54: legacy_nsgeometry_functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则55-let-var-whitespace"><span class="toc-number">5.</span> <span class="toc-text">规则55: let_var_whitespace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则56-line-length"><span class="toc-number">6.</span> <span class="toc-text">规则56: line_length</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则57-literal-expression-end-indentation"><span class="toc-number">7.</span> <span class="toc-text">规则57: literal_expression_end_indentation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则58-mark"><span class="toc-number">8.</span> <span class="toc-text">规则58: mark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则59-multiline-arguments"><span class="toc-number">9.</span> <span class="toc-text">规则59: multiline_arguments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则60-multiline-parameters"><span class="toc-number">10.</span> <span class="toc-text">规则60: multiline_parameters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则61-multiple-closures-with-trailing-closure"><span class="toc-number">11.</span> <span class="toc-text">规则61: multiple_closures_with_trailing_closure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则62-nesting"><span class="toc-number">12.</span> <span class="toc-text">规则62: nesting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则63-nimble-operator"><span class="toc-number">13.</span> <span class="toc-text">规则63: nimble_operator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则64-no-extension-access-modifier"><span class="toc-number">14.</span> <span class="toc-text">规则64: no_extension_access_modifier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则65-no-grouping-extension"><span class="toc-number">15.</span> <span class="toc-text">规则65: no_grouping_extension</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则66-notification-center-detachment"><span class="toc-number">16.</span> <span class="toc-text">规则66: notification_center_detachment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则67-number-separator"><span class="toc-number">17.</span> <span class="toc-text">规则67: number_separator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则68-object-literal"><span class="toc-number">18.</span> <span class="toc-text">规则68: object_literal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则69-opening-brace"><span class="toc-number">19.</span> <span class="toc-text">规则69: opening_brace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则70-operator-usage-whitespace"><span class="toc-number">20.</span> <span class="toc-text">规则70: operator_usage_whitespace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则71-operator-whitespace"><span class="toc-number">21.</span> <span class="toc-text">规则71: operator_whitespace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则72-overridden-super-call"><span class="toc-number">22.</span> <span class="toc-text">规则72: overridden_super_call</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则73-override-in-extension"><span class="toc-number">23.</span> <span class="toc-text">规则73: override_in_extension</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则74-pattern-matching-keywords"><span class="toc-number">24.</span> <span class="toc-text">规则74: pattern_matching_keywords</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则75-aaa"><span class="toc-number">25.</span> <span class="toc-text">规则75: aaa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则76-prefixed-toplevel-constant"><span class="toc-number">26.</span> <span class="toc-text">规则76: prefixed_toplevel_constant</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则77-private-action"><span class="toc-number">27.</span> <span class="toc-text">规则77: private_action</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则78-private-outlet"><span class="toc-number">28.</span> <span class="toc-text">规则78: private_outlet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则79-private-over-fileprivate"><span class="toc-number">29.</span> <span class="toc-text">规则79: private_over_fileprivate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则80-private-unit-test"><span class="toc-number">30.</span> <span class="toc-text">规则80: private_unit_test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则81-prohibited-super-call"><span class="toc-number">31.</span> <span class="toc-text">规则81: prohibited_super_call</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则82-protocol-property-accessors-order"><span class="toc-number">32.</span> <span class="toc-text">规则82: protocol_property_accessors_order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则83-quick-discouraged-call"><span class="toc-number">33.</span> <span class="toc-text">规则83: quick_discouraged_call</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则84-quick-discouraged-focused-test"><span class="toc-number">34.</span> <span class="toc-text">规则84: quick_discouraged_focused_test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则85-quick-discouraged-pending-test"><span class="toc-number">35.</span> <span class="toc-text">规则85: quick_discouraged_pending_test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则86-redundant-discardable-let"><span class="toc-number">36.</span> <span class="toc-text">规则86: redundant_discardable_let</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则87-redundant-nil-coalescing"><span class="toc-number">37.</span> <span class="toc-text">规则87: redundant_nil_coalescing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则88-redundant-optional-initialization"><span class="toc-number">38.</span> <span class="toc-text">规则88: redundant_optional_initialization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则89-redundant-string-enum-value"><span class="toc-number">39.</span> <span class="toc-text">规则89: redundant_string_enum_value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则90-redundant-void-return"><span class="toc-number">40.</span> <span class="toc-text">规则90: redundant_void_return</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则91-required-enum-case"><span class="toc-number">41.</span> <span class="toc-text">规则91: required_enum_case</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则92-return-arrow-whitespace"><span class="toc-number">42.</span> <span class="toc-text">规则92: return_arrow_whitespace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则93-shorthand-operator"><span class="toc-number">43.</span> <span class="toc-text">规则93: shorthand_operator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则94-single-test-class"><span class="toc-number">44.</span> <span class="toc-text">规则94: single_test_class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则95-sorted-first-last"><span class="toc-number">45.</span> <span class="toc-text">规则95: sorted_first_last</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则96-aaa"><span class="toc-number">46.</span> <span class="toc-text">规则96: aaa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则97-sorted-imports"><span class="toc-number">47.</span> <span class="toc-text">规则97: sorted_imports</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则98-statement-position"><span class="toc-number">48.</span> <span class="toc-text">规则98: statement_position</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则99-strict-fileprivate"><span class="toc-number">49.</span> <span class="toc-text">规则99: strict_fileprivate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则100-superfluous-disable-command"><span class="toc-number">50.</span> <span class="toc-text">规则100: superfluous_disable_command</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"SwiftLint代码规范属性说明(二)　| RuningTitan's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/03/10/SwiftLint代码规范属性说明(三)/" title="上一篇: SwiftLint代码规范属性说明(三)">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/03/08/基于GitHub和Hexo搭建个人博客/" title="下一篇: 基于GitHub和Hexo搭建个人博客">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/10/SwiftLint代码规范属性说明(三)/">SwiftLint代码规范属性说明(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/10/SwiftLint代码规范属性说明(二)/">SwiftLint代码规范属性说明(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/08/基于GitHub和Hexo搭建个人博客/">基于GitHub和Hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/03/SwiftLint代码规范属性说明(一)/">SwiftLint代码规范属性说明(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/07/Xcode代码规范之SwiftLint配置/">Xcode代码规范之SwiftLint配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/ReactNative之AsyncStorage本地存储/">ReactNative之AsyncStorage本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Node.js搭建Web服务器/">Node.js搭建Web服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/06/ReactNative之TabBariOS和TabNavigator/">ReactNative之TabBariOS和TabNavigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/React Native之导航组件NavigatorIOS和Navigator/">React Native之导航组件NavigatorIOS和Navigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/03/ReactNaive之ScrollView和ListView/">ReactNaive之ScrollView和ListView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Swift语音和文本的转换/">Swift语音和文本的转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/Swift之Vision 图像识别框架/">Swift之Vision 图像识别框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(AVFoundation)动态人脸识别(二)/">iOS黑科技之(AVFoundation)动态人脸识别(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(CoreImage)静态人脸识别(一)/">iOS黑科技之(CoreImage)静态人脸识别(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/16/Swift之二维码的生成、识别和扫描/">Swift之二维码的生成、识别和扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/11/Swift之删除HTML5页面的广告/">Swift之删除HTML5页面的广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/Swift之微信朋友圈图片浏览器/">Swift之微信朋友圈图片浏览器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/Swift开发之3DTouch实用演练/">Swift开发之3DTouch实用演练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/ReactNaive之CSS和Flex布局/">ReactNaive之CSS和Flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/17/Swift之Facebook的POP动画使用和实战/">Swift之Facebook的POP动画使用和实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/iOS出门必备之CoreAnimation(核心动画)/">iOS出门必备之CoreAnimation(核心动画)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/RxSwift+Moya网络请求之项目实战/">RxSwift+Moya网络请求之项目实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/21/RxSwift的使用详解02/">RxSwift的使用详解02</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/15/RxSwift的使用详解01/">RxSwift的使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/iOS之Scanner字符串扫描类/">iOS之Scanner字符串扫描类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/升级Swift4.0遇到的坑/">升级Swift4.0遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/09/JavaScript基本语法01/">JavaScript基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary/">Swift4.0新特性之String、Array和Dictionary</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 RuningTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
