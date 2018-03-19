@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="RunningTitan" />
+
+
+
+<meta name="description" content="ReactiveCocoa（简称为RAC）,是由Github开源的一个应用于iOS和OS开发的函数式响应式编程框架，它提供了一系列用来组合和转换值流的 API">
+<meta name="keywords" content="函数式,响应式,RACSingle,RACSubject">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReactiveCocoa使用详解01">
+<meta property="og:url" content="https://titanjun.top/2018/03/19/ReactiveCocoa使用详解01/index.html">
+<meta property="og:site_name" content="RunningTitan&#39;s Blog">
+<meta property="og:description" content="ReactiveCocoa（简称为RAC）,是由Github开源的一个应用于iOS和OS开发的函数式响应式编程框架，它提供了一系列用来组合和转换值流的 API">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T13:59:58.621Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ReactiveCocoa使用详解01">
+<meta name="twitter:description" content="ReactiveCocoa（简称为RAC）,是由Github开源的一个应用于iOS和OS开发的函数式响应式编程框架，它提供了一系列用来组合和转换值流的 API">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="RunningTitan&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>ReactiveCocoa使用详解01 | RunningTitan&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a9e4cdf8ccd2ba8"></script>
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/titanjun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">RunningTitan</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">文章列表</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3DTouch/">3DTouch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVFoundation/">AVFoundation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AppIcon/">AppIcon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AsyncStorage/">AsyncStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CATransition/">CATransition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CIFilter/">CIFilter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Category/">Category</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreAnimation/">CoreAnimation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CoreImage/">CoreImage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dictionary/">Dictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/">Error</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook-POP/">Facebook POP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5标签/">HTML5标签</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ListView/">ListView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-工具/">Mac 工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navigator/">Navigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NavigatorIOS/">NavigatorIOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RACSingle/">RACSingle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RACSubject/">RACSubject</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxSwift/">RxSwift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scanner/">Scanner</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScrollView/">ScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech/">Speech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift4-0/">Swift4.0</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SwiftLint/">SwiftLint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabBariOS/">TabBariOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TabNavigator/">TabNavigator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIBesizationv/">UIBesizationv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UICollectionView/">UICollectionView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIMenuController/">UIMenuController</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIStackView/">UIStackView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITableView/">UITableView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vision/">Vision</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebStorm/">WebStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebView/">WebView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web服务器/">Web服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS-10-3/">iOS 10.3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS扫描器/">iOS扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入坑/">入坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式/">函数式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式/">响应式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式编程/">响应式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/富文本/">富文本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桥接/">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.titanjun.top">个人主页</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.jianshu.com/u/5bd5e9ed569e">简书</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://blog.csdn.net/ShmilyCoder">CSDN</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/CoderTitan">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://juejin.im/user/5a7a64ae6fb9a0636323fd06/posts">稀土掘金</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">iOS开发工程师</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">RunningTitan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/titanjun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">RunningTitan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">文章列表</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5bd5e9ed569e" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/ShmilyCoder" title="CSDN"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/CoderTitan" title="GitHub"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place" title="新浪微博"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:quanjunt@163.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-ReactiveCocoa使用详解01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/03/19/ReactiveCocoa使用详解01/" class="article-date">
+      <time datetime="2018-03-19T13:58:09.000Z" itemprop="datePublished">2018-03-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ReactiveCocoa使用详解01
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/ReactiveCocoa/">ReactiveCocoa</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RACSingle/">RACSingle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RACSubject/">RACSubject</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式/">函数式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式/">响应式</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://github.com/ReactiveCocoa" target="_blank" rel="noopener">ReactiveCocoa</a>（简称为RAC）,是由<code>Github</code>开源的一个应用于iOS和OS开发的函数式响应式编程框架，它提供了一系列用来组合和转换值流的 API</p>
+<a id="more"></a>
+<h2 id="一-什么是响应式变成思想"><a href="#一-什么是响应式变成思想" class="headerlink" title="一. 什么是响应式变成思想?"></a>一. 什么是响应式变成思想?</h2><p>学习一个框架之前, 首先要了解这个框架的编程思想, 这里在介绍响应式编程思想之前, 先介绍一下之前接触过的编程思想</p>
+<h3 id="1-面向对象"><a href="#1-面向对象" class="headerlink" title="1.面向对象"></a>1.面向对象</h3><ul>
+<li>万物皆对象<ul>
+<li>是一类以对象作为基本程序结构单位的程序设计语言</li>
+<li>典型的面向对象的编程语言有<code>C++</code>, <code>C#</code>, <code>Java</code>等</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-面向过程"><a href="#2-面向过程" class="headerlink" title="2. 面向过程"></a>2. 面向过程</h3><ul>
+<li>一种以过程为中心的编程思想</li>
+<li>C语言就是一门面向过程的语言</li>
+</ul>
+<h3 id="3-链式编程思想"><a href="#3-链式编程思想" class="headerlink" title="3. 链式编程思想"></a>3. 链式编程思想</h3><ul>
+<li>是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好</li>
+<li>链式编程特点：方法的返回值是block, block必须有返回值（本身对象），block参数（需要操作的值）</li>
+<li>典型框架：masonry框架。 </li>
+</ul>
+<h3 id="4-函数式编程思想"><a href="#4-函数式编程思想" class="headerlink" title="4. 函数式编程思想"></a>4. 函数式编程思想</h3><ul>
+<li>万物皆是流<ul>
+<li>不需要考虑调用顺序，只需要知道考虑结果</li>
+<li>类似于蝴蝶效应，产生一个事件，会影响很多东西，这些事件像流一样的传播出去，然后影响结果</li>
+<li>代表：KVO运用</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-函数式编程思想"><a href="#5-函数式编程思想" class="headerlink" title="5. 函数式编程思想"></a>5. 函数式编程思想</h3><ul>
+<li>是把操作尽量写成一系列嵌套的函数或者方法调用</li>
+<li>特点: 每个方法必须有返回值（本身对象）,把函数或者Block当做参数,block参数（需要操作的值）block返回值（操作结果）</li>
+<li>代表：ReactiveCocoa</li>
+</ul>
+<h3 id="6-ReactiveCocoa编程思想"><a href="#6-ReactiveCocoa编程思想" class="headerlink" title="6. ReactiveCocoa编程思想"></a>6. <code>ReactiveCocoa</code>编程思想</h3><ul>
+<li>函数式编程 <code>Functional Programming</code></li>
+<li>响应式编程 <code>Reactive Programming</code></li>
+</ul>
+<p>所以, <code>ReactiveCocoa</code>被描述为函数响应式编程（FRP）框架, 下面具体介绍一下<code>RAC</code>的一些常见类</p>
+<h2 id="二-RACSiganl-信号类"><a href="#二-RACSiganl-信号类" class="headerlink" title="二. RACSiganl 信号类"></a>二. RACSiganl 信号类</h2><ul>
+<li><code>ReactiveCocoa</code> 中最核心的概念之一就是信号<code>RACStream</code>。<code>RACStream</code>中有两个子类——<code>RACSignal</code> 和 <code>RACSequence</code>; 这里我们就主要说一下<code>RACSignal</code>; </li>
+<li>在<code>ReactiveCocoa</code>整个库中，<code>RACSignal</code>占据着比较重要的位置，而<code>RACSignal</code>的变换操作更是整个<code>RACStream</code>流操作核心之一</li>
+<li>下面让我们俩看一下<code>RACSignal</code>被订阅的完整过程</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)test2 &#123;</span><br><span class="line">    <span class="comment">//创建信号</span></span><br><span class="line">    RACSignal *single = [RACSignal createSignal:^RACDisposable * _Nullable(<span class="keyword">id</span>&lt;RACSubscriber&gt;  _Nonnull subscriber) &#123;</span><br><span class="line">        <span class="comment">//发送消息</span></span><br><span class="line">        [subscriber sendNext:<span class="string">@"a"</span>];</span><br><span class="line">        [subscriber sendNext:<span class="string">@"b"</span>];</span><br><span class="line">        <span class="comment">//发送完成</span></span><br><span class="line">        [subscriber sendCompleted];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//清空数据</span></span><br><span class="line">        <span class="keyword">return</span> [RACDisposable disposableWithBlock:^&#123;</span><br><span class="line">            <span class="comment">//当订阅者被消耗的时候就会执行</span></span><br><span class="line">            <span class="comment">//当订阅者发送完成,或者error的时候也会执行</span></span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"RACDisposable的block"</span>);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//订阅信号</span></span><br><span class="line">    RACDisposable *disposable = [single subscribeNext:^(<span class="keyword">id</span>  _Nullable x) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"value = %@"</span>, x);</span><br><span class="line">    &#125; error:^(<span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"error: %@"</span>, error);</span><br><span class="line">    &#125; completed:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"completed"</span>);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//释放</span></span><br><span class="line">    [disposable dispose];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在此之前先看一下<code>RACSignal</code>的一些子类<ul>
+<li><code>RACDynamicSignal</code>: 动态信号，使用一个 <code>block</code> 来实现订阅行为，我们在使用 <code>RACSignal</code> 的 <code>+createSignal:</code> 方法时创建的就是该类的实例</li>
+<li><code>RACEmptySignal</code>：空信号，用来实现 <code>RACSignal</code> 的 <code>+empty</code> 方法；</li>
+<li><code>RACReturnSignal</code>：一元信号，用来实现 <code>RACSignal</code> 的 <code>+return:</code>方法；</li>
+<li><code>RACErrorSignal</code>：错误信号，用来实现 <code>RACSignal</code> 的 <code>+error:</code> 方法；</li>
+<li><code>RACChannelTerminal</code>：通道终端，代表 <code>RACChannel</code> 的一个终端，用来实现双向绑定</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><code>RACSignal</code>在创建信号的时候，底层会调用<code>RACDynamicSignal</code>的<code>createSignal</code>的方法, 如下:</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+ (RACSignal *)createSignal:(RACDisposable * (^)(<span class="keyword">id</span>&lt;RACSubscriber&gt; subscriber))didSubscribe &#123;</span><br><span class="line">	<span class="keyword">return</span> [RACDynamicSignal createSignal:didSubscribe];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的block是一个 <code>id&lt;RACSubscriber&gt;</code> 类型的<code>subscriber</code>, 而这个<code>RACSubscriber</code>, 我们可以点进去看一些底层实现,  协议方法如下:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">RACSubscriber</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"><span class="keyword">@required</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// Sends the next value to subscribers.</span></span><br><span class="line">- (<span class="keyword">void</span>)sendNext:(<span class="keyword">nullable</span> <span class="keyword">id</span>)value;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// Sends the error to subscribers.</span></span><br><span class="line">- (<span class="keyword">void</span>)sendError:(<span class="keyword">nullable</span> <span class="built_in">NSError</span> *)error;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// Sends completed to subscribers.</span></span><br><span class="line">- (<span class="keyword">void</span>)sendCompleted;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// Sends the subscriber a disposable that represents one of its subscriptions.</span></span><br><span class="line">- (<span class="keyword">void</span>)didSubscribeWithDisposable:(RACCompoundDisposable *)disposable;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>RACSignal底层实现：<ul>
+<li>1.创建信号，首先把<code>didSubscribe</code>保存到信号中，还不会触发。</li>
+<li>2.当信号被订阅，也就是调用<code>signal</code>的<code>subscribeNext:nextBlock</code><ul>
+<li>2.1 <code>subscribeNext</code>内部会创建订阅者<code>subscriber</code>，并且把<code>nextBlock</code>保存到<code>subscriber</code>中。</li>
+<li>2.2 <code>subscribeNext</code>内部会调用<code>siganl的didSubscribe</code></li>
+<li>2.3 当信号订阅完成, 不在发送数据的时候, 最好调用完成发送的<code>[subscriber sendCompleted];</code></li>
+<li>订阅完成的时候, 内部会自动调用<code>[RACDisposable disposable]</code>取消订阅信号</li>
+</ul>
+</li>
+<li>3.<code>siganl</code>的<code>didSubscribe</code>中调用<code>[subscriber sendNext:@1];</code><ul>
+<li>3.1 <code>sendNext</code>底层其实就是执行<code>subscriber</code>的<code>nextBlock</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="三-信号提供者-RACSubject"><a href="#三-信号提供者-RACSubject" class="headerlink" title="三. 信号提供者: RACSubject"></a>三. 信号提供者: <code>RACSubject</code></h2><ul>
+<li>信号提供者，自己可以充当信号，又能发送信号</li>
+<li>先订阅, 在发送信号</li>
+<li>使用场景:通常用来代替代理/通知</li>
+</ul>
+<h3 id="1-RACSubject简单使用"><a href="#1-RACSubject简单使用" class="headerlink" title="1. RACSubject简单使用"></a>1. <code>RACSubject</code>简单使用</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setRacSubject1 &#123;</span><br><span class="line">    <span class="comment">//先订阅, 在发送信号</span></span><br><span class="line">    <span class="comment">//1. 创建信号</span></span><br><span class="line">    RACSubject *subject = [RACSubject subject];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//2. 订阅</span></span><br><span class="line">    <span class="comment">//内部创建RACSubscriber</span></span><br><span class="line">    [subject subscribeNext:^(<span class="keyword">id</span>  _Nullable x) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"第一个订阅者--%@"</span>, x);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    [subject subscribeNext:^(<span class="keyword">id</span>  _Nullable x) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"第二个订阅者---%@"</span>, x);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3. 发送信号</span></span><br><span class="line">    <span class="comment">//遍历所有的订阅者, 执行nextBlock</span></span><br><span class="line">    [subject sendNext:@<span class="number">2</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** 打印结果</span></span><br><span class="line"><span class="comment">     2018-03-17 20:18:19.782119+0800 ReactiveObjc[23883:1420936] 第一个订阅者--2</span></span><br><span class="line"><span class="comment">     2018-03-17 20:18:19.784715+0800 ReactiveObjc[23883:1420936] 第二个订阅者---2</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>RACSubject:底层实现和RACSignal不一样 <ul>
+<li>1.调用<code>subscribeNext</code>订阅信号，只是把订阅者保存起来，并且订阅者的<code>nextBlock</code>已经赋值了。</li>
+<li>2.调用<code>sendNext</code>发送信号，遍历刚刚保存的所有订阅者，一个一个调用订阅者的<code>nextBlock</code> </li>
+</ul>
+</li>
+</ul>
+<h3 id="2-RACReplaySubject简单使用"><a href="#2-RACReplaySubject简单使用" class="headerlink" title="2. RACReplaySubject简单使用"></a>2. <code>RACReplaySubject</code>简单使用</h3><ul>
+<li>重复提供信号类，RACSubject的子类</li>
+<li>先发送信号，再订阅信号；</li>
+<li>使用场景<ul>
+<li><ol>
+<li>如果一个信号每被订阅一次，就需要把之前的值重复发送一遍，使用重复提供信号类。</li>
+</ol>
+</li>
+<li><ol>
+<li>可以设置<code>capacity</code>数量来限制缓存的<code>value</code>的数量，即只缓充最新的几个值</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setReplaySubject &#123;</span><br><span class="line">    <span class="comment">//创建信号</span></span><br><span class="line">    RACReplaySubject *replySub = [RACReplaySubject subject];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//发送信号</span></span><br><span class="line">    [replySub sendNext:@<span class="number">23</span>];</span><br><span class="line">    [replySub sendNext:@<span class="number">34</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//订阅信号</span></span><br><span class="line">    <span class="comment">// 遍历值，让一个订阅者去发送多个值</span></span><br><span class="line">    <span class="comment">// 只要订阅一次，之前所有发送的值都能获取到.</span></span><br><span class="line">    [replySub subscribeNext:^(<span class="keyword">id</span>  _Nullable x) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, x);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     2018-03-19 12:01:14.112253+0800 ReactiveObjc[5130:446958] 23</span></span><br><span class="line"><span class="comment">     2018-03-19 12:01:14.112511+0800 ReactiveObjc[5130:446958] 34</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>RACReplaySubject</code>的底层实现<ul>
+<li><ol>
+<li>订阅信号时，内部保存了订阅者，和订阅者响应block</li>
+</ol>
+</li>
+<li><ol>
+<li>当发送信号的，遍历订阅者，调用订阅者的nextBlock</li>
+</ol>
+</li>
+<li><ol>
+<li>发送的信号会保存起来，当订阅者订阅信号的时，会将之前保存的信号，一个一个作用于新的订阅者，保存信号的容量由<code>capacity</code>决定，这也是有别于RACSubject的</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-替代代理-通知"><a href="#3-替代代理-通知" class="headerlink" title="3. 替代代理/通知"></a>3. 替代代理/通知</h3><ul>
+<li>这里我们设想一个反向传值的场景, vc里面有一个自定义的view, 当点击该<code>View</code>的时候, 更换vc的背景颜色</li>
+<li>通常我们的做法是使用代理/通知/block</li>
+</ul>
+<h4 id="3-1-下面看一下代理的简单使用"><a href="#3-1-下面看一下代理的简单使用" class="headerlink" title="3-1. 下面看一下代理的简单使用"></a>3-1. 下面看一下代理的简单使用</h4><p> 在自定义View中设置协议</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@class</span> <span class="title">SubjectView</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">SubjectDelegate</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@optional</span></span><br><span class="line">- (<span class="keyword">void</span>)viewWithTap:(SubjectView *)subView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SubjectView</span> : <span class="title">UIView</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">id</span>&lt;SubjectDelegate&gt; delegate;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>在vc中, 遵循代理, 并实现代理方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 代理方法</span></span><br><span class="line">-(<span class="keyword">void</span>)viewWithTap:(SubjectView *)subView&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"完成代理, 点击了view"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIColor</span> *color = [<span class="built_in">UIColor</span> colorWithRed:(arc4random() % <span class="number">255</span>) / <span class="number">255.0</span> green:(arc4random() % <span class="number">255</span>) / <span class="number">255.0</span> blue:(arc4random() % <span class="number">255</span>) / <span class="number">255.0</span> alpha:<span class="number">1.0</span>];</span><br><span class="line">    <span class="keyword">self</span>.view.backgroundColor = color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-1-RACSubject代替代理"><a href="#3-1-RACSubject代替代理" class="headerlink" title="3-1. RACSubject代替代理"></a>3-1. <code>RACSubject</code>代替代理</h4><p>在自定义<code>SubjectView.h</code>文件中</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;ReactiveObjC.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SubjectView</span> : <span class="title">UIView</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) RACSubject *subject;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>在自定义<code>SubjectView.m</code>文件中</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"SubjectView.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SubjectView</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span>&lt;<span class="built_in">UITouch</span> *&gt; *)touches withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</span><br><span class="line">    <span class="comment">//发送信号</span></span><br><span class="line">    [_subject sendNext:<span class="keyword">self</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>下面看一下在vc中的操作</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setupSubjectView &#123;</span><br><span class="line">    SubjectView *subV = [[SubjectView alloc]init];</span><br><span class="line">    subV.backgroundColor = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">    subV.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">    RACSubject *subject = [RACSubject subject];</span><br><span class="line">    [subject subscribeNext:^(<span class="keyword">id</span>  _Nullable x) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"完成代理, 点击了view"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">UIColor</span> *color = [<span class="built_in">UIColor</span> colorWithRed:(arc4random() % <span class="number">255</span>) / <span class="number">255.0</span> green:(arc4random() % <span class="number">255</span>) / <span class="number">255.0</span> blue:(arc4random() % <span class="number">255</span>) / <span class="number">255.0</span> alpha:<span class="number">1.0</span>];</span><br><span class="line">        <span class="keyword">self</span>.view.backgroundColor = color;</span><br><span class="line">    &#125;];</span><br><span class="line">    subV.subject = subject;</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:subV];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>相关ReactiveObjc的知识点, 后期会持续更新…</li>
+<li>推荐文章: <a href="http://www.cocoachina.com/ios/20160729/17236.html" target="_blank" rel="noopener">iOS ReactiveCocoa 最全常用API整理</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/03/19/ReactiveCocoa使用详解01/">ReactiveCocoa使用详解01</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">RunningTitan</a></p>
+        <p><span>发布时间:</span>2018-03-19, 21:58:09</p>
+        <p><span>最后更新:</span>2018-03-19, 21:59:58</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/19/ReactiveCocoa使用详解01/" title="ReactiveCocoa使用详解01">https://titanjun.top/2018/03/19/ReactiveCocoa使用详解01/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://titanjun.top/2018/03/19/ReactiveCocoa使用详解01/　　作者: RunningTitan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/03/16/iOS神技之动态更换APP的Icon图/">
+                    iOS神技之动态更换APP的Icon图
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-什么是响应式变成思想"><span class="toc-text">一. 什么是响应式变成思想?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-面向对象"><span class="toc-text">1.面向对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-面向过程"><span class="toc-text">2. 面向过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-链式编程思想"><span class="toc-text">3. 链式编程思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-函数式编程思想"><span class="toc-text">4. 函数式编程思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-函数式编程思想"><span class="toc-text">5. 函数式编程思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-ReactiveCocoa编程思想"><span class="toc-text">6. ReactiveCocoa编程思想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-RACSiganl-信号类"><span class="toc-text">二. RACSiganl 信号类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-信号提供者-RACSubject"><span class="toc-text">三. 信号提供者: RACSubject</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-RACSubject简单使用"><span class="toc-text">1. RACSubject简单使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-RACReplaySubject简单使用"><span class="toc-text">2. RACReplaySubject简单使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-替代代理-通知"><span class="toc-text">3. 替代代理/通知</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-下面看一下代理的简单使用"><span class="toc-text">3-1. 下面看一下代理的简单使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-RACSubject代替代理"><span class="toc-text">3-1. RACSubject代替代理</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+  
+  <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: "CoderTitan",//github用户名
+  repo: "CoderTitan.github.io",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "42cc1c92340bb98775b3",//注册OAuth Application时生产的ClinetID
+    client_secret:"4d5bc35eb71c99eb21ad0f13d592943b498bce89",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+  
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/03/16/iOS神技之动态更换APP的Icon图/" title="下一篇: iOS神技之动态更换APP的Icon图">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/19/ReactiveCocoa使用详解01/">ReactiveCocoa使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/iOS神技之动态更换APP的Icon图/">iOS神技之动态更换APP的Icon图</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/10/SwiftLint代码规范属性说明(三)/">SwiftLint代码规范属性说明(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/10/SwiftLint代码规范属性说明(二)/">SwiftLint代码规范属性说明(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/08/基于GitHub和Hexo搭建个人博客/">基于GitHub和Hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/03/SwiftLint代码规范属性说明(一)/">SwiftLint代码规范属性说明(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/07/Xcode代码规范之SwiftLint配置/">Xcode代码规范之SwiftLint配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/ReactNative之AsyncStorage本地存储/">ReactNative之AsyncStorage本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Node.js搭建Web服务器/">Node.js搭建Web服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/06/ReactNative之TabBariOS和TabNavigator/">ReactNative之TabBariOS和TabNavigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/React Native之导航组件NavigatorIOS和Navigator/">React Native之导航组件NavigatorIOS和Navigator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/03/ReactNaive之ScrollView和ListView/">ReactNaive之ScrollView和ListView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Swift语音和文本的转换/">Swift语音和文本的转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/Swift之Vision 图像识别框架/">Swift之Vision 图像识别框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(AVFoundation)动态人脸识别(二)/">iOS黑科技之(AVFoundation)动态人脸识别(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/22/iOS黑科技之(CoreImage)静态人脸识别(一)/">iOS黑科技之(CoreImage)静态人脸识别(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/16/Swift之二维码的生成、识别和扫描/">Swift之二维码的生成、识别和扫描</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/11/Swift之删除HTML5页面的广告/">Swift之删除HTML5页面的广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/28/Swift之微信朋友圈图片浏览器/">Swift之微信朋友圈图片浏览器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/Swift开发之3DTouch实用演练/">Swift开发之3DTouch实用演练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/23/ReactNaive之CSS和Flex布局/">ReactNaive之CSS和Flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/17/Swift之Facebook的POP动画使用和实战/">Swift之Facebook的POP动画使用和实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/iOS出门必备之CoreAnimation(核心动画)/">iOS出门必备之CoreAnimation(核心动画)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/08/RxSwift+Moya网络请求之项目实战/">RxSwift+Moya网络请求之项目实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/21/RxSwift的使用详解02/">RxSwift的使用详解02</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/15/RxSwift的使用详解01/">RxSwift的使用详解01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/iOS之Scanner字符串扫描类/">iOS之Scanner字符串扫描类</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/升级Swift4.0遇到的坑/">升级Swift4.0遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/09/JavaScript基本语法01/">JavaScript基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/19/Swift4.0新特性之String、Array和Dictionary/">Swift4.0新特性之String、Array和Dictionary</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Swift版-H5页面实现长按保存图片/">Swift版-H5页面实现长按保存图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/HTML5学习笔记之音视频标签/">HTML5学习笔记之音视频标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表单标签/">HTML5学习笔记之表单标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之表格标签/">HTML5学习笔记之表格标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5学习笔记之基础标签/">HTML5学习笔记之基础标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/HTML5基本介绍/">HTML5基本介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/Swift项目创建桥接文件/">Swift项目创建桥接文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/Swift仿网易新闻首页左右滑动切换页面/">Swift仿网易新闻首页左右滑动切换页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/10/iOS9之UIStackView的使用/">iOS9之UIStackView的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/NSMutableAttributedString富文本/">NSMutableAttributedString富文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/19/Swift函数式编程之Map&Reduce&Filter/">Swift函数式编程之Map&Reduce&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/Swift3.0基本语法03/">Swift3.0基本语法03</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Swift3.0基本语法02/">Swift基本语法02</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/Swift3.0之基本语法01/">Swift3.0之基本语法01</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/iOS之NSDate的Category/">iOS之NSDate的Category</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/iOS之UIMenuController的简单使用/">iOS之UIMenuController的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/20/iOS之UITableView设置全屏分隔线/">iOS之UITableView设置全屏分隔线</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/iOS之UICollectionView自定义布局/">iOS之UICollectionView自定义布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/10/Mac破解版软件大全/">Mac破解版软件大全</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 RunningTitan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
