@@ -2498,13 +2498,14 @@
   
 
 
+
+
+
+
+
+
   
-
-
-
-
-
-
+  
 
 
 
@@ -2542,7 +2543,12 @@
 
   
   
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
   
 
 
@@ -3051,6 +3057,14 @@
   
 
   
+
+  
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
 
 </body>
 </html>
