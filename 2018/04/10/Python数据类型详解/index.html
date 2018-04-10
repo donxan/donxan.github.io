@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="RunningTitan">
 <meta property="og:description" content="Python（英语发音：/ˈpaɪθən/）, 是一种面向对象、解释型计算机程序设计语言，由Guido van Rossum于1989年发明，第一个公开发行版发行于1991年。 Python是纯粹的自由软件， 源代码和解释器CPython遵循 GPL(GNU General Public License)协议 。 Python语法简洁清晰，特色之一是强制用空白符(white space)作为语句">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T09:24:26.993Z">
+<meta property="og:updated_time" content="2018-04-10T09:31:23.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python数据类型详解">
 <meta name="twitter:description" content="Python（英语发音：/ˈpaɪθən/）, 是一种面向对象、解释型计算机程序设计语言，由Guido van Rossum于1989年发明，第一个公开发行版发行于1991年。 Python是纯粹的自由软件， 源代码和解释器CPython遵循 GPL(GNU General Public License)协议 。 Python语法简洁清晰，特色之一是强制用空白符(white space)作为语句">
@@ -598,7 +598,7 @@
 <p>输出结果</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(12, 34, 3.14, 5.3, 'titan')</span><br><span class="line"><span class="number">12</span></span><br><span class="line">(<span class="number">3.14</span>,)</span><br><span class="line">(3.14, 5.3, 'titan')</span><br><span class="line">titan</span><br><span class="line"><span class="number">5.3</span></span><br><span class="line">(<span class="number">3.14</span>, <span class="number">5.3</span>)</span><br><span class="line">(12, 34, 3.14, 5.3, 'titan', 10, 'jun')</span><br><span class="line">(10, 'jun', 10, 'jun')</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>这里注意下, 当截取某一范围的数据时, 类似[2:3], [-3:-1], 实际的取值范围是含左不含右, 等同于数学中的半开半闭区间(左开右闭)–[2, 3)</p>
+<p>这里注意下, 当截取某一范围的数据时, 类似[2:3], [-3:-1], 实际的取值范围是含左不含右, 等同于数学中的半开半闭区间(左闭右开)–[2, 3)</p>
 </blockquote>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 因元组的元素是只读的, 不能二次赋值, 所以请注意, 以下写法是错误的</span></span><br><span class="line"><span class="meta"># 运行会报错: TypeError: 'tuple' object does not support item assignment</span></span><br><span class="line">tuple2[<span class="number">0</span>] = <span class="number">20</span></span><br><span class="line">tuple2[<span class="number">1</span>] = <span class="string">"titan"</span></span><br></pre></td></tr></table></figure>
 <h3 id="5-字典"><a href="#5-字典" class="headerlink" title="5. 字典"></a>5. 字典</h3><ul>
