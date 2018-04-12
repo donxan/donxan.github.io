@@ -85,6 +85,11 @@ search:
 #baidu-site-verification: <meta name="baidu-site-verification" content="MPBGB4Q8wr" />
 #google_site_verification: 
 
+# Extensions
+## Plugins: http://hexo.io/plugins/
+plugins: hexo-generate-feed
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
