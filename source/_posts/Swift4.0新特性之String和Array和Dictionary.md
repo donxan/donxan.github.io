@@ -1,5 +1,5 @@
 ---
-title: Swift4.0新特性之String、Array和Dictionary
+title: Swift4.0新特性之String和Array和Dictionary
 date: 2017-07-19 21:16:40
 tags: [Swift4.0, String, Array, Dictionary]
 categories: 学习笔记

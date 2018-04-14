@@ -82,8 +82,11 @@ search:
   limit: 10000
 
 # 百度和谷歌收录
-#baidu-site-verification: <meta name="baidu-site-verification" content="MPBGB4Q8wr" />
-#google_site_verification: 
+# 自动生成sitemap
+sitemap: 
+  path: sitemap.xml
+baidusitemap: 
+  path: baidusitemap.xml
 
 # Extensions
 ## Plugins: http://hexo.io/plugins/

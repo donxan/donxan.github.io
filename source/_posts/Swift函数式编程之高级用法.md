@@ -1,5 +1,5 @@
 ---
-title: Swift函数式编程之Map&Reduce&Filter
+title: Swift函数式编程之高级用法
 date: 2017.05.19 16:57:03
 tags: [Swift, 语法, filter, reduce]
 categories: 高级用法
@@ -212,3 +212,4 @@ sum = moneyArray.reduce(0,+)
 
 > 详情参考[http://blog.csdn.net/fish_yan_/article/details/51785441](http://blog.csdn.net/fish_yan_/article/details/51785441)
 > 详情参考[http://www.cocoachina.com/swift/20150619/12173.html](http://www.cocoachina.com/swift/20150619/12173.html)
+
