@@ -1,5 +1,5 @@
 ---
-title: Python数据类型详解
+title: Python数据类型详解01
 date: 2018-04-10 16:45:56
 tags: [Python, 数据类型, MacOS]
 categories: Python基础
