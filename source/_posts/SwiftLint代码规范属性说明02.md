@@ -7,7 +7,7 @@ categories: SwiftLint
 
 - 这篇文章是继前两篇文章的继续更新
 - [Xcode代码规范之SwiftLint配置](https://www.titanjun.top/2018/02/07/Xcode%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E4%B9%8BSwiftLint%E9%85%8D%E7%BD%AE/)--这篇文章对SwiftLint进行了简单介绍和针对Xcode的相关配置
-- [SwiftLint代码规范属性说明(一)](https://www.titanjun.top/2018/03/03/SwiftLint%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E(%E4%B8%80)/)--这里介绍了上半部分的相关属性的介绍
+- [SwiftLint代码规范属性说明01](https://www.titanjun.top/2018/03/03/SwiftLint%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E01/)--这里介绍了上半部分的相关属性的介绍
 - 下面来具体介绍一下SwiftLint的其他的代码规则的相关说明
 
 <!-- more -->
