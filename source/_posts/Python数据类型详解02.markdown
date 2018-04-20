@@ -252,7 +252,7 @@ che hello che
 ### 4. 格式化操作符辅助指令
 相关操作符具体的使用后面再说
 
-![image description](http://example.com/example.png)
+![image description](http://p7hfnfk6u.bkt.clouddn.com/Snip20180417_3.png)
 
 
 ### 5. 数字格式化操作符
