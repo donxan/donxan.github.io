@@ -7,9 +7,7 @@ categories: Hexo博客
 ---
 
 - 前段时间, 辛辛苦苦花了一周的时间搭建了属于自己的 [个人技术博客](https://www.titanjun.top/) , 当然也是各种采坑各种跳, 大家如果在搭建过程中遇到什么问题, 可以参考 [基于GitHub和Hexo搭建个人博客](https://www.titanjun.top/2018/03/08/%E5%9F%BA%E4%BA%8EGitHub%E5%92%8CHexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/)
-- 博客搭建好之后就是选择博客主题的问题了, 刚开始我用的是 [Yelee主题](https://github.com/MOxFIVE/hexo-theme-yelee) , 这个主题总体来说还是不错的, 动画效果还是很炫酷的, 星级评价也达到了1107个 
-- 这两天看到很多人都在用 [NexT主题](https://github.com/iissnan/hexo-theme-next) , 而且网上分享的关于个性化的配置也有很多, 还是很推荐使用的, 所以我 就尝试着配置了一下
-- 这是作者提供的 [NexT主题中文配置](http://theme-next.iissnan.com/)
+- 我现在用的是`NexT`主题, 这是作者提供的[NexT主题中文配置](http://theme-next.iissnan.com/)
 - 下面我把集成NexT主题配置时遇到的坑给大家总结分享一下
 
 <!-- more -->
