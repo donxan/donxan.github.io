@@ -10,7 +10,7 @@ categories: Python基础
 
 <!-- more -->
 
-## 一. Number(数字)
+## Number(数字)
 - `Python` 中数学运算常用的函数基本都在 `math` 模块、`cmath` 模块中。
 - `math` 模块提供了许多对浮点数的数学运算函数。
 - `cmath` 模块包含了一些用于复数运算的函数。
@@ -24,7 +24,7 @@ import math
 import cmath
 ```
 
-### 1. Python数学常量
+### Python数学常量
 在`math`模块中定义了三个数学常量
 
 ```objc
@@ -36,7 +36,7 @@ pi = 3.141592653589793
 tau = 6.283185307179586
 ```
 
-### 2. Python三角函数
+### Python三角函数
 要直接访问的，需要导入 `math` 模块, 然后通过 math 静态对象调用方法
 
 函数  |  描述
@@ -55,7 +55,7 @@ radians(x)	 | 将角度转换为弧度
 
 
 
-### 3.Python数学函数
+### Python数学函数
 
 函数 | 返回值 ( 描述 )
 ---|---
@@ -78,12 +78,12 @@ sqrt(x)	 | 返回数字x的平方根, 如:`math.sqrt(4)`返回 2.0
   - `abs()`是一个内置函数，而`fabs()`在`math`模块中定义的。
   - `fabs()`函数只适用于`float`和`integer`类型，而` abs()` 也适用于复数
 
-### 4. Python随机数函数
+### Python随机数函数
 - 随机数可以用于数学，游戏，安全等领域中，还经常被嵌入到算法中，用以提高算法效率，并提高程序的安全性。
 - 随机数函数需要导入 `random` 模块，然后通过 `random` 静态对象调用函数方法
 - `Python`包含以下常用随机数函数：
 
-#### 4-1. choice
+#### choice
 从序列(元组, 列表, 字符串)的元素中随机挑选一个元素
 
 ```objc
@@ -99,7 +99,7 @@ print(random.choice([1, 2, 3, 4]))
 print(random.choice("titanjun"))
 ```
 
-#### 4-2. randrange
+#### randrange
 返回指定递增基数集合中的一个随机数，默认基数缺省值为1, 默认类型为int
 
 ```objc
@@ -116,14 +116,14 @@ randrange(self, start, stop=None, step=1, _int=int)
 print(random.randrange(100, 1000, 2))
 ```
 
-#### 4-3. random
+#### random
 随机生成的一个实数，它在[0,1)范围内
 
 ```objc
 print(random.random())
 ```
 
-#### 4-4. seed
+#### seed
 该函数没有返回值, 改变随机数生成器的种子, 可生成同一个随机数
 
 ```objc
@@ -133,7 +133,7 @@ random.seed()
 print(random.random())
 ```
 
-#### 4-5. shuffle
+#### shuffle
 - 将列表的所有元素随机排序, 没有返回值
 - 因元组不支持二次赋值, 所以元组不支持重新排列
 
@@ -144,7 +144,7 @@ random.shuffle(list1)
 print(list1)
 ```
 
-#### 4-6. uniform
+#### uniform
 - 随机生成一个在[x, y)范围内的实数
 - 参数:
   - x -- 随机数的最小值，包含该值。
@@ -154,11 +154,11 @@ print(list1)
 print(random.uniform(2, 5))
 ```
 
-## 二. 字符串
+## 字符串
 
 上一篇文章[Python数据类型详解01](https://www.titanjun.top/2018/04/10/Python数据类型详解01/)介绍了字符串的一些基础知识, 这里就主要介绍字符创中常用的函数和语法
 
-### 1. `in` 和 `not in`
+### `in` 和 `not in`
 判断字符串是否包含指定字符串
 
 ```objc
@@ -183,7 +183,7 @@ Hello Python True
 Hello Python True not in
 ```
 
-### 2. 字符串格式化
+### 字符串格式化
 把其他类型的数据格式化为字符串形式返回, 字符串和其他类型之间要有`%`分开
 
 符号 | 描述
@@ -211,7 +211,7 @@ print('che is %d' % 19)
 prin他("che is %d", 19)
 ```
 
-### 3. `str.format()`函数
+### `str.format()`函数
 - `Python2.6` 开始，新增了一种格式化字符串的函数 `str.format()`，它增强了字符串格式化的功能。
 基本语法是通过 `{}` 和 `:` 来代替以前的 `%` 。
 - `format` 函数可以接受不限个参数，位置可以不按顺序。
@@ -249,13 +249,13 @@ che hello che
 */
 ```
 
-### 4. 格式化操作符辅助指令
+### 格式化操作符辅助指令
 相关操作符具体的使用后面再说
 
 ![image description](http://p7hfnfk6u.bkt.clouddn.com/Snip20180417_3.png)
 
 
-### 5. 数字格式化操作符
+### 数字格式化操作符
 
 数字 |	格式 | 输出	 | 描述
 ---|---|---|---
@@ -298,7 +298,7 @@ jun索引值: {0}
 */
 ```
 
-### 6.字符串的内建函数
+### 字符串的内建函数
 下列方法实现了`string`模块的大部分方法，如下表所示列出了目前字符串内建支持的方法，所有的方法都包含了对`Unicode`的支持，有一些甚至是专门用于`Unicode`的
 
 方法 | 返回结果	| 描述
@@ -333,7 +333,7 @@ str5.rindex('gi') | 10 | 同index方法, 从右向左查询
 
 除了以上方法外还有下列重要方法
 
-#### 6-1. count()方法
+#### count()方法
 返回子字符串在字符串中出现的次数
 
 ```objc
@@ -353,7 +353,7 @@ print('hello world'.count('l'))
   - `start` -- 字符串开始搜索的位置。默认为第一个字符,第一个字符索引值为0。
   - `end` -- 字符串中结束搜索的位置。字符中第一个字符的索引为 0。默认为字符串的最后一个位置。
 
-#### 6-2. center()方法
+#### center()方法
 返回一个原字符串居中,并使用空格填充至长度 width 的新字符串。默认填充字符为空格
 
 ```objc
@@ -373,7 +373,7 @@ str.center(width, fillchar)
 - 无法使左右字符数相等时候，左侧字符会比右侧少 1
 
 
-#### 6-3. encode()方法
+#### encode()方法
 以 encoding 指定的编码格式编码字符串。errors参数可以指定不同的错误处理方案
 
 ```objc
@@ -389,7 +389,7 @@ str.encode(encoding='UTF-8',errors='strict')
 - `errors` -- 设置不同错误的处理方案。默认为 `strict`,意为编码错误引起一个`UnicodeError`。 其他可能得值有 `ignore`, `replace`, `xmlcharrefreplace`, `backslashreplace` 以及通过 `codecs.register_error()` 注册的任何值。
 
 
-#### 6-4. endswith()方法
+#### endswith()方法
 用于判断字符串是否以指定后缀结尾，如果以指定后缀结尾返回True，否则返回False
 
 ```objc
@@ -408,7 +408,7 @@ print(str5.endswith('ha', 0, len(str5) - 2))
 - `end` -- 字符中结束位置, 可不传
 
 
-#### 6-5. ljust() 和 rjust()方法
+#### ljust() 和 rjust()方法
 - `ljust()`: 返回一个原字符串左对齐,并使用空格填充至指定长度的新字符串。如果指定的长度小于原字符串的长度则返回原字符串
 - `rjust()`: 返回一个原字符串右对齐
 - 参数
@@ -429,7 +429,7 @@ this is string example....wow!!!000000000000000000
 000000000000000000this is string example....wow!!!
 ```
 
-#### 6-6. replace()方法
+#### replace()方法
 返回字符串中的 old（旧字符串） 替换成 new(新字符串)后生成的新字符串，如果指定第三个参数max，则替换不超过 max 次
 
 ```objc
@@ -443,7 +443,7 @@ print(str7.replace('o', 'i', 2))
 Pythin is a giod language!
 ```
 
-#### 6-7. split()方法
+#### split()方法
 通过指定分隔符对字符串进行切片，如果参数 num 有指定值，则仅分隔 num 个子字符串
 
 ```objc
@@ -459,7 +459,7 @@ print(str7.split(' ', 3))
 ['Python', 'is', 'a', 'good language!']
 ```
 
-#### 6-8. splitlines()方法
+#### splitlines()方法
 按照行(`'\r', '\r\n', \n'`)分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符
 
 ```objc

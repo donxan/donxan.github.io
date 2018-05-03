@@ -13,18 +13,18 @@ categories: ReactiveCocoa
 
 <!-- more -->
 
-## 一. ReactiveCocoa常见操作介绍
-### 1. ReactiveCocoa操作须知
+## ReactiveCocoa常见操作介绍
+### ReactiveCocoa操作须知
 - 所有的信号`RACSignal`都可以进行操作处理，因为所有操作方法都定义在RACStream.h中，因此只要继承RACStream就有了操作处理方法。
 
-### 2. ReactiveCocoa操作思想
+### ReactiveCocoa操作思想
 - 运用的是Hook（钩子）思想，Hook是一种用于改变API(应用程序编程接口：方法)执行结果的技术.
 - Hook用处：截获API调用的技术。
 - Hook原理：在每次调用一个API返回结果之前，先执行你自己的方法，改变结果的输出
 
-## 二. 高级操作
+## 高级操作
 
-### 1. ReactiveCocoa核心方法bind
+### ReactiveCocoa核心方法bind
 - `ReactiveCocoa`操作的核心方法是`bind`（绑定）,而且RAC中核心开发方式，也是绑定，之前的开发方式是赋值，而用RAC开发，应该把重心放在绑定，也就是可以在创建一个对象的时候，就绑定好以后想要做的事情，而不是等赋值之后在去做事情。
 - 在开发中很少使用bind方法，bind属于RAC中的底层方法，RAC已经封装了很多好用的其他方法，底层都是调用bind，用法比bind简单.
 - bind方法简单介绍和使用
@@ -86,11 +86,11 @@ typedef RACSignal * _Nullable (^RACSignalBindBlock)(ValueType _Nullable value, B
   - 调用`bindingBlock(value,stop)`，会返回一个内容处理完成的信号`（RACReturnSignal）`。
   - 订阅`RACReturnSignal`，就会拿到绑定信号的订阅者，把处理完成的信号内容发送出来
 
-### 2. 映射(flattenMap,Map)
+### 映射(flattenMap,Map)
 - `flattenMap`，`Map`用于把源信号内容映射成新的内容
 - 在`Swift`中系统API就已经有了这些函数的用法, 详情可参考我的这篇文章[Swift函数式编程之Map&Reduce&Filter](http://www.titanjun.top/2017/05/19/Swift函数式编程之Map&Reduce&Filter/)
  
-#### 2-1. `flattenMap`
+#### `flattenMap`
 把源信号的内容映射成一个新的信号，信号可以是任意类型
 - `flattenMap`使用步骤:
    - 传入一个`block`，`block`类型是返回值`RACStream`，参数`value`
@@ -134,7 +134,7 @@ typedef RACSignal * _Nullable (^RACSignalBindBlock)(ValueType _Nullable value, B
     }];
 ```
 
-#### 2-2. Map
+####  Map
 Map作用:把源信号的值映射成一个新的值
 
 - `Map`使用步骤:
@@ -192,7 +192,7 @@ Map作用:把源信号的值映射成一个新的值
     */
 ```
 
-#### 2-3. `FlatternMap` 和 `Map`的区别
+#### `FlatternMap` 和 `Map`的区别
 - `FlatternMap`中的`Block`返回信号。
 - `Map`中的`Block`返回对象。
 - 开发中，如果信号发出的值不是信号，映射一般使用`Map`
@@ -223,8 +223,8 @@ Map作用:把源信号的值映射成一个新的值
 }
 ```
 
-### 3. 组合
-#### 3-1. concat
+### 组合
+#### concat
 按照某一固定顺序拼接信号，当多个信号发出的时候，有顺序的接收信号
 
 ```objc
@@ -312,7 +312,7 @@ Map作用:把源信号的值映射成一个新的值
   - 订阅第二个源信号`subjectB`,执行第二个源信`subjectB`号的`didSubscribe`
   - 第二个源信号`subjectB`的`didSubscribe`中发送值,就会通过拼接信号的订阅者把值发送出来.
 
-#### 3-2. then
+#### then
 用于连接两个信号，当第一个信号完成，才会连接then返回的信号
 
 ```objc
@@ -360,7 +360,7 @@ Map作用:把源信号的值映射成一个新的值
 }
 ```
 
-#### 3-3. merge
+#### merge
 把多个信号合并为一个信号，任何一个信号有新值的时候就会调用
 
 ```objc
@@ -420,7 +420,7 @@ Map作用:把源信号的值映射成一个新的值
 //输出结果(分别输出): A, C, B
 ```
 
-#### 3-4. zipWith
+#### zipWith
 把两个信号压缩成一个信号，只有当两个信号同时发出信号内容时，并且把两个信号的内容合并成一个元组，才会触发压缩流的next事件
 - 底层实现:
   - 1.定义压缩信号，内部就会自动订阅`subjectA`，`subjectB`
@@ -450,7 +450,7 @@ Map作用:把源信号的值映射成一个新的值
 }
 ```
 
-#### 3-5. combineLatest
+#### combineLatest
 - 将多个信号合并起来，并且拿到各个信号的最新的值
 - 必须每个合并的信号至少都有过一次`sendNext`，才会触发合并的信号
 - 这里我们考虑这样一个需求: 在登录页面, 只有在账号密码都输入的情况下, 登录按钮才可点击, 否则不可点击
@@ -475,7 +475,7 @@ Map作用:把源信号的值映射成一个新的值
   - 2.把两个信号组合成元组发出。
 
 
-#### 3-6. reduce
+#### reduce
 聚合:用于信号发出是元组的内容，把信号发出元组的值聚合成一个值
 
 > 这里我们把上面的代码, 使用`RACSingle`的一个类方法优化一下
@@ -530,9 +530,9 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
     [[RACSubscriptingAssignmentTrampoline alloc] initWithTarget:(TARGET) nilValue:(NILVALUE)][@keypath(TARGET, KEYPATH)]
 ```
 
-### 4. 过滤
+### 过滤
 
-#### 4-1. filter
+#### filter
 过滤信号, 过滤掉不符合条件的信号
 
 ```objc
@@ -567,7 +567,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
 }
 ```
 
-#### 4-2. ignore
+#### ignore
 忽略掉某些特定值的信号
 
 ```objc
@@ -603,7 +603,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
 }
 ```
 
-#### 4-3. distinctUntilChanged
+#### distinctUntilChanged
 - 当上一次的值和当前的值有明显的变化就会发出信号，否则会被忽略掉。
 - 在开发中，刷新UI经常使用，只有两次数据不一样才需要刷新
 
@@ -650,7 +650,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
 }
 ```
 
-#### 4-4. take
+#### take
 从开始一共取N次的信号, 当遇到`sendCompleted`语句执行时, 会提前停止发送信号
 
 ```objc
@@ -678,7 +678,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
     //那么输出结果将会,只输出: 1
 ```
 
-#### 4-5. takeLast
+#### takeLast
 取调用`sendCompleted`之前的N次信号,前提条件，订阅者必须调用`sendCompleted`，否则不会执行任何操作
 
 ```objc
@@ -696,7 +696,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
 }
 ```
 
-#### 4-6. takeUntil
+#### takeUntil
 只要传入的信号发送完成或者`subject2`开始发送信号的时候,就不会再接收信号的内容
 
 ```objc
@@ -721,7 +721,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
 }
 ```
 
-#### 4-7. switchToLatest
+#### switchToLatest
 - 主要用于信号的信号, 有时候也会发出信号, 会在信号的信号中获取其发送的最新的信号
 - 方法的底层是调用了`flattenMap`方法
 
@@ -770,7 +770,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
 }
 ```
 
-#### 4-8. skip
+#### skip
 跳过N个信号后, 再开始订阅信号
 ```objc
 - (void)setSkipAction {
@@ -793,8 +793,8 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
 }
 ```
 
-### 5. 定时操作
-#### 5-1. interval
+### 定时操作
+#### interval
 定时器, 每隔一段时间发出信号
 
 ```objc
@@ -805,7 +805,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
 ```
 其中`RACScheduler`是`RAC`中管理线程的类
 
-#### 5-2. delay
+#### delay
 延迟一段时间都发送信号
 
 ```objc
@@ -818,7 +818,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
     }];
 ```
 
-#### 5-3. timeout
+#### timeout
 超时, 可以让一个信号在一定时间后自动报错
 
 ```objc
@@ -835,8 +835,8 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
     }];
 ```
 
-### 6. 重复操作
-#### 6-1. retry
+### 重复操作
+#### retry
 重试 ：只要失败，就会重新执行创建信号中的block,直到成功.
 
 ```objc
@@ -871,7 +871,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
 }
 ```
 
-#### 6-2. replay
+#### replay
 重放：当一个信号被多次订阅,反复播放内容
 
 ```objc
@@ -899,7 +899,7 @@ typedef ValueType _Nonnull (^RACGenericReduceBlock)();
      */
 ```
 
-#### 6-3. throttle
+#### throttle
 节流:当某个信号发送比较频繁时，可以使用节流, 在一定时间（1秒）内，不接收任何信号内容，过了这个时间（1秒）获取最后发送的信号内容发出。
 
 ```objc

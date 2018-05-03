@@ -49,7 +49,7 @@ categories: Hexo博客
   - 点击爆炸效果
   - 侧栏加入已运行的时间
 
-### 1. https技术博客配置社会化分享
+### https技术博客配置社会化分享
 大家应该知道像一些`JiaThis`分享和百度分享并不支持`https`, 这里给大家推荐一个, 支持`https`的社会化分享-Mob
 
 1-1. 获取`App Key`
@@ -235,17 +235,17 @@ mob_share:
 
 > 剩下的优化配置, 大家可以参考以下博客
 
-### 2. 关于next主题个性化配置
+### 关于next主题个性化配置
 这里给大家推荐, 提供33中炫酷效果的文章
 - [hexo的next主题个性化配置教程](https://segmentfault.com/a/1190000009544924)
 - [打造个性超赞博客Hexo+NexT+GithubPages的超深度优化](https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html)
 
-### 3. `leanCloud`统计
+### `leanCloud`统计
 通过leanCloud统计您网站的文章阅读量
 - [leanCloud,实现文章阅读量统计](http://www.joryhe.com/2016-05-29-how_to_create_leancloud_read_Counter.html)
 
 
-### 4.  使用`CloudFlare`配置`https`
+### 使用`CloudFlare`配置`https`
 参考
 - [使用 CloudFlare 为 hexo 博客实现 HTTPS](https://blog.csdn.net/u010099080/article/details/79617603)
 - [使用 cloudflare 为网站添加免费 CDN 并获取免费 SSL 服务](https://coderschool.cn/2035.html)
