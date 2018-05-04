@@ -94,6 +94,7 @@ index_with_subtitle: true
 menu:
   home: / || home
   archives: /archives/ || archive
+  top: /top/ || signal
   categories: /categories/ || th
   tags: /tags/ || tags
   about: /about/ || user

@@ -9,15 +9,46 @@
 
 
 // 文章内链接文本样式
-.post-body p a{
-  color: #0593d3;
+.post-body a{
+  color: #5073b8;
   border-bottom: none;
-  border-bottom: 1px solid #0593d3;
-  &:hover {
-    color: #fc6423;
-    border-bottom: none;
-    border-bottom: 1px solid #fc6423;
-  }
+  text-decoration: underline;
+}
+.post-body a:hover {
+  color: #a166ab;
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+
+// 标签云页面超链接样式
+.tag-cloud a {
+    border-bottom: 1px solid #5073b8;
+    text-decoration: none;
+}
+.tag-cloud a:hover {
+    border-bottom: 1px solid #a166ab;
+    text-decoration: none;
+}
+
+
+// [Read More]按钮样式
+.post-button .btn {
+    color: #555 !important;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    font-size: 15px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+    border: none !important;
+    transition-property: unset;
+    padding: 0px 15px;
+}
+.post-button .btn:hover {
+    color: rgb(255, 255, 255) !important;
+    border-radius: 3px;
+    font-size: 15px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+    background-image: linear-gradient(90deg, #8e8e8e 0%, #939393 25%, #b8b8b8 50%, #939393 75%, #8e8e8e 100%);
 }
 
  
@@ -27,4 +58,21 @@
     color: rgb(7, 179, 155);
     font-size: 13px;
     margin-top: 15px;
+}
+
+
+// 自定义的排行页面样式
+#top {
+    display: block;
+    text-align: center;
+    margin: -100px 50px 40px 50px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
+    padding: 106px 36px 10px 36px;
+}
+@media (max-width: 767px) {
+    #top {
+        margin: -93px 15px 50px 15px;
+        padding: 96px 10px 0px 10px;
+    }
 }
