@@ -13,7 +13,7 @@ categories: 入坑指南
 
 <!-- more -->
 
-## 一. 项目配置
+## 项目配置
 
 - 虽然提供了更换的功能，但更换的 icon 是有限制的
 - 它只能更换项目中提前添加配置好的Icon图
@@ -25,7 +25,7 @@ categories: 入坑指南
 ![更换icon.gif](https://upload-images.jianshu.io/upload_images/4122543-66b9c476748f1937.gif?imageMogr2/auto-orient/strip)
 
 
-### 1. 备选Icon
+### 备选Icon
 - 首先你需要将备选的Icon图添加到项目中,
 - 注意: 
   - 图片不要放到`Assets.xcassets`, 而应该直接放到工程中, 不然可能导致更换Icon时, 找不到图片, 更换失败
@@ -33,7 +33,7 @@ categories: 入坑指南
  
 ![Snip20180315_1.png](https://upload-images.jianshu.io/upload_images/4122543-49f0f45c2657a229.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
-### 2. 配置`info.plist`文件
+### 配置`info.plist`文件
 - 在`info.plist`文件中，添加对应的`CFBundleAlternateIcons`的信息
 - 这里也可以查看[官方的相关介绍](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009247)
  
@@ -92,7 +92,7 @@ categories: 入坑指南
   - 如果想设置回默认 icon，在 `setAlternateIconName` 中传入 nil 即可
 
 
-## 二. API调用
+## API调用
 下面我们看一下系统提供的三个API, 这里产看[官方文档](https://developer.apple.com/documentation/uikit/uiapplication/2806818-setalternateiconname)
 
 
@@ -130,7 +130,7 @@ if #available(iOS 10.3, *) {
 
 ```
 
-## 三. 消除alert弹窗
+## 消除alert弹窗
 
 ![Snip20180315_3.png](https://upload-images.jianshu.io/upload_images/4122543-8ffa3280a84c46ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
@@ -183,7 +183,7 @@ extension NoAlertChangeViewController {
 - 关于这方面的详细介绍, 大家可以看看我的这篇文章--[升级Swift4.0遇到的坑](https://www.titanjun.top/2017/08/25/%E5%8D%87%E7%BA%A7Swift4.0%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/)
 - 
 
-## 四. 支持不同尺寸的Icon
+## 支持不同尺寸的Icon
 - 一个标准的Icon图集, 需要十几种尺寸, 比如: 20, 29, 40, 60等
 - 对于 `info.plist` 中的每个 `icon` 配置，`CFBundleIconFiles` 的值是一个数组，我们可以在其中填入这十几种规格的图片名称。经测试:
   - 文件的命名没有强制的规则，可以随意取，

@@ -16,10 +16,10 @@ categories: SwiftLint
 
 <!-- more -->
 
-## 一. 安装SwiftLint
+## 安装SwiftLint
 - SwiftLint目前有三种安装方式可供选择,可以根据自己的项目需要自行选择
 
-### 1. 安装全局配置(Homebrew 安装)
+### 安装全局配置(Homebrew 安装)
 #### Homebrew
 - Homebrew, Mac系统的包管理器，用于安装NodeJS和一些其他必需的工具软件, 输入以下代码安装:
 
@@ -43,7 +43,7 @@ brew install swiftlint
 ![Homebrew 安装](http://upload-images.jianshu.io/upload_images/4122543-aaabe87320b6b9f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-### 2. 使用 CocoaPods 安装
+### 使用 CocoaPods 安装
 - 这种方式只能针对单个项目有效,如果你想要针对不同的项目使用不同的`SwiftLint` 版本，这是一种很好的解决方案
 - 需要注意的是使用这种方案会将整个`SwiftLint`以及他的依赖包的完整资源文件都安装到 Pods/ 目录中去，所以在使用版本管理工具比如 `git/svn` 时要注意设置忽略相关目录
 - CocosPods安装和安装第三方框架一样
@@ -53,17 +53,18 @@ brew install swiftlint
 pod 'SwiftLint'
 ```
 
-### 3. 使用安装包
+### 使用安装包
 `SwiftLint` 还支持使用 `pkg` 安装包进行安装，在官方的 Github 页面可以找到最新发布的[安装包](https://github.com/realm/SwiftLint/releases/tag/0.17.0)
 
 
-## 二. 查看SwiftLint的全部命令
+## 查看SwiftLint的全部命令
 - 等待安装完成，在终端输入 `swiftlint help` 可以查看所有可用的命令：
 
 ![SwiftLint的所有命令](http://upload-images.jianshu.io/upload_images/4122543-a9eaa0ae5b92f67b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 **各个命令注释**
+
 ```objc
 //查看所有命令
 swiftlint help
@@ -90,7 +91,7 @@ swiftlint autocorrect
 
 
 
-## 三. SwiftLint的使用
+## SwiftLint的使用
 > 安装完成后,需要在Xcode中配置相关设置,才能使 SwiftLint 在 Xcode 中自动检测代码规范。配置也很简单，只需要在 Xcode 的 Build Phases 中新建一个 Run Script Phase 配置项，在里面添加相关代码后,编译即可!
 
 - 配置代码添加步骤
@@ -99,6 +100,7 @@ swiftlint autocorrect
 ![配置代码添加步骤](http://upload-images.jianshu.io/upload_images/4122543-9fcfc0ce421210db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
 
 **1. 全局安装脚本添加方式**
+
 ```
 if which swiftlint >/dev/null; then
   swiftlint
@@ -108,6 +110,7 @@ fi
 ```
 
 **2. CocoaPods安装脚本添加**
+
 ```
 "${PODS_ROOT}/SwiftLint/swiftlint"
 ```
@@ -118,10 +121,13 @@ fi
 ```
 echo "warning: ..."
 ```
+
 之后添加一行代码：
+
 ```
 exit 1
 ```
+
 - 这样一来，如果没有安装 SwiftLint，编译时会直接抛出一个编译错误而非警告，提示需要安装 SwiftLint。
 
 
@@ -136,13 +142,13 @@ exit 1
 - [SwiftLint](https://github.com/realm/SwiftLint) 的全部规则可以在：[Source/SwiftLintFramework/Rules](https://github.com/realm/SwiftLint/tree/master/Source/SwiftLintFramework/Rules) 目录内找到
 - 
 
-## 四. 自定义配置
+## 自定义配置
 - 当你编译过项目后,看到999+的警告和错误,是不是第一反应就是要放弃了,其实不然
 - 仔细看一下具体的错误，会发现好多都是第三方库的代码规范问题，而且好多问题的级别被设置成为了 error
 - 第三方库的代码规范问题,这个锅我们可不能背
 - 这里我们可以做一些配置，让 `SwiftLint` 在做代码规范检查的时候自动忽略 `CocoaPods`、`Carthage` 等包管理器引入的第三方库（当然，手动导入的第三方库也能设置忽略）
 
-### 1. 创建配置文件
+### 创建配置文件
 - 首先需要在项目的根目录下新建一个名为 .swiftlint.yml 的配置文件
 - 打开终端, cd 到项目根目录下
 - 输入: `touch .swiftlint.yml`
@@ -169,7 +175,7 @@ excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高�
   - Source/ExcludedFile.swift
 ```
 
-### 2. 在代码中关闭某个规则
+### 在代码中关闭某个规则
 可以通过在一个源文件中定义一个如下格式的注释来关闭某个规则：
 ```
 // swiftlint:disable <rule>
@@ -199,6 +205,7 @@ excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高�
 也可以通过添加 :previous, :this 或者 :next 来使关闭或者打开某条规则的命令分别应用于前一行，当前或者后一行代码。
 
 例如:
+
 ```
 // swiftlint:disable:next force_cast
 let noWarning = NSNumber() as! Int
@@ -208,7 +215,7 @@ let noWarning3 = NSNumber() as! Int
 // swiftlint:disable:previous force_cast
 ```
 
-### 3. 忽略引入的第三方库
+### 忽略引入的第三方库
 - 1). 忽略`CocoaPods`导入的第三方库
 
 ```
@@ -233,19 +240,19 @@ excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高�
   - Source/ExcludedFile.swift
 ```
 
-### 4. 嵌套配置
+### 嵌套配置
 `SwiftLint` 支持通过嵌套配置文件的方式来对代码分析过程进行更加细致的控制。
 - 在你的根 `.swiftlint.yml` 文件里设置 `use_nested_configs: true` 值。
 - 在目录结构必要的地方引入额外的 `.swiftlint.yml` 文件。
 - 每个文件被检查时会使用在文件所在目录下的或者父目录的更深层目录下的配置文件。否则根配置文件将会生效。
 - `excluded`，`included`，和 `use_nested_configs` 在嵌套结构中会被忽略。
 
-### 5. 自动更正
+### 自动更正
 - `SwiftLint` 可以自动修正某些错误，磁盘上的文件会被一个修正后的版本覆盖。
 - 请确保在对文件执行 `swiftlint autocorrect` 之前有对它们做过备份，否则的话有可能导致重要数据的丢失。
 - 因为在执行自动更正修改某个文件后很有可能导致之前生成的代码检查信息无效或者不正确，所以当在执行代码更正时标准的检查是无法使用的。
 
-## 五. 最后贴上官方示例
+## 最后贴上官方示例
 
 ```
 disabled_rules: # 执行时排除掉的规则

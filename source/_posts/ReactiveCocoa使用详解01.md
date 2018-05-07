@@ -10,42 +10,42 @@ categories: ReactiveCocoa
 
 <!-- more -->
 
-## 一. 什么是响应式变成思想?
+## 什么是响应式变成思想?
 学习一个框架之前, 首先要了解这个框架的编程思想, 这里在介绍响应式编程思想之前, 先介绍一下之前接触过的编程思想
 
-### 1.面向对象
+### 面向对象
 - 万物皆对象
   - 是一类以对象作为基本程序结构单位的程序设计语言
   - 典型的面向对象的编程语言有`C++`, `C#`, `Java`等
 
-### 2. 面向过程
+### 面向过程
 - 一种以过程为中心的编程思想
 - C语言就是一门面向过程的语言
 
-### 3. 链式编程思想
+### 链式编程思想
 - 是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好
 - 链式编程特点：方法的返回值是block, block必须有返回值（本身对象），block参数（需要操作的值）
 - 典型框架：masonry框架。 
 
-### 4. 函数式编程思想
+### 函数式编程思想
 - 万物皆是流
   - 不需要考虑调用顺序，只需要知道考虑结果
   - 类似于蝴蝶效应，产生一个事件，会影响很多东西，这些事件像流一样的传播出去，然后影响结果
   - 代表：KVO运用
 
-### 5. 函数式编程思想
+### 函数式编程思想
 - 是把操作尽量写成一系列嵌套的函数或者方法调用
 - 特点: 每个方法必须有返回值（本身对象）,把函数或者Block当做参数,block参数（需要操作的值）block返回值（操作结果）
 - 代表：ReactiveCocoa
 
-### 6. `ReactiveCocoa`编程思想
+### `ReactiveCocoa`编程思想
 - 函数式编程 `Functional Programming`
 - 响应式编程 `Reactive Programming`
 
 所以, `ReactiveCocoa`被描述为函数响应式编程（FRP）框架, 下面具体介绍一下`RAC`的一些常见类
 
 
-## 二. RACSiganl 信号类
+## RACSiganl 信号类
 - `ReactiveCocoa` 中最核心的概念之一就是信号`RACStream`。`RACStream`中有两个子类——`RACSignal` 和 `RACSequence`; 这里我们就主要说一下`RACSignal`; 
 - 在`ReactiveCocoa`整个库中，`RACSignal`占据着比较重要的位置，而`RACSignal`的变换操作更是整个`RACStream`流操作核心之一
 - 下面让我们俩看一下`RACSignal`被订阅的完整过程
@@ -132,12 +132,12 @@ categories: ReactiveCocoa
     - 3.1 `sendNext`底层其实就是执行`subscriber`的`nextBlock`
 
 
-## 三. 信号提供者: `RACSubject`
+## 信号提供者: `RACSubject`
 - 信号提供者，自己可以充当信号，又能发送信号
 - 先订阅, 在发送信号
 - 使用场景:通常用来代替代理/通知
 
-### 1. `RACSubject`简单使用
+### `RACSubject`简单使用
 
 ```objc
 - (void)setRacSubject1 {
@@ -171,7 +171,7 @@ categories: ReactiveCocoa
   - 1.调用`subscribeNext`订阅信号，只是把订阅者保存起来，并且订阅者的`nextBlock`已经赋值了。
   - 2.调用`sendNext`发送信号，遍历刚刚保存的所有订阅者，一个一个调用订阅者的`nextBlock` 
 
-### 2. `RACReplaySubject`简单使用
+### `RACReplaySubject`简单使用
 - 重复提供信号类，RACSubject的子类
 - 先发送信号，再订阅信号；
 - 使用场景
@@ -209,12 +209,12 @@ categories: ReactiveCocoa
 
 
 
-### 3. 替代代理/通知
+### 替代代理/通知
 - 这里我们设想一个反向传值的场景, vc里面有一个自定义的view, 当点击该`View`的时候, 更换vc的背景颜色
 - 通常我们的做法是使用代理/通知/block
 
 
-#### 3-1. 下面看一下代理的简单使用
+#### 下面看一下代理的简单使用
  在自定义View中设置协议
 
 ```objc
@@ -250,7 +250,7 @@ categories: ReactiveCocoa
 
 ```
 
-#### 3-1. `RACSubject`代替代理
+#### `RACSubject`代替代理
 在自定义`SubjectView.h`文件中
 
 

@@ -22,7 +22,7 @@ categories: ReactNaive
 
 
 
-### 一. 存储
+### 存储
 
 ```objc
 static setItem(key: string, value: string, callback?: ?(error: ?Error) => void) 
@@ -54,7 +54,7 @@ AsyncStorage.setItem('person', jsonStr, function (error) {
 })
 ```
 
-## 二. 读取
+## 读取
 
 ```objc
 static getItem(key: string, callback?: ?(error: ?Error, result: ?string) => void) 
@@ -80,7 +80,7 @@ _readData(){
 
 ```
 
-### 三. 删除
+### 删除
 
 ```objc
 static removeItem(key: string, callback?: ?(error: ?Error) => void) 
@@ -118,7 +118,7 @@ _deleteData(){
 }
 ```
 
-### 四. 其他用法
+### 其他用法
 
 ```objc
 static mergeItem(key: string, value: string, callback?: ?(error: ?Error) => void) 

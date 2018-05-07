@@ -1,6 +1,6 @@
 {% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
@@ -9,6 +9,7 @@
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
+        av: AV, 
         el: '#comments' ,
         verify: {{ theme.valine.verify }},
         notify: {{ theme.valine.notify }},

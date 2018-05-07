@@ -12,7 +12,7 @@ categories: SwiftLint
 
 <!-- more -->
 
-## 以下个属性均按照字母顺序排列
+
 ### 规则1: closing_brace
 在使用Swift 3.2或更高版本时，首选系统的KVO 的API和keypath
 

@@ -12,7 +12,7 @@ categories: ReactiveCocoa
  
 <!-- more -->
 
-## 一. 关于RACTuple
+## 关于RACTuple
 - 这里在介绍`RACSequence`之前，我们先来看看`RACTuple`的介绍和实现吧! 在RAC中`RACTuple`是`ReactiveCocoa`的元组类
 - 在Swift中, 元组类是一种很重要也很常用的类型, 是一种以下标访问成员变量的类型
 
@@ -29,7 +29,7 @@ print(tuple1, tuple2)
 
 ```
 
-### 1. RAC中的元组--`RACTuple`
+### RAC中的元组--`RACTuple`
 在RAC中`RACTuple`是继承自`NSObject`, 并遵循协议`NSCoding`, `NSCopying`, `NSFastEnumeration`的类, 如下
 
 ```objc
@@ -152,7 +152,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 */
 ```
 
-### 2. `RACTuple`的相关类--`RACTupleUnpackingTrampoline`
+### `RACTuple`的相关类--`RACTupleUnpackingTrampoline`
 关于`RACTuple`还有2个相关的类，`RACTupleUnpackingTrampoline`和`RACTupleSequence`
 
 这里我们先看一下, 该类的属性和方法
@@ -210,7 +210,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 
 这个方法的作用类似于, 把封装好的`RACTuple`对象, 一个一个的把它的成员变量解析出来, 说到这里我们就不得不提及两个宏
 
-### 3. `RACTuple`中的宏
+### `RACTuple`中的宏
 一般使用用两个宏，`RACTupleUnpack( )` 用来解包，`Rc( )` 用来装包
 
 ```objc
@@ -264,7 +264,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
     ///输出: jun--3.40
 ```
 
-### 4. `RACTupleSequence`
+### `RACTupleSequence`
 - 上面提到了`RACTuple`还有2个相关的类，`RACTupleUnpackingTrampoline`和`RACTupleSequence`
 - 而`RACTupleUnpackingTrampoline`上面我们已经介绍过了
 - 这里我们来介绍一下`RACTupleSequence`
@@ -299,10 +299,10 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
   - `offset`从0开始
 
 
-## 二. RACSequence底层实现
+## RACSequence底层实现
 `RACSequence`是`RACStream`的子类，主要是`ReactiveCocoa`里面的集合类, 先来看看关于`RACSequence`的属性
 
-### 1. `RACSequence`的属性
+### `RACSequence`的属性
 
 ```objc
 @property (nonatomic, strong, readonly, nullable) ValueType head;
@@ -318,7 +318,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 @property (nonatomic, copy, readonly) RACSequence<ValueType> *lazySequence;
 ```
 
-#### 1-1. 于`head`和`tail`
+#### 于`head`和`tail`
 
 - `RACSequence`的所有属性中, 最重要的莫过于`head`和`tail`两个属性了, 而`tail`又是一个`RACSequence`
 - 这两者就像一个人的头和身体两部分
@@ -339,7 +339,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
     ) }
 ```
 
-#### 1-2. objectEnumerator
+#### objectEnumerator
 `objectEnumerator`是一个快速枚举器, 看一下底层的get方法
 
 ```objc
@@ -376,7 +376,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 }
 ```
 
-#### 1-3. `array`
+#### `array`
 
 ```objc
 - (NSArray *)array {
@@ -396,8 +396,8 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 - 至于剩下的两个属性, 下文中会继续说到
 
 
-## 三. RACSequence的方法
-### 1. RACSequence的初始化方法
+## RACSequence的方法
+### RACSequence的初始化方法
 
 `RACSequence`的初始化方法有且只有一个
 
@@ -407,7 +407,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 }
 ```
 
-#### 1-1. `RACDynamicSequence`属性
+#### `RACDynamicSequence`属性
 上面初始化方法的底层是直接调用了`RACDynamicSequence`的一个类方法, 而这个类又是`RACSequence`的子类, 看看主要属性
 
 ```objc
@@ -428,7 +428,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 - 而这里, 作者定义了三个`block`: `headBlock`, `tailBlock`，`dependencyBlock`都是用`strong`修饰的
 - 关于这个问题, 可以[参考这里](https://github.com/ReactiveCocoa/ReactiveCocoa/issues/505)
 
-#### 1-2. 方法的实现
+#### 方法的实现
 
 ```objc
 + (RACSequence *)sequenceWithHeadBlock:(id (^)(void))headBlock tailBlock:(RACSequence<id> *(^)(void))tailBlock {
@@ -457,11 +457,11 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 - `hasDependency`这个变量是代表是否有`dependencyBlock`。这个函数里面就只把`headBlock`和`tailBlock`保存起来了
 - 上面第二个方法是带有`dependencyBlock`的, 也会把`dependencyBlock`保存起来
 
-## 四. 积极运算和惰性求值
+## 积极运算和惰性求值
 - 说到惰性求值, 就立马想到了懒加载, 就是在getter里动态返回属性, 也就是等到要用的时候才会计算
 - 关于这两个概念, 推荐大家看这篇文章[聊一聊iOS开发中的惰性计算](http://williamzang.com/blog/2016/11/07/liao-yi-liao-ioskai-fa-zhong-de-duo-xing-ji-suan/)
 
-### 1. 积极运算
+### 积极运算
 在`RACSequence`中积极运算的代表是`RACSequence`的一个子类`RACArraySequence`的子类——`RACEagerSequence`。它的积极运算表现在其bind函数上
 
 ```objc
@@ -491,7 +491,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
   - 第二层循环是在遍历`RACSequence`，之所以可以用`for-in`的方式遍历就是因为实现了`NSFastEnumeration`协议，实现了`countByEnumeratingWithState: objects: count: `方法
 - 这里就是一个积极运算的例子,在每次循环中都会把闭包`block()`的值计算出来。值得说明的是，最后返回的`RACSequence`的类型是`self.class`类型的，即还是`RACEagerSequence`类型的
 
-### 2. 惰性计算
+### 惰性计算
 等到需要用到的时候才会计算, 我们看一下在`RACSequence`中，bind函数的实现
 
 ```objc
@@ -589,7 +589,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 2018-03-21 15:53:24.563937+0800 ReactiveObjc[9109:771797] lazySequence
 ```
 
-## 五. RACSequence的方法
+## RACSequence的方法
 
 ```objc
 - (id)foldLeftWithStart:(nullable id)start reduce:(id _Nullable (^)(id _Nullable accumulator, ValueType _Nullable value))reduce;
@@ -603,7 +603,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 - (nullable ValueType)objectPassingTest:(BOOL (^)(ValueType _Nullable value))block;
 ```
 
-### 1. 折叠函数
+### 折叠函数
 我们先看一下他的底层实现, 函数传入了一个初始值start，然后依次循环执行reduce( )，循环之后，最终的值作为返回值返回。第一个函数就是折叠函数，从左边折叠到右边; 第二个方向是从右往左
 
 ```objc
@@ -656,7 +656,7 @@ NSLog(@"%@--%@--%@", tuple.first, tuple.last, tuple[6]);
 }
 ```
 
-### 2. `objectPassingTest`
+### `objectPassingTest`
 函数里面会调用`RACStream`中的`filter:`函数, 如果`block(value)`为YES，就代表通过了Test，那么就会返回value的`sequence`, 取出head返回
 
 ```objc
@@ -680,7 +680,7 @@ NSLog(@"%@", anyData);
 //输出: 5
 ```
 
-### 3. any: 和 all:
+### any: 和 all:
 
 ```objc
 - (BOOL)any:(BOOL (^)(id))block {
@@ -720,8 +720,8 @@ NSLog(@"%@", anyData);
     //输出: any = 1, all = 1
 ```
 
-## 六. RACSequence的子类和扩展
-### 1. 子类
+## RACSequence的子类和扩展
+### 子类
 - 关于`RACSequence`有以下9个子类
 - 其中`RACEagerSequence`是继承自`RACArraySequence`。
 - 这些子类看名字就知道`sequence`里面装的是什么类型的数据。
@@ -797,12 +797,12 @@ NSLog(@"%@", anyData);
 
 ```
 
-### 2. 扩展
+### 扩展
 `RACSequenceAdditions` 总共有7个`Category`。这7个`Category`分别对iOS 里面的集合类进行了`RACSequence`的扩展，使我们能更加方便的使用`RACSequence`
 
 ![RACSequenceAdditions.png](https://upload-images.jianshu.io/upload_images/4122543-aa6185bb24ec0073.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
 
-#### 2-1. `NSArray+RACSequenceAdditions`
+#### `NSArray+RACSequenceAdditions`
 
 ```objc
 @interface NSArray<__covariant ObjectType> (RACSequenceAdditions)
@@ -819,7 +819,7 @@ NSLog(@"%@", anyData);
 }
 ```
 
-#### 2-2. `NSDictionary+RACSequenceAdditions`
+#### `NSDictionary+RACSequenceAdditions`
 
 ```objc
 @interface NSDictionary<__covariant KeyType, __covariant ObjectType> (RACSequenceAdditions)
@@ -860,7 +860,7 @@ NSLog(@"%@", anyData);
 - `rac_keySequence`: 把所有的key值转成`RACSequence`对象
 - `rac_valueSequence`: 把所有的value值转成`RACSequence`对象
 
-#### 2-3. `NSSet+RACSequenceAdditions`
+#### `NSSet+RACSequenceAdditions`
 把任意一个`NSSet`对象转换成`RACSequence`对象
 
 ```objc
@@ -878,7 +878,7 @@ NSLog(@"%@", anyData);
 }
 ```
 
-#### 2-4. `NSString+RACSequenceAdditions`
+#### `NSString+RACSequenceAdditions`
 把任意一个`NSString`转换成包含该字符串, 所有字符的数组对应的`RACSequence`
 
 ```objc
@@ -895,7 +895,7 @@ NSLog(@"%@", anyData);
 }
 ```
 
-#### 2-5. `NSEnumerator+RACSequenceAdditions`
+#### `NSEnumerator+RACSequenceAdditions`
 - 把任意一个`NSEnumerator`转换成`RACSequence`
   - 返回的`RACSequence`的head是当前的`sequence`的head
   - 返回的`RACSequence`的tail是当前的`sequence`本身
@@ -917,7 +917,7 @@ NSLog(@"%@", anyData);
 }
 ```
 
-#### 2-6. `NSIndexSet+RACSequenceAdditions`
+#### `NSIndexSet+RACSequenceAdditions`
 把任意一个`NSIndexSet`转换成`RACSequence`
 
 ```objc
@@ -935,7 +935,7 @@ NSLog(@"%@", anyData);
 ```
 
 
-#### 2-7. `NSOrderedSet+RACSequenceAdditions`
+#### `NSOrderedSet+RACSequenceAdditions`
 把任意一个`NSOrderedSet`中的数组转换成`RACSequence`对象
 
 ```objc
@@ -953,7 +953,7 @@ NSLog(@"%@", anyData);
 }
 ```
 
-#### 3. 总结
+### 总结
 - 这篇文章篇幅比较长, 都是对源码的解, 文中如有不足之处还望多多指教
 - 下一篇将会着重介绍一下RAC中的一些高级用法, 敬请期待..
 - 参考文章:

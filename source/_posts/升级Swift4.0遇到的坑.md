@@ -12,12 +12,12 @@ categories: 入坑指南
 
 <!-- more -->
 
-## 一. 修改Swift版本
-### 1. 如下图指定主工程的Swift版本为4.0
+## 修改Swift版本
+### 指定主工程的Swift版本为4.0
 
 ![Xcode图示.png](http://upload-images.jianshu.io/upload_images/4122543-1a9aeacc47b262a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 2. 修改pod库
+### 修改pod库
 - 在Podfile文件的最下方加入如下代码，指定pod库的Swift版本为3.2(这样会使得所有的第三方pod库的Swift版本都为3.2)
 
 
@@ -31,8 +31,8 @@ post_install do |installer|
 end
 ```
 
-## 二. 主工程中的代码修改
-### 1. 列举一下Swift3.2到Swift4.0的改变(只是我项目中遇到的)：
+## 主工程中的代码修改
+### Swift3.2到Swift4.0的改变
 
 - 1). `Swift4.0`中对于扩展的属性(包括实例属性、`static`属性、`class`属性)，都只能使用get方法，不可使用set方法
 - 2). `Swift4.0`中不再允许复写扩展中的方法(包括实例方法、`static`方法、`class`方法)
@@ -63,8 +63,8 @@ NSAttributedStringKey.font.rawValue
 addAttributes(_ attrs: [NSAttributedStringKey : Any] = [:], range: NSRange)
 ```
 
-## 三. 项目中遇到的一些的报错问题
-### 3-1. "Closure cannot implicitly capture a mutating self parameter"错误
+## 一些的报错问题
+### "Closure cannot implicitly capture a mutating self parameter"错误
 
 > 在struct中，如果我们在闭包中使用self，就会得到Closure cannot implicitly capture a mutating self parameter的错误提示。比如：
 
@@ -135,14 +135,14 @@ struct RecordModel {
 - `UnsafeBufferPointer是non-owning的类型（unowned`），用于collection的elements, buffer系列均如此
 
 
-### 3-2. `Declarations from extensions cannot be overridden yet` 错误
+### `Declarations from extensions cannot be overridden yet` 错误
 
 这个错误大致是因为,协议方法是在`extension`里面的,不能被重写
 
 > 解决办法:(仅供参考,如有更好的建议还望多多指教)
 - 小编想到的解决办法就是在每一个需要此协议的类里面,重新遵循代理,实现该协议方法
 
-### 3-3. `"Method 'initialize()' defines Objective-C class method 'initialize', which is not permitted by Swift"` 
+### `"Method 'initialize()' defines Objective-C class method 'initialize', which is not permitted by Swift"` 
 
 报错原因: 在于已经废弃的initialize方法,示例如下
 
@@ -186,7 +186,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-### 3-4. `'dispatch_once' is unavailable in Swift: Use lazily initialized globals instead`
+### `'dispatch_once' is unavailable in Swift: Use lazily initialized globals instead`
 > 报错原因: `dispatch_once在Swift4.0`也已经被废弃
 
 
@@ -202,7 +202,8 @@ extension UITableView {
 }
 ```
 
-> #### 解决方法: 通过给DispatchQueue添加扩展实现
+<div class="note success"><p>解决方法: 通过给DispatchQueue添加扩展实现</p></div>
+
 
 ```objc
 extension DispatchQueue {

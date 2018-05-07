@@ -393,7 +393,7 @@ valine:
   enable: true
   appid: m7FB3zoFkQnVKAyykKJlY8QR-gzGzoHsz # your leancloud application appid
   appkey: 7X31Wl5lm6BXqgtV9k3sm7yI # your leancloud application appkey
-  notify: false # mail notifier , https://github.com/xCss/Valine/wiki
+  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
   placeholder: 在这里说点什么吧... # comment box placeholder
   avatar: identicon # 评论表头样式  /mm/identicon/monsterid/wavatar/retro/hide
