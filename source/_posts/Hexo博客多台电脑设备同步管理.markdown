@@ -8,7 +8,7 @@ categories: Hexo博客
 - 最近一直在折腾Hexo博客, 玩的可谓是不亦乐乎啊; 这里就整理一下之前遗留的一些问题和一些个性化配置
 - 如有遇到搭建个人博客时遇到的问题, 这里可参考我的之前的两篇相关博客
   - [基于GitHub和Hexo搭建个人博客](https://www.titanjun.top/2018/03/08/%E5%9F%BA%E4%BA%8EGitHub%E5%92%8CHexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/)
-  - [NexT主题配置优化-出土指南](https://www.titanjun.top/2018/04/03/NexT%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96-%E5%87%BA%E5%9C%9F%E6%8C%87%E5%8D%97/)
+  - [NexT主题配置个性化设置](https://www.titanjun.top/2018/04/03/NexT%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AE%BE%E7%BD%AE/)
 
 <!-- more -->
 
