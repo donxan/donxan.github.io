@@ -1,8 +1,13 @@
 ---
-title: 排行榜
+
 comments: false
+type: "top"
 date: 2018-05-04 14:14:02
 ---
+
+{% cq %}
+# 文章排行榜
+{% endcq %}
 
 <div id="top"></div>
 <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
