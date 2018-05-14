@@ -12,7 +12,7 @@
 
 # Set to true, if you want to fully override the default configuration.
 # Useful if you don't want to inherit the theme _config.yml configurations.
-override: false
+override: falsef
 
 # ---------------------------------------------------------------
 # Site Information Settings
@@ -51,7 +51,7 @@ footer:
   icon: heart
 
   # If not defined, will be used `author` from Hexo main config.
-  copyright: 
+  copyright:
   # -------------------------------------------------------------
   # Hexo link (Powered by Hexo).
   powered: true
@@ -101,7 +101,7 @@ menu:
   navigation: /navigation/ || globe
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
-  #commonweal: /404/ || heartbeat
+  # commonweal: /404/ || heartbeat
 
 # Enable/Disable menu icons.
 menu_icons:
@@ -391,7 +391,7 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: true
+  enable: false
   appid: m7FB3zoFkQnVKAyykKJlY8QR-gzGzoHsz # your leancloud application appid
   appkey: 7X31Wl5lm6BXqgtV9k3sm7yI # your leancloud application appkey
   notify: true # mail notifier , https://github.com/xCss/Valine/wiki
@@ -408,7 +408,7 @@ valine:
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-# livere_uid: MTAyMC8zNTM1MS8xMTg4Nw==
+livere_uid: MTAyMC8zNTM1MS8xMTg4Nw==
 
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
@@ -830,10 +830,10 @@ images: images
 version: 5.1.4
 
 # 文章末尾添加"文本结束"标记
-passage_end_tag: 
+passage_end_tag:
   enabled: true
 
-# Online contact 
+# Online contact
 daovoice: true
 daovoice_app_id: a85a9be2
 
@@ -841,6 +841,4 @@ daovoice_app_id: a85a9be2
 
 # 百度和谷歌收录
 baidu-site-verification: MPBGB4Q8wr
-#google_site_verification: 
-
-
+#google_site_verification:

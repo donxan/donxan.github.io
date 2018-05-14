@@ -1,6 +1,6 @@
 ---
 title: 网址导航
-password: jun0929
+<!--password: jun0929-->
 date: 2018-05-10 14:14:02
 ---
 
@@ -8,7 +8,7 @@ date: 2018-05-10 14:14:02
 
 
 {% cq %}
-以下是通过各个方面收集的各种技术站点的汇总, 如有补充请留点支持, 谢谢
+以下是个人收集的各种技术站点的汇总, 如有补充请留点支持, 谢谢
 {% endcq %}
 
 ### 网站导航
@@ -67,7 +67,7 @@ date: 2018-05-10 14:14:02
 - [正则表达式测试](https://regexr.com/)
 - [Unix时间转换](https://www.epochconverter.com/)
 - [基站定位](https://www.opengps.cn/)
-- - [百度图片识别](http://image.baidu.com/?fr=shitu)
+- [百度图片识别](http://image.baidu.com/?fr=shitu)
 
 ### 安全搜索引擎
 - [天眼查](https://www.tianyancha.com/)
@@ -147,6 +147,15 @@ date: 2018-05-10 14:14:02
 - [史蒂芬周的博客](http://www.sdifenzhou.com/page/6/)
 - [苹果网 PC6 ](http://www.pc6.com/mac/soft/)
 - [吾爱破解](https://www.52pojie.cn/)
+- [TeamViewer](https://www.teamviewer.com/zhCN/)
+- [Dash文档查询](https://kapeli.com/dash)
+- [Microsoft Remote Desktop beta](http://mac.softpedia.com/get/Utilities/Microsoft-Remote-Desktop-Connection.shtml)
+- [VMWare Fusion for mac](https://www.vmware.com/products/fusion.html)
+- [everything文件搜索](http://www.voidtools.com/)
+- [total commander文件管理器](http://www.ghisler.com/)
+- [Alfred快速启动](https://www.alfredapp.com/)
+- [新编码神器Atom使用纪要](https://jeffjade.com/2016/03/03/2016-03-02-how-to-use-atom/?from=jianshu)
+
 
 
 ### 加密解密
@@ -268,13 +277,4 @@ date: 2018-05-10 14:14:02
 - [农夫安全(免费视频)](https://dnspod.qcloud.com/static/block.html?d=www.farmsec.org)
 
 
-### 软件工具
-- [TeamViewer](https://www.teamviewer.com/zhCN/)
-- [Dash文档查询](https://kapeli.com/dash)
-- [Microsoft Remote Desktop beta](http://mac.softpedia.com/get/Utilities/Microsoft-Remote-Desktop-Connection.shtml)
-- [VMWare Fusion for mac](https://www.vmware.com/products/fusion.html)
-- [everything文件搜索](http://www.voidtools.com/)
-- [total commander文件管理器](http://www.ghisler.com/)
-- [Alfred快速启动](https://www.alfredapp.com/)
 
-> 参考: https://thief.one/SecWeb/
