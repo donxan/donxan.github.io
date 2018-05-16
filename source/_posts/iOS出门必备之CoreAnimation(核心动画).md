@@ -5,16 +5,15 @@ tags: [Swift, CoreAnimation]
 categories: iOS动画
 ---
 
-# CoreAnimation
 - 前段时间接触到了一个牛逼的动画框架[POP](https://github.com/facebook/pop),本来想来装装逼,突然发现,苹果大大的CoreAnimation我还不会用呢!
 - 依稀记得乔帮主在2007年的WWDC大会上亲自为你演示Core Animation的强大：[点击查看视频](http://v.youku.com/v_show/id_XMzQ2MTcwNDQ0.html)(不好意思,又装逼了)
 - 言归正传,我只是来温习一下CoreAnimation,还望路过的大神不要吐槽我太low
-
-### [GitHub项目地址](https://github.com/coderQuanjun/POPAnimationDemo)
+- [GitHub项目地址](https://github.com/coderQuanjun/POPAnimationDemo)
 
 <!-- more -->
 
-## 一、Core Animation简介
+
+## Core Animation简介
 
 * `Core Animation`，中文翻译为核心动画，它是一组非常强大的动画处理API，使用它能做出非常炫丽的动画效果，而且往往是事半功倍。也就是说，使用少量的代码就可以实现非常强大的功能。
 * `Core Animation`可以用在`Mac OS X和iOS`平台。
@@ -23,7 +22,7 @@ categories: iOS动画
 * 通过调用`CALayer`的`addAnimation:forKey:`方法增加`CAAnimation`对象到`CALayer`中，这样就能开始执行动画了
 * 通过调用`CALayer`的`removeAnimationForKey:`方法可以停止`CALayer`中的动画
 
-## 二. Core Animation及其相关属性
+### Core Animation及其相关属性
 - 要想执行动画，就必须初始化一个`CAAnimation`对象。
 - 一般情况下，我们使用的比较多的是`CAAnimation`的子类，因此，先大致看看`CAAnimation`的继承结构
 - 黑线代表继承，黑色文字代表类名，白色文字代表属性。其中`CAMediaTiming`是一个协议(`protocol`)
@@ -31,12 +30,13 @@ categories: iOS动画
 
 ![Core Animation结构划分.png](http://upload-images.jianshu.io/upload_images/4122543-7bc6a9dcfc3ff80f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500)
 
-> 需要注意的是
+<div class="note warning"><p>需要注意</p></div>
+
 - CAAnimation是所有动画类的父类，但是它不能直接使用，应该使用它的子类
 - CAPropertyAnimation也是不能直接使用的，也要使用它的子类
 - 能用的动画类只剩下4个：CABasicAnimation、CAKeyframeAnimation、CATransition、CAAnimationGroup
 
-> 常用属性
+### 常用属性
 
 **1). `removedOnCompletion`：默认为true，代表动画执行完毕后就从图层上移除**
 - 图形会恢复到动画执行前的状态。如果想让图层保持显示动画执行后的状态，那就设置为false，不过还要设置`fillMode`为`kCAFillModeForwards`
@@ -116,10 +116,10 @@ toValue    所改变属性的结束时的值(类型与fromValue相同)
 byValue    所改变属性相同起始值的改变量(类型与fromValue相同)
 ```
 
-## 三. CABasicAnimation
+## CABasicAnimation
 - CABasicAnimation是CAPropertyAnimation的子类，使用它可以实现一些基本的动画效果，它可以让CALayer的某个属性从某个值渐变到另一个值。下面就用CABasicAnimation实现几个简单的动画
 
-### 1. 平移动画
+### 平移动画
 #### 方法一: 改变label的position
 
 ```objc
@@ -167,7 +167,7 @@ basic.toValue = form
 blueLabel.layer.add(basic, forKey: "blueLabel")
 ```
 
-### 2. 旋转动画
+### 旋转动画
 
 ```objc
 let basic1 = CABasicAnimation(keyPath: "transform")
@@ -179,7 +179,7 @@ blueLabel.layer.add(basic1, forKey: "basic1")
 ```
 - 可以不用设置fromValue，这里只设置了toValue
 
-### 3. 缩放动画
+### 缩放动画
 - CALayer的宽度从0.5倍变为2倍
 - CALayer的高度从0.5倍变为1.5倍
 
@@ -209,7 +209,7 @@ contents | 内容，比如UIImageView的图片 | imageAnima.toValue = UIImage(na
 opacity | 透明度 | 0.7
 contentsRect.size.width | 横向拉伸缩放 | 最好是0~1之间的
 
-## 四. CAKeyframeAnimation——关键帧动画
+## CAKeyframeAnimation——关键帧动画
 - 关键帧动画，也是`CAPropertyAnimation`的子类，与`CABasicAnimation`的区别是：
   - `CABasicAnimation`只能从一个数值（fromValue）变到另一个数值（toValue）
   - 而`CAKeyframeAnimation`会使用一个Array保存这些数值
@@ -225,7 +225,7 @@ contentsRect.size.width | 横向拉伸缩放 | 最好是0~1之间的
     - `kCAAnimationCubicPaced` 看这个名字就知道和`kCAAnimationCubic`有一定联系,其实就是在`kCAAnimationCubic`的基础上使得动画运行变得均匀,就是系统时间内运动的距离相同,此时`keyTimes`以及`timingFunctions`也是无效的.
 - `CABasicAnimation`可看做是只有2个关键帧的`CAKeyframeAnimation`
 
-> values方式
+### values方式
 
 ```objc
 let key = CAKeyframeAnimation(keyPath: "position")
@@ -237,12 +237,12 @@ key.keyTimes = [NSNumber(value: 0.0), NSNumber(value: 0.6), NSNumber(value: 0.7)
 redLabel.layer.add(key, forKey: "key")
 ```
 
-## 五. CASpringAnimation
+## CASpringAnimation
 - `CASpringAnimation`是iOS 9 新出的
 - `CASpringAnimation` 继承于`CABaseAnimation`
 - `CASpringAnimation`是苹果专门解决开发者关于弹簧动画的这个需求而封装的类。
 
-### 1. CASpringAnimation相关属性
+### CASpringAnimation相关属性
 
 ```objc
 //1. 质量，影响图层运动时的弹簧惯性，质量越大，弹簧拉伸和压缩的幅度越大, 默认值: 1
@@ -263,7 +263,7 @@ open var settlingDuration: CFTimeInterval { get }
 
 ```
 
-### 2. 示例代码
+### 示例代码
 
 ```objc
 let spring = CASpringAnimation(keyPath: "position.y")
@@ -277,7 +277,7 @@ spring.duration = spring.settlingDuration
 blueLabel.layer.add(spring, forKey: "spring")
 ```
 
-## 六. CAAnimationGroup动画组
+## CAAnimationGroup动画组
 - 是CAAnimation的子类，可以保存一组动画对象，将CAAnimationGroup对象加入层后，组中所有动画对象可以同时并发运行
 - 属性说明：
   - animations：用来保存一组动画对象的Array
@@ -318,7 +318,7 @@ blueLabel.layer.add(spring, forKey: "spring")
 
 ```
 
-## 七. 转场动画——CATransition
+## 转场动画——CATransition
 - `CATransition`是`CAAnimation`的子类，用于做转场动画，能够为layer层提供移出屏幕和移入屏幕的动画效果。
 - iOS比Mac OS X的转场动画效果少一点
 `UINavigationController`就是通过`CATransition`实现了将控制器的视图推入屏幕的动画效果
@@ -328,7 +328,7 @@ blueLabel.layer.add(spring, forKey: "spring")
   - `startProgress`：动画起点(在整体动画的百分比)
   - `endProgress`：动画终点(在整体动画的百分比)
 
-### 1. `type`和`subtype`属性说明
+### `type`和`subtype`属性说明
 
 ```objc
 /* type类型 */
@@ -367,7 +367,8 @@ public let kCATransitionFromBottom: String
 //从底部转场
 ```
 
-> 注意：
+<div class="note warning"><p> 注意：</p></div>
+
 - 除了上述四种效果之外,还有很多私有API效果，使用的时候要小心，可能会导致app审核不被通过
 - 使用的时候要以字符串的形式
 
@@ -388,10 +389,10 @@ cameraIrisHollowClose //相机镜头关上效果(不支持过渡方向)
 
 ![各参数动画效果.png](http://upload-images.jianshu.io/upload_images/4122543-48e5ec518c8f535e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
-### 2. 代码示例:
+### 代码示例:
 - 展示立方体翻滚效果的图片浏览
 
-#### 1. 初始化变量
+#### 初始化变量
 
 ```objc
 //初始化变量
@@ -400,7 +401,7 @@ fileprivate var currentIndex = 0
 
 ```
 
-#### 2. 需要在`viewDidLoad`中调用一下方法
+#### 需要在`viewDidLoad`中调用一下方法
 
 ```objc
 //转场动画
@@ -421,7 +422,7 @@ fileprivate var currentIndex = 0
 
 ```
 
-#### 3. 滑动后执行的方法
+#### 滑动后执行的方法
 
 ```objc
     //MARK: 手势相关方法
@@ -456,7 +457,7 @@ fileprivate var currentIndex = 0
 
 ```
 
-## 八. 总结
+## 总结
 - 核心动画给我们展示的只是一个假象，layer的的frame、bounds、position并不会在动画完毕之后发生改变。
 - UIView封装的动画，会使会真实修改view的一些属性
 - 以上就是小编总结的关于Core Animation核心动画的相关分类

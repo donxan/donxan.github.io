@@ -5,24 +5,26 @@ tags: [Swift, RxSwift, 响应式编程]
 categories: RxSwift框架
 ---
 
-## 一. RxSwift简介
-
-> - 推荐: [RxSwift官方文档](https://github.com/ReactiveX/RxSwift)
-> - 中文: [RxSwift官方文档的中文翻译](https://github.com/jhw-dev/RxSwift-CN)
-
-<!-- more -->
-
 - [RxSwift](https://github.com/ReactiveX/RxSwift)是Swift函数响应式编程的一个开源库，由Github的[ReactiveX](https://github.com/ReactiveX)组织开发、维护
 - 其他语言像C#, Java 和 JS 也有，Rx.Net、RxJava、[rxjs](https://github.com/ReactiveX/rxjs)
 - RxSwift的目的是让数据/事件流和异步任务能够更方便的序列化处理，能够使用Swift进行响应式编程
 
-### 1. RxSwift做了什么
+
+<!-- more -->
+
+## RxSwift简介
+
+- 推荐: [RxSwift官方文档](https://github.com/ReactiveX/RxSwift)
+- 中文: [RxSwift官方文档的中文翻译](https://github.com/jhw-dev/RxSwift-CN)
+
+
+### RxSwift做了什么
   - RxSwift把我们程序中每一个操作都看成一个事件
   - 比如一个TextField中的文本改变，一个按钮被点击，或者一个网络请求结束等，每一个事件源就可以看成一个管道，也就是sequence
   - 比如TextField，当我们改变里面的文本的时候，这个TextField就会不断的发出事件，从他的这个sequence中不断的流出，我们只需要监听这个sequence，每流出一个事件就做相应的处理。
   - 同理，Button也是一个sequence，每点击一次就流出一个事件。
 
-### 2 RxSwift的核心思想是 Observable<Element> 
+### RxSwift的核心思想是 Observable<Element> 
 - sequence，Observable表示可监听或者可观察，也就是说RxSwift的核心思想是可监听的序列。
 - 并且，Observable sequence可以接受异步信号，也就是说，信号是可以异步给监听者的
 
@@ -41,7 +43,7 @@ let seoncd = indexGenerator.next() //6
 ```
 
 
-### 3.  RxSwift中，ObservableType.subscribe的回调（新的信号到来）一共有三
+### RxSwift中，ObservableType.subscribe的回调（新的信号到来）一共有三
 
 ```objc
 enum Event<Element>  {
@@ -53,7 +55,7 @@ protocol ObserverType {
     func on(event: Event<Element>) //监听所有的信号
 }
 ```
-### 4. 取消监听
+### 取消监听
 
 > Observable分为两种
 
@@ -76,13 +78,13 @@ sequence
     }
 ```
 
-## 二. RxSwift简单体验
+## RxSwift简单体验
 - 首先创建deinit属性，也就是所有者要释放的时候，自动取消监听
 
 ```objc
 fileprivate lazy var bag = DisposeBag()
 ```
-### 1. RxSwift监听按钮的点击
+### RxSwift监听按钮的点击
 - 传统方式: 
 - 
 
@@ -103,11 +105,11 @@ button2.rx.tap.subscribe { (event) in
 }.addDisposableTo(bag)
 ```
 
-### 2. RxSwift监听UITextField的文字改变
+### RxSwift监听UITextField的文字改变
 - 传统做法,设置`textField2.delegate = self`
 - RxSwift方式
 
-> 2-1. 用on方法实现
+#### 用on方法实现
 
 ```objc
 subscribe(<#T##on: (Event<Int>) -> Void##(Event<Int>) -> Void#>)
@@ -126,7 +128,7 @@ textField2.rx.text.subscribe { (event: Event<String?>) in
 }.addDisposableTo(bag)
 ```
 
-> 2-2. 用onNext方法实现
+#### 用onNext方法实现
 
 ```objc
 subscribe(on: (Event<Int>) -> Void)
@@ -138,7 +140,7 @@ textField1.rx.text.subscribe(onNext: { (str: String?) in
 }).addDisposableTo(bag)
 ```        
 
-### 3. RxSwift改变Label中文字
+### RxSwift改变Label中文字
 
 ```objc
 label1.rx.observe(String.self, "text").subscribe(onNext: { (str: String?) in
@@ -150,7 +152,7 @@ label2.rx.observe(CGRect.self, "frame").subscribe(onNext: { (rect: CGRect?) in
 }).addDisposableTo(bag)
 ```
 
-### 4. RxSwift监听UIScrollView的滚动
+### RxSwift监听UIScrollView的滚动
 
 ```objc
 scrollView.contentSize = CGSize(width: 1000, height: 0)
@@ -162,7 +164,7 @@ scrollView.rx.contentOffset
 
 ```
 
-## 三. RxSwift常见操作
+## RxSwift常见操作
 - addDisposableTo(disposeBag)方法是让其deinit，也就是所有者要释放的时候，自动取消监听
 
 ```
@@ -170,7 +172,7 @@ scrollView.rx.contentOffset
 let bag = DisposeBag()
 ```
 
-### 1. never
+### never
 - never就是创建一个sequence,但是不发出任何事件信号
 
 ```objc
@@ -183,7 +185,7 @@ neverSqu.subscribe { (_) in
 
 ```
 
-### 2. empty
+### empty
 - empty就是创建一个空的sequence,只能发出一个complected事件
 
 ```objc
@@ -194,7 +196,7 @@ Observable<Int>.empty().subscribe { (event) in
 }.addDisposableTo(bag)
 ```
         
-### 3. just
+### just
 - just是创建一个sequence只能发出一种特定的事件，能正常结束
 
 ```objc
@@ -215,7 +217,7 @@ Observable.just("jun").subscribe { (event) in
 }.addDisposableTo(bag)
 ```    
         
-### 4.of
+### of
 - of是创建一个sequence能发出很多种事件信号
 
 ```objc
@@ -236,7 +238,7 @@ Observable.of("a", "b", "2", "5.3").subscribe(onNext: { (event) in
    //每一个闭包都设置设置了 一个默认值,故可以省略
 ```
         
-### 5. from
+### from
 - from就是从数组中创建sequence
 
 ```objc
@@ -251,12 +253,12 @@ Observable.from(["a", "b", "2", "5.3"]).subscribe { (event) in
      */
 }.addDisposableTo(bag)
 ```        
-### 6. create
+### create
 - 我们也可以自定义可观察的sequence，那就是使用create
 - create操作符传入一个观察者observer，然后调用observer的onNext，onCompleted和onError方法。返回一个可观察的obserable序列
 
-#### 1) 自定义方法创建observable的creat
-##### 6-1 无参创建creat
+#### 自定义方法创建observable的creat
+##### 无参创建creat
 
 ```objc
 fileprivate func myobserable() -> Observable<Any> {
@@ -269,7 +271,7 @@ fileprivate func myobserable() -> Observable<Any> {
 }
 ```
 
-##### 6-2 添加参数创建creat
+##### 添加参数创建creat
 
 ```objc
 fileprivate func myJunst(element: String) -> Observable<String> {
@@ -280,7 +282,7 @@ fileprivate func myJunst(element: String) -> Observable<String> {
     })
 }
 ```
-#### 2) 在函数内调用自定义方法
+#### 在函数内调用自定义方法
 
 ```objc
 myobserable().subscribe(onNext: { print($0) }).addDisposableTo(bag)
@@ -292,7 +294,7 @@ myJunst(element: "jun").subscribe(onNext: { print($0) }).addDisposableTo(bag)
 
 ```
 
-### 7. range(给定范围, 依次显示)
+### range(给定范围, 依次显示)
 - range就是创建一个sequence，他会发出这个范围中的从开始到结束的所有事件
 - Observable<Int>,必须指定数据类型
 
@@ -309,7 +311,7 @@ Observable<Int>.range(start: 1, count: 4).subscribe { (event: Event<Int>) in
 }.addDisposableTo(bag)
 ```
 
-### 8. repeatElement(重复执行)
+### repeatElement(重复执行)
 创建一个sequence，发出特定的事件n次
 
 ```objc
@@ -321,7 +323,7 @@ Observable.repeatElement("quanjun")
 
 ```
 
-### 9.  generate(类似于for循环)
+### generate(类似于for循环)
 - generate是创建一个可观察sequence，当初始化的条件为true的时候，他就会发出所对应的事件
 
 ```objc
@@ -341,7 +343,7 @@ generate.subscribe({ print($0) }).addDisposableTo(bag)
         */
 ```
         
-### 10.  error(发出错误信号)
+### error(发出错误信号)
 - 创建一个可观察序列，但不发出任何正常的事件，只发出error事件并结束
 
 ```objc
@@ -353,7 +355,7 @@ generate.subscribe({ print($0) }).addDisposableTo(bag)
 //输出: error(Error Domain=错误 Code=10 "(null)")
 ```        
 
-## 四. RxSwift中Subjects
+## RxSwift中Subjects
 - Subjects是什么?
   - Subjet是observable和Observer之间的桥梁，一个Subject既是一个Obserable也是一个Observer，他既可以发出事件，也可以监听事件
   
@@ -386,12 +388,12 @@ pSubject.onNext("J")
 
 ```
 
-### 2. ReplaySubject
+### ReplaySubject
 - 当你订阅ReplaySubject的时候，你可以接收到订阅他之后的事件，但也可以接受订阅他之前发出的事件，接受几个事件取决与bufferSize的大小
 - `createUnbounded() `表示接受所有事件
 - `create(bufferSize: 4)` 表示可接受到的订阅他之前的事件的个数,但是订阅他之后的事件一定会触发
 
-#### 2-1. `createUnbounded() `表示接受所有事件
+#### `createUnbounded() `表示接受所有事件
 
 ```objc
 let rSubject = ReplaySubject<String>.createUnbounded()
@@ -410,7 +412,7 @@ rSubject.onNext("J")
   */
 ```
 
-#### 2-2. `create(bufferSize: 4)` 表示可接受到的订阅他之前的事件的个数
+#### `create(bufferSize: 4)` 表示可接受到的订阅他之前的事件的个数
 
 ```objc
 let rSubject1 = ReplaySubject<String>.create(bufferSize: 1)
@@ -429,7 +431,7 @@ rSubject1.onNext("J")
   
 ```
 
-### 3. BehaviorSubject
+### BehaviorSubject
 - 当你订阅了BehaviorSubject，你会接受到订阅之前的最后一个事件,订阅之后的事件一定会触发
 
 ```objc
@@ -458,7 +460,7 @@ bSubject.onNext("J")
 
 ```
 
-### 4. Variable
+### Variable
 - Variable是BehaviorSubject一个包装箱，就像是一个箱子一样，使用的时候需要调用asObservable()拆箱，里面的value是一个BehaviorSubject，他不会发出error事件，但是会自动发出completed事件。
 - 1> 相当于对BehaviorSubject进行装箱
 - 2> 如果想将Variable当成Obserable, 让订阅者进行订阅时, 需要调用asObserable拆箱转成Obserable
@@ -493,9 +495,13 @@ variable.value = "j"
 
 ```
 
-## 五. RxSwift细节理解
-### 1. 变换操作
-#### 1-1.  map
+
+## RxSwift细节理解
+
+### 变换操作
+
+#### map
+
 - 通过传入一个函数闭包把原来的sequence转变为一个新的sequence的操作
 
 ```objc
@@ -512,7 +518,7 @@ Observable.of(1, 2, 3, 4)
  */
 ```
 
-#### 1-2. flatMap
+#### flatMap
 - 将一个sequence转换为一个sequences，当你接收一个sequence的事件，你还想接收其他sequence发出的事件的话可以使用flatMap，她会将每一个sequence事件进行处理以后，然后再以一个sequence形式发出事件
 
 ##### 首先创建一个struct
@@ -550,7 +556,7 @@ stu2.score.value = 20
 
 ```
 
-#### 1-3. flatMapLatest
+#### flatMapLatest
 - flatMapLatest只会接收最新的value事件，将上例代码改为flatMapLatest
 
 ```objc
@@ -575,12 +581,12 @@ stu4.score.value = 20
 
 ```
 
-### 2. 释放资源
+### 释放资源
 - 当监听一个事件序列的时候，有消息事件来了，我们做某些事情。但是这个事件序列不再发出消息了，我们的监听也就没有什么存在价值了，所以我们需要释放我们这些监听资源，其实也就是每种编程语言中的内存资源释放。
 - OC和Swift中也一样，在你不需要用某些变量的时候，你需要把这些变量所占用的内存空间释放掉。
 - 释放某一个监听的时候我们可以手动调用释放方法
 
-#### 2-1. dispose
+#### dispose
 
 - 相当于MRC中手动调用release操作
 - 注意: 因为观察者已经销毁, 所有后面无法接受事件
@@ -601,16 +607,17 @@ testVariable.value = "tian"
 ```
 
 
-#### 2-2. Dispose Bags
+#### Dispose Bags
 - 除了上面手动的方法，还有一种是自动的方式
 - 推荐大家使用这种方式，这种方式就好像iOS中的ARC方式似得，会自动去释放资源。
 ```objc
 fileprivate lazy var bag = DisposeBag()
 ```
-> #### 在代码结尾调用`.addDisposableTo(bag)`方法
+
+##### 在代码结尾调用`.addDisposableTo(bag)`方法
 
 
-### 3. UIBindingObserver
+### UIBindingObserver
 - UIBindingObserver这个东西很有用的，创建我们自己的监听者，有时候RxCocoa(RxSwiftz中对UIKit的一个扩展库)给的扩展不够我们使用
 - 比如一个UITextField有个isEnabled属性，我想把这个isEnabled变为一个observer，我们可以这样做：
 

@@ -13,7 +13,7 @@ categories: Swift黑科技
 
 <!-- more -->
 
-## 一. Vision应用场景
+## Vision应用场景
 - `Face Detection and Recognition` : 人脸检测
   - 支持检测笑脸、侧脸、局部遮挡脸部、戴眼镜和帽子等场景，可以标记出人脸的矩形区域
   - 可以标记出人脸和眼睛、眉毛、鼻子、嘴、牙齿的轮廓，以及人脸的中轴线
@@ -27,15 +27,15 @@ categories: Swift黑科技
 - `Object Detection and Tracking`: 目标跟踪
   - 脸部，矩形和通用模板
 
-## 二. Vision支持的图片类型
-### 1. Objective-C中
+## Vision支持的图片类型
+### Objective-C中
 - `CVPixelBufferRef`
 - `CGImageRef`
 - `CIImage`
 - `NSURL`
 - `NSData`
  
-### 2. Swift中
+### Swift中
 - `CVPixelBuffer`
 - `CGImage`
 - `CIImage`
@@ -44,7 +44,7 @@ categories: Swift黑科技
 
 > 具体详情可在`Vision.framework`的`VNImageRequestHandler.h`文件中查看
 
-## 三. Vision之API介绍
+## Vision之API介绍
 - 使用在`vision`的时候，我们首先需要明确自己需要什么效果，然后根据想要的效果来选择不同的类
 - 给各种功能的 `Request` 提供给一个 `RequestHandler`
 - `Handler` 持有需要识别的图片信息，并将处理结果分发给每个 `Request` 的 `completion Block` 中
@@ -53,7 +53,7 @@ categories: Swift黑科技
 - 每种`Observation`有`boundingBox`，`landmarks`等属性，存储的是识别后物体的坐标，点位等
 - 我们拿到坐标后，就可以进行一些UI绘制。
 
-### 1. `RequestHandler`处理请求对象
+### `RequestHandler`处理请求对象
 - `VNImageRequestHandler`: 处理与单个图像有关的一个或多个图像分析请求的对象
   - 一般情况下都是用该类处理识别请求
   - 初始化方法支持`CVPixelBuffer`, `CGImage`, `CIImage`, `URL`, `Data`
@@ -61,22 +61,22 @@ categories: Swift黑科技
   - 目前我在处理物体跟踪的时候使用该类
   - 初始化方法同上
   
-### 2. VNRequest介绍
+### VNRequest介绍
 - `VNRequest`: 图像分析请求的抽象类, 继承于`NSObject`
 - `VNBaseImageRequest`: 专注于图像的特定部分的分析请求
 - 具体分析请求类如下: 
 - 
 ![VNImageBasedRequest.png](http://upload-images.jianshu.io/upload_images/4122543-b58783bec9d07551.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 3. `VNObservation`检测对象
+### `VNObservation`检测对象
 - `VNObservation`: 图像分析结果的抽象类, 继承与`NSObject`
 - 图像检测结果的相关处理类如下:
 - 
 ![VNObservation.png](http://upload-images.jianshu.io/upload_images/4122543-c0b83aa723e149ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-## 四. 实战演练
-### 1. 文本检测
+## 实战演练
+### 文本检测
 - 方式一: 识别出具体的每一个字体的位置信息
 - 方式二: 识别一行字体的位置信息
 - 如图效果:
@@ -85,14 +85,14 @@ categories: Swift黑科技
 
 ![WechatIMG5.jpeg](http://upload-images.jianshu.io/upload_images/4122543-8b970c464c26ffb0.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/200)
 
-#### 1.1 现将图片转成初始化`VNImageRequestHandler`对象时, 可接受的的`CIImage`
+#### 现将图片转成初始化`VNImageRequestHandler`对象时, 可接受的的`CIImage`
 
 ```objc
 //1. 转成ciimage
 guard let ciImage = CIImage(image: image) else { return }
 ```
 
-#### 1.2 创建处理请求的handle
+#### 创建处理请求的handle
 - 参数一: 图片类型
 - 参数二: 字典类型, 有默认值为[:]
 
@@ -100,7 +100,7 @@ guard let ciImage = CIImage(image: image) else { return }
 let requestHandle = VNImageRequestHandler(ciImage: ciImage, options: [:])
 ```
 
-#### 1.3 创建回调闭包
+#### 创建回调闭包
 - 两个参数, 无返回值
 - `VNRequest`: 是所有请求Request的父类
 
@@ -119,7 +119,7 @@ let completionHandle: VNRequestCompletionHandler = { request, error in
 
 ```
 
-#### 1.4 创建识别请求
+#### 创建识别请求
 - 两种初始化方式
 
 ```objc
@@ -144,7 +144,7 @@ baseRequest.setValue(true, forKey: "reportCharacterBoxes")
 ```
 - 不设置该属性, 识别出来的是一行文字
 
-#### 1.5 发送请求
+#### 发送请求
 
 ```objc
     open func perform(_ requests: [VNRequest]) throws
@@ -165,7 +165,7 @@ DispatchQueue.global().async {
 
 ```
 
-#### 1.6 处理识别的`Observations`对象
+#### 处理识别的`Observations`对象
 - 识别出来的`results`是`[Any]?`类型
 - 根据`boundingBox`属性可以获取到对应的文本区域的尺寸
 - 需要注意的是:
@@ -213,7 +213,7 @@ fileprivate func convertRect(_ rectangleRect: CGRect, _ image: UIImage) -> CGRec
 
 ```
 
-### 2. 矩形识别和静态人脸识别
+### 矩形识别和静态人脸识别
 - 识别图像中的矩形
 - 
 ![1511935758595.jpg](http://upload-images.jianshu.io/upload_images/4122543-05e6a9cc6c193b1d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400)
@@ -280,7 +280,7 @@ default:
 guard let boxArr = observations as? [VNFaceObservation] else { return }
 ```
 
-### 3. 条码识别
+### 条码识别
 
 ![1511936988374.jpg](http://upload-images.jianshu.io/upload_images/4122543-9f199a027f186a5c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400)
 
@@ -340,7 +340,7 @@ open var payloadStringValue: String? { get }
 
 ```
 
-### 4. 人脸特征识别
+### 人脸特征识别
 - 可识别出人脸的轮廓, 眼睛, 鼻子, 嘴巴等具体位置
 - 
 ![1511944652200.jpg](http://upload-images.jianshu.io/upload_images/4122543-895670df5fd8e2c9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400)
@@ -414,7 +414,7 @@ content?.drawPath(using: .stroke)
 content?.strokePath()
 ```
 
-### 5. 动态人脸识别和实时动态添加
+### 动态人脸识别和实时动态添加
 > 由于真机不好录制gif图(尝试了一下, 效果不是很好, 放弃了), 想看效果的朋友[下载源码](https://github.com/coderQuanjun/JunVisionFace)真机运行吧
 - 这里提供一张[可供扫描的图片](http://upload-images.jianshu.io/upload_images/4122543-e390e4107c0b811b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -506,7 +506,7 @@ DispatchQueue.global().async {
 - 最后获取到该`CGRect`, 添加眼镜效果即可
 
 
-### 6. 物体跟踪
+### 物体跟踪
 - 简介
   - 我们在屏幕上点击某物体, 然后Vision就会根据点击的物体, 实时跟踪该物体
   - 当你移动手机或者物体时, 识别的对象和红框的位置是统一的
@@ -572,7 +572,7 @@ self.redView.frame = convertRect
 
 ---
 
-### GitHub--[Demo地址](https://github.com/coderQuanjun/JunVisionFace)
+## GitHub--[Demo地址](https://github.com/coderQuanjun/JunVisionFace)
 
 -  注意:  
   - 这里只是列出了主要的核心代码,具体的代码逻辑请参考demo

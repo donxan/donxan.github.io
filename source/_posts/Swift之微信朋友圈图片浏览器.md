@@ -17,7 +17,7 @@ categories: Swiftk框架
   - `ViewController`自定义转场
   - `UIBesization`贝塞尔曲线
 
-## 一. CATransition转场动画
+## CATransition转场动画
 > 示例代码
 
 ```objc
@@ -32,7 +32,7 @@ baseImage.layer.add(transition, forKey: "transition")
 
 更多关于该动画的详细介绍, 可参考[iOS出门必备之CoreAnimation(核心动画)](http://www.jianshu.com/p/2b2f49399b7e)中第七种CA动画, 故这里不多做介绍
 
-## 二. `ViewController`自定义转场
+## `ViewController`自定义转场
 > 从iOS7开始，苹果更新了自定义ViewController转场的API,会用到的几个协议`protocol`:
 
 - 描述ViewController转场的：
@@ -45,7 +45,7 @@ baseImage.layer.add(transition, forKey: "transition")
 - 表示动画上下文的
   - `UIViewControllerContextTransitioning`
 
-### 1-1. 描述ViewController转场的
+### 描述ViewController转场的
 
 -  为什么苹果要引入这一套API？因为在iOS7之前，做转场动画很麻烦，要写一大堆代码在ViewController中。
 -  引入这一套API之后，在丰富功能的同时极大程度地降低了代码耦合，实现方式就是将之前在ViewController里面的代码通过protocol分离了出来。
@@ -56,7 +56,7 @@ baseImage.layer.add(transition, forKey: "transition")
   - `present  ViewController`
   - 这三种方式是不是需要不同的protocol呢？
 
-### 1-2. 详解Protocol
+### 详解Protocol
 - `UIViewControllerTransitioningDelegate` 自定义模态转场动画时使用。
   - 设置`UIViewController`的属性`transitioningDelegate`
   
@@ -97,7 +97,7 @@ baseImage.layer.add(transition, forKey: "transition")
 - `interactive`动画可以根据输入信息的变化改变动画的进程。例如iOS系统为`UINavigationController`提供的默认右滑退出手势就是一个`interactive` 动画，整个动画的进程由用户手指的移动距离控制
 
 
-### 1-3. `UIViewControllerInteractiveTransitioning`协议
+### `UIViewControllerInteractiveTransitioning`协议
 > 定义了两个属性可以做到平滑过渡
 - `completionCurve`: 交互结束后剩余动画的速率曲线
 - `completionSpeed`: 交互结束后动画的开始速率由该参数与原来的速率相乘得到，实际上是个缩放参数，这里应该使用单位变化速率(即你要的速率/距离)。
@@ -107,7 +107,7 @@ baseImage.layer.add(transition, forKey: "transition")
   - 如果不设置两个参数，转场动画将以原来的速率曲线在当前进度的速率继续。
   - 不过从实际使用效果来看，往往不到0.5s的动画时间，基本上看不出什么效果来
 
-### 1-4. 定义动画内容的`UIViewControllerAnimatedTransitioning`
+### 定义动画内容的`UIViewControllerAnimatedTransitioning`
 - 必须实现的方法
 
 ```objc
@@ -119,7 +119,7 @@ public func animateTransition(using transitionContext: UIViewControllerContextTr
 
 ```
 
-### 1-5. 表示动画上下文`UIViewControllerContextTransitioning`
+### 表示动画上下文`UIViewControllerContextTransitioning`
 
 - `UIViewControllerContextTransitioning提供了一系列方法`
 - 是唯一一个我们不需要实现的Protocol
@@ -141,7 +141,7 @@ public func view(forKey key: UITransitionContextViewKey) -> UIView?
 
 ```
 
-### 1-5. `UIViewControllerTransitioningDelegate`自定义模态转场时使用
+### `UIViewControllerTransitioningDelegate`自定义模态转场时使用
 
 ```objc
 // 该方法是告诉系统,弹出动画交给谁来处理
@@ -158,15 +158,15 @@ func animationController(forDismissed dismissed: UIViewController) -> UIViewCont
 
 ```
 
-## 三. 图片浏览器项目介绍
-### 1. 项目结构`Alamofire + MVVM`
+## 图片浏览器项目介绍
+### 项目结构`Alamofire + MVVM`
 ![框架结构](http://upload-images.jianshu.io/upload_images/4122543-20b3afa03d389bb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
 
 ![图片浏览器.gif](http://upload-images.jianshu.io/upload_images/4122543-a54d1b9e6d553950.gif?imageMogr2/auto-orient/strip)
 
-### 2. 自定义`ViewController`的弹出和消失动画
+### 自定义`ViewController`的弹出和消失动画
 
-#### 2-1. 自定义`ViewController`弹出和消失的Protocol
+#### 自定义`ViewController`弹出和消失的Protocol
 
 ```objc
 //MARK: 自定义协议
@@ -191,7 +191,7 @@ protocol JunBrowserDismissDelegate {
 
 ```
 
-### 2-2. 遵循协议
+### 遵循协议
 - `UIViewControllerTransitioningDelegate`告诉系统弹出/消失动画的处理页面
 - `UIViewControllerAnimatedTransitioning`
   - 需要返回动画的执行时间
@@ -229,8 +229,8 @@ extension PhotoBrowseAnimation: UIViewControllerAnimatedTransitioning {
 
 ```
 
-### 2-3. 图片列表界面
-#### 1. 在点击需要展示的imageView的时候,调用下面的方法
+### 图片列表界面
+#### 在点击需要展示的imageView的时候,调用下面的方法
 
 ```objc
 // MARK:- 弹出照片浏览器
@@ -251,7 +251,7 @@ extension JunScrollViewController {
 
 ```
 
-#### 2. 遵循并实现自定义的协议方法
+#### 遵循并实现自定义的协议方法
 
 ```objc
 //MARK: JunBrowsePresentDelefate
@@ -295,7 +295,7 @@ extension JunScrollViewController: JunBrowsePresentDelefate {
 
 ```
 
-### 2-4. 在图片展示界面
+### 在图片展示界面
 - 遵循并实现相关dismiss协议方法
 - 该协议主要实现viewController返回到该图片对应的`IndexPath`所在的位置
 

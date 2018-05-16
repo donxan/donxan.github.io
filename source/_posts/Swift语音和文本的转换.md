@@ -21,13 +21,13 @@ categories: Swift黑科技
 
 
 
-## 一. 文本转语音
+## 文本转语音
 - 文本转语音技术, 简称TTS (是`Text To Speech`的缩写), [语音合成苹果官方文档](https://developer.apple.com/documentation/avfoundation/speech_synthesis)
 - 是苹果iOS7以后新增的功能, 使用AVFoundation 库
 - 下面介绍一下需要用到的类
 
-### 1. `AVSpeechSynthesizer`: 语音合成器
-#### 1-1. 属性
+### `AVSpeechSynthesizer`: 语音合成器
+#### 属性
 
 ```objc
 //是否正在语音播放
@@ -37,7 +37,7 @@ open var isSpeaking: Bool { get }
 open var isPaused: Bool { get }
 ```
 
-#### 1-2. 方法
+#### 方法
 
 ```objc
 //播放语音
@@ -56,7 +56,7 @@ open func continueSpeaking() -> Bool
 open var outputChannels: [AVAudioSessionChannelDescription]?
 ```
 
-### 2. AVSpeechBoundary
+### AVSpeechBoundary
 - 描述语音可能被暂停或停止的枚举值
 
 ```objc
@@ -67,7 +67,7 @@ case word
 //说完整个词语之后再暂停或者停止
 ```
 
-### 3. AVSpeechUtterance
+### AVSpeechUtterance
 - 可以将文本和成一段语音的类, 或者说就是一段要播放的语音
 #### 3-1. 属性
 
@@ -99,7 +99,7 @@ open var preUtteranceDelay: TimeInterval
 open var postUtteranceDelay: TimeInterval
 ```
 
-#### 3-2. 初始化方法
+#### 初始化方法
 
 ```objc
 public init(string: String)
@@ -108,11 +108,11 @@ public init(string: String)
 public init(attributedString string: NSAttributedString)
 ```
 
-### 4. AVSpeechSynthesisVoice
+### AVSpeechSynthesisVoice
 - 用于语音合成的独特声音, 主要是不同的语言和地区
 - 所支持的所有语言种类详见最底部附录
 
-#### 4-1. 相关属性
+#### 相关属性
 
 ```objc
 //获得当前的语言
@@ -130,7 +130,7 @@ open var quality: AVSpeechSynthesisVoiceQuality { get }
 
 ```
 
-#### 4-2. 相关方法
+#### 相关方法
 
 ```objc
 init?(language: String?)
@@ -145,7 +145,7 @@ class func currentLanguageCode()
 ```
 
 
-### 5. AVSpeechSynthesizerDelegate代理
+### AVSpeechSynthesizerDelegate代理
 - 所有代理方法都是支持iOS7.0以上的系统
 
 ```objc
@@ -208,13 +208,13 @@ extension TextToVoiceController{
 
 ```
 
-## 二. 语音转文本
+## 语音转文本
 - 在2016 WWDC大会上，Apple公司介绍了一个很好的语音识别的API,那就是Speech框架
 - Speech框架支持iOS10以上系统
 - [Speech框架官方文档](https://developer.apple.com/documentation/speech)
 - 下面简单介绍一下主要的操作类
 
-### 1. `SFSpeechRecognizer`: 语音识别器
+### `SFSpeechRecognizer`: 语音识别器
 - 这个类是语音识别的操作类
 - 用于语音识别用户权限的申请，语言环境的设置，语音模式的设置以及向Apple服务发送语音识别的请求
 - 初始化方法
@@ -297,7 +297,7 @@ var interactionIdentifier: String?
   - `SFSpeechURLRecognitionRequest`
   - `SFSpeechAudioBufferRecognitionRequest`
 
-#### 2-1. `SFSpeechURLRecognitionRequest`
+#### `SFSpeechURLRecognitionRequest`
 - 通过制定的URL路径识别本地的语音
 - 方法和属性
 
@@ -309,7 +309,7 @@ public init(url URL: URL)
 open var url: URL { get }
 ```
 
-#### 2-2. `SFSpeechAudioBufferRecognitionRequest`
+#### `SFSpeechAudioBufferRecognitionRequest`
 - 识别音频缓冲区中提供的语音的请求
 - 识别即时语音, 类似于iPhone 中的Siri
 - [官方文档](https://developer.apple.com/documentation/speech/sfspeechaudiobufferrecognitionrequest)
@@ -333,7 +333,7 @@ var nativeAudioFormat: AVAudioFormat
 //用于最佳语音识别的首选音频格式。
 ```
 
-### 3. `SFSpeechRecognitionTask`
+### `SFSpeechRecognitionTask`
 - 语音识别请求结果类
 - 语音识别任务，监视识别进度
 - 相关方法属性
@@ -359,7 +359,7 @@ var error: Error?
 
 ```
 
-#### 3-1. `SFSpeechRecognitionTaskDelegate`协议
+#### `SFSpeechRecognitionTaskDelegate`协议
 
 ```objc
 //当开始检测音频源中的语音时首先调用此方法
@@ -383,7 +383,7 @@ optional public func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didF
 
 ```
 
-### 4. SFTranscription
+### SFTranscription
 - 语音转换后的信息类, 包含改短语音信息的类
 - 你所说的一句话，可能是有好几个词语拼成的，`formattedString`就是你所说的那句话，`segments`就是你所说的你那句话的组成每个单词的集合
 
@@ -396,7 +396,7 @@ open var segments: [SFTranscriptionSegment] { get }
 
 ```
 
-### 5. SFTranscriptionSegment
+### SFTranscriptionSegment
 - 语音转换中的音频节点类
 - 相关属性
 
@@ -421,7 +421,7 @@ open var alternativeSubstrings: [String] { get }
 
 ```
 
-### 6. `SFSpeechRecognitionResult`: 语音识别结果类
+### `SFSpeechRecognitionResult`: 语音识别结果类
 - 是语音识别结果的封装，其中包含了许多套平行的识别信息，其每一份识别信息都有可信度属性来描述其准确程度
 - 该类只是语音识别结果的一个封装，真正的识别信息定义在SFTranscription类中
 
@@ -436,7 +436,7 @@ open var transcriptions: [SFTranscription] { get }
 open var isFinal: Bool { get }
 ```
 
-## 三. 语音识别转文本
+## 语音识别转文本
 - 添加Speech框架
   - `import Speech`
 - `info.plist`必须添加相关权限

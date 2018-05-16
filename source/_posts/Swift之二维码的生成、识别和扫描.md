@@ -8,7 +8,7 @@ categories: Swift黑科技
 > 最近在项目中遇到了涉及二维码相关的问题, 这里想记录总结一下二维码相关技术
 <!-- more -->
 
-## 一. 二维码的介绍
+## 二维码的介绍
 - 二维条码/二维码是用某种特定的几何图形按一定规律在平面分布的黑白相间的图形记录数据符号信息的
 - 总结: 用图形记录标记一些信息,方便通过图形识别来获取信息
 - 应用场景
@@ -17,7 +17,7 @@ categories: Swift黑科技
   - 手机支付（扫描商品二维码，通过银行或第三方支付提供的手机端通道完成支付)
   - 微信添加好友
 
-## 二. 二维码的生成
+## 二维码的生成
 - 生成二维码的方式
   - 采用第三方框架(放弃)
     - ZXing/ZBar
@@ -29,7 +29,8 @@ categories: Swift黑科技
   - 设置滤镜的输入数据
   - 将传入的字符串转换成Data(OC为NSData)数据
   - 通过KVC来设置输入的内容`inputMessage`
-### 1. 二维码容错率
+
+### 二维码容错率
 
 ```objc
 filter?.setValue("H", forKey: "inputCorrectionLevel")
@@ -81,7 +82,7 @@ func generateCode(inputMsg: String, fgImage: UIImage?) -> UIImage {
 ```
 
 
-### 2. 获取高清图片
+### 获取高清图片
 
 ```objc
 //4. 获取高清图片
@@ -95,7 +96,7 @@ fileprivate func getHDImage(_ outImage: CIImage) -> UIImage {
 
 ```
 
-### 3. 将图片合成到二维码中
+### 将图片合成到二维码中
 - 需要用到图形上下文
 - 将二维码画到图形上下文
 - 将图片合成到图行上下文
@@ -161,7 +162,7 @@ func recognitionQRCode(qrCodeImage: UIImage) -> [String]? {
 
 ```
 
-## 三. 二维码的扫描
+## 二维码的扫描
 - 创建输入设备(摄像头)
   - 获取摄像头设备
   - 创建输入对象
@@ -176,14 +177,14 @@ func recognitionQRCode(qrCodeImage: UIImage) -> [String]? {
   - 创建图层,将图片添加到View图层中
 - 开始扫描
 
-### 1. 懒加载输入输出中间会话
+### 懒加载输入输出中间会话
 
 ```objc
 //输入输出中间桥梁(会话)
 fileprivate lazy var session : AVCaptureSession = AVCaptureSession()
 ```
-### 2. 初始化扫描设备
-#### 2.1. 注意: `AVCaptureMetadataOutputObjectsDelegate`的代理设置, 该协议中的方法会将扫描的结果返回
+### 初始化扫描设备
+#### 注意: `AVCaptureMetadataOutputObjectsDelegate`的代理设置, 该协议中的方法会将扫描的结果返回
 
 ```objc
 fileprivate func addScaningVideo(){
@@ -229,7 +230,7 @@ fileprivate func addScaningVideo(){
 
 ```
 
-#### 2.2 代理方法的实现
+#### 代理方法的实现
 - 需要将扫描的结果转化成机器可读的编码数据,才能获取二维码的相关信息
 
 ```objc

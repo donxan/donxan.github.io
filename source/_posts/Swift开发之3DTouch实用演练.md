@@ -17,13 +17,13 @@ categories: 高级用法
 - 功能需要iOS9以上系统和`iphone6s/iphone6s Plus`及以上机型(模拟机现在也是可以的)
 - [demo地址](https://github.com/coderQuanjun/DouYuTV)
   
-## 一. 效果演练
-### 1. 主屏幕快速操作
+## 效果演练
+### 主屏幕快速操作
 - 通过按下iPhone 6s或iPhone 6s Plus上的应用程序图标，用户可以获得一组快速操作。
 - 当用户选择快速操作时，您的应用程序激活或启动，并跳转到相应界面
 ![主屏幕快速操作](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/maps_directions_home_2x.png)
 
-### 2. Peek and Pop
+### Peek and Pop
 > * 对界面内某一控件的3DTouch操作
 > * Peek和Pop是应用内的一种全新交互模式,当用户不断增加力量在控件上按压,会依次进入四个阶段
 - 轻按控件,除触发Peek的控件外,其他区域全部虚化
@@ -37,19 +37,19 @@ categories: 高级用法
 
 ![向上滑动展示快捷选项](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/Adopting3DTouchOniPhone/Art/peek_quick_actions_2x.png)
 
-### 3. 注意
+### 注意
 - 3D Touch仅在3D Touch设备上可用，如果启用。在iOS 9以上，默认情况下启用3D Touch。
 - 用户可以在设置>常规>辅助功能> 3D触摸中关闭3D触摸。
 - 当3D Touch可用时，利用其功能。当它不可用时，提供替代方法，例如通过使用触摸和保持。
 - 3D Touch功能支持VoiceOver。
 
 
-## 二. 主屏幕操作
+## 主屏幕操作
 - `ShortcutItem`功能允许用户在主屏幕上对应用图标使用`3DTouch`操作,如果本次操作有效,则会给出几个快捷可选项允许用户进行操作
 - 主屏幕icon上的快捷标签的实现方式有两种，一种是在工程文件info.plist里静态设置，另一种是代码的动态实现
 - 优先显示静态添加，总数达到4个不再显示
 
-### 1. 静态设置
+### 静态设置
 - 在info.plist中添加`UIApplicationShortcutItems`关键字,以如下方式配置即可
 
 ![UIApplicationShortcutItems配置](http://upload-images.jianshu.io/upload_images/4122543-e90081ad823f9859.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -62,8 +62,8 @@ categories: 高级用法
 - `UIApplicationShortcutItemIconFile`: 快捷可选项的自定义图标(可选)
 - `UIApplicationShortcutItemUserInfo`: 快捷可选项的附加信息(可选)
 
-### 2. 动态添加`UIApplicationShortcutItem`
-#### 2-1. `UIApplicationShortcutItem`初始化方法
+### 动态添加`UIApplicationShortcutItem`
+#### `UIApplicationShortcutItem`初始化方法
 
 ```objc
 UIApplicationShortcutItem(type: String, localizedTitle: String, localizedSubtitle: String?, icon: UIApplicationShortcutIcon?, userInfo: [AnyHashable : Any]?)
@@ -75,8 +75,8 @@ UIApplicationShortcutItem(type: String, localizedTitle: String, localizedSubtitl
   - `icon`: 快捷可选项的图标(可选)
   - `userInfo`: 快捷可选项的附加信息(可选)
 
-#### 2-1. 图标
-##### 2-1-1. 初始化方式
+#### 图标
+##### 初始化方式
 
 ```objc
 //方式一: 自定义图标
@@ -86,10 +86,10 @@ UIApplicationShortcutIcon(templateImageName: String)
 //方式二: 使用系统图标
 UIApplicationShortcutIcon(type: UIApplicationShortcutIconType)
 ```
-##### 2-1-2. 系统图标样式如下
+##### 系统图标样式如下
 ![系统图片一览表](http://upload-images.jianshu.io/upload_images/4122543-50ce942abc9a5174.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#### 2-3. 具体实现代码如下
+#### 具体实现代码如下
 
 ```objc
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -109,7 +109,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ```
 
-#### 2-4. item点击跳转
+#### item点击跳转
 - 可根据`type`标识判断
 - 可根据`localizedTitle`标识判断
 
@@ -137,14 +137,14 @@ func application(_ application: UIApplication, performActionFor shortcutItem: UI
 
 ```
 
-## 三. Peek and Pop
+## Peek and Pop
 - Peek和Pop是应用内的一种全新交互模式,当用户不断增加力量在控件上按压,会依次进入四个阶段
 - 这里小编将通过ViewController里面的UITableViewCell进行延时功能
 
 ---
 > 注意: 在动态添加快捷可选项前,需要用判断是否支持3D Touch功能,以免在不支持的设备上运行程序导致闪退
 
-### 1. 判断是否支持3D Touch功能
+### 判断是否支持3D Touch功能
 
 ```objc
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -180,7 +180,7 @@ case available  //3D Touch可用
 ```
 
 
-### 2. 给对应view注册3Dtouch事件
+### 给对应view注册3Dtouch事件
 - 在判断支持3Dtouch里面注册
 
 ```objc
@@ -188,10 +188,10 @@ case available  //3D Touch可用
 self.registerForPreviewing(with: self, sourceView: cell!)
 ```
 
-### 3. 遵守`UIViewControllerPreviewingDelegate`协议
+### 遵守`UIViewControllerPreviewingDelegate`协议
 - 需要实现Peek & Pop交互的控件所在的控制器遵循协议并实现两个代理方法
 
-#### 3-1. 当进入Peek状态时,系统会回调如下方法
+#### 当进入Peek状态时,系统会回调如下方法
 
 ```objc
 func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
@@ -216,7 +216,7 @@ func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewCont
 
 ```
 
-#### 3-2. 当进入Pop状态时,系统会回调如下方法
+#### 当进入Pop状态时,系统会回调如下方法
 - 用力按压进入`viewControllerToCommit`
 
 ```objc
@@ -232,7 +232,7 @@ func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit v
 ![3D Touch1演示.gif](http://upload-images.jianshu.io/upload_images/4122543-e093ea0e213ef573.gif?imageMogr2/auto-orient/strip)
 
 
-#### 3-4. 当弹出预览时，上滑预览视图，出现预览视图中快捷选项
+#### 当弹出预览时，上滑预览视图，出现预览视图中快捷选项
 
 
 ```objc
@@ -288,7 +288,7 @@ public enum UIPreviewActionStyle : Int {
 ```
 
 
-#### 3-5. `force` 和 `maximumPossibleForce`
+#### `force` 和 `maximumPossibleForce`
 > 到此，3DTouch在APP中的集成就先介绍这些，3DTouch中还有个重要的属性--压力属性（force 和 maximumPossibleForce）这里简单介绍下
 
 - 手指在屏幕上慢慢增加力度在减少力度，可以看到view背景色的变化

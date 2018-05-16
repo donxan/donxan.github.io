@@ -20,29 +20,29 @@ categories: iOS动画
 ![image](http://upload-images.jianshu.io/upload_images/4122543-a85faa1b734ebc00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-## 一. POP自我介绍
+## POP自我介绍
 - [POP](https://github.com/facebook/pop) 目前由四部分组成：1. Animations；2. Engine；3. Utility；4. WebCore。
 - [POP](https://github.com/facebook/pop) 动画极为流畅，主要在于Enimator 里，POP 通过 CADisplayLink 高达 60 FPS 的特性，打造了一个游戏级的动画引擎。
 - CADisplayLink 是类似 NSTimer 的定时器，不同之处在于，NSTimer 用于我们定义任务的执行周期、资料的更新周期，他的执行受到 CPU 的阻塞影响，而 CADisplayLink 则用于定义画面的重绘、动画的演变，他的执行基于 frames 的间隔。
  - 通过 CADisplayLink，Apple 允许你将 App 的重绘速度设定到和屏幕刷新频率一致，由此你可以获得非常流畅的交互动画，这项技术的应用在游戏中非常常见，著名的 Cocos-2D 也应用了这个重要的技术。
  - [WebCore](https://opensource.apple.com/source/WebCore/) 里包含了一些从 Apple 的开源的网页渲染引擎里拿出的源文件，与 Utility 里的组件一并，提供了 POP 的各项复杂计算的基本支持
 
-## 二. POP参数介绍
-> ###### POP默认支持三种动画，但同时也支持自定义动画
-- `POPBasicAnimation`   //基础动画
-- `POPSpringAnimation`  //弹簧动画
-- `POPDecayAnimation`   //衰减动画
-- `POPCustomAnimation`  //自定义动画
+## POP参数介绍
+- POP默认支持三种动画，但同时也支持自定义动画
+  - `POPBasicAnimation`   //基础动画
+  - `POPSpringAnimation`  //弹簧动画
+  - `POPDecayAnimation`   //衰减动画
+  - `POPCustomAnimation`  //自定义动画
 
-### 1、相关属性介绍
+### 相关属性介绍
 
-#### 1-1、属性简单介绍
+#### 属性简单介绍
 - POP动画大部分属性和CoreAnimation(核心动画)的含义和用法一样
 - 具体可参考[Core Animation(核心动画)](http://blog.csdn.net/ShmilyCoder/article/details/78219044)
 - 每种动画的特殊属性会在下文中继续介绍
 
 
-#### 1-2、动画可配置属性
+#### 动画可配置属性
 - CALayer层各属性(比较简单,就不加注释了)
 
 ```objc
@@ -127,7 +127,7 @@ extern NSString * const kPOPLabelTextColor;
 POPAnimatableProperty.h
 
 
-#### 1-3、POPBasicAnimation可配置的属性与默认值为
+#### POPBasicAnimation可配置的属性与默认值为
 
 ```objc
 POPBasicAnimation *basic = [POPBasicAnimation linearAnimation];
@@ -147,13 +147,13 @@ redView.pop_add(basic1, forKey: "position.x")
 
 ```
 
-## 三. POPBasicAnimation基础动画
+## POPBasicAnimation基础动画
 
-#### 1. 先看一下效果, 其动画效果如下
+### 先看一下效果, 其动画效果如下
 
 ![image](http://upload-images.jianshu.io/upload_images/4122543-1efeb167ad71b59d.gif?imageMogr2/auto-orient/strip)
 
-#### 2. 示例代码
+### 示例代码
 
 ```objc
 let basic1 = POPBasicAnimation(propertyNamed: kPOPLayerPositionX)
@@ -163,21 +163,21 @@ basic1?.beginTime = CFTimeInterval() + 1.0
 redView.pop_add(basic1, forKey: "position.x")
 ```
 
-#### 3. 可以看到，添加一个动画最少仅需三步
+### 可以看到，添加一个动画最少仅需三步
 
 - 1）定义一个`animation`对象，并指定对应的动画属性（`kPOPLayerPositionX`）
 - 2）设置初始值结束值(初始值可以不指定，会默认从当前值开始）
 - 3）添加到想产生动画的对象上
 
 
-#### 4. Core Animation 和 POP 运行动画对比
+### Core Animation 和 POP 运行动画对比
 - 由于 POP 是基于定时器定时刷新添加动画的原理，那么如果将动画库运行在主线程上，会由于线程阻塞的问题导致动画效果出现卡顿、不流畅的情况。
 - 更为关键的是，你不能将动画效果放在子线程，因为你不能将对 view 和 layer 的操作放到主线程之外
 - POP 受主线程阻塞的影响很大，在使用过程中，应避免在有可能发生主线程阻塞的情况下使用 POP ，避免制作卡顿的动画效果，产生不好的用户体验
 
 
-## 四. POPSpringAnimation弹性动画
-#### 1. 属性介绍
+## POPSpringAnimation弹性动画
+### 属性介绍
 - `velocity`: 设置动画开始速度
 - `springBounciness`: 振幅, 可以设置的范围是0-20，默认为4。值越大振动的幅度越大
 - `springSpeed`: 速度, 可以设置的范围是0-20，默认为12.值越大速度越快，结束的越快
@@ -187,7 +187,7 @@ redView.pop_add(basic1, forKey: "position.x")
 
 > 注意: 以上的六个属性中一般只会设置`springBounciness`和`springSpeed`, 如有特殊需求才会设置其他属性
 
-#### 2. 代码示例
+### 代码示例
 
 ```objc
 let spring = POPSpringAnimation(propertyNamed: kPOPViewScaleXY)
@@ -202,7 +202,7 @@ lightBlue.pop_add(spring, forKey: "scale")
 ```
 
 
-## 五. POPDecayAnimation
+## POPDecayAnimation
 - `POPDecayAnimation`提供一个过阻尼效果（其实`Spring`是一种欠阻尼效果）可以实现类似`UIScrollView`的滑动衰减效果（是的你可以靠它来自己实现一个`UIScrollView`）
 
 > 属性介绍
@@ -220,10 +220,10 @@ pictureBtn.pop_add(decay, forKey: "size")
 
 ```
 
-## 六. 自定义属性
+## 自定义属性
 POP默认支持的三种动画都继承自`POPPropertyAnimation`,  `POPPropertyAnimation`中定义了一个叫`property`的属性（之前没有用到它是因为POP根据不同的默认动画属性帮你生成了默认的`property`这个属性则是用来驱动POP的动画效果中的重要一环
 
-### 1. 实力模块
+### 实力模块
 
 ```objc
 if let proper = POPAnimatableProperty.property(withName: "prop", initializer: { (prop) in
@@ -244,7 +244,7 @@ if let proper = POPAnimatableProperty.property(withName: "prop", initializer: { 
 }
 ```
 
-### 2. 属性介绍
+### 属性介绍
 > 其组成就是一个readBlock一个writeBlock和一个threashold
 - `readBlock`告诉POP当前的属性值
 - `writeBlock`中修改变化后的属性值
@@ -256,7 +256,7 @@ POPAnimatableProperty其实是POP中一个比较重要的东西 像上面提到�
 
 ![计时器效果](http://upload-images.jianshu.io/upload_images/4122543-070c23772942ed82.gif?imageMogr2/auto-orient/strip)
 
-### 3. 完整代码示例
+### 完整代码示例
 
 ```objc
 if let proper = POPAnimatableProperty.property(withName: "prop", initializer: { (prop) in
@@ -289,14 +289,15 @@ if let proper = POPAnimatableProperty.property(withName: "prop", initializer: { 
 
 ```
 
-### 4. 注意:
+<div class="note warning"><p>注意:</p></div>
+
 - 在Swift4.0版本(4.0之前版本未知)中,初始化出来的对象都是可选类型
 - [POP](https://github.com/facebook/pop)官方的建议是添加`if`条件判断,详情可到GitHub上查看示例
 - 正如上段代码所示: 闭包中涉及的可选类型都添加了`guard`判断
 
 
-## 七. 类似微博中间发布按钮弹出动画
-#### 先看一下效果吧
+## 类似微博中间发布按钮弹出动画
+### 先看一下效果吧
 ![微博动画效果图](http://upload-images.jianshu.io/upload_images/4122543-737cf17a9cb95542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
 
 > 动画分为两个部分
@@ -304,8 +305,8 @@ if let proper = POPAnimatableProperty.property(withName: "prop", initializer: { 
 - 中间六个按钮依次执行动画弹出
 - 上面标题图片最后动画落下
 
-#### 下面来看一下部分的核心代码
-##### 1. 六个按钮的弹出和消失动画
+### 下面来看一下部分的核心代码
+#### 六个按钮的弹出和消失动画
 
 ```objc
 for i in 0..<titles.count {
@@ -334,7 +335,7 @@ for i in 0..<titles.count {
 
 ```
 
-##### 2. 最上部分标语的弹出和消失
+#### 最上部分标语的弹出和消失
 
 ```objc
 //z执行动画

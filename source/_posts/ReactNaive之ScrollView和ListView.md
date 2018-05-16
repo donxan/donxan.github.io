@@ -5,7 +5,7 @@ tags: [CSS, ScrollView, ListView]
 categories: ReactNaive
 ---
 
-## 一. ScrollView
+
 - 记住ScrollView必须有一个确定的高度才能正常工作，因为它实际上所做的就是将一系列不确定高度的子组件装进一个确定高度的容器（通过滚动操作）
 - 要给一个ScrollView确定一个高度的话，要么直接给它设置高度（不建议），要么确定所有的父容器都有确定的高度
 
@@ -13,7 +13,8 @@ categories: ReactNaive
 
 ![ListView.png](http://upload-images.jianshu.io/upload_images/4122543-45456c9ba9799576.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200)
 
-### 1. ScrollView常用的属性
+## ScrollView
+### ScrollView常用的属性
 
 
 ```objc
@@ -77,7 +78,7 @@ stickyHeaderIndices [number]
 //允许的最小缩放比例。默认值为1.0。
 ```
 
-### 2. ScrollView常用的方法
+### ScrollView常用的方法
 - 开发中，常需要在滚动的时候做事情，那怎么监听ScrollView滚动
 
 ```objc
@@ -119,7 +120,7 @@ scrollToEnd(options?)
 //加上动画参数 scrollToEnd({animated: true})则启用平滑滚动动画，或是调用 scrollToEnd({animated: false})来立即跳转。如果不使用参数，则animated选项默认启用。
 ```
 
-### 3. 获取原生事件
+### 获取原生事件
 - 滚动的时候,会传入一个合成事件作为监听滚动方法的参数，每个方法都会有这个合成事件
 - 通过合成事件能获取原生事件`nativeEvent`,原生事件`nativeEvent`会有我们想要的信息.
 - 什么是合成事件：在RN中，事件的处理由其内部自己实现的事件系统完成，触发的事件都叫做 合成事件（`SyntheticEven`t）
@@ -141,14 +142,14 @@ scrollToEnd(options?)
 
 ```
 
-## 二. ListView
+## ListView
 - 官方文档提示: 在0.46版本开始此组件已过期, 并推荐使用`FlatList`或`SectionList`替代, 但是在0.51版本依然可以使用
 - `ListView`: 一个核心组件，用于高效地显示一个可以垂直滚动的变化的数据列表
 - ListView内部是通过`ListViewDataSource`这个对象，显示数据，因此使用ListView必须先创建`ListViewDataSource`对象。
 - `ListViewDataSource`构造方法(创建对象):可选择性传入4个参数,描述怎么提取数据，怎么刷新cell
 - 这些参数：都是函数，当产生对应的事件的时候，会自动执行这些函数.
 
-### 1. ListView常用的属性和方法
+### ListView常用的属性和方法
 - ListView可以使用所有ScrollView的属性。
 
 ```objc
@@ -175,7 +176,7 @@ sectionHeaderHasChanged(prevSectionData, nextSectionData);
 - 注意：初始化`ListViewDataSource`的时候，如果不需要修改提取数据的方式，只需要实现`rowHasChanged`，告诉什么时候刷新下一行数据.
 - 注意：默认`ListViewDataSource`有提取数据方式，可以使用默认的提取方式.
 
-### 2. ListView使用步骤
+### ListView使用步骤
 - 1). 创建数据源
 
 ```objc

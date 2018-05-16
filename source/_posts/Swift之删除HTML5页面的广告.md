@@ -11,7 +11,7 @@ categories: 入坑指南
 
 ![猎场.jpg](http://upload-images.jianshu.io/upload_images/4122543-050601a063e14ce8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 一. UIWebViewDelegate
+## UIWebViewDelegate
 - 好了,言归正传,今天遇到了一个关于UIWebView问题的问题,如何删除H5页面的广告问题(一般出现在第三方的H5页面的情况)
 - APP中嵌入一个H5的网页，但出现的广告条或是无关头尾，相当大煞风景, 那该如何去掉呢?
 - 嵌入webview 一段JavaScript代码来隐藏，目前Android和iOS都支持此方法(这就是iOS中常说的js和OC交互)
@@ -35,7 +35,7 @@ optional public func webView(_ webView: UIWebView, didFailLoadWithError error: E
 
 ```
 
-## 二. 基于JavaScript的H5代码
+## 基于JavaScript的H5代码
 - 首先,我们先看一下HTML5在浏览器中的现实情况, [参考地址](http://mini.eastday.com/mobile/170818161313395.html)
 - 
 ![删除前的原网页](http://upload-images.jianshu.io/upload_images/4122543-146823b54ab03b8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -75,9 +75,9 @@ document.getElementsById('gg-item news-gg-img3').style.display = 'none'
 document.getElementsByClassName('gg-item news-gg-img3')[0].style.display='none'
 ```
 
-## 三. 具体核心代码如下
+## 具体核心代码如下
 - 删除广告后的效果如图
-- 
+
 ![最终效果图](http://upload-images.jianshu.io/upload_images/4122543-26d52ecdfceb0f52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400)
 
 - 核心代码

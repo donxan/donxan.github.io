@@ -13,7 +13,7 @@ categories: ReactNaive
 ![底部选项条.png](http://upload-images.jianshu.io/upload_images/4122543-ecacb6e40602657c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200)
 
 
-## 一. TabBarIOS
+## TabBarIOS
 - 底部选项条, 不能跨平台,只能iOS端使用
 - 添加如下代码, 就会出现底部选项条
 
@@ -23,7 +23,7 @@ categories: ReactNaive
     )        
 ```
 
-### 1. 相关属性
+### 相关属性
 
 ```objc
 barTintColor='yellow'
@@ -40,7 +40,7 @@ translucent={false}
 //默认为true, 有透明效果
 ```
 
-## 二. 选项卡: `TabBarIOS.Item`
+## 选项卡: `TabBarIOS.Item`
 - `TabBarIOS`: 只是表示底部的一个选项条
 - `TabBarIOS.Item`: 才代表每一个选项卡
 - `TabBarIOS.Item`必须包装一个View,作为点击tabBar按钮，切换的View
@@ -61,7 +61,7 @@ translucent={false}
                 </TabBarIOS.Item>
 ```
 
-### 1. 常用属性
+### 常用属性
 
 ```objc
 badge string, number 
@@ -139,24 +139,24 @@ export default class App extends Component<{}> {
 }
 ```
 
-## 三. TabNavigator
+## TabNavigator
 - TabBarIOS只能用于iOS平台，如果在安卓上也需要有TabBar,就不能使用TabBarIOS。
 - TabNavigator:一个跨平台的TabBar第三方框架组件，可以用于iOS和安卓平台
 - [TabNavigator地址](https://github.com/expo/react-native-tab-navigator)
 
-### 1. 安装和导入
-#### 1-1. 安装第三方框架
+### 安装和导入
+#### 安装第三方框架
 
 ```objc
 yarn add react-native-tab-navigator
 ```
-#### 1-2. 导入框架
+#### 导入框架
 
 ```objc
 import TabNavigator from 'react-native-tab-navigator';
 ```
 
-### 2. TabNavigator常用属性
+### TabNavigator常用属性
 
 属性 | 默认值 | 类型 | 描述
 ---|---|---|---
@@ -165,7 +165,7 @@ tabBarStyle | inherited | object (style) | 为TabBar定义样式
 tabBarShadowStyle | inherited | object (style) | 为TabBar定义阴影样式
 hidesTabTouch | false | boolean | 禁用选项卡的onPress
 
-### 3. TabNavigator.Item常用属性
+### TabNavigator.Item常用属性
 
 属性 | 默认值 | 类型 | 描述
 ---|---|---|---

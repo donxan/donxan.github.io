@@ -20,7 +20,7 @@ categories: ReactNaive
 
 ---
 
-## 一. Node.js介绍
+## Node.js介绍
 - `Node.js`发布于2009年5月，由Ryan Dahl(瑞恩·达尔)在`GitHub`上发布了最初版本的部分`Node.js`包，随后几个月里，有人开始使用Node.js开发应用
 - `Node.js`是一个基于`Chrome JavaScript`运行时建立的平台， 是一个`Javascript`运行环境
 - Node 是一个服务器程序, 用Javascript这个语言开发服务器
@@ -29,7 +29,7 @@ categories: ReactNaive
 - 传统意义上的 JavaScript 运行在浏览器上，这是因为浏览器内核实际上分为两个部分:渲染引擎和 JavaScript 引擎。前者负责渲染 HTML + CSS，后者则负责运行 JavaScript。Chrome 使用的 JavaScript 引擎是 V8，它的速度非常快
 - 参考[Node.js 究竟是什么？](https://www.ibm.com/developerworks/cn/opensource/os-nodejs/)和[Node.js的SDK文档](https://nodejs.org/dist/latest-v7.x/docs/api/)
  
-### 1. Node.js的优缺点
+### Node.js的优缺点
 - Node.js优点：
   - 采用事件驱动、异步编程，为网络服务而设计。其实Javascript的匿名函数和闭包特性非常适合事件驱动、异步编程。而且JavaScript也简单易学，很多前端设计人员可以很快上手做后端设计。
   - Node.js非阻塞模式的IO处理给Node.js带来在相对低系统资源耗用下的高性能与出众的负载能力，非常适合用作依赖其它IO资源的中间层服务。
@@ -39,27 +39,27 @@ categories: ReactNaive
   - 单进程，单线程，只支持单核CPU，不能充分的利用多核CPU服务器。
   - 一旦这个进程崩掉，那么整个web服务就崩掉了。
 
-### 2. Node.js使用介绍
+### Node.js使用介绍
 - Node.js使用Module模块去划分不同的功能，以简化App开发，Module就是库，跟组件化差不多，一个功能一个库。
 - NodeJS内建了一个HTTP服务器，可以轻而易举的实现一个网站和服务器的组合，不像PHP那样，在使用PHP的时候，必须先搭建一个Apache之类的HTTP服务器，然后通过HTTP服务器的模块加载CGI调用，才能将PHP脚本的执行结果呈现给用户
 - require() 函数，用于在当前模块中加载和使用其他模块；
 
-## 二. Express模块(框架)
+## Express模块(框架)
 - Express是Node.JS第三方库
 - Express可以处理各种HTTP请求
 - Express是目前最流行的基于Node.js的Web开发框架，
 - Express框架建立在node.js内置的http模块上，可以快速地搭建一个Web服务器
 
-### 1. 安装Node.js
+### 安装Node.js
 - 打开终端，输入node -v，先查看是否已经安装
 - 如果没有安装，就需要安装node软件
 - 参考[Node.js 安装配置](http://www.runoob.com/nodejs/nodejs-install-setup.html)
 
-### 2. 安装npm
+### 安装npm
 - npm是随同`NodeJS`一起安装的包管理工具，用于下载`NodeJS`第三方库。
 - 类似iOS开发中`cocoapods`，用于安装第三方框架
 - 新版的`NodeJS`已经集成了npm，所以只要安装好Node.JS就好
-### 3. 下载第三方模块`Express`
+### 下载第三方模块`Express`
 - 首先先创建项目
   - 新建一个文件夹, 打开终端
   - cd到当前文件夹, 创建一个js文件, 如: `touch app.js`
@@ -68,8 +68,8 @@ categories: ReactNaive
 - 最后安装express库 
   - 终端输入: `npm install express --save`
 
-## 三. 搭建简单的Http服务器
-### 1. 开始搭建Http服务器
+## 搭建简单的Http服务器
+### 开始搭建Http服务器
 - require加载模块
 - 监听端口号和网址, 端口号不能使用已经占用的端口比如（80），每个服务器相当于一个app，都需要端口，才能找到入口
 
@@ -96,13 +96,13 @@ server.listen(3030, '192.168.2.11')
 console.log('执行了3030')
 ```
 
-### 2. 开始运行服务器
+### 开始运行服务器
 - 那么还是要打开终端
 - 输入: `node app.js`
   - `app.ja`为文件名
 
-## 四. express搭建服务器
-### 1. express框架的使用
+## express搭建服务器
+### express框架的使用
 - 引入express模块
 - 创建express服务器
 - get, post请求中: 
@@ -138,7 +138,7 @@ server.listen(4040)
 console.log('启动4040')
 ```
 
-### 2. 路由
+### 路由
 - 路由:针对不同的URL有不同的处理方式，比如以后会有首页，发现模块，每个模块处理不一样。
 - 添加url路径,根据不同路径，显示不同内容
 - 路由句柄(索引):执行完一个函数，在执行下一个 ,因为有时候处理一个请求，需要做很多其他事情，写在一起业务逻辑不好分开,所以多弄几个行数
@@ -170,7 +170,7 @@ server.listen(4040)
 console.log('启动4040')
 ```
 
-### 3. 中间件
+### 中间件
 - 优化代码，使代码清晰可读
 - 原理，发送一个请求给服务器的时候，会被中间件拦截，先由中间件处理，每个中间件都有一个回调函数作为参数,拦截到参数，就会自动执行回调函数。
 - 注意：有中间件use，会先执行中间件的回调函数，然后才会调用get或者`post`的回调函数，也就是当监听到请求，先执行中间件，才会到get,post请求。
@@ -209,7 +209,7 @@ server.listen(4040)
 console.log('启动4040')
 ```
 
-### 4. get请求参数
+### get请求参数
 - request.query会把请求参数包装成字典对象，直接通过点就能获取参数
 - 这里的请求地址为: `http://192.168.2.11:4040/home?page=12`
 
@@ -243,7 +243,7 @@ console.log('启动4040')
 12
 ```
 
-### 5. post请求参数
+### post请求参数
 - 这里先让我们看一下request的部分参数
 - 
 
@@ -316,9 +316,7 @@ server.listen(5050)
 
 
 
-
----
-> #### [Demo地址](https://github.com/CoderTitan/WebServer)
+<div class="note info"><p>[Demo地址](https://github.com/CoderTitan/WebServer)</p></div>
 
 ---
 > 参考文章:

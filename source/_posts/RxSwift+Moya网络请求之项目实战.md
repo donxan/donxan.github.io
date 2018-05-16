@@ -11,7 +11,7 @@ categories: RxSwift框架
 
 <!-- more -->
 
-## 一. 下面将将进行实战项目
+## 下面将将进行实战项目
 
 - 1.登录注册功能
   - 输入用户名要大于6个字符，不然密码不能输入
@@ -26,27 +26,26 @@ categories: RxSwift框架
   - 用[Moya](https://github.com/Moya/Moya)进行网络请求
   - [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)进行json到model的数据解析
   - 整个[Demo](https://github.com/coderQuanjun/RxSwift-Table-Collection)的架构使用[MVVM](http://www.codertian.com/2015/11/13/MVVM-patterns-introduce/)
+- 4.[Demo地址](https://github.com/coderQuanjun/RxSwift-Table-Collection)
 
-
-## 二. [Demo地址](https://github.com/coderQuanjun/RxSwift-Table-Collection)
 ### 下面简单看一下demo的界面
 
-#### 1. 登录注册
+#### 登录注册
 ![登录注册](http://upload-images.jianshu.io/upload_images/4122543-6a3971f8ea4a7622.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
 
-#### 2. UITableView和SearchBar
+#### UITableView和SearchBar
 ![UITableView和SearchBar](http://upload-images.jianshu.io/upload_images/4122543-e2cff86052a6aa5b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
 
-#### 3. UICollectionView和Moya
+#### UICollectionView和Moya
 ![UICollectionView和Moya](http://upload-images.jianshu.io/upload_images/4122543-da346221f1ddcba0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
 
-## 三. 项目结构和框架
-### 1. 结构
+## 项目结构和框架
+### 结构
 demo是使用的纯MVVM模式，因为RxSwift就是为MVVM而生。不懂MVVM的猿友可参考[MVVM模式快速入门](http://www.codertian.com/2015/11/13/MVVM-patterns-introduce/) 
 
 ![项目结构](http://upload-images.jianshu.io/upload_images/4122543-b180e89ddba220eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500)
 
-### 2. 项目框架
+### 项目框架
 
 ```objc
 // Swift三方库
@@ -73,12 +72,12 @@ demo是使用的纯MVVM模式，因为RxSwift就是为MVVM而生。不懂MVVM的
 
 ```
 
-## 四. 注册界面
+## 注册界面
 - 这里主要使用了Observable的相关知识,不了解的童鞋可参考[RxSwift的使用详解01](http://www.jianshu.com/p/319db438c4d3),了解Observable的操作
 - 注册和登录并没有保存已注册的账号和密码, 故登录功能并不完善,后期会在完善,望知晓
 - 下面将针对注册用户名做简单介绍:
 
-### 1. 首先在model里处理输入字符串的语法法则和字符个数是否符合规范
+### 首先在model里处理输入字符串的语法法则和字符个数是否符合规范
 
 ```objc
 extension InputValidator {
@@ -120,7 +119,7 @@ enum Result {
 }
 ```
 
-### 2. 根据输入的用户名判断该用户名是否可用
+### 根据输入的用户名判断该用户名是否可用
 
 ```objc
     var usernameObserable: Observable<Result>
@@ -141,7 +140,7 @@ enum Result {
 - 该返回参数Result,控制器将根据该Result是否成功来改变输入框是否是可编辑状态
 - 初始化方法中，我们对传入的序列进行处理和转换成相对应的Result序列
 
-### 3. controller逻辑,根据用户名输入改变各控件状态
+### controller逻辑,根据用户名输入改变各控件状态
 
 
 ```objc
@@ -169,7 +168,7 @@ enum Result {
 - 根据账号监听密码输入框的状态
 - 根据账号监听注册按钮的状态
  
-## 五. UITableView和SearchBar
+## UITableView和SearchBar
 
 - 该UITableView展示界面并未涉及网络请求
 - 数据来源plist文件
@@ -177,8 +176,8 @@ enum Result {
 - 选用自定义UITableViewCell,故cell不做介绍
 - model小编这里也不多做介绍,详情可下载demo看具体代码
 
-### 1. viewModel中的代码逻辑
-#### 1-1. 读取plist文件,获取模型数组
+### viewModel中的代码逻辑
+#### 读取plist文件,获取模型数组
 
 ```objc
 fileprivate func getHeroData() -> [HeroModel]{
@@ -193,7 +192,7 @@ fileprivate func getHeroData() -> [HeroModel]{
 }
 ```
 
-#### 1-2. seachBar
+#### seachBar
 
 ```objc
     lazy var heroVariable: Variable<[HeroModel]> = {
@@ -220,8 +219,8 @@ fileprivate func getHeroData() -> [HeroModel]{
 - searchText搜索框输入的关键字,根据该关键字从数组中过滤出所有包含该关键字的model
 - 对heroVariable重新赋值,发出事件
 
-### 1-3. RxTableViewController.swift主要代码
-#### 1-3-1.  searchBar搜索框,输入字符后间隔0.5秒开始搜索
+### RxTableViewController.swift主要代码
+#### searchBar搜索框,输入字符后间隔0.5秒开始搜索
 
 ```objc
 var searchText: Observable<String> {
@@ -231,7 +230,7 @@ var searchText: Observable<String> {
 
 ```
 
-#### 1-3-2.  UITableView的设置
+#### UITableView的设置
 
 ```objc
     //2.给tableView绑定数据
@@ -264,13 +263,13 @@ extension RxTableViewController: UITableViewDelegate{
 }
 ```
 
-## 六. UICollectionView+Moya+ObjectMapper网络请求和数据处理
+## UICollectionView+Moya+ObjectMapper网络请求和数据处理
 - 与上述UITableView不同的是,这部分将以[RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources)处理数据源
 - model数组以sections组集合处理
 - 结合[Moya](https://github.com/Moya/Moya)进行网络请求
 - 使用[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)进行json数据转模型
 
-### 1. 配合ObjectMapper
+### 配合ObjectMapper
 **这里再介绍一下ObjectMapper**
 
 ```objc
@@ -309,7 +308,7 @@ func mapping(map: Map) {}
 - 在 mapping 方法中，用 `<-` 操作符来处理和映射你的 JSON数据
 - 详细的 ObjectMapper 教程可以查看它的 [Github 主页](https://github.com/Hearst-DD/ObjectMapper)，我在这里只做简单的介绍。
 
-### 2. Moya的使用
+### Moya的使用
 - [Moya](https://github.com/Moya/Moya)是基于[Alamofire](https://github.com/Alamofire/Alamofire)的网络请求库，这里我使用了Moya/Swift，它在Moya的基础上添加了对RxSwift的接口支持。
 - Github上的官方介绍罗列了Moya的一些特点：
   - 编译时检查正确的API端点访问.   
@@ -317,7 +316,7 @@ func mapping(map: Map) {}
   - 提高测试地位从而使单元测试更加容易.
 - 接下来我们来说下Moya的使用
 
-#### 2-1. 创建一个枚举API
+#### 创建一个枚举API
 
 ```objc
 //请求枚举类型
@@ -328,7 +327,7 @@ enum JunNetworkTool {
 }
 ```
 
-#### 2-2. 为枚举添加扩展
+#### 为枚举添加扩展
 - 需遵循协议 TargetType
 - 这个协议的Moya这个库规定的协议，可以单击进入相应的文件进行查看
 - 这个协议内的每一个参数(除了`validate`可不重写)都必须重写,否则会报错
@@ -385,7 +384,7 @@ extension JunNetworkTool: TargetType {
 
 ```
 
-#### 2-3. 定义一个全局变量用于整个项目的网络请求
+#### 定义一个全局变量用于整个项目的网络请求
 
 ```objc
 let junNetworkTool = RxMoyaProvider<JunNetworkTool>()
@@ -393,12 +392,12 @@ let junNetworkTool = RxMoyaProvider<JunNetworkTool>()
 
 至此，我们就可以使用这个全局变量来请求数据了
 
-### 3. [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources)
+### [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources)
 - RxDataSources是以section来做为数据结构来传输，这点很重要，比如:在传统的数据源实现的方法中有一个numberOfSection，我们在很多情况下只需要一个section，所以这个方法可实现，也可以不实现，默认返回的就是1，这给我们带来的一个迷惑点：【tableView是由row来组成的】，不知道在坐的各位中有没有是这么想的呢？？有的话那从今天开始就要认清楚这一点，【tableView其实是由section组成的】，所以在使用RxDataSources的过程中，即使你的setion只有一个，那你也得返回一个section的数组出去！！！
 - 传统方式适用于简单的数据集，但不处理需要将复杂数据集与多个部分进行绑定的情况，或者在添加/修改/删除项目时需要执行动画时。而使用RxDataSources时，它很容易写
 - 想了解更多关于[RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources)的用法,请参考其GitHub主页
 
-#### 3-1. Sections自定义
+#### Sections自定义
 - 在我们自定义的Model中创建一个AnchorSection的结构体
 - 并遵循SectionModelType协议，实现相应的协议方法
 
@@ -422,8 +421,8 @@ extension AnchorSection: SectionModelType {
 }
 ```
 
-### 4. ViewModel
-#### 4-1. 自定义协议BaseViewModel
+### ViewModel
+#### 自定义协议BaseViewModel
 我们知道MVVM思想就是将原本在ViewController的视图显示逻辑、验证逻辑、网络请求等代码存放于ViewModel中，让我们的ViewController瘦身。这些逻辑由ViewModel负责，外界不需要关心，外界只需要结果，ViewModel也只需要将结果给到外界，基于此，我们定义了一个协议
 
 ```objc
@@ -438,7 +437,7 @@ protocol JunViewModelType {
 
 ```
 
-#### 4-2. 自定义用于网络请求的刷新状态
+#### 自定义用于网络请求的刷新状态
 - 根据枚举值的判断,改变collection的刷新状态
 
 ```objc
@@ -454,7 +453,7 @@ enum JunRefreshStatus {
 
 ```
 
-#### 4-3. 自定义用于继承的BaseViewModel
+#### 自定义用于继承的BaseViewModel
 - 定义请求数据的页数index
 - 定义input和output的结构体
 
@@ -489,7 +488,7 @@ class BaseViewModel: NSObject {
 
 ```
 
-#### 4-4. 自定义AnchorViewModel
+#### 自定义AnchorViewModel
 - 1) 继承BaseViewModel
 
 ```objc
@@ -543,21 +542,21 @@ extension AnchorViewModel: JunViewModelType {
 - isReloadData用于区分是下拉刷新(true时), 还是上拉加载更多(false时)
 
 
-### 5. RxCollectionViewController控制器中
+### RxCollectionViewController控制器中
 - 创建数据源RxDataSources
 - 绑定cell
 - 初始化input和output请求
 - 绑定section数据
 - 设置刷新
 
-#### 5-1. 创建数据源RxDataSources
+#### 创建数据源RxDataSources
 
 ```objc
 // 创建一个数据源属性，类型为自定义的Section类型
 let dataSource = RxCollectionViewSectionedReloadDataSource<AnchorSection>()
 ```
 
-#### 5-2. 绑定cell(自定义的cell要提前注册)
+#### 绑定cell(自定义的cell要提前注册)
 
 ```objc
 dataSource.configureCell = { dataSource, collectionView, indexPath, item in
@@ -568,14 +567,14 @@ dataSource.configureCell = { dataSource, collectionView, indexPath, item in
 ```
 - 以上四个参数的顺序分别为:dataSource, collectionView(或者tableView), indexPath, model, 其对应类型不言而喻,不多做介绍
 
-#### 5-3. 初始化input和output请求
+#### 初始化input和output请求
 
 ```objc
 let vmInput = AnchorViewModel.JunInput(category: .getNewList)
 let vmOutput = anchorVM.transform(input: vmInput)
 ```
 
-#### 5-4. 绑定section数据
+#### 绑定section数据
 
 ```objc
 //4-1. 通过dataSource和section的model数组绑定数据(demo的用法, 推荐)
@@ -585,8 +584,8 @@ vmOutput.sections
     .addDisposableTo(bag)
 ```
 
-#### 5-5. 设置刷新
-#### 5-5-0. 在controller中初始化刷新状态
+#### 设置刷新
+#### 在controller中初始化刷新状态
 
 ```objc
 collectionVIew.mj_header = MJRefreshNormalHeader(refreshingBlock: {
@@ -599,7 +598,7 @@ collectionVIew.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
 })
 ```
 
-#### 5-5-1. 添加刷新的序列
+#### 添加刷新的序列
 - 在JunOutput的结构体中添加刷新序列
 - 我们在进行网络请求并得到结果之后，修改refreshStatus的value为相应的JunRefreshStatus项
 - MJRefre遍会根据该状态做出相应的刷新事件
@@ -610,7 +609,7 @@ collectionVIew.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
 let refreshStatus = Variable<JunRefreshStatus>(.none)
 ```
 
-#### 5-5-2. 外界订阅output的refreshStatus
+#### 外界订阅output的refreshStatus
 - 外界订阅output的refreshStatus，并且根据接收到的值进行相应的操作
 - refreshStatus每次改变都会触发刷新事件
 
@@ -634,7 +633,7 @@ vmOutput.refreshStatus.asObservable().subscribe(onNext: { (status) in
 }).addDisposableTo(bag)
 ```
 
-#### 5-5-3. output提供一个requestCommond用于控制是否请求数据
+#### output提供一个requestCommond用于控制是否请求数据
 - PublishSubject 的特点：即可以作为Observable，也可以作为Observer，说白了就是可以发送信号，也可以订阅信号
 - 当你订阅PublishSubject的时候，你只能接收到订阅他之后发生的事件。subject.onNext()发出onNext事件，对应的还有onError()和onCompleted()事件
 
@@ -643,7 +642,7 @@ vmOutput.refreshStatus.asObservable().subscribe(onNext: { (status) in
 let requestCommond = PublishSubject<Bool>()
 ```
 
-## 七. 总结
+## 总结
 - 为了研究RxSwift相关知识, 工作之余的时间,差不多一个月了
 - 学习的瓶颈大部分在于网络请求和配合刷新这一模块
 - 文中如出现self循环引用的问题,还望大神多多指正
@@ -653,7 +652,7 @@ let requestCommond = PublishSubject<Bool>()
 ### 最后再一次附上[Demo地址](https://github.com/coderQuanjun/RxSwift-Table-Collection)
 
 
-#### 参考文献:
+### 参考文献:
 - [Moya](https://github.com/Moya/Moya)
 - [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
 - [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources)

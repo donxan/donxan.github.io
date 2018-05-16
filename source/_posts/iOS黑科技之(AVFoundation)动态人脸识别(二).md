@@ -9,31 +9,31 @@ categories: Swift黑科技
 
 <!-- more -->
 
-## 一. 首先介绍一些人脸识别的方式
-### 1. `CoreImage`静态人脸识别, 可识别照片, 图像等
+## 首先介绍一些人脸识别的方式
+### `CoreImage`静态人脸识别, 可识别照片, 图像等
 - 详情可查看上一篇博客介绍
 
-### 2. Face++
+### Face++
 - 是北京旷视科技有限公司旗下的新型视觉服务平台, 旨在提供简单易用，功能强大，平台通用的视觉服务
 - Face++是新一代云端视觉服务平台，提供一整套世界领先的人脸检测，人脸识别，面部分析的视觉技术服务
 - [Face++百度百科介绍](https://baike.baidu.com/item/Face++/6754083)
 - [Face++官网](https://www.faceplusplus.com.cn/pricing/)
 
-### 3. OpenCV
+### OpenCV
 - 由一系列 C 函数和少量 C++ 类构成, 实现了图像处理和计算机视觉方面的很多通用算法, 其他的具体的不是很了解
 - [这是百度百科的内容](https://baike.baidu.com/item/opencv/10320623?fr=aladdin)
 
-### 4. Vision
+### Vision
 - Vision 是 Apple 在 WWDC 2017 伴随iOS 11推出的基于CoreML的图像识别框架
 - 根据[Vision官方文档看](https://developer.apple.com/documentation/vision)，`Vision` 本身就有`Face Detection and Recognition`(人脸检测识别)、`Machine Learning Image Analysis`(机器学习图片分析)、`Barcode Detection`(条形码检测)、`Text Detection`(文本检测)。。。。。等等这些功能
 -  感兴趣的同学可以查看相关文档学习一下, 这里小编就不过多作介绍了
 
-#### 5. AVFoundation
+#### AVFoundation
 - 可以用来使用和创建基于时间的视听媒体的框架
 - 这里我们使用的人脸识别方式也是使用`AVFoundation`框架
 
-## 二. 对关键类的简单介绍
-### 1. `AVCaptureDevice`:代表硬件设备
+## 对关键类的简单介绍
+### `AVCaptureDevice`:代表硬件设备
 - 我们可以从这个类中获取手机硬件的照相机、声音传感器等。
 - 当我们在应用程序中需要改变一些硬件设备的属性（例如：切换摄像头、闪光模式改变、相机聚焦改变）的时候必须要先为设备加锁，修改完成后解锁。
 - 示例: 切换摄像头
@@ -51,33 +51,33 @@ session.commitConfiguration()
 
 ```
 
-### 2. `AVCaptureDeviceInput`:设备输入数据管理对象
+### `AVCaptureDeviceInput`:设备输入数据管理对象
 - 可以根据`AVCaptureDevice`创建对应的AVCaptureDeviceInput对象，
 - 该对象将会被添加到AVCaptureSession中管理,代表输入设备，它配置抽象硬件设备的ports。通常的输入设备有（麦克风，相机等）
 
-### 3. `AVCaptureOutput`: 代表输出数据
+### `AVCaptureOutput`: 代表输出数据
 - 输出的可以是图片（`AVCaptureStillImageOutput`）或者视频（`AVCaptureMovieFileOutput`）
 
-### 4. `AVCaptureSession`: 媒体（音、视频）捕捉会话
+### `AVCaptureSession`: 媒体（音、视频）捕捉会话
 - 负责把捕捉的音频视频数据输出到输出设备中。
 - 一个`AVCaptureSession`可以有多个输入或输出。
 - 是连接`AVCaptureInput`和`AVCaptureOutput`的桥梁，它协调input到output之间传输数据。
 - 它有startRunning和stopRunning两种方法来开启会话和结束会话。
 - 每个session称之为一个会话，也就是在应用运行过程中如果你需要改变会话的一些配置（例如：切换摄像头）,此时需要先开启配置，配置完成之后再提交配置。
    
-### 5. `AVCaptureVideoPreviewLayer`: 图片预览层
+### `AVCaptureVideoPreviewLayer`: 图片预览层
 - 我们的照片以及视频是如何显示在手机上的呢？那就是通过把这个对象添加到`UIView`的`layer`上的
 
 
 > 好了, 上面吧啦吧啦的说了那么多废话, 那么我们的人脸识别究竟是怎样实现的呢? 下面干货来了
 
-## 三. 添加扫描设备
+## 添加扫描设备
 - 获取设备(摄像头)
 - 创建输入设备
 - 创建扫描输出
 - 创建捕捉回话
 
-### 1. 输出设备
+### 输出设备
 - 这里使用`AVCaptureMetadataOutput`, 可以扫描人脸, 二维码, 条形码等信息
 - 必须设置代理, 否则获取不到扫描结果
 - 需要设置要输出什么样的数据: face(人脸), qr(二维码)等等
@@ -145,7 +145,7 @@ fileprivate func addScaningVideo(){
 
 ```
 
-### 2. 切换摄像头
+### 切换摄像头
 - 获取当前摄像头方向
 - 创建新的输入input
 - 移除旧输入`capture`, 添加新的输入`capture`
@@ -185,7 +185,7 @@ fileprivate func addScaningVideo(){
 
 ```
 
-### 3. 处理扫描结果
+### 处理扫描结果
 > 实现`AVCaptureMetadataOutputObjectsDelegate`该协议的协议方法(只有一个方法)
 
 
@@ -195,7 +195,7 @@ optional public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput
 
 ```
 
-### 4. `AVMetadataFaceObject`介绍
+### `AVMetadataFaceObject`介绍
 - `faceID`: 人脸的唯一标识 
   - 扫描出来的每一个人, 有不同的`faceID`
   - 同一个人, 不同的状态下(摇头, 歪头, 抬头等), 都会有不同`faceID`
@@ -205,8 +205,8 @@ optional public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput
 - `yawAngle`: 偏转角角度
 
 
-### 5. 处理扫描结果
-#### 5.1 获取预览图层的人脸数组
+### 处理扫描结果
+#### 获取预览图层的人脸数组
 - 遍历扫描的人脸数组, 转换成在预览图层的人脸数组
 - 主要是人脸在图层的左边的转换
 - 返回转换后的新的数组
@@ -225,7 +225,7 @@ fileprivate func transformedFaces(faceObjs: [AVMetadataObject]) -> [AVMetadataOb
 
 ```
 
-#### 5.2 根据人脸位置添加红框
+#### 根据人脸位置添加红框
 - 设置红框的frame
 
 ```

@@ -17,7 +17,7 @@ categories: Swift黑科技
 
 ![Core Image框架图.png](http://upload-images.jianshu.io/upload_images/4122543-3f1d091e07de5a9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 一. 主要类介绍
+## 主要类介绍
 - CIImage
   - Core Image中的图像类，类似于UIKit中的UIImage类。
 - CIContext: 上下文对象
@@ -37,9 +37,9 @@ categories: Swift黑科技
   - 接受一到多的图片作为输入，经过一些过滤操作，产生指定输出的图片
 - CIFeature: 代表由 detector处理后产生的特征
 
-## 二. 项目代码介绍
-### 1. 创建
-#### 1.1 这里要先介绍一下检测器的类别
+## 项目代码介绍
+### 创建
+#### 这里要先介绍一下检测器的类别
 
 ```objc
 //人脸检测器
@@ -108,7 +108,7 @@ let detector = CIDetector(ofType: CIDetectorTypeFace, context: context, options:
 
 ```
 
-### 2. 参数设置
+### 参数设置
 - 这里设置了一个识别精度CIDetectorAccuracy，识别精度的值有：
 
 ```objc
@@ -123,7 +123,7 @@ public let CIDetectorAccuracyHigh: String
   - 对于矩形探测器，这个关键字的值是从0.0 ~ 1.0的`NSNumber`值，这个值表示：基于输入图像短边长度的百分比。有效值范围:0.2 <= `CIDetectorMinFeatureSize` <= 1.0的默认值是0.2。
   - 对于文本探测器，这个关键字的值是一个范围从0.0 ~ 1.0的`NSNumber`值，这个值表示：基于输入图像高度的百分比。有效值范围:0.0 <= `CIDetectorMinFeatureSize` <= 1.0。默认值是10/(输入图像的高度)
 
-### 3. CIFaceFeature概述
+### CIFaceFeature概述
 - `CIFaceFeature`是保存脸部所有信息的类
 - `CIFaceFeature`是`CIFeature`的子类
 - `CIFeature`类只保存基本信息， 所有的附加信息由子类(`CIFaceFeature`)保存
@@ -167,9 +167,9 @@ open var leftEyeClosed: Bool { get }
 open var rightEyeClosed: Bool { get }
 ```
 
-### 4. `Core Image`坐标系问题
+### `Core Image`坐标系问题
 - 如图: 
-- 
+
 ![坐标系对比.png](http://upload-images.jianshu.io/upload_images/4122543-a8af4dc80c214d1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
 
 - `UIView`坐标系
@@ -185,7 +185,7 @@ resultView.transform = CGAffineTransform(scaleX: 1, y: -1)
 ```
 
 
-### 5. 人脸检测(核心代码)
+### 人脸检测(核心代码)
 
 ```objc
 /// 通过人脸识别提取有效的人脸图片
@@ -253,14 +253,14 @@ static func faceImagesByFaceRecognition(imageView: UIImageView, resultCallback: 
 }
 ```
 
-### 6. 检测结果展示
+### 检测结果展示
 - 检测到的人脸部位展示红色矩形框
 - 眼镜和嘴巴部位显示红色矩形框
 - 照片随机选取的, 不喜勿喷
 
 ![WechatIMG29.jpeg](http://upload-images.jianshu.io/upload_images/4122543-424e5a9f1da0e4b5.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
-### 7. 注意事项:
+### 注意事项:
 - image的实际尺寸需要和imageView的尺寸完全一样,获取的脸部各个部位的尺寸才能完全吻合
 - 这里我只做了简单的尺寸比例转换
 - 代码如下:
