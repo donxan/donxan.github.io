@@ -10,7 +10,7 @@ categories: Python基础
 - 然而这里我们要说的是编程中我们最不想见到的, 但是却也是不得不面对的`Bug`
 - 除此之外, 这里还会介绍一下`Python`中的文件读取
 
-<-- more -->
+<!-- more -->
 
 ## 错误和异常
 `Python` 中（至少）有两种错误：语法错误和异常（`syntax errors` 和 `exceptions` ）
