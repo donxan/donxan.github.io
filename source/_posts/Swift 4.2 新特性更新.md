@@ -3,16 +3,14 @@ title: Swift 4.2 新特性更新
 date: 2018-06-06 15:16:40
 tags: [Swift4.2, Equatable, Hashable]
 categories: 学习笔记
-image: http://p7hfnfk6u.bkt.clouddn.com/Snip20180605_2.png
+image: 
 ---
 
-
-
-![Xcode 10](http://p7hfnfk6u.bkt.clouddn.com/Snip20180605_2.png)
-Xcode 10
-
+![image description](http://p7hfnfk6u.bkt.clouddn.com/Snip20180605_2.png)
 <!--more-->
 
+
+- `Github`地址--[Swift 4.2代码地址](https://github.com/CoderTitan/Swift-4.2Demo/tree/master)
 - `Swift 4.2`是`Swift 4.0`发布以来的第二次小更新, 继上次`Xcode 9.3`和`Swift 4.1`发布以来也有俩月有余
 - 上个版本[Swift 4.1 的新特性](https://www.titanjun.top/2018/04/24/Swift%204.1%20%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/)中介绍了条件一致性和哈希索引等相关更新
 - 随着`Xcode Bate 10`的发布, `Swift 4.2`也发布了测试版, 相信也带来了很多优化和改进
@@ -54,7 +52,7 @@ mobile
 none
 ```
 
-<div class="note warning"><p>这个`allCases`的自动合成仅替换没有参数的`case`值, 但是如果需要你需要所有`case`值, 可以重写`allCases`属性自己添加</p></div>
+<div class="note info"><p>这个`allCases`的自动合成仅替换没有参数的`case`值, 但是如果需要你需要所有`case`值, 可以重写`allCases`属性自己添加</p></div>
 
 ```swift
 enum FoodKind: CaseIterable {
@@ -80,7 +78,7 @@ for item in FoodKind.allCases {
 */
 ```
 
-<div class="note warning"><p>如果有枚举项标记为`unavailable`，则默认无法合成`allCases`，只能依靠自己来手动合成</p></div>
+<div class="note primary"><p>如果有枚举项标记为`unavailable`，则默认无法合成`allCases`，只能依靠自己来手动合成</p></div>
 
 ```swift
 enum CarKind: CaseIterable {
@@ -115,7 +113,7 @@ for item in CarKind.allCases {
 
 ![image](http://p7hfnfk6u.bkt.clouddn.com/Snip20180605_3.png)
 
-<div class="note warning"><p>`#warning`和`#error`可以和已存的`#if`编译指令共同使用，并且只有在条件为`true`时才会激活。例如：</p></div>
+<div class="note info"><p>`#warning`和`#error`可以和已存的`#if`编译指令共同使用，并且只有在条件为`true`时才会激活。例如：</p></div>
 
 ```swift
 #if os(macOS)
@@ -271,7 +269,7 @@ let ranCGFloat = CGFloat.random(in: 0..<5)
 let ranBOOL = Bool.random()
 ```
 
-<div class="note warning"><p>对数组进行重新洗牌
+<div class="note primary"><p>对数组进行重新洗牌
 </p></div>
 
 `SE-0202`还支持使用新方法`shuffle()`和`shuffled()`方法对数组元素进行重新随机排序
@@ -286,7 +284,7 @@ albums.shuffle()
 let shuffled = albums.shuffled()
 ```
 
-<div class="note warning"><p>获取数组中的一个随机元素
+<div class="note info"><p>获取数组中的一个随机元素
 </p></div>
 
 `randomElement()`: 数组的一个新方法, 如果数组部位空, 则返回数组中的一个随机元素, 否则返回`nil`
