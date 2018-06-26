@@ -175,8 +175,9 @@ label4.place(x=91, y=91, width=200, height=50)
 `padx/pady` |	设置x方向（或者y方向）外部间隙（与之并列的组件之间的间隔） | 可设置数值，默认是0 | 非负整数，单位为像素
 `anchor` | 锚选项，当可用空间大于所需求的尺寸时，决定组件被放置于容器的何处 |	N、E、S、W、NW、NE、SW、SE、CENTER（默认值为CENTER）	| 表示八个方向以及中心
 
-需要注意
-> `expand`: 设置组件是否展开，当值为YES时，`side`选项无效。组件显示在父容器中心位置；若`fill`选项为`BOTH`,则填充父组件的剩余空间。默认为不展开
+<div class='note warning'><p>需要注意的是</p></div>
+
+`expand`: 设置组件是否展开，当值为YES时，`side`选项无效。组件显示在父容器中心位置；若`fill`选项为`BOTH`,则填充父组件的剩余空间。默认为不展开
 
 ```Python
 # 创建四个label
@@ -337,7 +338,8 @@ Event | Description
 `<ButtonRelease-3>` | 释放鼠标右键
 `<ButtonRelease-2>` | 释放鼠标中键
 
-需要注意的是
+<div class='note warning'><p>需要注意的是</p></div>
+
 - 以上鼠标操作中, 苹果鼠标没有中键这一说, 所以在苹果鼠标操作中
 - 正常鼠标的中键操作(例如`<Button-2>`等`-2`操作), 响应苹果鼠标的右键操作
 - 正常鼠标的右键操作(例如`<Button-3>`等`-3`操作), 在苹果鼠标中无响应
@@ -405,7 +407,7 @@ Event | Description
 `<Control-Alt-a>` | 组合键(可识别任意组合键)
 
 
-<div class='note primary'><p>需要注意的是</p></div>
+<div class='note warning'><p>需要注意的是</p></div>
 
 识别组合键时, 一般是按下组合键的最后一个键才会触发操作
 
