@@ -1,0 +1,225 @@
+---
+title: 发布开源框架到CocoaPods入坑指南
+date: 2018-06-29 20:06:20
+tags: [CocoaPods, pod, trunk, spec, git]
+categories: 入坑指南
+image: 
+---
+
+
+
+
+- 在开发过程中一定会用到一些第三方框架, 只要安装了`CocoaPods`, 然后通过`pod install`命令, 就可以集成框架到项目中了
+- 可是如果想要把自己的框架或者组件也开源出去, 让别人也可以使用, 那该如何入手 ?
+- 对于`CocoaPods`还不是很了解的或者没有安装的童鞋, 可自行百度或者参考[用CocoaPods做程序的依赖](http://blog.devtang.com/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/)
+
+<!-- more -->
+
+## 搭建框架
+### 创建仓库
+- `CocoaPods`项目的源码在`Github`上管理,所以第一步我们需要创建一个属于自己的仓库
+- 根据图下图所示创建自己的项目
+
+![创建仓库](http://p7hfnfk6u.bkt.clouddn.com/creatGitHub.png)
+
+### 上传文件
+- 要开发框架必然就要上传文件, 这里推荐`SourceTree`和`GitHub`客户端, 当然也可以使用终端命令上传
+- 使用`git`管理工具我们这里暂不赘述, 不懂得可以自行百度
+- 终端使用`git`命令上传, 主要命令如下
+
+```objc
+//cd到当前文件夹
+// 创建本地仓库
+git init
+// 添加名称为origin的远程连接
+git remote add origin '你的github项目地址'
+// 将本地代码加入本地仓库里
+git add .
+// 提交修改到本地仓库
+git commit -m '你的修改记录'
+// 推送master分支的代码到名称为origin的远程仓库
+git push origin master
+```
+
+### 创建Podspec描述文件
+- 该文件为`Cocoapods`依赖库的描述文件，每个`Cocoapods`依赖库必须有且仅有那么一个描述文件
+- 简单地讲就是让`CocoaPods`搜索引擎知道你的代码的作者、版本号、源代码地址、依赖库等信息的文件
+- 文件名称要和我们想创建的依赖库名称保持一致
+
+```objc
+pod spec create 框架名字
+
+// 示例:
+pod spec create TitanModel
+```
+
+- 该命令将在本目录产生一个名为`TitanModel.podspec`文件
+- 可用`Sublime Text`或者`Atom`打开该文件，里面已经有非常丰富的说明文档, 但是很多都是我们不需要的
+- 官方`Podspec`文件的编写格式可参考 [Podspec Syntax Reference](https://guides.cocoapods.org/syntax/podspec.html)
+- 下面介绍如何声明第三方库的代码目录和资源目录，还有该第三方库所依赖`ios`核心框架和第三方库
+- 去掉文件中的一些注释信息, 可以看到也就剩下以下内容了 
+
+```objc
+Pod::Spec.new do |s|
+  s.name         = "TitanModel"
+  s.version      = "0.0.1"
+  s.summary      = "A short description of TitanModel."
+  s.description  = <<-DESC
+                   DESC
+
+  s.homepage     = "http://EXAMPLE/TitanModel"
+  s.license      = "MIT (example)"
+  s.author             = { "CoderTitan" => "quanjunt@163.com" }
+  s.source       = { :git => "http://EXAMPLE/TitanModel.git", :tag => "#{s.version}" }
+  s.source_files  = "Classes", "Classes/**/*.{h,m}"
+  s.exclude_files = "Classes/Exclude"
+ 
+end
+```
+
+- `s.name`：名称，`pod search`搜索的关键词,注意这里一定要和`.podspec`的名称一样,否则报错
+- `s.version`：版本号，`to_s`：返回一个字符串
+- `s.summary`: 项目简短的简介
+- `s.description`: 这个是详细的描述, 要注意的是字数要比`summary`的长, 否则上传的时候可能会爆出警告
+- `s.homepage`: 项目主页地址
+- `s.license`: 许可证
+- `s.author`: 作者
+- `s.source`: 项目源码所在地址
+- `s.platform`: 项目支持平台
+- `s.requires_arc`: 是否支持`ARC`
+- `s.source_files`: 需要包含的源文件
+- `s.public_header_files`: 需要包含的头文件
+- `s.ios.deployment_target`: 支持的`pod`最低版本
+- `s.social_media_url`: 社交网址
+- `s.resources`: 资源文件
+- `s.dependency`: 依赖库，不能依赖未发布的库
+
+> `source_files`写法及含义
+
+```objc
+"TitanModel"
+"Classes/**/*.{h,m}"
+```
+
+- `*`表示匹配所有文件
+- `*.{h,m}`表示匹配所有以`.h`和`.m`结尾的文件
+- `**`表示匹配所有子目录
+
+
+### 将自己的项目打成`tag`
+
+- 因为`cocoapods`是依赖`tag`版本的,所以必须打`tag`,以后再次更新只需要把你的项目打一个`tag`，然后修改`.podspec`文件中的版本接着提交到`cocoapods`官方就可以了
+- 要注意的是, 这里提交的版本号要和`TitanModel.podspec`文件中的版本号一致
+
+```
+git tag "v0.0.1"  
+git push --tags
+```
+
+### 上传`Podspec`
+- `Podspec`修改完成后, 上传到服务器时, 我们需要使用`trunk`进行上传
+- 首先要注册`trunk`, 在注册`trunk`之前，我们需要确认当前的`CocoaPods`版本是否足够新。`trunk`需要`pod`在`0.33`及以上版本，如果你不满足要求, 需要重新安装`pod`
+- 更新结束后，我们开始注册`trunk`, 可参考官方文档[Getting setup with Trunk](https://guides.cocoapods.org/making/getting-setup-with-trunk.html)
+- 终端输入以下命令
+
+```
+pod trunk register 邮箱地址 '用户名' --description='描述'
+
+// 示例
+pod trunk register quanjunt@163.com 'CoderTitan' --description='macbook'
+```
+
+执行该命令后, 你的邮箱会受到一封邮件, 但是邮件要到垃圾邮件中才能找到, 打开邮件找到邮件中的网址并打开
+
+![image](http://p7hfnfk6u.bkt.clouddn.com/Snip20180629_1.png)
+
+如果打开邮件中的链接和下面的页面一样, 则表示注册成功
+
+![注册成功](http://p7hfnfk6u.bkt.clouddn.com/podspec.png)
+
+最后输入如下命令
+
+```
+pod trunk push TitanModel.podspec
+```
+
+时间较长，耐性等待，大概5-10分钟, 成功后结果如下
+
+![trunk](http://p7hfnfk6u.bkt.clouddn.com/specSuccess.png)
+
+- 上面图片中可以看到执行了`Updating spec repo master`命令, 该命令主要就是更新本地的`Specs`文件
+- 查看文件夹位置, 打开访达文件夹, `Shift+command+G`快捷键, 打开前往文件夹操作, 输入如下目录即可查看
+
+```
+~/.cocoapods/repos/master/Specs
+```
+
+### 测试自己的cocoapods
+
+- 终端输入`pod search TitanModel`查看
+- 但是如果输入上述命令后, 终端输出如下错误
+
+```
+[!] Unable to find a pod with name, author, summary, or description matching `TitanModel`
+```
+
+这是因为你的框架已经上传, 但是你的本地的搜索文件`search_index.json`没有更新, 所以搜索不到, 可以执行下面命令删除`search_index.json`文件
+
+```
+rm ~/Library/Caches/CocoaPods/search_index.json
+```
+
+- 也可以直接找到该文件删除
+- 查看文件夹位置, 打开访达文件夹, `Shift+command+G`快捷键, 打开前往文件夹操作, 输入如下目录即可查看
+
+```
+~/Library/Caches/CocoaPods/
+```
+
+<div class="note success"><p>搜索成功</p></div>
+
+![search](http://p7hfnfk6u.bkt.clouddn.com/podSearch.png)
+
+## 总结
+
+最后对上述涉及到的终端命令做一个简单的总结
+
+### 终端命令
+1. 开源库发布之后，需要给项目打上`tag`
+
+```
+git tag "v0.0.1"  
+git push --tags
+```
+
+2. 进入到项目根目录下，创建`podspec`文件
+
+```
+pod spec create TitanModel
+```
+
+3. 编辑`podspec`文件中的相关信息，有两个比较重要的地方`s.source`和`s.source_files`, 修改完成后, 验证是否有误
+
+```
+pod spec lint TitanModel.podspec
+```
+
+4. 注册`pod trunk`
+
+```
+pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
+```
+
+5. 发布到`trunk`
+
+```
+pod trunk push TitanModel.podspec
+```
+
+6. 搜索发布的框架
+
+```
+pod search TitanModel
+```
+
+
