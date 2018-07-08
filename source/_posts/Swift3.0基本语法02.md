@@ -2,12 +2,12 @@
 title: Swift基本语法02
 date: 2016-12-28 11:44:30
 tags: [Swift3.0, 语法]
-categories: 学习笔记
+categories: Swift学习笔记
 ---
 
 > 上一篇介绍了Swift的常量/变量和循环,详情见: [Swift3.0基本语法01](http://www.jianshu.com/p/35696abdaf0f)
 
- 
+
 <!-- more -->
 
 ## 一、字符串的介绍

@@ -2,7 +2,7 @@
 title: iOS之UICollectionView自定义布局
 date: 2016-11-15 10:22:30
 tags: [Objective-C, UICollectionView]
-categories: iOS
+categories: iOS高阶功能
 ---
 
 ## UICollectionView基础
@@ -66,14 +66,14 @@ categories: iOS
     for (UICollectionViewLayoutAttributes *attrs in array) {
         // cell的中心点x 和 collectionView最中心点的x值 的间距
         CGFloat delta = ABS(attrs.center.x - centerX);
-        
+
         // 根据间距值 计算 cell的缩放比例
         CGFloat scale = 1 - delta / self.collectionView.frame.size.width;
-        
+
         // 设置缩放比例
         attrs.transform = CGAffineTransformMakeScale(scale, scale);
     }
-    
+
     return array;
 }
 
@@ -98,13 +98,13 @@ categories: iOS
     rect.origin.y = 0;
     rect.origin.x = proposedContentOffset.x;
     rect.size = self.collectionView.frame.size;
-    
+
     // 获得super已经计算好的布局属性
     NSArray *array = [super layoutAttributesForElementsInRect:rect];
-    
+
     // 计算collectionView最中心点的x值
     CGFloat centerX = proposedContentOffset.x + self.collectionView.frame.size.width * 0.5;
-    
+
     // 存放最小的间距值
     CGFloat minDelta = MAXFLOAT;
     for (UICollectionViewLayoutAttributes *attrs in array) {
@@ -154,9 +154,9 @@ categories: iOS
 - (void)prepareLayout
 {
     [super prepareLayout];
-    
+
     [self.attrsArray removeAllObjects];
-    
+
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
     for (int i = 0; i < count; i++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
@@ -180,9 +180,9 @@ categories: iOS
     // 圆心的位置
     CGFloat oX = self.collectionView.frame.size.width * 0.5;
     CGFloat oY = self.collectionView.frame.size.height * 0.5;
-    
+
     UICollectionViewLayoutAttributes *attrs = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    
+
     attrs.size = CGSizeMake(50, 50);
     if (count == 1) {
         attrs.center = CGPointMake(oX, oY);
@@ -192,7 +192,7 @@ categories: iOS
         CGFloat centerY = oY + radius * cos(angle);
         attrs.center = CGPointMake(centerX, centerY);
     }
-    
+
     return attrs;
 }
 
@@ -203,7 +203,7 @@ categories: iOS
 ```objc
  // 创建布局
     CircleCollectionViewLayout *layout = [[CircleCollectionViewLayout alloc] init];
-    
+
     // 创建CollectionView
     CGFloat collectionW = self.view.frame.size.width;
     CGFloat collectionH = 200;
@@ -213,11 +213,11 @@ categories: iOS
     collectionView.delegate = self;
     [self.view addSubview:collectionView];
     self.collectionView = collectionView;
-    
+
     // 注册
     [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([PhotoCell class]) bundle:nil] forCellWithReuseIdentifier:photoId];
  ```  
- 
+
 - 增加 touchesBegan：方法，通过点击让两种布局相互转换
 
 

@@ -2,8 +2,8 @@
 title: Swift 4.2 新特性更新
 date: 2018-06-06 15:16:40
 tags: [Swift4.2, Equatable, Hashable]
-categories: 学习笔记
-image: 
+categories: Swift学习笔记
+image:
 ---
 
 ![image description](http://p7hfnfk6u.bkt.clouddn.com/Snip20180605_2.png)
@@ -60,7 +60,7 @@ enum FoodKind: CaseIterable {
     static var allCases: [FoodKind] {
         return [.apple, .pear, .orange(look: false)]
     }
-    
+
     case apple
     case pear
     case orange(look: Bool)
@@ -86,10 +86,10 @@ enum CarKind: CaseIterable {
     static var allCases: [CarKind] {
         return [.bwm, .ford]
     }
-    
+
     case bwm
     case ford
-    
+
     @available(*, unavailable)
     case toyota
 }
@@ -166,7 +166,7 @@ struct Titan {
         let properties = ["name": "Titanjun", "city": "Hang"]
         return properties[member, default: "0"] //默认值
     }
-    
+
     subscript(dynamicMember member: String) -> Int {
         let properties = ["age": 20, "source": 99]
         return properties[member, default: 0] //默认值
@@ -224,7 +224,7 @@ extension Array: Purchaseable where Element: Purchaseable {
 
 ```seift
 let items: Any = [Book(), Book(), Book()]
- 
+
 if let books = items as? Purchaseable {
     books.buy()
 }
@@ -362,7 +362,7 @@ isSwift.toggle()
 print(isSwift)
 ```
 
-### 
+###
 - [SE-0204](https://github.com/apple/swift-evolution/blob/master/proposals/0204-add-last-methods.md)介绍了数组中的获取满足条件的数组中的最后一个元素或者索引值
 - 在`Swift 4.1`中我们只能取得`first`值, 却无法获取数组中的最后一个值(或者要用大量代码实现)
 - 在`Swift 4.2`中提供了`last(where:)`和`lastIndex(where:)`方法来获取数组中满足条件的最后的元素和索引值
@@ -407,4 +407,3 @@ print(a.lastIndex(where: { $0 > 25 }))   //7
 - [What’s new in Swift 4.2?](https://www.hackingwithswift.com/articles/77/whats-new-in-swift-4-2)
 - [Swift 4.2 Release Process](https://swift.org/blog/4-2-release-process/)
 - [Swift evolution](https://github.com/apple/swift-evolution/tree/master/proposals)
-

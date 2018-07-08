@@ -2,7 +2,7 @@
 title: Swift仿网易新闻首页左右滑动切换页面
 date: 2017-06-12 20:12
 tags: [Swift, 框架]
-categories: Swiftk框架
+categories: Swift高阶功能
 ---
 
 > 顶部标题左右滑动切换控制器是一种非常用的左右滚动切换效果,几乎每一个APP都有用到,在这里介绍一下我自己封装的一个Swift版本的简单框架;代码中注释相对详细,故文中没有做过多的解释;废话不多少,直接上效果图:
@@ -51,20 +51,20 @@ TJPageView.swift  //控制整体框架的总试图View
     /// title的高度
     var titleHeight : CGFloat = 44
 
-    
+
     /// 是否显示底部滚动条
     var isShowBottomLine : Bool = false
     /// 底部滚动条的颜色
     var bottomLineColor : UIColor = UIColor.orange
     /// 底部滚动条的高度
     var bottomLineH : CGFloat = 2
-    
-    
+
+
     /// 是否进行缩放
     var isNeedScale : Bool = false
     var scaleRange : CGFloat = 1.2
-    
-    
+
+
     /// 是否显示遮盖
     var isShowCover : Bool = false
     /// 遮盖背景颜色
@@ -86,14 +86,14 @@ TJPageView.swift  //控制整体框架的总试图View
     //    在该方法中设定一些必要的layout的结构和初始需要的参数
     override func prepare() {
         super.prepare()
-        
+
         //0.计算item的宽度和高度
         let itemW = ((collectionView?.bounds.width)! - sectionInset.left - sectionInset.right - minimumInteritemSpacing * CGFloat(cols - 1)) / CGFloat(cols)
         let itemH = ((collectionView?.bounds.height)! - sectionInset.top - sectionInset.bottom - minimumLineSpacing * CGFloat(rows - 1)) / CGFloat(rows)
-        
+
         //1.获取一共多少个组
         let sectionCount = collectionView!.numberOfSections
-        
+
         //2.获取每个组中有多少个item
         var prePageCount : Int = 0    //页数
         for i in 0..<sectionCount {
@@ -110,7 +110,7 @@ TJPageView.swift  //控制整体框架的总试图View
                 let itemY = sectionInset.top + (itemH + minimumLineSpacing) * CGFloat(index / cols)
                 let itemX = CGFloat(prePageCount + page) * collectionView!.bounds.width +  sectionInset.left + (itemW + minimumInteritemSpacing) * CGFloat(index % cols)
                 attr.frame = CGRect(x: itemX, y: itemY, width: itemW, height: itemH)
-                
+
                 //2.5加入到数组中
                 cellAttrs.append(attr)
             }
@@ -132,10 +132,10 @@ TJPageView.swift  //控制整体框架的总试图View
 protocol TJPageCollectionViewDateSource : class {
    //返回section的个数
     func numberOfSections(in pageCollectionView : TJPageCollectionView) -> Int
-    
+
     //返回每个section中item的个数
     func pageCollectionView(_ collectionView : TJPageCollectionView, numberOfItemsInSection section : Int) -> Int
-    
+
     //cell
     func pageCollectionView(_ pageCollectionView : TJPageCollectionView, _ collectionView : UICollectionView, cellForItemAt indexPath : IndexPath) -> UICollectionViewCell
 }
@@ -190,7 +190,7 @@ view.addSubview(pageView)
 // 1.设置显示样式
 let style = TJTitleStyle()
 style.isShowBottomLine = true
-        
+
 //2.设置cell布局Layout
 let layout = TJPageCollectionLayout()
 layout.cols = 7 // 列
@@ -198,7 +198,7 @@ layout.rows = 3 // 行
 layout.minimumLineSpacing = 0
 layout.minimumInteritemSpacing = 0
 layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        
+
 //3.创建collectionView
 let pageCollection = TJPageCollectionView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 250, width: UIScreen.main.bounds.width, height: 250), style: style, titles: ["普通", "粉丝"], isTitleInTop: false, layout: layout)
 pageCollection.delegate = self
@@ -226,7 +226,7 @@ extension NextViewController : TJPageCollectionViewDateSource{
     }
     func pageCollectionView(_ pageCollectionView: TJPageCollectionView, _ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kEmoticonCellID, for: indexPath) as! EmoticonViewCell
-        
+
         return cell
     }
 }

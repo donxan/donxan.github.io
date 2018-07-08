@@ -2,11 +2,11 @@
 title: iOS神技之动态更换APP的Icon图
 date: 2018-03-16 20:18
 tags: [AppIcon, iOS 10.3]
-categories: 入坑指南
+categories: Swift高阶功能
 ---
 
 
-- 在iOS10.3系统发布之前, 众所周知, 在App Store上架的APP如果要更换Icon图, 只能更新版本替换; 
+- 在iOS10.3系统发布之前, 众所周知, 在App Store上架的APP如果要更换Icon图, 只能更新版本替换;
 - 这次苹果却在iOS10.3系统中加入了了更换应用图标的新功能，当应用安装后，开发者可以为应用提供多个应用图标选择。
 - 用户可以自由的在这些图标之间切换，并及时生效。
 - 这是因为 10.3 里引入了一个新的 API，它允许在 App 运行的时候，通过代码为 app 更换 icon
@@ -27,16 +27,16 @@ categories: 入坑指南
 
 ### 备选Icon
 - 首先你需要将备选的Icon图添加到项目中,
-- 注意: 
+- 注意:
   - 图片不要放到`Assets.xcassets`, 而应该直接放到工程中, 不然可能导致更换Icon时, 找不到图片, 更换失败
   - 在`info.plist` 的配置中，图片的文件名应该尽量不带 @2x/@3x 后缀扩展名，而让它自动选择
- 
+
 ![Snip20180315_1.png](https://upload-images.jianshu.io/upload_images/4122543-49f0f45c2657a229.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
 ### 配置`info.plist`文件
 - 在`info.plist`文件中，添加对应的`CFBundleAlternateIcons`的信息
 - 这里也可以查看[官方的相关介绍](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009247)
- 
+
 ![Snip20180315_2.png](https://upload-images.jianshu.io/upload_images/4122543-8886cf5e071a1c59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
 
@@ -104,7 +104,7 @@ var alternateIconName: String?
 //可选图标的名称，在app的Info.plist文件中声明的CFBundleAlternateIcons中设置。
 //如果要显示应用程序的主图标alternateIconName 传nil即可，主图标使用CFBundlePrimaryIcon声明，CFBundleAlternateIcons与CFBundlePrimaryIcon两个key都是CFBundleIcons的子条目
 
-func setAlternateIconName(_ alternateIconName: String?, 
+func setAlternateIconName(_ alternateIconName: String?,
         completionHandler: ((Error?) -> Void)? = nil)
 //更改应用程序的图标
 //completionHandler: 当有结果的时候的回调
@@ -117,7 +117,7 @@ func setAlternateIconName(_ alternateIconName: String?,
 if #available(iOS 10.3, *) {
     //判断是否支持替换图标, false: 不支持
     guard UIApplication.shared.supportsAlternateIcons else { return }
-    
+
     //如果支持, 替换icon
     UIApplication.shared.setAlternateIconName(imageStr) { (error) in
         if error != nil {
@@ -147,21 +147,21 @@ extension NoAlertChangeViewController {
         DispatchQueue.once(token: "UIAlertController") {
             let originalSelector = #selector(present(_:animated:completion:))
             let swizzledSelector = #selector(noAlert_present(_:animated:completion:))
-            
+
             let originalMethod = class_getInstanceMethod(NoAlertChangeViewController.self, originalSelector)
             let swizzledMethod = class_getInstanceMethod(NoAlertChangeViewController.self, swizzledSelector)
-            
+
             //交换实现的方法
             method_exchangeImplementations(originalMethod!, swizzledMethod!)
         }
     }
-    
+
     @objc fileprivate func noAlert_present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Swift.Void)? = nil) {
         //判断是否是alert弹窗
         if viewControllerToPresent.isKind(of: UIAlertController.self) {
             print("title: \(String(describing: (viewControllerToPresent as? UIAlertController)?.title))")
             print("message: \(String(describing: (viewControllerToPresent as? UIAlertController)?.message))")
-            
+
             // 换图标时的提示框的title和message都是nil，由此可特殊处理
             let alertController = viewControllerToPresent as? UIAlertController
             if alertController?.title == nil && alertController?.message == nil {
@@ -181,7 +181,7 @@ extension NoAlertChangeViewController {
 - 这里用到了`DispatchQueue.once`, 这个`once`是我对`DispatchQueue`加了一个扩展
 - 在Swift4.0以后, `static dispatch_once_t onceToken;`这个已经不能用了
 - 关于这方面的详细介绍, 大家可以看看我的这篇文章--[升级Swift4.0遇到的坑](https://www.titanjun.top/2017/08/25/%E5%8D%87%E7%BA%A7Swift4.0%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/)
-- 
+-
 
 ## 支持不同尺寸的Icon
 - 一个标准的Icon图集, 需要十几种尺寸, 比如: 20, 29, 40, 60等
@@ -202,7 +202,7 @@ extension NoAlertChangeViewController {
         if #available(iOS 10.3, *) {
             //判断是否支持替换图标, false: 不支持
             guard UIApplication.shared.supportsAlternateIcons else { return }
-            
+
             //如果支持, 替换icon
             UIApplication.shared.setAlternateIconName("Sunday") { (error) in
                 //点击弹框的确认按钮后的回调
@@ -217,6 +217,3 @@ extension NoAlertChangeViewController {
 ```
 
 - 具体可参考demo--[github项目地址](https://github.com/CoderTitan/ChangeIcon)
-
-
-

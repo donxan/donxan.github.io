@@ -2,7 +2,7 @@
 title: Swift4.0新特性之String和Array和Dictionary
 date: 2017-07-19 21:16:40
 tags: [Swift4.0, String, Array, Dictionary]
-categories: 学习笔记
+categories: Swift学习笔记
 ---
 
 > - 推荐: [Swift 编程语言](https://www.cnswift.org)
@@ -64,7 +64,7 @@ addString2 += String(charArr) //"WhyHello"
 ```objc
 let count1 = SwiftString.count //5(类型: String.CharacterView.IndexDistance)
 let count2 = SwiftString.characters.count // 5(Int型)
-count1: 
+count1:
 ```
 
 ### 是否为空
@@ -323,5 +323,3 @@ name3.reserveCapacity(10) //储备 10元素的能力
 print(name3.capacity) // 12
 
 ```
-
-

@@ -2,7 +2,7 @@
 title: 升级Swift4.0遇到的坑
 date: 2017-08-25 15:06:40
 tags: [Swift4.0, Error, 入坑]
-categories: 入坑指南
+categories: Swift学习笔记
 ---
 
 - 并不是所有库都能做到及时支持`Swift4.0`，更何况是在现在连`Xcode9`也还是beta的状态
@@ -26,7 +26,7 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['SWIFT_VERSION'] = '3.2'
-    end 
+    end
   end
 end
 ```
@@ -43,9 +43,9 @@ end
 - 4). 自定义的`protocol`协议中,有`optional`修饰的非必须实现的方法,需要用`@objc`修饰
 
 - 5). 字体方面的一些重命名
- 
+
 ```objc
-NSFontAttributeName --- .font 
+NSFontAttributeName --- .font
 //或者NSAttributedStringKey.font
 
 NSForegroundColorAttributeName --- .foregroundColor
@@ -75,9 +75,9 @@ struct RecordModel {
     /// 定义一个闭包
     var action: (() -> ())?
     var height = 10
-    
-    self.action = { 
-        self.height = 20 
+
+    self.action = {
+        self.height = 20
         //Closure cannot implicitly capture a mutating self parameter报错
     }
 }
@@ -92,9 +92,9 @@ struct RecordModel {
     /// 定义一个闭包
     var action: ((_ inSelf: inout RecordModel) -> ())?
     var height = 10
-    
+
     self.action = { (inSelf) in
-        inSelf.height = 20 
+        inSelf.height = 20
     }
 }
 
@@ -111,11 +111,11 @@ struct RecordModel {
     /// 定义一个闭包
     var action: (() -> ())?
     var height = 10
-    
+
     let selfPointer = UnsafeMutablePointer(&self)
-    self.action = { 
-        selfPointer.pointee.height = 20 
-        
+    self.action = {
+        selfPointer.pointee.height = 20
+
     }
 }
 
@@ -142,7 +142,7 @@ struct RecordModel {
 > 解决办法:(仅供参考,如有更好的建议还望多多指教)
 - 小编想到的解决办法就是在每一个需要此协议的类里面,重新遵循代理,实现该协议方法
 
-### `"Method 'initialize()' defines Objective-C class method 'initialize', which is not permitted by Swift"` 
+### `"Method 'initialize()' defines Objective-C class method 'initialize', which is not permitted by Swift"`
 
 报错原因: 在于已经废弃的initialize方法,示例如下
 
@@ -153,9 +153,9 @@ struct RecordModel {
 ```objc
 extension UIViewController {
     public override class func initialize() {//此处报错
-        
+
     //此处省略100行代码
-        
+
     }
 }
 
@@ -172,9 +172,9 @@ extension UIViewController {
 ```objc
 extension UIViewController {
     public override class func initializeOnceMethod() {
-        
+
     //此处省略100行代码
-        
+
     }
 }
 
@@ -219,11 +219,11 @@ extension DispatchQueue {
         _onceTracker.append(token)
         block()
     }
-    
+
     func async(block: @escaping ()->()) {
         self.async(execute: block)
     }
-    
+
     func after(time: DispatchTime, block: @escaping ()->()) {
         self.asyncAfter(deadline: time, execute: block)
     }
@@ -242,7 +242,7 @@ extension DispatchQueue {
 
 ```objc
 private let _onceToken = NSUUID().uuidString
-  
+
 DispatchQueue.once(token: _onceToken) {  
     print( "Do This Once!" )  
 }

@@ -2,14 +2,14 @@
 title: Swift之微信朋友圈图片浏览器
 date: 2017-10-28 19:19:19
 tags: [Swift, CATransition, UIBesizationv]
-categories: Swiftk框架
+categories: Swift高阶功能
 ---
 
 > 最近闲来无事,突然对微信, 微博, QQ等社交APP的九宫格的图片浏览功能非常感兴趣, 最近就尝试着研究了一下:
 
 > 这里先附上[Demo地址](https://github.com/coderQuanjun/JunPhotoBrowseDemo)
 
- 
+
 <!-- more -->
 
 - 在介绍项目之前, 先介绍三个基础知识
@@ -59,21 +59,21 @@ baseImage.layer.add(transition, forKey: "transition")
 ### 详解Protocol
 - `UIViewControllerTransitioningDelegate` 自定义模态转场动画时使用。
   - 设置`UIViewController`的属性`transitioningDelegate`
-  
+
   ```
   weak open var transitioningDelegate: UIViewControllerTransitioningDelegate?
   ```
 
 - `UINavigationControllerDelegate` 自定义navigation转场动画时使用
   - 设置`UINavigationController`的属性`delegate`
-   
+
   ```
   weak open var delegate: UINavigationControllerDelegate?
   ```
 
 - `UITabBarControllerDelegate`自定义tab转场动画时使用
   - 设置`UITabBarController`的属性`delegate`
-  
+
   ```
   weak open var delegate: UITabBarControllerDelegate?
   ```
@@ -86,7 +86,7 @@ baseImage.layer.add(transition, forKey: "transition")
     @available(iOS 7.0, *)
     optional public func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?
 
-    
+
     @available(iOS 7.0, *)
     optional public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?
 
@@ -123,7 +123,7 @@ public func animateTransition(using transitionContext: UIViewControllerContextTr
 
 - `UIViewControllerContextTransitioning提供了一系列方法`
 - 是唯一一个我们不需要实现的Protocol
-- 下面是一些我们常用的属性和方法: 
+- 下面是一些我们常用的属性和方法:
 
 ```objc
 //转场动画发生在该View中    
@@ -173,10 +173,10 @@ func animationController(forDismissed dismissed: UIViewController) -> UIViewCont
 protocol JunBrowsePresentDelefate: NSObjectProtocol {
     /// 1. 提供弹出的imageView
     func imageForPresent(indexPath: IndexPath) -> UIImageView
-    
+
     /// 2. 提供弹出的imageView的frame
     func startImageRectForpresent(indexPath: IndexPath) -> CGRect
-    
+
     /// 3.提供弹出后imageView的frame
     func endImageRectForpresent(indexPath: IndexPath) -> CGRect
 }
@@ -184,7 +184,7 @@ protocol JunBrowsePresentDelefate: NSObjectProtocol {
 protocol JunBrowserDismissDelegate {
     /// 1.提供推出的imageView
     func imageViewForDismiss() -> UIImageView
-    
+
     /// 2. 提供推出的indexPath
     func indexPathForDismiss() -> IndexPath
 }
@@ -196,7 +196,7 @@ protocol JunBrowserDismissDelegate {
 - `UIViewControllerAnimatedTransitioning`
   - 需要返回动画的执行时间
   - 需要在弹出和消失页面的时候分别执行不同的动画
-  
+
 ```objc
 //MARK: UIViewControllerTransitioningDelegate
 extension PhotoBrowseAnimation: UIViewControllerTransitioningDelegate {
@@ -220,7 +220,7 @@ extension PhotoBrowseAnimation: UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.6
     }
-    
+
     //处理具体的动画
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         isPresent ? presentAnimation(transitionContext) : dismissAnimation(transitionContext)
@@ -264,31 +264,31 @@ extension JunScrollViewController: JunBrowsePresentDelefate {
         imageV.kf.setImage(with: URL(string: imageVM.imageArray[indexPath.item].pic74), placeholder: UIImage(named: "coderJun"))
         return imageV
     }
-    
+
     func startImageRectForpresent(indexPath: IndexPath) -> CGRect {
         // 1.取出cell
         guard let cell = imageCollection.cellForItem(at: indexPath) else {
             return CGRect(x: imageCollection.bounds.width * 0.5, y: kScreenHeight + 50, width: 0, height: 0)
         }
-        
+
         // 2.计算转化为UIWindow上时的frame
         return imageCollection.convert( cell.frame, to: UIApplication.shared.keyWindow)
     }
-    
+
     func endImageRectForpresent(indexPath: IndexPath) -> CGRect {
         //1. 取出对应的image的url
         let imageUrl = URL(string: imageVM.imageArray[indexPath.item].pic74)!
-        
+
         //2.从缓存中取出image
         var image = KingfisherManager.shared.cache.retrieveImageInDiskCache(forKey: imageUrl.absoluteString)
         if image == nil {
             image = UIImage(named: "coderJun")
         }
-        
+
         // 3.根据image计算位置
         let imageH = kScreenWidth / image!.size.width * image!.size.height
         let y: CGFloat = imageH < kScreenHeight ? (kScreenHeight - imageH) / 2 : 0
-        
+
         return CGRect(x: 0, y: y, width: kScreenWidth, height: imageH)
     }
 }
@@ -306,14 +306,14 @@ extension JunTranstionPhotoController: JunBrowserDismissDelegate{
         let imageV = UIImageView()
         imageV.contentMode = .scaleAspectFill
         imageV.clipsToBounds = true
-        
+
         //设置图片
         imageV.image = baseImage.image
         imageV.frame = baseImage.convert(baseImage.frame, to: UIApplication.shared.keyWindow)
-        
+
         return imageV
     }
-    
+
     func indexPathForDismiss() -> IndexPath {
         return IndexPath(item: currentIndex, section: 0)
     }

@@ -2,7 +2,7 @@
 title: Swift版-H5页面实现长按保存图片
 date: 2017-07-10 14:26:40
 tags: [Swift, JavaScript, WebView]
-categories: 学习笔记
+categories: Swift高阶功能
 ---
 
 - 刚开始拿到需求的第一反应是:H5页面还可以保存图片??
@@ -55,9 +55,9 @@ func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSi
 ```
 @objc func longPressedGesture(recognizer: UILongPressGestureRecognizer){
     if recognizer.state != .Began { return }
-        
+
     let touchPoint = recognizer.locationInView(webView)
-    
+
     //核心代码
     let urlString = "document.elementFromPoint(\(touchPoint.x), \(touchPoint.y)).src"
     if let saveUrl = webView.stringByEvaluatingJavaScriptFromString(urlString) {
@@ -78,7 +78,7 @@ fileprivate func addAlertAction(imageStr: String){
     }
     //取消保存不作处理
     let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
-        
+
     alertV.addAction(saveAction)
     alertV.addAction(cancelAction)
     controller.presentViewController(alertV, animated: true, completion: nil)
@@ -93,20 +93,20 @@ fileprivate func addAlertAction(imageStr: String){
 
 fileprivate func saveImageToPhoto(imageStr: String){
     guard let imageUrl = NSURL(string: imageStr) else { return }
-        
+
     let sdManager = SDWebImageManager.sharedManager()
-        
+
     var image : UIImage!
     if sdManager.diskImageExistsForURL(imageUrl) {
         //先判断缓存中的图片
         image = sdManager.imageCache.imageFromDiskCacheForKey(imageUrl.absoluteString)
-        
+
     }else{
         //缓存没有在进行下载
         let data = NSData(contentsOfURL: imageUrl)
         image = UIImage(data: data!)
     }
-    
+
     //保存图片到相册中
     UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
 }
@@ -127,6 +127,4 @@ func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyO
 ```
 
 
->  以上如有不妥之处还望多多指正 
-
-
+>  以上如有不妥之处还望多多指正

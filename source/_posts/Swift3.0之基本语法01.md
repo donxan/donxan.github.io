@@ -1,8 +1,8 @@
 ---
 title: Swift3.0之基本语法01
 date: 2016-12-25 15:23:03
-tags: [Swift, 语法] 
-categories: 学习笔记
+tags: [Swift, 语法]
+categories: Swift学习笔记
 ---
 
 ## 常量&变量
@@ -116,7 +116,7 @@ categories: 学习笔记
         - 如果定义一个标识符时有直接进行赋值,那么标识符后面的类型可以省略.
         - 因为Swift有类型推导,会自动根据后面的赋值来决定前面的标识符的数据类型
         - 可以通过option+鼠标左键来查看变量的数据类型
- 
+
 ```
     import UIKit
     let m = 20
@@ -295,7 +295,7 @@ categories: 学习笔记
     while a < 10 {
         a++
     }
-    
+
     //--do while循环:使用repeat关键字来代替了do--
         let b = 0
     repeat {
@@ -303,5 +303,3 @@ categories: 学习笔记
         b++
     } while b < 20
 ```
-
-

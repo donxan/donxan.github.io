@@ -2,7 +2,7 @@
 title: Swift开发之3DTouch实用演练
 date: 2017-10-23 07:54:58
 tags: [Swift, 3DTouch]
-categories: 高级用法
+categories: Swift高阶功能
 ---
 
 > 2015年，苹果发布了iOS9以及`iphone6s/iphone6s Plus`，其中最具有创新的就是新的触控方式3D Touch,相对于多点触摸在平面二维空间的操作，3D Touch技术增加了对力度和手指面积的感知，可以通过长按快速预览、查看你想要的短信、图片或者超链接等内容，Peek和Pop手势的响应时间可迅捷到 10ms和15ms等。
@@ -16,7 +16,7 @@ categories: 高级用法
   - 在应用程序内对某一控件使用3DTouch操作
 - 功能需要iOS9以上系统和`iphone6s/iphone6s Plus`及以上机型(模拟机现在也是可以的)
 - [demo地址](https://github.com/coderQuanjun/DouYuTV)
-  
+
 ## 效果演练
 ### 主屏幕快速操作
 - 通过按下iPhone 6s或iPhone 6s Plus上的应用程序图标，用户可以获得一组快速操作。
@@ -93,7 +93,7 @@ UIApplicationShortcutIcon(type: UIApplicationShortcutIconType)
 
 ```objc
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    
+
     //3D Touch
     let homeIcon = UIApplicationShortcutIcon(type: .compose)
     let homeItem = UIApplicationShortcutItem(type: "homeAnchor", localizedTitle: "首页", localizedSubtitle: "点击进入首页", icon: homeIcon, userInfo: nil)
@@ -101,9 +101,9 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     let playItem = UIApplicationShortcutItem(type: "play", localizedTitle: "播放", localizedSubtitle: "", icon: playIcon, userInfo: nil)
     let userIcon = UIApplicationShortcutIcon(type: .search)
     let userItem = UIApplicationShortcutItem(type: "username", localizedTitle: "用户名", localizedSubtitle: "", icon: userIcon, userInfo: nil)
-    
+
     UIApplication.shared.shortcutItems = [homeItem, playItem, userItem]
-    
+
     return true
 }
 
@@ -117,7 +117,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 //菜单跳转
 func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
     guard let tabBarVC = window?.rootViewController as? MainViewController else { return }
-    
+
     //根据type唯一标识进行判断跳转, 或者根据localizedTitle判断
     switch shortcutItem.type {
     case "homeAnchor":
@@ -155,7 +155,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         cell?.textLabel?.text = model.room_name
         cell?.accessoryType = .disclosureIndicator
     }
-    
+
 
     //这里是添加判断是否支持3D Touch的代码
     if #available(iOS 9.0, *) {
@@ -198,18 +198,18 @@ func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewCont
     //1. 获取按压的cell所在的行
     guard let cell = previewingContext.sourceView as? UITableViewCell else { return UIViewController() }
     let indexPath = tableVIew.indexPath(for: cell) ?? IndexPath(row: 0, section: 0)
-    
+
     //2. 设定预览界面
     let vc = ShowRoomViewController()
     // 预览区域大小(可不设置), 0为默认尺寸
     vc.preferredContentSize = CGSize(width: 0, height: 0)
     vc.showStr =  "我是第\(indexPath.row)行用力按压进来的"
-    
+
     //调整不被虚化的范围，按压的那个cell不被虚化（轻轻按压时周边会被虚化，再少用力展示预览，再加力跳页至设定界面）
     let rect = CGRect(x: 0, y: 0, width: kScreenWidth, height: 44)
     //设置触发操作的视图的不被虚化的区域
     previewingContext.sourceRect = rect
-    
+
     //返回预览界面
     return vc
 }
@@ -250,11 +250,11 @@ extension ShowRoomViewController {
             showVC.hidesBottomBarWhenPushed = true
             previewViewController.navigationController?.pushViewController(showVC, animated: true)
         }
-        
+
         let action3 = UIPreviewAction(title: "取消", style: .destructive) { (action, previewViewController) in
             print("我是取消按钮")
         }
-        
+
         ////该按钮可以是一个组，点击该组时，跳到组里面的按钮。
         let subAction1 = UIPreviewAction(title: "测试1", style: .selected) { (action, previewViewController) in
             print("我是测试按钮1")
@@ -266,7 +266,7 @@ extension ShowRoomViewController {
             print("我是测试按钮3")
         }
         let groupAction = UIPreviewActionGroup(title: "更多", style: .default, actions: [subAction1, subAction2, subAction3])
-        
+
         return [action1, action3, groupAction]
     }
 }
@@ -302,7 +302,7 @@ override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     //获取重按力度
     print("平均触摸的力--\(touch.force)")
     print("触摸的最大可能力--\(touch.maximumPossibleForce)")
-    
+
     let change = touch.force / touch.maximumPossibleForce
         view.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: change, alpha: 1)
 }

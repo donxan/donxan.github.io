@@ -2,7 +2,7 @@
 title: iOS之NSDate的Category
 date: 2016-11-25 21:56:30
 tags: [Objective-C, Category]
-categories: iOS
+categories: iOS高阶功能
 ---
 
 #### 判断日期是是否是今年？今天？
@@ -45,10 +45,10 @@ categories: iOS
 {
     // 日历
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    
+
     // 比较时间
     NSCalendarUnit unit = NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    
+
     return [calendar components:unit fromDate:from toDate:self options:0];
 }
 
@@ -56,10 +56,10 @@ categories: iOS
 {
     // 日历
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    
+
     NSInteger nowYear = [calendar component:NSCalendarUnitYear fromDate:[NSDate date]];
     NSInteger selfYear = [calendar component:NSCalendarUnitYear fromDate:self];
-    
+
     return nowYear == selfYear;
 }
 
@@ -68,10 +68,10 @@ categories: iOS
 {
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     fmt.dateFormat = @"yyyy-MM-dd";
-    
+
     NSString *nowString = [fmt stringFromDate:[NSDate date]];
     NSString *selfString = [fmt stringFromDate:self];
-    
+
     return [nowString isEqualToString:selfString];
 }
 
@@ -79,17 +79,17 @@ categories: iOS
 {
     // 2014-12-31 23:59:59 -> 2014-12-31
     // 2015-01-01 00:00:01 -> 2015-01-01
-    
+
     // 日期格式化类
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     fmt.dateFormat = @"yyyy-MM-dd";
-    
+
     NSDate *nowDate = [fmt dateFromString:[fmt stringFromDate:[NSDate date]]];
     NSDate *selfDate = [fmt dateFromString:[fmt stringFromDate:self]];
-    
+
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *cmps = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:selfDate toDate:nowDate options:0];
-    
+
     return cmps.year == 0
     && cmps.month == 0
     && cmps.day == 1;
@@ -98,13 +98,13 @@ categories: iOS
 - (BOOL)isTomorrow{
      NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     fmt.dateFormat = @"yyyy-MM-dd";
-    
+
     NSDate *nowDate = [fmt dateFromString:[fmt stringFromDate:[NSDate date]]];
     NSDate *selfDate = [fmt dateFromString:[fmt stringFromDate:self]];
-    
+
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *cmps = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:nowDate toDate:selfDate options:0];
-    
+
     return cmps.year == 0
     && cmps.month == 0
     && cmps.day == 1;
@@ -125,11 +125,11 @@ categories: iOS
     fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     // 帖子的创建时间
     NSDate *create = [fmt dateFromString:_create_time];
-    
+
     if (create.isThisYear) { // 今年
         if (create.isToday) { // 今天
             NSDateComponents *cmps = [[NSDate date] deltaFrom:create];
-            
+
             if (cmps.hour >= 1) { // 时间差距 >= 1小时
                 return [NSString stringWithFormat:@"%zd小时前", cmps.hour];
             } else if (cmps.minute >= 1) { // 1小时 > 时间差距 >= 1分钟

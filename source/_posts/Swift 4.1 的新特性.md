@@ -2,7 +2,7 @@
 title: Swift 4.1 的新特性
 date: 2018-04-24 21:16:40
 tags: [Swift4.1, Equatable, Hashable]
-categories: 学习笔记
+categories: Swift学习笔记
 ---
 
 - 苹果公司在 3.29 正式发布了正式版的`Xcode 9.3`和`Swift 4.1`, 让我们看看`Swift 4.1`带来了哪些新功能和新亮点
@@ -86,7 +86,7 @@ public protocol Equatable {
 struct Name: Equatable {
     var name1 = "name1"
     var name2 = "name2"
-    
+
     static func == (lhs: Name, rhs: Name) -> Bool {
         return lhs.name1 == rhs.name1 &&
             lhs.name2 == rhs.name2
@@ -100,7 +100,7 @@ struct Name: Equatable {
 struct Name: Equatable {
     var name1 = "name1"
     var name2 = "name2"
-    
+
 }
 ```
 
@@ -180,7 +180,7 @@ let arr1 = arr.flatMap({ $0 })
 print(arr1)
 
 //这样使用会有类似的警告
-'flatMap' is deprecated: Please use compactMap(_:) for the case where closure returns an optional value 
+'flatMap' is deprecated: Please use compactMap(_:) for the case where closure returns an optional value
 Use 'compactMap(_:)' instead
 
 //Swift4.1中的用法
@@ -216,11 +216,11 @@ protocol Tune {
 
 ```objc
 //Swift4.0
-let buffer = UnsafeMutableBufferPointer<Int>(start: UnsafeMutablePointer<Int>.allocate(capacity: 10), 
+let buffer = UnsafeMutableBufferPointer<Int>(start: UnsafeMutablePointer<Int>.allocate(capacity: 10),
                                              count: 10)
-let mutableBuffer = UnsafeMutableBufferPointer(start: UnsafeMutablePointer(mutating: buffer.baseAddress), 
+let mutableBuffer = UnsafeMutableBufferPointer(start: UnsafeMutablePointer(mutating: buffer.baseAddress),
                                                count: buffer.count)
-                                               
+
 //Swift4.1
 let buffer = UnsafeMutableBufferPointer<Int>.allocate(capacity: 10)
 let mutableBuffer = UnsafeMutableBufferPointer(mutating: UnsafeBufferPointer(buffer))
@@ -230,6 +230,3 @@ let mutableBuffer = UnsafeMutableBufferPointer(mutating: UnsafeBufferPointer(buf
 
 #### 参考文档
 - [What’s New in Swift 4.1?](https://www.raywenderlich.com/187826/whats-new-in-swift-4-1)
-
-
-

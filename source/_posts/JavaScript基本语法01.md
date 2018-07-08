@@ -2,7 +2,7 @@
 title: JavaScript基本语法01
 date: 2017-08-09 23:16:40
 tags: [JavaScript, 语法]
-categories: 学习笔记
+categories: JavaScript学习笔记
 ---
 
 > JavaScript 是一门高端的、动态的、弱类型的编程语言，适合面向对象和函数式的编程风格。
@@ -47,7 +47,7 @@ Math.PI         //π；圆周率
 Math.E          //e；自然对数的底数
 Math.sqrt(3)    //3的平方根
 Math.pow(3,1/3) //3的立方根
-Math.sin(0)     //三角函数。Math.cos(),Math.tan(),Math.sin(30/180*Math.PI) 
+Math.sin(0)     //三角函数。Math.cos(),Math.tan(),Math.sin(30/180*Math.PI)
 Math.log(10)    //10的自然对数
 Math.log(100)/Math.LN10 //以10为底100的对数
 Math.log(512)/Math.LN2 //以2为底512的对数

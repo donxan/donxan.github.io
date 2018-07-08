@@ -2,7 +2,7 @@
 title: iOS之UITableView设置全屏分隔线
 date: 2016-11-20 13:41:14
 tags: [Objective-C, UITableView]
-categories: iOS
+categories: iOS高阶功能
 ---
 
 ## UICollectionView基础
@@ -37,11 +37,11 @@ tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 ```
 - (void)setFrame:(CGRect)frame{
     frame.size.height -= 1;//设置分隔线
-    
+
     //设置cell的左右间距
     frame.origin.x = 5;//左间距为5
     frame.size.width = [UIScreen mainScreen].bounds.size.width - 2 * frame.origin.x;
-    
+
     // 给cellframe赋值
     [super setFrame:frame];
 }
@@ -93,5 +93,3 @@ tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 - 方法3比较取巧,但是也需要自定义cell,在某些情况下不允许改变tableView的背景色,使用场景有限;
 
 - 方法4不需要自定义cell,对系统(iOS7,iOS8以上)做个简单判断即可.
-
-

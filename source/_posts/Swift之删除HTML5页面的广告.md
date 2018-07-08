@@ -2,11 +2,11 @@
 title: Swift之删除HTML5页面的广告
 date: 2017-11-11 15:19:34
 tags: [Swift, HTML5, WebView]
-categories: 入坑指南
+categories: Swift高阶功能
 ---
 
 好久没来博客了,最近工作中任务(Bug)比较多!除了改Bug之外发现最近新出的一部电视剧不错, 给大家推荐一下<<<<猎场>>>>
- 
+
 <!-- more -->
 
 ![猎场.jpg](http://upload-images.jianshu.io/upload_images/4122543-050601a063e14ce8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -37,17 +37,17 @@ optional public func webView(_ webView: UIWebView, didFailLoadWithError error: E
 
 ## 基于JavaScript的H5代码
 - 首先,我们先看一下HTML5在浏览器中的现实情况, [参考地址](http://mini.eastday.com/mobile/170818161313395.html)
-- 
+-
 ![删除前的原网页](http://upload-images.jianshu.io/upload_images/4122543-146823b54ab03b8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 - 下面我们就要找到广告或者其他你想删除的部分对应的HTML代码
 - 用浏览器打开[参考地址](http://mini.eastday.com/mobile/170818161313395.html), 建议使用谷歌浏览器
 - 找到浏览器的开发者工具, 按照如下操作
-- 
+-
 ![查看网页代码](http://upload-images.jianshu.io/upload_images/4122543-c3efc0cb6e21f3ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
- 
+
 - 控制网页和js源码的显示方式
-- 
+-
 ![Snip20171111_6.png](http://upload-images.jianshu.io/upload_images/4122543-ea333a6efa617e15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
   - 调节手机/电脑显示: 你要选择在那种情境下显示网页,通俗来说,就是模拟器
   - 放大镜:你可以通过放大镜对网页上的控件进行选取,然后找到html代码
@@ -91,18 +91,15 @@ extension NoneADViewController: UIWebViewDelegate{
         webView.stringByEvaluatingJavaScript(from: "document.getElementsByClassName('dbleleven-wrap')[0].style.display='none'")
         //第一张图片下面的广告
         webView.stringByEvaluatingJavaScript(from: "document.getElementsByClassName('baiduimageplusm-title-img-only')[0].style.display = 'none'")
-        
+
     }
-    
+
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         guard let urlStr = request.url?.absoluteString else { return true }
         print(urlStr)
-        
+
         return true
     }
 }
 
 ```
-
-
-

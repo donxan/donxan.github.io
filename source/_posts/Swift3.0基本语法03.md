@@ -2,7 +2,7 @@
 title: Swift3.0基本语法03
 date: 2016-12-30 22:16:13
 tags: [Swift, 语法]
-categories: 学习笔记
+categories: Swift学习笔记
 ---
 
 ## willSet和didSet
@@ -12,7 +12,7 @@ categories: 学习笔记
   - 属性初始化时，willSet和didSet都不会调用，只有在设置属性值时才会调用
   - 当设置的值和原来的值一样时，willSet和didSet也会被调用
   - willSet有一个newValue参数，didSet有一个oldvalue参数
-<Excerpt in index | 首页摘要> 
+<Excerpt in index | 首页摘要>
 <!-- more -->
 
 > 代码如下
@@ -72,7 +72,7 @@ class HomeViewCell: UICollectionViewCell {
     @IBOutlet weak var liveImageView: UIImageView!
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var onlinePeopleLabel: UIButton!
-    
+
     // MARK: 定义属性
     var anchorModel : AnchorModel?{
         didSet{
@@ -82,7 +82,7 @@ class HomeViewCell: UICollectionViewCell {
             onlinePeopleLabel.setTitle("\(anchorModel?.focus ?? 0)", for: .normal)
         }
     }
-    
+
 }
 
 ```
@@ -109,16 +109,6 @@ var _tittle: String?
     }
 ```
 
-## 
+##
 
 > Swift3.0语法其他相关文章
-
-
-
-
-
-
-
-
-
-

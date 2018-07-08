@@ -2,7 +2,7 @@
 title: iOS之UIMenuController的简单使用
 date: 2016-11-22 11:52:30
 tags: [Objective-C, UIMenuController]
-categories: iOS
+categories: iOS高阶功能
 ---
 
 ## UIMenuController须知
@@ -10,30 +10,30 @@ categories: iOS
     - UITextField
     - UITextView
     - UIWebView
- 
+
 <!-- more -->
 
 ## 让其他控件也支持UIMenuController(比如UILabel)
 1. 自定义UILabel
 
 ```objc
-- (void)setUp { 
-  // 1.设置label可以交互 
+- (void)setUp {
+  // 1.设置label可以交互
   self.userInteractionEnabled = YES;  
-  // 2.添加点击手势 
+  // 2.添加点击手势
   [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(lableClick)]];
 }
-- (void)lableClick { 
-  // 3.设置label为第一响应者,只有成为响应者才能够将MenuController显示在其上面 
-  [self becomeFirstResponder]; 
-  // 4.初始化UIMenuController 
+- (void)lableClick {
+  // 3.设置label为第一响应者,只有成为响应者才能够将MenuController显示在其上面
+  [self becomeFirstResponder];
+  // 4.初始化UIMenuController
   UIMenuController *menuController = [UIMenuController sharedMenuController];  
-  // 5.设置UIMenuController显示的位置 
-  // targetRect : 将要显示所在label的frame; 
+  // 5.设置UIMenuController显示的位置
+  // targetRect : 将要显示所在label的frame;
   // view : targetRect所在的坐标系参照物(父view或self)
   [menuController setTargetRect:self.frame inView:self.superview];
   // [menuController setTargetRect:self.bounds inView:self];作用同上  
-  // 6.显示UIMenuController 
+  // 6.显示UIMenuController
   [menuController setMenuVisible:YES animated:YES];
 }
 ```
@@ -91,26 +91,26 @@ categories: iOS
 1. 添加item
 
 ```objc
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath { 
-  // 点击cell弹出UIMenuController 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  // 点击cell弹出UIMenuController
   // 1.如果menuController已经在显示,就隐藏他
-  // 注意,如果有一个cell正在显示menuController,这时再点击另外一个cell,上一个cell的menuController会消失,当前点击cell会显示,这是因为上一个cell不再是第一响应者了,menuController会自动释放 
-  UIMenuController *menuController = [UIMenuController sharedMenuController]; 
-  if (menuController.isMenuVisible) { 
+  // 注意,如果有一个cell正在显示menuController,这时再点击另外一个cell,上一个cell的menuController会消失,当前点击cell会显示,这是因为上一个cell不再是第一响应者了,menuController会自动释放
+  UIMenuController *menuController = [UIMenuController sharedMenuController];
+  if (menuController.isMenuVisible) {
     [menuController setMenuVisible:NO animated:YES];  
-  }else { 
-    // 2.显示MenuController 
-    // 先设置cell为第一响应者,同时不要忘记在cell中重写canBecomeFirstResponder和canPerformAction:withSender: 
-    JCMTopicCommentCell *cell = [tableView cellForRowAtIndexPath:indexPath]; 
-    [cell becomeFirstResponder]; 
-    // 添加menuItem 
-    UIMenuItem *item01 = [[UIMenuItem alloc]initWithTitle:@"赞" action:@selector(zanClick:)]; 
-    UIMenuItem *item02 = [[UIMenuItem alloc]initWithTitle:@"回复" action:@selector(responseClick:)]; 
-    UIMenuItem *item03 = [[UIMenuItem alloc]initWithTitle:@"举报" action:@selector(reportClick:)]; 
-    menuController.menuItems = @[item01,item02,item03]; 
-    // 设置menuControoler显示位置 
-     CGRect showRect = CGRectMake(cell.x, cell.y + cell.height/2, cell.width, cell.height); 
-     [menuController setTargetRect:showRect inView:cell.superview]; 
+  }else {
+    // 2.显示MenuController
+    // 先设置cell为第一响应者,同时不要忘记在cell中重写canBecomeFirstResponder和canPerformAction:withSender:
+    JCMTopicCommentCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell becomeFirstResponder];
+    // 添加menuItem
+    UIMenuItem *item01 = [[UIMenuItem alloc]initWithTitle:@"赞" action:@selector(zanClick:)];
+    UIMenuItem *item02 = [[UIMenuItem alloc]initWithTitle:@"回复" action:@selector(responseClick:)];
+    UIMenuItem *item03 = [[UIMenuItem alloc]initWithTitle:@"举报" action:@selector(reportClick:)];
+    menuController.menuItems = @[item01,item02,item03];
+    // 设置menuControoler显示位置
+     CGRect showRect = CGRectMake(cell.x, cell.y + cell.height/2, cell.width, cell.height);
+     [menuController setTargetRect:showRect inView:cell.superview];
     // 显示menuController [menuController setMenuVisible:YES animated:YES];  
   }
 }
@@ -140,15 +140,15 @@ categories: iOS
 ```objc
 #pragma mark - MenuControllerClick
 // MenuController手动添加的item的方法实现必须放在controller中
-- (void)zanClick:(UIMenuController *)menu { 
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow]; 
+- (void)zanClick:(UIMenuController *)menu {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     NSLog(@"%s %@", __func__, [self commentInIndexPath:indexPath].content);
 }
-- (void)responseClick:(UIMenuController *)menu { 
-  NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow]; 
+- (void)responseClick:(UIMenuController *)menu {
+  NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
   NSLog(@"%s %@", __func__, [self commentInIndexPath:indexPath].content);
 }
-- (void)reportClick:(UIMenuController *)menu { 
-  NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow]; 
+- (void)reportClick:(UIMenuController *)menu {
+  NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
   NSLog(@"%s %@", __func__, [self commentInIndexPath:indexPath].content);
 }```
