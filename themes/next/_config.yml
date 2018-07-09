@@ -94,7 +94,7 @@ index_with_subtitle: true
 menu:
   home: / || home
   archives: /archives/ || archive
-  top: /top/ || signal
+  # top: /top/ || signal
   categories: /categories/ || th
   tags: /tags/ || tags
   about: /about/ || user
@@ -134,7 +134,7 @@ social:
   简书: https://www.jianshu.com/u/5bd5e9ed569e
   CSDN: http://blog.csdn.net/ShmilyCoder
   稀土掘金: https://juejin.im/user/5a7a64ae6fb9a0636323fd06/posts
-  E-Mail: mailto:741700649@gqq.com || envelope
+  E-Mail: mailto:quanjunt@163.com || envelope
   #Google: https://plus.google.com/yourname || google
   Twitter: https://twitter.com/CoderTitan || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
@@ -391,7 +391,7 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: false
+  enable: true
   appid: m7FB3zoFkQnVKAyykKJlY8QR-gzGzoHsz # your leancloud application appid
   appkey: 7X31Wl5lm6BXqgtV9k3sm7yI # your leancloud application appkey
   notify: true # mail notifier , https://github.com/xCss/Valine/wiki
@@ -408,7 +408,7 @@ valine:
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-livere_uid: MTAyMC8zNTM1MS8xMTg4Nw==
+# livere_uid: MTAyMC8zNTM1MS8xMTg4Nw==
 
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
