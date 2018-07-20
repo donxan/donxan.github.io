@@ -42,7 +42,7 @@ image:
 ![image](http://p7hfnfk6u.bkt.clouddn.com/MySQLServer.png)
 
 
-> 到这里`MySQL`就已经基本安装完成了, 不需要再修改什么配置了
+<div class="note success"><p>到这里`MySQL`就已经基本安装完成了, 不需要再修改什么配置了</p></div>
 
 
 ### 安装`Navicat for MySQL`
@@ -90,7 +90,8 @@ image:
 
 #### 其他命令
 
-需要注意的是:
+<div class="note warning"><p>需要注意的是:</p></div>
+
 以下所有命令中如过结尾有分号(`;`)的一定不能省略, 否则不是一条完整的命令, 系统会提示你继续输入命令
 
 ```objc
@@ -352,7 +353,9 @@ select 列1,列2,聚合…… from 表名 group by 列1,列2,列3,…… having 
 示例：select gender,count(*) from student group by gender having gender;
 ```
 
-`where`与`having`的区别：
+
+<div class="note info"><p>`where`与`having`的区别：</p></div>
+
 - `where`是对`from`后面指定的表进行筛选，属于对原始数据的筛选
 - `having`是对`group by`的结果进行筛选
 
@@ -415,7 +418,8 @@ select students.name,class.name from class right join students on class.id=stude
 
 ```
 
-> 至此, `MySQL`中一些常用的命令行也基本介绍完了, 如有不足之处还望告知
+
+<div class="note success"><p>至此, `MySQL`中一些常用的命令行也基本介绍完了, 如有不足之处还望告知</p></div>
 
 
 ---
