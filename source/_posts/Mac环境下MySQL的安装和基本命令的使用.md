@@ -419,10 +419,182 @@ select students.name,class.name from class right join students on class.id=stude
 ```
 
 
-<div class="note success"><p>至此, `MySQL`中一些常用的命令行也基本介绍完了, 如有不足之处还望告知</p></div>
+<div class="note success"><p>至此, `MySQL`中一些常用的命令行也基本介绍完了</p></div>
+
+下面看一些`MySQL`和`Python`是如何进行交互的
+
+
+
+
+### `MySQL`和`Python`的交互
+- `Python`要对`MySQL`数据库进行操作, 需要引入`pymysql`模块
+- `pymsql`是`Python`中操作`MySQL`的模块, 并且`pymysql`支持`python3.x`版本
+- 首先要先安装`pymysql`, 终端执行一下语句
+
+```
+pip3 install pymysql
+```
+
+#### 创建数据库连接
+
+```Python
+# 链接数据库
+# 参数1：mysql服务所在主机的IP(可以是IP地址, 本机链接可以是localhost)
+# 参数2：用户名
+# 参数3：密码
+# 参数4：要连接的数据库名
+
+db = pymysql.connect('localhost', 'root', 'titanjun', 'titansql')
+
+
+# 创建游标, 查询数据默认为元组类型
+cursor = db.cursor()
+
+# 创建sql语句
+sql = "select version()"
+
+# 执行sql语句
+cursor.execute(sql)
+
+# 获取返回的信息
+data = cursor.fetchone()
+print(data)
+
+# 关闭游标
+cursor.close()
+
+# 关闭数据库
+db.close()
+
+```
+
+
+#### 创建表
+
+```Python
+import pymysql
+
+db = pymysql.connect('localhost', 'root', 'jun.0929', 'titansql')
+
+# 创建游标, 查询数据默认为元组类型
+cursor = db.cursor()
+
+# 建表
+# 在建表之前要检查表是否存在, 如果存在则删除
+cursor.execute("drop table if exists userinfo")
+
+# 创建表
+try:
+    sql = "create table userinfo(id int auto_increment primary key, age int not null)"
+    cursor.execute(sql)
+    print('创建成功')
+except:
+    print('创建表失败')
+
+
+cursor.close()
+db.close()
+```
+
+#### 在表中插入数据
+
+```Python
+
+import pymysql
+
+db = pymysql.connect('localhost', 'root', 'jun.0929', 'titansql')
+
+cursor = db.cursor()
+
+# 插入数据的字符串命令
+sql = 'insert into userinfo values'
+
+for i in range(10, 20):
+    ageStr = "(0, %d)" % i
+    addsql = sql + ageStr
+
+    try:
+        cursor.execute(addsql)
+        # 提交到数据库, 不然无法保存新建或者修改的数据
+        db.commit()
+        print('插入数据成功')
+    except:
+        # 如果提交失败则回滚到上一次的提交, 否则下一次提交可能会冲突
+        db.rollback()
+        print('插入数据失败')
+
+cursor.close()
+db.close()
+```
+
+#### 修改/更新/删除数据
+
+```Python
+import pymysql
+
+db = pymysql.connect('localhost', 'root', 'jun.0929', 'titansql')
+cursor = db.cursor()
+
+# 修改/更新数据命令字符串
+sql = 'update userinfo set age=30 where id=4'
+# 删除数据命令字符串
+# sql = 'delete from userinfo where age=16'
+
+try:
+    cursor.execute(sql)
+    db.commit()
+    print('数据更新成功')
+except:
+    db.rollback()
+    print('数据更新失败')
+
+cursor.close()
+db.close()
+```
+
+#### 查询数据
+
+- `fetchone`: 获取下一个查询结果集，结果集是一个对象
+- `fetchall`: 接收全部的返回的行
+- `rowcount`: 是一个只读属性，返回`execute()`方法影响的行数
+
+
+```Python
+import pymysql
+
+db = pymysql.connect('localhost', 'root', 'jun.0929', 'titansql')
+cursor = db.cursor()
+
+# 查询数据字符串
+sql = 'select * from userinfo where age>16'
+
+try:
+    cursor.execute(sql)
+
+    # 获得一条查询数据
+    print(cursor.fetchone())
+    print('查询到-%d-条数据' % cursor.rowcount)
+
+    result = cursor.fetchall()
+    for row in result:
+        print('%d--%d' % (row[0], row[1]))
+
+    print('数据查询成功')
+
+except:
+    print('数据查询失败')
+
+cursor.close()
+db.close()
+```
+
+
+<div class="note success"><p>至此, `Python`和`MySQL`交互的最基本最简单的使用也介绍完了, 如有不足之处还望告知</p></div>
 
 
 ---
+
+
 
 
 
