@@ -426,7 +426,7 @@ select students.name,class.name from class right join students on class.id=stude
 
 
 
-### `MySQL`和`Python`的交互
+## `MySQL`和`Python`的交互
 - `Python`要对`MySQL`数据库进行操作, 需要引入`pymysql`模块
 - `pymsql`是`Python`中操作`MySQL`的模块, 并且`pymysql`支持`python3.x`版本
 - 首先要先安装`pymysql`, 终端执行一下语句
@@ -435,7 +435,7 @@ select students.name,class.name from class right join students on class.id=stude
 pip3 install pymysql
 ```
 
-#### 创建数据库连接
+### 创建数据库连接
 
 ```Python
 # 链接数据库
@@ -469,7 +469,7 @@ db.close()
 ```
 
 
-#### 创建表
+### 创建表
 
 ```Python
 import pymysql
@@ -496,7 +496,7 @@ cursor.close()
 db.close()
 ```
 
-#### 在表中插入数据
+### 在表中插入数据
 
 ```Python
 
@@ -527,7 +527,7 @@ cursor.close()
 db.close()
 ```
 
-#### 修改/更新/删除数据
+### 修改/更新/删除数据
 
 ```Python
 import pymysql
@@ -552,7 +552,7 @@ cursor.close()
 db.close()
 ```
 
-#### 查询数据
+### 查询数据
 
 - `fetchone`: 获取下一个查询结果集，结果集是一个对象
 - `fetchall`: 接收全部的返回的行
