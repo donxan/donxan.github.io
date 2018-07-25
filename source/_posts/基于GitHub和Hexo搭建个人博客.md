@@ -3,13 +3,20 @@ title: 基于GitHub和Hexo搭建个人博客
 date: 2018-03-08 20:13
 tags: [Hexo, Github, HTTPS]
 categories: Hexo博客
-image: http://p7hfnfk6u.bkt.clouddn.com/Snip20180508_10.png
+image: 
 ---
+
+
+![Hexo博客](http://p7hfnfk6u.bkt.clouddn.com/Snip20180508_10.png)
+
+
+<!-- more -->
+
 
 
 本文是使用Mac电脑, 基于GitHub和Hexo搭建个人博客, 搞了两三天, 反复尝试了无数次, 踩了无数坑搭建起来的, 主要跟大家分享一点小经验, 希望对大家能有帮助!
 
-<!-- more -->
+
 
 ## github博客简介
 
