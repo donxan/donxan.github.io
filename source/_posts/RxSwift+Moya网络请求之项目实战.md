@@ -30,18 +30,24 @@ categories: RxSwift框架
 
 ### 下面简单看一下demo的界面
 
-#### 登录注册
+<center>登录注册</center>
+
 ![登录注册](http://upload-images.jianshu.io/upload_images/4122543-6a3971f8ea4a7622.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
 
-#### UITableView和SearchBar
+
+<center>UITableView和SearchBar</center>
+
 ![UITableView和SearchBar](http://upload-images.jianshu.io/upload_images/4122543-e2cff86052a6aa5b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
 
-#### UICollectionView和Moya
+<center>UICollectionView和Moya</center>
+
 ![UICollectionView和Moya](http://upload-images.jianshu.io/upload_images/4122543-da346221f1ddcba0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
+
 
 ## 项目结构和框架
 ### 结构
 demo是使用的纯MVVM模式，因为RxSwift就是为MVVM而生。不懂MVVM的猿友可参考[MVVM模式快速入门](http://www.codertian.com/2015/11/13/MVVM-patterns-introduce/) 
+
 
 ![项目结构](http://upload-images.jianshu.io/upload_images/4122543-b180e89ddba220eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500)
 
@@ -77,7 +83,8 @@ demo是使用的纯MVVM模式，因为RxSwift就是为MVVM而生。不懂MVVM的
 - 注册和登录并没有保存已注册的账号和密码, 故登录功能并不完善,后期会在完善,望知晓
 - 下面将针对注册用户名做简单介绍:
 
-### 首先在model里处理输入字符串的语法法则和字符个数是否符合规范
+### 字符串的语法法则
+首先在model里处理输入字符串的语法法则和字符个数是否符合规范
 
 ```objc
 extension InputValidator {
@@ -109,6 +116,8 @@ extension InputValidator {
     }
 }
 ```
+
+
 > 其中Result是一个返回是否成功的枚举值,可传入字符串变量
 
 
@@ -119,7 +128,8 @@ enum Result {
 }
 ```
 
-### 根据输入的用户名判断该用户名是否可用
+### 判断该用户名
+根据输入的用户名判断该用户名是否可用
 
 ```objc
     var usernameObserable: Observable<Result>
@@ -140,7 +150,8 @@ enum Result {
 - 该返回参数Result,控制器将根据该Result是否成功来改变输入框是否是可编辑状态
 - 初始化方法中，我们对传入的序列进行处理和转换成相对应的Result序列
 
-### controller逻辑,根据用户名输入改变各控件状态
+### controller逻辑
+根据用户名输入改变各控件状态
 
 
 ```objc
@@ -168,7 +179,9 @@ enum Result {
 - 根据账号监听密码输入框的状态
 - 根据账号监听注册按钮的状态
  
+
 ## UITableView和SearchBar
+
 
 - 该UITableView展示界面并未涉及网络请求
 - 数据来源plist文件
@@ -176,8 +189,9 @@ enum Result {
 - 选用自定义UITableViewCell,故cell不做介绍
 - model小编这里也不多做介绍,详情可下载demo看具体代码
 
-### viewModel中的代码逻辑
-#### 读取plist文件,获取模型数组
+### viewModel中逻辑
+#### 获取模型数组
+读取plist文件,获取模型数组
 
 ```objc
 fileprivate func getHeroData() -> [HeroModel]{
@@ -219,8 +233,9 @@ fileprivate func getHeroData() -> [HeroModel]{
 - searchText搜索框输入的关键字,根据该关键字从数组中过滤出所有包含该关键字的model
 - 对heroVariable重新赋值,发出事件
 
-### RxTableViewController.swift主要代码
-#### searchBar搜索框,输入字符后间隔0.5秒开始搜索
+### RxTableViewController
+#### searchBar搜索框
+searchBar搜索框,输入字符后间隔0.5秒开始搜索
 
 ```objc
 var searchText: Observable<String> {
@@ -263,8 +278,9 @@ extension RxTableViewController: UITableViewDelegate{
 }
 ```
 
-## UICollectionView+Moya+ObjectMapper网络请求和数据处理
-- 与上述UITableView不同的是,这部分将以[RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources)处理数据源
+## 网络请求和数据处理
+- 文件目录: `UICollectionView+Moya+ObjectMapper`
+- 与上述`UITableView`不同的是,这部分将以[RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources)处理数据源
 - model数组以sections组集合处理
 - 结合[Moya](https://github.com/Moya/Moya)进行网络请求
 - 使用[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)进行json数据转模型
@@ -384,7 +400,8 @@ extension JunNetworkTool: TargetType {
 
 ```
 
-#### 定义一个全局变量用于整个项目的网络请求
+#### 全局变量
+定义一个全局变量用于整个项目的网络请求
 
 ```objc
 let junNetworkTool = RxMoyaProvider<JunNetworkTool>()
@@ -437,7 +454,8 @@ protocol JunViewModelType {
 
 ```
 
-#### 自定义用于网络请求的刷新状态
+#### 自定义刷新
+- 自定义用于网络请求的刷新状态
 - 根据枚举值的判断,改变collection的刷新状态
 
 ```objc

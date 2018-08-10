@@ -47,7 +47,7 @@ Observable.of("2", "3").startWith("1").subscribe({ print($0) }).addDisposableTo(
          next(3)
          completed
      */
-```    
+```
 
 ### merge
 - 合并两个Observable流合成单个Observable流，根据时间轴发出对应的事件
@@ -108,7 +108,7 @@ subject4.onNext("guo")
          next(jun+jie)
          next(tian+guo)
      */
-```        
+```
         
 ### combineLatest
 - 绑定超过最多不超过8个的Observable流，结合在一起处理。
@@ -133,7 +133,7 @@ subject5.onNext("--")
          next(1+2)
          next(--+2)
      */
-```    
+```
         
 ### switchLatest
 - switchLatest可以对事件流进行转换，本来监听的subject1，我可以通过更改variable里面的value更换事件源。变成监听subject2了
@@ -386,7 +386,7 @@ Observable.of(1, 2, 3, 4, 5)
      */
 ```
 
-### ## 11. skipWhileWithIndex
+### skipWhileWithIndex
 - 满足条件的都被取消，传入的闭包同skipWhile有点区别而已
 - `skipWhile`的(<4)和`skipWhileWithIndex`的(<=3)的效果是一样的
   
@@ -443,7 +443,7 @@ Observable.range(start: 1, count: 5)
          next([1, 2, 3, 4, 5])
          completed
      */
-```        
+```
         
 ### reduce
 - 用一个初始值，对事件数据进行累计操作。reduce接受一个初始值，和一个操作符号
@@ -458,7 +458,7 @@ Observable.of(10, 12, 34)
          next(56)
          completed
      */
-```        
+```
         
 ### concat
 - concat会把多个sequence和并为一个sequence，并且当前面一个sequence发出了completed事件，才会开始下一个sequence的事件。

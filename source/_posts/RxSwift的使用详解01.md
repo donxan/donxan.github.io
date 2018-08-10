@@ -5,9 +5,9 @@ tags: [Swift, RxSwift, 响应式编程]
 categories: RxSwift框架
 ---
 
-- [RxSwift](https://github.com/ReactiveX/RxSwift)是Swift函数响应式编程的一个开源库，由Github的[ReactiveX](https://github.com/ReactiveX)组织开发、维护
-- 其他语言像C#, Java 和 JS 也有，Rx.Net、RxJava、[rxjs](https://github.com/ReactiveX/rxjs)
-- RxSwift的目的是让数据/事件流和异步任务能够更方便的序列化处理，能够使用Swift进行响应式编程
+- [RxSwift](https://github.com/ReactiveX/RxSwift)是`Swift`函数响应式编程的一个开源库，由`Github`的[ReactiveX](https://github.com/ReactiveX)组织开发、维护
+- 其他语言像C#, Java 和 JS 也有，`Rx.Net`、`RxJava`、[rxjs](https://github.com/ReactiveX/rxjs)
+- `RxSwift`的目的是让数据/事件流和异步任务能够更方便的序列化处理，能够使用`Swift`进行响应式编程
 
 
 <!-- more -->
@@ -18,21 +18,21 @@ categories: RxSwift框架
 - 中文: [RxSwift官方文档的中文翻译](https://github.com/jhw-dev/RxSwift-CN)
 
 
-### RxSwift做了什么
-  - RxSwift把我们程序中每一个操作都看成一个事件
-  - 比如一个TextField中的文本改变，一个按钮被点击，或者一个网络请求结束等，每一个事件源就可以看成一个管道，也就是sequence
-  - 比如TextField，当我们改变里面的文本的时候，这个TextField就会不断的发出事件，从他的这个sequence中不断的流出，我们只需要监听这个sequence，每流出一个事件就做相应的处理。
-  - 同理，Button也是一个sequence，每点击一次就流出一个事件。
+### `RxSwift`做了什么
+  - `RxSwift`把我们程序中每一个操作都看成一个事件
+  - 比如一个`TextField`中的文本改变，一个按钮被点击，或者一个网络请求结束等，每一个事件源就可以看成一个管道，也就是`sequence`
+  - 比如`TextField`，当我们改变里面的文本的时候，这个`TextField`就会不断的发出事件，从他的这个`sequence`中不断的流出，我们只需要监听这个`sequence`，每流出一个事件就做相应的处理。
+  - 同理，`Button`也是一个`sequence`，每点击一次就流出一个事件。
 
-### RxSwift的核心思想是 Observable<Element> 
-- sequence，Observable表示可监听或者可观察，也就是说RxSwift的核心思想是可监听的序列。
-- 并且，Observable sequence可以接受异步信号，也就是说，信号是可以异步给监听者的
+### `RxSwift`的核心思想
+- `sequence`，`Observable`表示可监听或者可观察，也就是说RxSwift的核心思想是可监听的序列。
+- 并且，`Observable sequence`可以接受异步信号，也就是说，信号是可以异步给监听者的
 
-  - Observable(ObservableType) 和 SequenceType类似
-  - ObservableType.subscribe 和 SequenceType.generate类似
-  - 由于RxSwift支持异步获得信号，所以用ObservableType.subscribe，这和indexGenerator.next()类似
+  - `Observable(ObservableType)` 和 `SequenceType`类似
+  - `ObservableType.subscribe` 和 `SequenceType.generate`类似
+  - 由于`RxSwift`支持异步获得信号，所以用`ObservableType.subscribe`，这和`indexGenerator.next()`类似
 
-- 其中SequenceType是Swift(2.3以前版本,之后的版本没有该协议)中的一个协议，比如Swift中的Array就遵循这个协议，通过这个协议，你可以这样的去操作一个Array
+- 其中`SequenceType`是`Swift2.3`以前版本,之后的版本没有该协议)中的一个协议，比如`Swift`中的`Array`就遵循这个协议，通过这个协议，你可以这样的去操作一个Array
 
 ```objc
 let array = [1,2,3,4,5]
@@ -43,7 +43,9 @@ let seoncd = indexGenerator.next() //6
 ```
 
 
-### RxSwift中，ObservableType.subscribe的回调（新的信号到来）一共有三
+### ObservableType
+
+`RxSwift`中，`ObservableType.subscribe`的回调（新的信号到来）一共有三
 
 ```objc
 enum Event<Element>  {
@@ -55,20 +57,24 @@ protocol ObserverType {
     func on(event: Event<Element>) //监听所有的信号
 }
 ```
+
+
 ### 取消监听
 
-> Observable分为两种
+> `Observable`分为两种
 
-- 在有限的时间内会自动结束（Completed/Error）,比如一个网络请求当作一个序列，当网络请求完成的时候，Observable自动结束，资源会被释放
+- 在有限的时间内会自动结束`Completed/Error`,比如一个网络请求当作一个序列，当网络请求完成的时候，`Observable`自动结束，资源会被释放
 - 信号不会自己结束，最简单的比如一个Timer，每隔一段时间发送一个新的信号过来，这时候需要手动取消监听，来释放相应的资源
-- 比如一个label.rx.text是一个Obserable，通常需要这样调用addDisposableTo(disposeBag)来让其在deinit，也就是所有者要释放的时候，自动取消监听
+- 比如一个`label.rx.text`是一个`Obserable`，通常需要这样调用`addDisposableTo(disposeBag)`来让其在`deinit`，也就是所有者要释放的时候，自动取消监听
+
 ```
 class Observable<Element> {
     func subscribe(observer: Observer<Element>) -> Disposable //调用Disposable的方法来取消
 
 }
 ```
-> 当然，除了手动释放，RxSwift提供了一些操作符，比如 takeUntil来根据条件取消
+
+> 当然，除了手动释放，`RxSwift`提供了一些操作符，比如 `takeUntil`来根据条件取消
 
 ```
 sequence
@@ -78,13 +84,14 @@ sequence
     }
 ```
 
-## RxSwift简单体验
-- 首先创建deinit属性，也就是所有者要释放的时候，自动取消监听
+## `RxSwift`简单体验
+- 首先创建`deinit`属性，也就是所有者要释放的时候，自动取消监听
 
 ```objc
 fileprivate lazy var bag = DisposeBag()
 ```
-### RxSwift监听按钮的点击
+
+### `RxSwift`监听按钮的点击
 - 传统方式: 
 - 
 
@@ -92,7 +99,7 @@ fileprivate lazy var bag = DisposeBag()
 button1.addTarget(self, action: #selector(btn1Click(_:)), for: .touchUpInside)
 ```
 
-- RxSwift方式
+- `RxSwift`方式
 
 ```objc
 button1.rx.tap.subscribe { (event) in
@@ -105,9 +112,9 @@ button2.rx.tap.subscribe { (event) in
 }.addDisposableTo(bag)
 ```
 
-### RxSwift监听UITextField的文字改变
+### `RxSwift`监听`UITextField`的文字改变
 - 传统做法,设置`textField2.delegate = self`
-- RxSwift方式
+- `RxSwift`方式
 
 #### 用on方法实现
 
@@ -128,7 +135,7 @@ textField2.rx.text.subscribe { (event: Event<String?>) in
 }.addDisposableTo(bag)
 ```
 
-#### 用onNext方法实现
+#### 用`onNext`方法实现
 
 ```objc
 subscribe(on: (Event<Int>) -> Void)
@@ -140,7 +147,7 @@ textField1.rx.text.subscribe(onNext: { (str: String?) in
 }).addDisposableTo(bag)
 ```        
 
-### RxSwift改变Label中文字
+### `RxSwift`改变`Label`中文字
 
 ```objc
 label1.rx.observe(String.self, "text").subscribe(onNext: { (str: String?) in
@@ -152,7 +159,7 @@ label2.rx.observe(CGRect.self, "frame").subscribe(onNext: { (rect: CGRect?) in
 }).addDisposableTo(bag)
 ```
 
-### RxSwift监听UIScrollView的滚动
+### `RxSwift`监听`UIScrollView`的滚动
 
 ```objc
 scrollView.contentSize = CGSize(width: 1000, height: 0)
@@ -164,8 +171,8 @@ scrollView.rx.contentOffset
 
 ```
 
-## RxSwift常见操作
-- addDisposableTo(disposeBag)方法是让其deinit，也就是所有者要释放的时候，自动取消监听
+## `RxSwift`常见操作
+- `addDisposableTo(disposeBag)`方法是让其`deinit`，也就是所有者要释放的时候，自动取消监听
 
 ```
 //创建bag
@@ -197,7 +204,7 @@ Observable<Int>.empty().subscribe { (event) in
 ```
         
 ### just
-- just是创建一个sequence只能发出一种特定的事件，能正常结束
+- `just`是创建一个`sequence`只能发出一种特定的事件，能正常结束
 
 ```objc
 Observable<Int>.just(3).subscribe { (event) in
@@ -218,7 +225,8 @@ Observable.just("jun").subscribe { (event) in
 ```    
         
 ### of
-- of是创建一个sequence能发出很多种事件信号
+
+- of是创建一个`sequence`能发出很多种事件信号
 
 ```objc
 Observable.of("a", "b", "2", "5.3")
@@ -252,7 +260,8 @@ Observable.from(["a", "b", "2", "5.3"]).subscribe { (event) in
      5) completed, 结束事件
      */
 }.addDisposableTo(bag)
-```        
+```
+
 ### create
 - 我们也可以自定义可观察的sequence，那就是使用create
 - create操作符传入一个观察者observer，然后调用observer的onNext，onCompleted和onError方法。返回一个可观察的obserable序列
@@ -282,6 +291,7 @@ fileprivate func myJunst(element: String) -> Observable<String> {
     })
 }
 ```
+
 #### 在函数内调用自定义方法
 
 ```objc
@@ -353,13 +363,15 @@ generate.subscribe({ print($0) }).addDisposableTo(bag)
             .addDisposableTo(bag)
         
 //输出: error(Error Domain=错误 Code=10 "(null)")
-```        
+```
+
 
 ## RxSwift中Subjects
-- Subjects是什么?
-  - Subjet是observable和Observer之间的桥梁，一个Subject既是一个Obserable也是一个Observer，他既可以发出事件，也可以监听事件
+- `Subjects`是什么?
+  - `Subjet`是`observable`和`Observer`之间的桥梁，一个`Subject`既是一个`Obserable`也是一个`Observer`，他既可以发出事件，也可以监听事件
   
-## 1. PublishSubject
+### `PublishSubject`
+
 - 当你订阅PublishSubject的时候，你只能接收到订阅他之后发生的事件。subject.onNext()发出onNext事件，对应的还有onError()和onCompleted()事件
 
 
@@ -614,7 +626,7 @@ testVariable.value = "tian"
 fileprivate lazy var bag = DisposeBag()
 ```
 
-##### 在代码结尾调用`.addDisposableTo(bag)`方法
+在代码结尾调用`.addDisposableTo(bag)`方法
 
 
 ### UIBindingObserver
