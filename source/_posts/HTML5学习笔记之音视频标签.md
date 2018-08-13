@@ -185,4 +185,4 @@ b、u、i、s
 
 
 
-> - ### 对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频[HTML5 + 跨平台开发](http://study.163.com/course/introduction.htm?courseId=1003864040),只是不知道会不会继续更新
+> 对HTML5语言有兴趣的同学,给大家极力推荐:江哥的视频[HTML5 + 跨平台开发](http://study.163.com/course/introduction.htm?courseId=1003864040),只是不知道会不会继续更新
