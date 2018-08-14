@@ -3,7 +3,14 @@ title: Swift之Facebook的POP动画使用和实战
 date: 2017-10-17 21:18:38
 tags: [Swift, Facebook POP]
 categories: iOS动画
+image: 
 ---
+
+![image](http://upload-images.jianshu.io/upload_images/4122543-a85faa1b734ebc00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+<!-- more -->
+
+
 
 - [POP](https://github.com/facebook/pop)是一个来自于Facebook，在iOS与OSX上通用的极具扩展性的动画引擎。它在基本的静态动画的基础上增加的弹簧动画与衰减动画，使之能创造出更真实更具物理性的交互动画。
 - `Pop Animation`在使用上和`Core Animation`很相似，都涉及`Animation`对象以及`Animation`的载体的概念
@@ -12,12 +19,8 @@ categories: iOS动画
 - [POP](https://github.com/facebook/pop) 使用 `Objective-C++` 编写，`Objective-C++` 是对 `C++` 的扩展
 - [GitHub项目地址](https://github.com/coderQuanjun/POPAnimationDemo)
 
-<!-- more -->
 
 
-
-
-![image](http://upload-images.jianshu.io/upload_images/4122543-a85faa1b734ebc00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ## POP自我介绍

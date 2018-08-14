@@ -3,7 +3,13 @@ title: Swift之Vision 图像识别框架
 date: 2017-11-29 14:58
 tags: [Swift, Vision]
 categories: Swift黑科技
+image: 
 ---
+
+![VNObservation.png](http://upload-images.jianshu.io/upload_images/4122543-c0b83aa723e149ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+<!-- more -->
+
 
 - 2017年苹果大大又推出了新机型iPhone 8和iPhone 8Plus, 这还不是重点, 重点是那一款价值9000RMB的iPhone X, 虽说网上吐槽声从未停止过, 但是我觉得还是不错的哈!
 - 软件方面, 苹果大大也推出了iOS 11, 经本人iPhone 7手机亲测, 耗电快外加通知栏改不完的bug
@@ -11,7 +17,7 @@ categories: Swift黑科技
 - 这里我们还要说的就是Apple 在 WWDC 2017 推出的图像识别框架--`Vison`[官方文档](https://developer.apple.com/documentation/vision)
 - [Demo地址](https://github.com/coderQuanjun/JunVisionFace)
 
-<!-- more -->
+
 
 ## Vision应用场景
 - `Face Detection and Recognition` : 人脸检测
@@ -71,7 +77,8 @@ categories: Swift黑科技
 ### `VNObservation`检测对象
 - `VNObservation`: 图像分析结果的抽象类, 继承与`NSObject`
 - 图像检测结果的相关处理类如下:
-- 
+
+
 ![VNObservation.png](http://upload-images.jianshu.io/upload_images/4122543-c0b83aa723e149ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
@@ -80,8 +87,10 @@ categories: Swift黑科技
 - 方式一: 识别出具体的每一个字体的位置信息
 - 方式二: 识别一行字体的位置信息
 - 如图效果:
-- 
+
+
 ![WechatIMG3.jpeg](http://upload-images.jianshu.io/upload_images/4122543-0c09426c80013322.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/200) 
+
 
 ![WechatIMG5.jpeg](http://upload-images.jianshu.io/upload_images/4122543-8b970c464c26ffb0.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/200)
 

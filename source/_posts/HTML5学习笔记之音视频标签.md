@@ -3,26 +3,30 @@ title: HTML5学习笔记之音视频标签
 date: 2017-06-16 20:01
 tags: [HTML5标签, CSS, WebStorm]
 categories: HTML5
+image: 
 ---
 
-HTML5学习笔记之音视频标签
+
+
+
+
+![image](http://upload-images.jianshu.io/upload_images/647982-0d0c0be17835a633.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 <!-- more -->
 
-![](http://upload-images.jianshu.io/upload_images/647982-0d0c0be17835a633.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 一. video标签
+## video标签
 
-### 1. 作用: 播放视频
+### 作用: 播放视频
 
-### 2. video标签格式1:
+### video标签格式1:
 
-```objc
+```html
 <video src="">
 </video>
 ```
 
-### 3. video标签的属性
+#### video标签的属性
 - src: 告诉video标签需要播放的视频地址
 - autoplay: 告诉video标签是否需要自动播放视频
 - controls:告诉video标签是否需要显示控制条
@@ -33,23 +37,24 @@ HTML5学习笔记之音视频标签
 - width/height: 和img标签中的一模一样
 
 
-### 4. video标签格式2
+### video标签格式2
 
-```objc
+```html
 <video>
   <source src="" type=""></source>
   <source src="" type=""></source>
 </video>
 ```
-- 第二种格式存在的意义
 
+
+- 第二种格式存在的意义
   - 由于视频数据非常非常的重要, 所以五大浏览器厂商都不愿意支持别人的视频格式, 所以导致了没有一种视频格式是所有浏览器都支持的这个时候W3C为了解决这个问题, 所以推出了第二个video标签的格式
   - video标签的第二种格式存在的意义就是为了解决浏览器适配问题. video 元素支持三种视频格式, 我们可以把这三种格式都通过source标签指定给video标签, 那么以后当浏览器播放视频时它就会从这三种中选择一种自己支持的格式来播放
 - 注意点:
-
   - 当前通过video标签的第二种格式虽然能够指定所有浏览器都支持的视频格式, 但是想让所有浏览器都通过video标签播放视频还有一个前提条件, 就是浏览器必须支持HTML5标签, 否则同样无法播放
   - 在过去的一些浏览器是不支持HTML5标签的, 所以为了让过去的一些浏览器也能够通过video标签来播放视频, 那么我们以后可以通过一个JS的框架叫做html5media来实现
   
+
 #### 代码示例
 
 ```objc
@@ -62,13 +67,17 @@ HTML5学习笔记之音视频标签
 ```
 
   
-## 二.audio标签
+## audio标签
 
-### 1. 作用: 播放音频
+- 作用: 播放音频
+- 注意点:
+  - audio标签的使用和video标签的使用基本一样
+  - video中能够使用的属性在audio标签中大部分都能够使用, 并且功能都一样
+  - 只不过有3个属性不能用,`height/width/poster`
+- 格式:
 
-### 2. 格式:
 
-```objc
+```html
 <audio src="">
 </audio>
 
@@ -77,27 +86,26 @@ HTML5学习笔记之音视频标签
 </audio>
 ```
 
-### 3. 注意点:
-- audio标签的使用和video标签的使用基本一样
-- video中能够使用的属性在audio标签中大部分都能够使用, 并且功能都一样
-- 只不过有3个属性不能用,`height/width/poster`
+
 
 ## 三.详情和概要标签
-### 1. 作用:
+### 作用:
 - 利用summary标签来描述概要信息, 利用details标签来描述详情信息
 - 默认情况下是折叠展示, 想看见详情必须点击
 
-### 2. 格式:
+###  格式:
 
-```objc
+```html
 <details>
     <summary>概要信息</summary>
     详情信息
 </details>
 ```
-### 3. 示例代码
 
-```objc
+
+### 示例代码
+
+```html
 <!--详情和概要标签-->
 <details>
     <summary>概要信息</summary>
@@ -107,25 +115,31 @@ HTML5学习笔记之音视频标签
 
 ![Snip20170615_9.png](http://upload-images.jianshu.io/upload_images/4122543-3bd310e521eed10e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 四. marquee标签
 
-### 1. 作用: 跑马灯效果
-### 2. 格式:
-`<marquee>内容</marquee>`
+## marquee标签
 
-### 3. 属性:
+### 作用: 
+跑马灯效果
+
+### 格式:
+
+```html
+<marquee>内容</marquee>
+```
+
+### 属性:
 
 - direction: 设置滚动方向 left/right/up/down
 - scrollamount: 设置滚动速度, 值越大就越快
 - loop: 设置滚动次数, 默认是-1, 也就是无限滚动
 - behavior: 设置滚动类型 slide滚动到边界就停止, alternate滚动到边界就弹回
 
-### 4. 注意点:
-- marquee标签不是W3C推荐的标签, 在W3C官方文档中也无法查询这个标签, 但是各大浏览器对这个标签的支持非常好
+### 注意点:
+> marquee标签不是W3C推荐的标签, 在W3C官方文档中也无法查询这个标签, 但是各大浏览器对这个标签的支持非常好
 
-#### 5. 示例代码
+### 示例代码
 
-```objc
+```html
 <!--跑马灯-marquee标签-->
 <marquee direction="left" scrollamount="5">跑马灯</marquee>
 <marquee direction="right" scrollamount="3">marquee</marquee>
@@ -139,11 +153,12 @@ HTML5学习笔记之音视频标签
 > 注: 实际的效果中,这三个是一直在滚动的,只是图片看不到效果,自己亲自实践感受下吧!
 
 
-## 五. HTML中被废弃的标签
+## HTML中被废弃的标签
 
 > 由于HTML现在只负责语义而不负责样式.但是HTML一开始有一部分标签连样式也包揽了, 所以这部分标签都被废弃了
 
-```objc
+
+```html
 b、u、i、s 
 - 以上标签自己带有样式, 有浓厚的样式作用, 今后一般都只作为CSS钩子使用
 - 原则: 不到万不得已,切记不要使用如上标签. 大家可以到BAT的网站查看源代码, 几乎看不到以上标签
@@ -170,9 +185,11 @@ b、u、i、s
 - del(Deleted)作用: 已删除的文本
   - 格式:`<del>已删除的文本</del>`
 
-#### 示例代码
 
-```objc
+
+ 示例代码
+
+```html
 <!--新增标签-->
 <strong>着重内容</strong>
 <ins>新插入的内容</ins>

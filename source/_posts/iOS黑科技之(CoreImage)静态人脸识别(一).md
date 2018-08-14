@@ -3,11 +3,17 @@ title: iOS黑科技之(CoreImage)静态人脸识别(一)
 date: 2017-11-22 14:39
 tags: [Swift, CoreImage, CIDetector, AVFoundation]
 categories: Swift黑科技
+image: 
 ---
+
+![Core Image框架图.png](http://upload-images.jianshu.io/upload_images/4122543-3f1d091e07de5a9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+<!-- more -->
+
 
 > 人脸识别原理简介：每一张图片都是由每一个像素点组成，而每一个像素点中又有对应的颜色值(如RGB)，人的面部特征中，不同的五官，颜色值肯定存在差异，而人脸识别技术就是通过对照片中每一个像素的识别进行大量的算法处理，最终得出五官的轮廓
 
-<!-- more -->
+
 
 - 这里我们将使用`CoreImage`框架,进行静态的人脸识别(类似照片, 图像等)
 - 苹果原生的人脸识别并不是一个独立的框架，而是放在`CoreImage`框架中
@@ -15,7 +21,7 @@ categories: Swift黑科技
 - CoreImage是iOS5新增的强大类库之一，它可以处理图片的各种效果，什么饱和度啊，旋转变形啊，色彩啊等等。
 - 在使用CoreImage之前要导入CoreImage.framework框架
 
-![Core Image框架图.png](http://upload-images.jianshu.io/upload_images/4122543-3f1d091e07de5a9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ## 主要类介绍
 - CIImage

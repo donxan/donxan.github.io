@@ -5,9 +5,9 @@ tags: [Swift, RxSwift, 响应式编程]
 categories: RxSwift框架
 ---
 
-> RxSwift相关基本介绍和用法可参考:
-- [RxSwift的使用详解01](https://www.titanjun.top/2017/09/15/RxSwift%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A301/)
-- [RxSwift的使用详解02](https://www.titanjun.top/2017/09/21/RxSwift%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A302/)
+- RxSwift相关基本介绍和用法可参考:
+  - [RxSwift的使用详解01](https://www.titanjun.top/2017/09/15/RxSwift%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A301/)
+  - [RxSwift的使用详解02](https://www.titanjun.top/2017/09/21/RxSwift%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A302/)
 
 <!-- more -->
 

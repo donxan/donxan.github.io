@@ -3,13 +3,17 @@ title: HTML5学习笔记之表格标签
 date: 2017-06-15 20:18
 tags: [HTML5标签, CSS, WebStorm]
 categories: HTML5
+image: 
 ---
 
-HTML5学习笔记之表格标签
-<!-- more -->
+
+
 
 
 ![image](http://upload-images.jianshu.io/upload_images/647982-151e7c132c68a833.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+<!-- more -->
+
 
 ### 作用:
 - 以表格形式将数据显示出来, 当数据量非常大的时候, 表格这种展现形式被认为是最为清晰的一种展现形式
