@@ -36,6 +36,7 @@ date: 2018-05-10 14:14:02
 - [网站速度测试](https://www.17ce.com/)
 - [netcraft](https://toolbar.netcraft.com/site_report?url=)
 - [代码泄露查询](https://searchcode.com/)
+- [文章Markdown格式转成微信公众号格式工具](http://blog.didispace.com/tools/online-markdown/)
 
 
 ### 查询工具
