@@ -192,6 +192,7 @@ date: 2018-05-10 14:14:02
 - [开源中国oschina](https://www.oschina.net/)
 - [URLTeam](https://www.urlteam.org/)
 - [shareditor](http://www.shareditor.com/)
+- [reuixiy](https://reuixiy.github.io/)
 
 
 ### Python社区
