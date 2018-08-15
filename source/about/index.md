@@ -31,6 +31,12 @@ date: 2017-01-10 22:20:12
 
 
 ## 联系我
+
+<div style="text-align: center">
+    <p>欢迎您扫一扫二维码, 关注我的微信公众号！</p>
+    <img src="http://p7hfnfk6u.bkt.clouddn.com/qrcode1280.jpg" width="250" height="250">
+</div>
+
 - 简书: https://www.jianshu.com/u/5bd5e9ed569e
 - CSDN: https://blog.csdn.net/shmilycoder
 - Github: https://github.com/CoderTitan
