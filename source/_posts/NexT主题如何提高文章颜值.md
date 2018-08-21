@@ -189,7 +189,7 @@ password:
 - 添加一些特殊的样式，可以增加文章的可读性
 - 可以从样式中选几个自己觉得比较好的、经常会用的使用, 太多反而会适得其反
 
-### 主题自带样式`FontAwesome`
+### 主题自带样式
 先看一段效果图
 
 1. <i class="fa fa-pencil"></i> 支持 Markdown
@@ -239,6 +239,56 @@ password:
 - <i class="fa fa-download fa-lg"></i> 下载变大 33%
 - <i class="fa fa-download fa-2x"></i> 下载两倍大
 ```
+
+
+### 代码块高亮
+
+主题自带样式 代码块高亮
+
+```
+```[language] [title] [url] [link-text]
+
+`代码`
+
+```
+
+
+
+
+- [language] 是代码语言的名称，用来设置代码块颜色高亮，非必须；
+- [title] 是顶部左边的说明，非必须；
+- [url] 是顶部右边的超链接地址，非必须；
+- [link text] 如它的字面意思，超链接的名称，非必须。
+
+亲测这 4 项应该是根据空格来分隔，而不是[]，故请不要加[]。除非如果你想写后面两个，但不想写前面两个，那么就必须加[]了，要这样写：[] [] [url] [link text]。
+
+首先关于代码块颜色高亮，高亮的模式可以在主题配置文件中设置：
+
+```python
+# Code Highlight theme
+# Available value:
+#    normal | night | night eighties | night blue | night bright
+# https://github.com/chriskempson/tomorrow-theme
+
+highlight_theme: normal
+```
+
+要颜色正确高亮，代码语言的名称肯定要写对，各种支持语言的名称可以查看[这篇文章](https://almostover.ru/2016-07/hexo-highlight-code-styles/)。当然，如果你和我一样懒，可以在站点配置文件_config.yml中设置自动高亮：
+
+
+```diff
+highlight:
+  enable: true
+  line_number: true
+# 代码自动高亮
+-  auto_detect: false
++  auto_detect: true
+```
+
+
+- 红色-和绿色+的样式也是一种语言，叫diff，所以你只需在 [language] 这写diff，然后在相应代码前面加上-和+就行了
+- 不过默认的-是绿色，+是红色，与 GitHub 上相反
+
 
 ### 文本居中引用
 效果:
