@@ -176,7 +176,7 @@ pod repo push SpecName XXX.podspec
 - `pod repo`命令执行后的结果
 
 
-```
+```objc
 master
 - Type: git (master)
 - URL:  'https://github.com/CocoaPods/Specs.git'
@@ -191,7 +191,7 @@ TitanFMSpec
 
 `Podfile`文件中配置信息
 
-```
+```objc
 // 远程私有库
 source 'https://git.coding.net/CoderTitan/TitanFMSpec.git'
 // 官方仓库
@@ -227,7 +227,7 @@ end
 - 在设计私有库的过程中难免可能会涉及到使用其他第三方库的情况, 又该如何解决这种问题
 - 添加组件依赖: 在`podspec`文件配置中, 添加如下依赖代码
 
-```
+```objc
 s.dependency 'AFNetworking'
 s.dependency 'SDWebImage'
 ```
@@ -264,7 +264,7 @@ s.dependency 'SDWebImage'
 > 为解决将私有库中的代码分成不同的功能模块, 使用`subspec`语法配置`podspec`文件, 如下:
 
 
-```
+```objc
 //格式:
 s.subspec 'XXX' do |x|
     //需要导入的所有文件的相对路径
