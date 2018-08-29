@@ -2,7 +2,7 @@
 title: 发布开源框架到CocoaPods入坑指南
 date: 2018-06-29 20:06:20
 tags: [CocoaPods, pod, trunk, spec, git]
-categories: 入坑指南
+categories: 组件化开发
 image:
 ---
 
@@ -39,7 +39,82 @@ git add .
 git commit -m '你的修改记录'
 // 推送master分支的代码到名称为origin的远程仓库
 git push origin master
+//本地打标签备份
+git tag "v0.0.1"
+//提交标签
+git push --tags
+//删除本地标签
+git tag -d 标签名称
+//删除远程标签
+git push origin: 标签名称
 ```
+
+
+### 使用CocoaPods
+#### 检索第三方框架
+
+- 使用命令`pod search xxx`
+- 从本地缓存的--第三方框架描述信息--生成的检索文件中检索到响应的框架信息
+- 本地缓存的框架描述信息位置: `~/Library/Caches/CocoaPods/search_index.json`
+- 如执行命令时出现错误, 可删除改索引文件, 执行命令: `rm ~/Library/Caches/CocoaPods/search_index.json`
+
+
+#### 安装第三方框架
+- 创建`Podfile`文件, 到自己工程内(一级目录): `pod init`
+  - `Podfile`文件: 答: 其实就是使用`ruby`语法编写的 "框架依赖描述文件"; 就是告诉`cocoapods`需要下载集成哪些框架
+- 安装框架
+  - `pod install`
+  - `cocoapods`在1.0.1以后版本, 会直接就是根据`Podfile`文件找到, 框架信息, 然后下载集成
+  - 但是1.0.1之前的版本, 会先更新本地的框架描述信息(非常耗时), 然后再根据文件下载
+  - 下载完成后会生成一个`Podfile.lock`文件, 记录着上一次下载的框架最新版本
+- `pod install`和`pod update`
+  - `pod install`
+    - 如果`Podfile.lock`文件存在, 直接从此文件中读取框架信息下载安装
+    - 如果不存在, 依然会读取`Podfile`文件内的框架信息, 下载好之后, 再根据下载好的框架信息, 生成`Podfile.lock`文件
+  - `pod update`
+    - 不管`Podfile.lock`是否存在, 都会读取`Podfile`文件的的框架信息去下载
+    - 下载好之后, 再根据下载好的框架信息, 生成`Podfile.lock`文件
+  - 主要区别在于, `Podfile`文件内的框架信息, 版本描述没有指定具体版本
+  - 一般情况下, 每个人从共享库把项目下载下来之后, 都会执行`pod install`命令安装!这样可以保证大家使用的第三方框架版本一致!!如果以后大家需要统一升级第三方框架, 那么每个人在执行 pod update
+
+
+#### CocoaPods相关操作
+
+```
+//创建Podfile文件
+pod init
+//搜索框架
+pod search
+//安装框架
+pod install
+//更新框架
+pod update
+
+//初始化(下载服务器中所有的第三方框架信息缓存到电脑本地)
+pod setup
+//查看第三方框架仓库源
+pod repo
+//移除仓库源
+pod repo remove master
+//添加仓库源
+//pod repo add master https://xxxx....
+```
+
+#### `CocoaPods`相关路径
+
+```
+//索引缓存路径
+//如果发现框架信息本地已经缓存, 但是就是无法搜索框架, 可以删除这个索引文件, 重新生成
+ ~/Library/Caches/CocoaPods/
+ 
+ //pod命令安装路径
+ /usr/local/bin
+ 
+ //pod框架索引信息缓存路径
+ /Users/apple/.cocoapods/repos/master
+```
+
+
 
 ### 创建Podspec描述文件
 - 该文件为`Cocoapods`依赖库的描述文件，每个`Cocoapods`依赖库必须有且仅有那么一个描述文件
