@@ -40,7 +40,47 @@ git commit -m '你的修改记录'
 pod spec cteate TitanFMBase
 ```
 
-最后打开`TitanFMBase`文件夹中的`TitanFMBase.podspec`, 修改对应的配置信息, 可[参考修改博客](https://www.titanjun.top/2018/06/29/%E5%8F%91%E5%B8%83%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6%E5%88%B0CocoaPods%E5%85%A5%E5%9D%91%E6%8C%87%E5%8D%97/)
+最后打开`TitanFMBase`文件夹中的`TitanFMBase.podspec`, 修改对应的配置信息, 可[参考修改博客](https://www.titanjun.top/2018/06/29/%E5%8F%91%E5%B8%83%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6%E5%88%B0CocoaPods%E5%85%A5%E5%9D%91%E6%8C%87%E5%8D%97/)或可参考[官方文档](https://guides.cocoapods.org/syntax/podspec.html#specification)
+
+
+```ruby
+Pod::Spec.new do |s|
+    s.name          = 'TitanModel' #项目名
+    s.version       = '0.1.0' #相应的版本号
+    s.summary       = 'A short description of YJDemoSDK.' #简述
+    s.description   = <<‐ DESC #详细描述
+    TODO: Add long description of the pod here.
+                      DESC
+    s.homepage      = 'https://github.com/CoderTitan/TitanModel' #项目主页
+    s.license       = { :type => 'MIT', :file => 'LICENSE' } #开源协议
+    s.author        = { 'CoderTitan' => 'quanjunt@163.com' } #作者
+    s.platform      = :ios, '8.0' #支持的平台
+    s.requires_arc  = true #arc和mrc选项
+    s.libraries     = 'z', 'sqlite3' #表示依赖的系统类库，比如libz.dylib等
+    s.frameworks    = 'UIKit','AVFoundation' #表示依赖系统的框架
+    s.ios.vendored_frameworks = 'TKBase/TKBase.framework' # 依赖的第三方/自己的framework
+    s.vendored_libraries = 'Library/Classes/libWeChatSDK.a' #表示依赖第三方/自己的静态库（比如libWeChatSDK.a）
+    #依赖的第三方的或者自己的静态库文件必须以lib为前缀进行命名，否则会出现找不到的情况，这一点非常重要
+
+    #平台信息
+    s.platform      = :ios, '7.0'
+    s.ios.deployment_target = '7.0'
+
+    #文件配置项
+    s.source        = { :git => 'https://github.com/CoderTitan/TitanModel.git', :tag => s.version.to_s }
+    #配置项目的目标路径，如果不是本地开发，pod init/update会从这个路去拉去代码
+
+    s.source_files = 'TitanModel/Classes/**/*' #你的源码位置
+    s.resources     = ['TitanModel/Assets/*'] #资源，比如图片，音频文件等
+    s.public_header_files = 'TitanModel/Classes/TitanModel.h'   #需要对外开放的头文件
+
+    #依赖的项目内容 可以多个
+    s.dependency 'MJExtension'
+    s.dependency 'AFNetworking'
+
+end
+```
+
 
 <div class="note warning"><p>注意点</p></div>
 

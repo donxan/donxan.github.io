@@ -134,19 +134,40 @@ pod spec create TitanModel
 - 下面介绍如何声明第三方库的代码目录和资源目录，还有该第三方库所依赖`ios`核心框架和第三方库
 - 去掉文件中的一些注释信息, 可以看到也就剩下以下内容了
 
-```objc
+```ruby
 Pod::Spec.new do |s|
-  s.name         = "TitanModel"
-  s.version      = "0.0.1"
-  s.summary      = "A short description of TitanModel."
-  s.description  = "这是详细的描述, 但是字数要比summary的字数多, 不然上传的时候回有警告提示, 我这么说你能明白了吗?不明白的话我也没办法了"
-  s.homepage     = "https://github.com/CoderTitan/TitanModel"
-  s.license      = "MIT"
-  s.swift_version = "4.0"
-  s.author             = { "CoderTitan" => "quanjunt@163.com" }
-  s.source       = { :git => "https://github.com/CoderTitan/TitanModel.git", :tag => "#{s.version}" }
-  s.source_files  = "Classes", "Classes/**/*.{h,m,swift}"
-  s.exclude_files = "Classes/Exclude"
+    s.name          = 'TitanModel' #项目名
+    s.version       = '0.1.0' #相应的版本号
+    s.summary       = 'A short description of YJDemoSDK.' #简述
+    s.description   = <<‐ DESC #详细描述
+    TODO: Add long description of the pod here.
+                      DESC
+    s.homepage      = 'https://github.com/CoderTitan/TitanModel' #项目主页
+    s.license       = { :type => 'MIT', :file => 'LICENSE' } #开源协议
+    s.author        = { 'CoderTitan' => 'quanjunt@163.com' } #作者
+    s.platform      = :ios, '8.0' #支持的平台
+    s.requires_arc  = true #arc和mrc选项
+    s.libraries     = 'z', 'sqlite3' #表示依赖的系统类库，比如libz.dylib等
+    s.frameworks    = 'UIKit','AVFoundation' #表示依赖系统的框架
+    s.ios.vendored_frameworks = 'TKBase/TKBase.framework' # 依赖的第三方/自己的framework
+    s.vendored_libraries = 'Library/Classes/libWeChatSDK.a' #表示依赖第三方/自己的静态库（比如libWeChatSDK.a）
+    #依赖的第三方的或者自己的静态库文件必须以lib为前缀进行命名，否则会出现找不到的情况，这一点非常重要
+
+    #平台信息
+    s.platform      = :ios, '7.0'
+    s.ios.deployment_target = '7.0'
+
+    #文件配置项
+    s.source        = { :git => 'https://github.com/CoderTitan/TitanModel.git', :tag => s.version.to_s }
+    #配置项目的目标路径，如果不是本地开发，pod init/update会从这个路去拉去代码
+
+    s.source_files = 'TitanModel/Classes/**/*' #你的源码位置
+    s.resources     = ['TitanModel/Assets/*'] #资源，比如图片，音频文件等
+    s.public_header_files = 'TitanModel/Classes/TitanModel.h'   #需要对外开放的头文件
+
+    #依赖的项目内容 可以多个
+    s.dependency 'MJExtension'
+    s.dependency 'AFNetworking'
 
 end
 ```
