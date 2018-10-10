@@ -108,7 +108,7 @@
 })();
 </script>
 
-<script type="text/javascript" src= "/js/src/instantclick.min.js" data-no-instant></script>
+<script type="text/javascript" src= "/source/js/src/instantclick.min.js" data-no-instant></script>
 <script data-no-instant>InstantClick.init();</script>
 
 </body>
