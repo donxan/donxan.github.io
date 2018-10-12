@@ -2,23 +2,16 @@
 title: Node.js搭建Web服务器
 date: 2018-01-20 11:13
 tags: [Node.js, Web, Express]
-categories: Node笔记
+categories: Node.js笔记
+image:
 ---
 
+![Node.js](http://pggsan8q9.bkt.clouddn.com/node.png)
 
-- 服务器种类
-  - Web服务器: 处理`HTTP`请求的服务器
-  - `Socket`服务器(即时通讯): 通过`socket`传输
-    - 即时通讯(IM): 允许两人或多人使用网路即时的传递文字讯息、档案、语音与视频交流
-  - 流媒体服务器: 音视频处理程序, 接受流媒体格式文件,`flv/ts`等
+
  
 <!-- more -->
 
-- 简单效果图
-- 
-![请求返回结果.jpg](http://upload-images.jianshu.io/upload_images/4122543-be8bdfac135d99e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
----
 
 ## Node.js介绍
 - `Node.js`发布于2009年5月，由Ryan Dahl(瑞恩·达尔)在`GitHub`上发布了最初版本的部分`Node.js`包，随后几个月里，有人开始使用Node.js开发应用
@@ -26,23 +19,43 @@ categories: Node笔记
 - Node 是一个服务器程序, 用Javascript这个语言开发服务器
 - `Node.js`的实质是对`Chrome V8`引擎进行了封装
 - `V8 JavaScript` 引擎是 `Google` 用于其 `Chrome` 浏览器的底层 JavaScript 引擎
-- 传统意义上的 JavaScript 运行在浏览器上，这是因为浏览器内核实际上分为两个部分:渲染引擎和 JavaScript 引擎。前者负责渲染 HTML + CSS，后者则负责运行 JavaScript。Chrome 使用的 JavaScript 引擎是 V8，它的速度非常快
+- 传统意义上的`JavaScript`运行在浏览器上，这是因为浏览器内核实际上分为两个部分:渲染引擎和 `JavaScript` 引擎。前者负责渲染`HTML + CSS`，后者则负责运行`JavaScript`。Chrome 使用的`JavaScript` 引擎是 V8，它的速度非常快
 - 参考[Node.js 究竟是什么？](https://www.ibm.com/developerworks/cn/opensource/os-nodejs/)和[Node.js的SDK文档](https://nodejs.org/dist/latest-v7.x/docs/api/)
  
+
+### 不需要搭建`Apache`等服务器
+
+为什么Node.js这个服务器语言不需要搭建`Apache`等服务器
+- 因为`Node.js`是基于V8去封装，所以在下载`Node.js`的时候，就会自带V8，因此不需要在另外搭建。
+- `Node.js`和`PHP`类似都是语言，是需要内核才需要跑起来的，`Node.js`依赖V8，PHP依赖`Apache`才能运行
+- 比如OC就需要依赖`iPhone`手机内核才能跑起来
+
+
 ### Node.js的优缺点
 - Node.js优点：
-  - 采用事件驱动、异步编程，为网络服务而设计。其实Javascript的匿名函数和闭包特性非常适合事件驱动、异步编程。而且JavaScript也简单易学，很多前端设计人员可以很快上手做后端设计。
-  - Node.js非阻塞模式的IO处理给Node.js带来在相对低系统资源耗用下的高性能与出众的负载能力，非常适合用作依赖其它IO资源的中间层服务。
-  - Node.js轻量高效，可以认为是数据密集型分布式部署环境下的实时应用系统的完美解决方案。Node非常适合如下情况：在响应客户端之前，您预计可能有很高的流量，但所需的服务器端逻辑和处理不一定很多。
+  - 采用事件驱动、异步编程，为网络服务而设计。其实`Javascript`的匿名函数和闭包特性非常适合事件驱动、异步编程。而且`JavaScript`也简单易学，很多前端设计人员可以很快上手做后端设计。
+  - `Node.js`非阻塞模式的IO处理给`Node.js`带来在相对低系统资源耗用下的高性能与出众的负载能力，非常适合用作依赖其它IO资源的中间层服务。
+  - `Node.js`轻量高效，可以认为是数据密集型分布式部署环境下的实时应用系统的完美解决方案。Node非常适合如下情况：在响应客户端之前，您预计可能有很高的流量，但所需的服务器端逻辑和处理不一定很多。
 - Node.js缺点：
   - 可靠性低
   - 单进程，单线程，只支持单核CPU，不能充分的利用多核CPU服务器。
   - 一旦这个进程崩掉，那么整个web服务就崩掉了。
 
+### Node.js工作原理
+
+- 传统Web服务器原理(T):传统的网络服务技术，是每个新增一个连接（请求）便生成一个新的线程，这个新的线程会占用系统内存，最终会占掉所有的可用内存。
+- `Node.js`工作原理(T)：只运行在一个单线程中，使用非阻塞的异步 I/O 调用，所有连接都由该线程处理，也就是一个新的连接，不会开启新的线程，仅仅一个线程去处理多个请求
+- 那么问题来了: 既然`Node.js`是单线程的, 那么单线程怎么开启异步?怎么工作的？
+- 这里我们将会引入一个事件驱动的概念:
+  - 传统的`web server`多为基于线程模型: 你启动`Apache`或者什么`server`，它开始等待接受连接, 当收到一个连接，`server`保持连接直到事务请求完成,如果他需要花几微妙时间去读取磁盘或者访问数据库，`web server`就阻塞了IO操作（这也被称之为阻塞式IO),想提高这样的`web server`的性能就只有启动更多的线程。
+  - `Node.Js`使用事件驱动模型，类似iOS的`Runloop`,把事件存放到一个循环中，然后取出来处理，当`web server`接收到请求，放入事件队列，然后去服务下一个web请求。当这个请求完成，从事件队列中取出来执行处理，将结果返回给用户。因为`webserver`一直接受请求而不等待任何读写操作。（这也被称之为非阻塞式IO或者事件驱动IO）
+
+
+
 ### Node.js使用介绍
-- Node.js使用Module模块去划分不同的功能，以简化App开发，Module就是库，跟组件化差不多，一个功能一个库。
-- NodeJS内建了一个HTTP服务器，可以轻而易举的实现一个网站和服务器的组合，不像PHP那样，在使用PHP的时候，必须先搭建一个Apache之类的HTTP服务器，然后通过HTTP服务器的模块加载CGI调用，才能将PHP脚本的执行结果呈现给用户
-- require() 函数，用于在当前模块中加载和使用其他模块；
+- `Node.js`使用Module模块去划分不同的功能，以简化App开发，Module就是模块，跟组件化差不多，一个功能一个模块。
+- `Node.js`内建了一个HTTP服务器，可以轻而易举的实现一个网站和服务器的组合，不像PHP那样，在使用PHP的时候，必须先搭建一个Apache之类的HTTP服务器，然后通过HTTP服务器的模块加载CGI调用，才能将PHP脚本的执行结果呈现给用户
+- `require()` 函数，用于在当前模块中加载和使用其他模块；
 
 ## Express模块(框架)
 - Express是Node.JS第三方库
@@ -69,6 +82,20 @@ categories: Node笔记
   - 终端输入: `npm install express --save`
 
 ## 搭建简单的Http服务器
+
+### 服务器种类
+  - Web服务器: 处理`HTTP`请求的服务器
+  - `Socket`服务器(即时通讯): 通过`socket`传输
+    - 即时通讯(IM): 允许两人或多人使用网路即时的传递文字讯息、档案、语音与视频交流
+  - 流媒体服务器: 音视频处理程序, 接受流媒体格式文件,`flv/ts`等
+
+
+简单效果图
+
+![请求返回结果.jpg](http://upload-images.jianshu.io/upload_images/4122543-be8bdfac135d99e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
 ### 开始搭建Http服务器
 - require加载模块
 - 监听端口号和网址, 端口号不能使用已经占用的端口比如（80），每个服务器相当于一个app，都需要端口，才能找到入口
@@ -157,12 +184,16 @@ var server = express()
 //3. 访问服务器(get或者post)
 //参数一: 请求根路径
 //3.1 get请求
-server.get('/', function (request, response, next) {
-    // console.log(request)
+// next: 路由句柄
+server.get('/home', function (request, response, next) {
+
     console.log('从据库获取数据')
     next()
+
 }, function (request, response) {
-    response.send('get请求成功')
+
+    response.send('这是请求返回的数据')
+
 })
 
 //3. 绑定端口
