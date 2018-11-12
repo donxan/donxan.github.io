@@ -354,4 +354,4 @@ server.listen(5050)
 > 1. [Node.js优缺点](http://blog.csdn.net/kaosini/article/details/8089597)
 > 2. [Node.js 究竟是什么？](https://www.ibm.com/developerworks/cn/opensource/os-nodejs/)
 > 3. [Express 4.x API 中文手册](http://www.expressjs.com.cn/4x/api.html)
-> 4. [JavaScript 语言参考]: https://msdn.microsoft.com/zh-cn/library/d1et7k7c(v=vs.94).aspx
+> 4. [JavaScript语言参考](https://msdn.microsoft.com/zh-cn/library/aa155110.aspx)
