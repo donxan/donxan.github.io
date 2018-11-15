@@ -13,7 +13,7 @@ categories: Swift学习笔记
 <!-- more -->
 ### 变量的基本使用
 
-```objc
+```Swift
     import UIKit
     let a : Int = 10
     // 错误写法,当一个标识符定义为常量时是不可以修改的
@@ -22,19 +22,19 @@ categories: Swift学习笔记
     //因为b定义为变量,因此是可以修改的
     b = 30
 ```
+
 ### 常量和变量的使用注意:
 
-```objc
-    import UIKit
-    /*
-     常量使用注意：
-        1> 优先使用常量
-        2> 常量的本质
-     */
-    // 1.注意一：在开发中let/var在选择时优先使用常量，防止不小被修改掉（let）
-    // 如果一个标识符不需要修改，但是声明称了变量，那么编译器会报警告
-    // 2.常量的本质：
-    // 含义：指向的内存地址不可以修改，但是可以通过内存地址，找到对应的对象，之后修改对象内部的属性
+- 常量使用注意：
+    - 优先使用常量
+    - 常量的本质
+- 注意：
+ - 在开发中let/var在选择时优先使用常量，防止不小被修改掉（let）
+ - 如果一个标识符不需要修改，但是声明称了变量，那么编译器会报警告
+- 常量的本质：
+    - 含义：指向的内存地址不可以修改，但是可以通过内存地址，找到对应的对象，之后修改对象内部的属性
+
+```Swift
     /*
      OC中创建对象：
         UIView *view = [[UIView alloc] init];
@@ -56,10 +56,13 @@ categories: Swift学习笔记
     // Swift中调用方法，统一使用点语法
     view.backgroundColor = UIColor.red
 ```
-### 创建对象补充
-- 创建UIView对象，并且在UIView中添加UIButton
 
-```objc
+### 创建对象补充
+
+创建UIView对象，并且在UIView中添加UIButton
+
+
+```Swift
     import UIKit
     // 1.创建UIView对象
     // OC : [[UIView alloc] initWithFrame:CGRect]
@@ -82,6 +85,7 @@ categories: Swift学习笔记
     // 5.将btn添加到UIView中
     view.addSubview(btn)
 ```
+
 ## Swift中数据类型
 ### Swift类型的介绍
 - Swift中的数据类型也有:整型/浮点型/对象类型/结构体类型等等
@@ -103,13 +107,15 @@ categories: Swift学习笔记
         - Float : 32位浮点型
         - Double : 64浮点型(默认)
 
-```objc
+```Swift
     // 定义一个Int类型的变量m,并且赋值为10
     var m : Int = 10
     // 定义一个Double类型的常量n,并且赋值为3.14
     let n : Double = 3.14
 ```
+
 ### Swift中的类型推导
+
 - Swift是强类型的语言
     - Swift中任何一个标识符都有明确的类型
     - 注意:
@@ -117,7 +123,7 @@ categories: Swift学习笔记
         - 因为Swift有类型推导,会自动根据后面的赋值来决定前面的标识符的数据类型
         - 可以通过option+鼠标左键来查看变量的数据类型
 
-```
+```Swift
     import UIKit
     let m = 20
     let n = 30.5
@@ -130,12 +136,15 @@ categories: Swift学习笔记
     let result1 = Double(m) + n
     let result2 = m + Int(n)
 ```
+
+
 ## 逻辑分支
-### 一. 分支的介绍
+### 分支的介绍
 - 分支即if/switch/三目运算符等判断语句
 - 通过分支语句可以控制程序的执行流程
 
-### 二. if分支语句
+
+### if分支语句
 - 和OC中if语句有一定的区别
     - 判断句可以不加()
     - 在Swift的判断句中必须有明确的真假
@@ -143,7 +152,7 @@ categories: Swift学习笔记
         - 必须有明确的Bool值
         - Bool有两个取值:false/true
 
-```
+```Swift
     // 演练一:
     let a = 10
     // 错误写法:
@@ -168,14 +177,16 @@ categories: Swift学习笔记
         print("完美")
     }
 ```
-### 三.guard的使用
+
+
+### guard的使用
 - guard是Swift2.0新增的语法
     - 它与if语句非常类似，它设计的目的是提高程序的可读性
     - guard语句必须带有else语句，它的语法如下：
         - 当条件表达式为true时候跳过else语句中的内容，执行语句组内容
         - 条件表达式为false时候执行else语句中的内容，跳转语句一般是return、break、continue和throw
 
-```
+```Swift
     guard 条件表达式 else {
         // 条换语句
         break
@@ -192,45 +203,51 @@ categories: Swift学习笔记
     }
     online(age)
 ```
-### 四.switch分支
-##### switch的介绍
+
+### switch分支
+#### switch的介绍
 - Switch作为选择结构中必不可少的语句也被加入到了Swift中
     - 只要有过编程经验的人对Switch语句都不会感到陌生
     - 但苹果对Switch进行了大大的增强，使其拥有其他语言中没有的特性
-##### switch的简单使用
+
+#### switch的简单使用
+
 - 基本用法和OC用法一致
     - 不同之处:
         - switch后可以不跟()
         - case后可以不跟break(默认会有break)
     - 例子:
 
-> ```
->     let sex = 0
->     switch sex {
->     case 0 :
->         print("男")
->     case 1 :
->         print("女")
->     default :
->         print("其他")
->     }
-> ```
+```Swift
+     let sex = 0
+     switch sex {
+     case 0 :
+         print("男")
+    case 1 :
+         print("女")
+     default :
+         print("其他")
+     }
+ ```
+ 
 - 简单使用补充:
     - 一个case判断中,可以判断多个值
     - 多个值以,隔开
-> ```objc
->     let sex = 0
->     switch sex {
->     case 0, 1:
->         print("正常人")
->     default:
->         print("其他")
->     }
-> ```
+    
+ ```Swift
+     let sex = 0
+     switch sex {
+     case 0, 1:
+         print("正常人")
+     default:
+         print("其他")
+     }
+ ```
+ 
 - 简单使用补充:
     - 如果希望出现之前的case穿透,则可以使用关键字fallthrough
 
-```
+```Swift
     let sex = 0
     switch sex {
     case 0:
@@ -241,14 +258,16 @@ categories: Swift学习笔记
         print("其他")
     }
 ```
-##### switch支持区间判断
+
+#### switch支持区间判断
+
 - 什么是区间?
     - 通常我们指的是数字区间:0~10,100~200
     swift中的区间常见有两种
     - 半开半闭区间:0..<10 表示:0~9,不包括10
         闭区间:0…10 表示:0~10
 
-```
+```Swift
     let score = 88
     switch score {
     case 0..<60:
@@ -263,14 +282,17 @@ categories: Swift学习笔记
         print("满分")
     }
 ```
+
 ## 循环使用
+
 ### 循环的介绍
 - 在开发中经常会需要循环
 - 常见的循环有:for/while/do while.
 - 这里我们只介绍for/while,因为for/while最常见
 ### for循环的写法
 - 区间for循环
-```
+
+```Swift
     for i in 0..<10 {
         print(i)
     }
@@ -290,7 +312,8 @@ categories: Swift学习笔记
 - while循环
     - while的判断句必须有正确的真假,没有非0即真
     - while后面的()可以省略
-```
+
+```Swift
     var a = 0
     while a < 10 {
         a++
