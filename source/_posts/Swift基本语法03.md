@@ -1,11 +1,12 @@
 ---
-title: Swift3.0基本语法03
+title: Swift基本语法03
 date: 2016-12-30 22:16:13
 tags: [Swift, 语法]
 categories: Swift学习笔记
 ---
 
 ## willSet和didSet
+
 - 属性观察器控制和响应属性的变化，当属性被设置的时候回调用属性观察器，主要有以下几个特点：
   - 属性改变之前触发willSet方法，属性改变之后触发didSet方法
   - 在给属性添加观察者之前必须要明确申明属性的类型，否则编译器会报错
@@ -17,7 +18,7 @@ categories: Swift学习笔记
 
 > 代码如下
 
-```
+```swift
 var age:Int = 18{
     didSet{
         print("didSet   \(oldValue)")
@@ -28,7 +29,9 @@ var age:Int = 18{
 }
 ```
 
-```
+使用
+
+```swift
 /**
  *  age重新赋值并打印     */
 age = 10;
@@ -64,7 +67,7 @@ didSet  200
 > 实例应用
  - cell内部,模型赋值
 
-```objc
+```swift
 class HomeViewCell: UICollectionViewCell {
 
     // MARK: 控件属性
@@ -94,7 +97,7 @@ class HomeViewCell: UICollectionViewCell {
 
 > 代码示例
 
-```
+```swift
 //定义一个变量
 var _tittle: String?
 
@@ -109,6 +112,5 @@ var _tittle: String?
     }
 ```
 
-##
 
-> Swift3.0语法其他相关文章
+

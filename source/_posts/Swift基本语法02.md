@@ -5,7 +5,7 @@ tags: [Swift3.0, 语法]
 categories: Swift学习笔记
 ---
 
-> 上一篇介绍了Swift的常量/变量和循环,详情见: [Swift3.0基本语法01](http://www.jianshu.com/p/35696abdaf0f)
+> 上一篇介绍了Swift的常量/变量和循环,详情见: [Swift语法](https://www.titanjun.top/categories/Swift%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/)
 
 
 <!-- more -->
@@ -104,6 +104,7 @@ let s2 = str.localizedLowercase
 
 ```
 
+
 ### 字符串的截取 
 
 - Swift中提供了特殊的截取方式
@@ -138,6 +139,25 @@ let middle2 = urlString.substring(with: range)
 let footerIndex = urlString.index(urlString.endIndex, offsetBy: -3)
 let footer2 = urlString.substring(from: footerIndex)
 ```
+
+### drop方式截取
+
+```swift
+// 获取截取之后的字符串
+let path = "https://www.titanjun.top"
+let str1 = path.dropFirst()
+// ttps://www.titanjun.top
+
+let str2 = path.dropLast()
+// https://www.titanjun.to
+
+let str3 = path.dropFirst(5)
+// ://www.titanjun.top
+
+let str4 = path.dropLast(3)
+// https://www.titanjun.
+```
+
 
 ## 数组的使用
 
