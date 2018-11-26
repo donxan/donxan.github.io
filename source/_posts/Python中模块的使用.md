@@ -31,7 +31,7 @@ categories: Python基础
 ### 标准库模块
 下面是一个使用`python`标准库中模块的例子
 
-```objc
+```python
 import sys
 
 print('命令行参数如下:')
@@ -59,7 +59,7 @@ Python 路径为： ['/Users/../GitHub/PythonDemo/PythonStudy/7-模块', '/Users
 - 在`Python`中一个`.py`文件就是一个模块
 - 下面是我自定义的一个`Titan.py`模块, 代码如下
 
-```objc
+```python
 print('这是Titan模块')
 
 # 定义变量
@@ -84,7 +84,7 @@ def sayBad():
 
 在`Python`中导入另一个文件或者模块, 受用的语法是`import`
 
-```objc
+```python
 # 引入单个或多个模块
 import module1[, module2[,... moduleN]
 
@@ -107,7 +107,7 @@ import calendar
 
 <div class="note info"><p>使用示例</p></div>
 
-```objc
+```python
 import Titan
 
 Titan.sayBad()
@@ -129,7 +129,7 @@ from modname import name1[, name2[, ... nameN]]
 
 <div class="note info"><p>使用示例</p></div>
 
-```objc
+```python
 from Titan import sayGood, sayBad, age
 
 sayBad()
@@ -150,7 +150,7 @@ good
 ### `from…import*`方式
 把一个模块中所有的内容, 全部倒入当前命名空间, 但是最好不要过多地使用
 
-```objc
+```python
 # 格式:
 from modname import *
 
@@ -167,7 +167,7 @@ print(age)
 - 如果我们不想让模块中的某些代码执行, 可以用`__name__`属性来使程序仅调用模块中的一部分
 - 现在我们将模块中的代码修改如下:
 
-```objc
+```python
 if __name__ == '__main__':
     print('这是Titan模块')
 else:
@@ -196,7 +196,7 @@ else:
 - 内置的函数`dir()` 可以找到模块内定义的所有名称, 以一个字符串列表的形式返回
 - 如果没有给定参数，那么`dir()`函数会罗列出当前定义的所有名称
 
-```objc
+```python
 import Titan
 
 print(dir(Titan))
@@ -246,7 +246,7 @@ print(dir())
 
 <div class="note success"><p>调用方法</p></div>
 
-```objc
+```python
 import a.Titan
 import b.Titan
 import b.coder
@@ -269,7 +269,7 @@ good--coder
 - 在`Mac`系统中会有一个默认的`Python2.7`版本的, 我自己安装了一个3.6的版本, 自然默认也安装了`pip`
 - 下面是一些`Python3.6`中`pip`的命令, 这里需要以`pip3`为命令头执行
 
-```objc
+```python
 # 查看当前pip版本
 pip3 -V
 
@@ -293,7 +293,7 @@ pip3 install Pillow
 #### 操作图像
 下面是最常见的图像缩放操作示例代码
 
-```objc
+```python
 from PIL import Image
 
 # 打开一个jpg图像文件，注意是当前路径:
@@ -313,7 +313,7 @@ im.save('jun.jpg', 'jpeg')
 
 其他功能如切片、旋转、滤镜、输出文字、调色板等一应俱全, 代码如下:
 
-```objc
+```python
 from PIL import Image, ImageFilter
 
 # 打开一个jpg图像文件，注意是当前路径:

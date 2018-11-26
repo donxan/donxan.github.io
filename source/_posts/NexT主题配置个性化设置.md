@@ -388,7 +388,7 @@ valine:
 
 看一下默认效果图
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/Snip20180508_6.png)
+![image](http://titanjun.oss-cn-hangzhou.aliyuncs.com/hexo-next/values.png)
 
 修改后的效果图
 

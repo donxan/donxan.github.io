@@ -6,7 +6,7 @@ categories: Python基础
 image: 
 ---
 
-![Tkinter](http://p7hfnfk6u.bkt.clouddn.com/Tkinter1.png)
+![Tkinter](https://upload-images.jianshu.io/upload_images/4122543-1342b3e94cfe5e4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 <!--more-->
 
 
@@ -55,7 +55,7 @@ window.mainloop()
 
 <div class="note success"><p>效果如下</p></div>
 
-![window](http://p7hfnfk6u.bkt.clouddn.com/Python%E4%B8%BB%E7%AA%97%E5%8F%A3.png)
+![window](https://upload-images.jianshu.io/upload_images/4122543-b245c99575e6a003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 主窗口除了上述方法之外还有以下方法
@@ -145,7 +145,7 @@ label.pack()
 
 <div class='note success'><p>显示效果</p></div>
 
-![Label](http://p7hfnfk6u.bkt.clouddn.com/Label%E6%95%88%E6%9E%9C.png)
+![Label](https://upload-images.jianshu.io/upload_images/4122543-67e48b535206d7eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 <div class='note info'><p>部分属性介绍</p></div>
 
@@ -189,7 +189,7 @@ window.mainloop()
 
 <div class='note success'><p>效果样式</p></div>
 
-![Button](http://p7hfnfk6u.bkt.clouddn.com/Python%E6%8C%89%E9%92%AE.png)
+![Button](https://upload-images.jianshu.io/upload_images/4122543-7b2bd64d446e59bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 <div class='note info'><p>部分属性介绍</p></div>
 
@@ -232,7 +232,7 @@ entry3.pack()
 
 <div class='note success'><p>效果样式</p></div>
 
-![Button](http://p7hfnfk6u.bkt.clouddn.com/Python%E8%BE%93%E5%85%A5%E6%A1%86.png)
+![Button](https://upload-images.jianshu.io/upload_images/4122543-863839a486d3360a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 <div class='note info'><p>监听输入框内文字的改变</p></div>
 
@@ -360,7 +360,7 @@ text.insert(INSERT, str)
 
 <div class='note success'><p>效果样式</p></div>
 
-![Button](http://p7hfnfk6u.bkt.clouddn.com/%E6%BB%9A%E5%8A%A8Text.png)
+![Button](https://upload-images.jianshu.io/upload_images/4122543-6a974b78c965c1c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ### Checkbutton多选按钮
@@ -424,7 +424,7 @@ radio3.pack()
 
 <div class='note success'><p>效果样式</p></div>
 
-![Checkbutton](http://p7hfnfk6u.bkt.clouddn.com/python%E5%8D%95%E9%80%89%E6%A1%86.png)
+![Checkbutton](https://upload-images.jianshu.io/upload_images/4122543-ef07dc16e50e97d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 

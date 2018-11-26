@@ -17,7 +17,7 @@ categories: Python基础
 - `cmath` 模块的函数跟 `math` 模块函数基本一致，区别是 `cmath` 模块运算的是复数，`math` 模块运算的是数学运算。
 - 要使用 `math` 或 `cmath` 函数必须先导入：
 
-```objc
+```python
 import math
 
 # 或者
@@ -27,7 +27,7 @@ import cmath
 ### Python数学常量
 在`math`模块中定义了三个数学常量
 
-```objc
+```python
 # 自然常数 e
 e = 2.718281828459045
 # 圆周率，一般以π来表示
@@ -86,7 +86,7 @@ sqrt(x)	 | 返回数字x的平方根, 如:`math.sqrt(4)`返回 2.0
 #### choice
 从序列(元组, 列表, 字符串)的元素中随机挑选一个元素
 
-```objc
+```python
 import random
 
 random.choice( seq  )
@@ -102,7 +102,7 @@ print(random.choice("titanjun"))
 #### randrange
 返回指定递增基数集合中的一个随机数，默认基数缺省值为1, 默认类型为int
 
-```objc
+```python
 randrange(self, start, stop=None, step=1, _int=int)
 ```
 
@@ -111,7 +111,7 @@ randrange(self, start, stop=None, step=1, _int=int)
   - `stop` -- 指定范围内的结束值，不包含在范围内。
   - `step` -- 指定递增基数
 
-```objc
+```python
 # 输出 100 <= number < 1000 间的随机偶数
 print(random.randrange(100, 1000, 2))
 ```
@@ -119,14 +119,14 @@ print(random.randrange(100, 1000, 2))
 #### random
 随机生成的一个实数，它在[0,1)范围内
 
-```objc
+```python
 print(random.random())
 ```
 
 #### seed
 该函数没有返回值, 改变随机数生成器的种子, 可生成同一个随机数
 
-```objc
+```python
 random.seed(5)
 print(random.random())
 random.seed()
@@ -137,7 +137,7 @@ print(random.random())
 - 将列表的所有元素随机排序, 没有返回值
 - 因元组不支持二次赋值, 所以元组不支持重新排列
 
-```objc
+```python
 # 将序列的所有元素随机排序
 list1 = [1, 2, 3, 4]
 random.shuffle(list1)
@@ -150,7 +150,7 @@ print(list1)
   - x -- 随机数的最小值，包含该值。
   - y -- 随机数的最大值，不包含该值。
 
-```objc
+```python
 print(random.uniform(2, 5))
 ```
 
@@ -161,7 +161,7 @@ print(random.uniform(2, 5))
 ### `in` 和 `not in`
 判断字符串是否包含指定字符串
 
-```objc
+```python
 # 判断字符串中是否包含某字符串
 str = 'Hello Python'
 
@@ -204,7 +204,7 @@ Hello Python True not in
 
 使用方式
 
-```objc
+```python
 print('che is %d' % 19)
 
 // 跟C语言的写法
@@ -218,7 +218,7 @@ prin他("che is %d", 19)
 
 简单使用
 
-```objc
+```python
 # format函数
 # 不设置指定位置，按默认顺序
 str1 = '{} {}'.format('hello', 'python')
@@ -252,7 +252,7 @@ che hello che
 ### 格式化操作符辅助指令
 相关操作符具体的使用后面再说
 
-![image description](http://p7hfnfk6u.bkt.clouddn.com/Snip20180417_3.png)
+![image description](http://titanjun.oss-cn-hangzhou.aliyuncs.com/python/String-1.png)
 
 
 ### 数字格式化操作符
@@ -284,7 +284,7 @@ che hello che
 小写十六进制 | `'{:#x}'.format(11)` | 0xb
 大写十六进制 | `'{:#X}'.format(11)`	| 0XB
 
-```objc
+```python
 print('百分比: %d%%' % 23)
 print('{}索引值: {{0}}'.format('jun'))
 print('{:#x}'.format(9))
@@ -336,7 +336,7 @@ str5.rindex('gi') | 10 | 同index方法, 从右向左查询
 #### count()方法
 返回子字符串在字符串中出现的次数
 
-```objc
+```python
 str.count(sub, start= 0,end=len(string))
 
 //使用
@@ -356,7 +356,7 @@ print('hello world'.count('l'))
 #### center()方法
 返回一个原字符串居中,并使用空格填充至长度 width 的新字符串。默认填充字符为空格
 
-```objc
+```python
 str.center(width, fillchar)
 
 //使用
@@ -376,7 +376,7 @@ str.center(width, fillchar)
 #### encode()方法
 以 encoding 指定的编码格式编码字符串。errors参数可以指定不同的错误处理方案
 
-```objc
+```python
 str.encode(encoding='UTF-8',errors='strict')
 
 //示例
@@ -392,7 +392,7 @@ str.encode(encoding='UTF-8',errors='strict')
 #### endswith()方法
 用于判断字符串是否以指定后缀结尾，如果以指定后缀结尾返回True，否则返回False
 
-```objc
+```python
 str.endswith(suffix[, start[, end]])
 
 //使用示例
@@ -415,7 +415,7 @@ print(str5.endswith('ha', 0, len(str5) - 2))
   - `width` -- 指定字符串长度。
   - `fillchar` -- 填充字符，默认为空格
 
-```objc
+```python
 str.ljust(width[, fillchar])
 str.rjust(width[, fillchar])
 
@@ -432,7 +432,7 @@ this is string example....wow!!!000000000000000000
 #### replace()方法
 返回字符串中的 old（旧字符串） 替换成 new(新字符串)后生成的新字符串，如果指定第三个参数max，则替换不超过 max 次
 
-```objc
+```python
 str.replace(old, new[, max])
 
 //测试
@@ -446,7 +446,7 @@ Pythin is a giod language!
 #### split()方法
 通过指定分隔符对字符串进行切片，如果参数 num 有指定值，则仅分隔 num 个子字符串
 
-```objc
+```python
 str.split(str="", num=string.count(str))
 
 //测试
@@ -462,7 +462,7 @@ print(str7.split(' ', 3))
 #### splitlines()方法
 按照行(`'\r', '\r\n', \n'`)分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符
 
-```objc
+```python
 str.splitlines([keepends])
 
 //测试

@@ -9,7 +9,7 @@ categories: Hexo博客
 
 
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/busuanzi.png)
+![image](http://titanjun.oss-cn-hangzhou.aliyuncs.com/hexo-next/busuanzi.png)
 
 
 <!-- more -->

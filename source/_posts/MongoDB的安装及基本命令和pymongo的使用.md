@@ -116,7 +116,7 @@ $ ./mongo
 
 <div class="note success"><p>出现这种情况, 则说明数据库连接成功</p></div>
 
-![Content](http://p7hfnfk6u.bkt.clouddn.com/mongoCon.png)
+![Content](http://upload-images.jianshu.io/upload_images/4122543-95f780e734a7a32e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ### 安装可视化工具`Studio 3T`

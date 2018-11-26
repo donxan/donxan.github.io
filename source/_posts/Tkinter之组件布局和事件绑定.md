@@ -8,7 +8,10 @@ image:
 
 
 
-![Tkinter](http://p7hfnfk6u.bkt.clouddn.com/Tkinter1.png)
+![Tkinter](http://upload-images.jianshu.io/upload_images/4122543-9f31000a70814ea9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
 
 <!--more-->
 
@@ -63,7 +66,7 @@ tree.insert('', 3, text='line4', values=('Che', 'W', 18, 165, 45))
 
 <div class="note success"><p>效果图如下</p></div>
 
-![表格数据](http://p7hfnfk6u.bkt.clouddn.com/Treeview1.png)
+![表格数据](https://upload-images.jianshu.io/upload_images/4122543-6852de768c9564c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ### 树状数据
@@ -107,7 +110,7 @@ treeA1_1_1 = tree.insert(treeA1_1, 1, 'X', text='萧山', values=('A1_1_2'))
 
 <div class="note success"><p>效果图如下</p></div>
 
-![树状数据](http://p7hfnfk6u.bkt.clouddn.com/Treeview2.png)
+![树状数据](https://upload-images.jianshu.io/upload_images/4122543-52e077a1441f83fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ## 布局方式
@@ -147,7 +150,7 @@ label4.place(x=91, y=91, width=200, height=50)
 如下图组件位置固定
 <div class="note success"><p>如下图组件位置固定</p></div>
 
-![place布局](http://p7hfnfk6u.bkt.clouddn.com/place.png)
+![place布局](https://upload-images.jianshu.io/upload_images/4122543-0bd83fa3642d52ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 相关函数
 `place`类提供了下列函数（使用组件实例对象调用）
@@ -197,7 +200,7 @@ label4.pack(side=BOTTOM, fill=X)
 
 <div class="note success"><p>效果如图</p></div>
 
-![pack](http://p7hfnfk6u.bkt.clouddn.com/pack.png)
+![pack](https://upload-images.jianshu.io/upload_images/4122543-fdb25319dfb38d3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 函数介绍
 `pack`类提供了下列函数（使用组件实例对象调用）
@@ -244,7 +247,7 @@ label4.grid(row=1, column=1)
 
 <div class="note success"><p>效果如图</p></div>
 
-![grid](http://p7hfnfk6u.bkt.clouddn.com/grid.png)
+![grid](https://upload-images.jianshu.io/upload_images/4122543-53d892edb51941ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 函数介绍
 `grid`类提供了下列函数（使用组件实例对象调用）：

@@ -49,7 +49,7 @@ image:
 
 ## `.a`静态库的生成和使用
 
-![staticLibrary](http://pcat1usdp.bkt.clouddn.com/staticLibrary.png)
+![staticLibrary](http://upload-images.jianshu.io/upload_images/4122543-b8f9c74fc0185ddd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 - 生成`.a`静态库, 这里我们选择第二个创建
@@ -185,7 +185,7 @@ lipo -thin arm64 /Users/xxx/Build/Products/hahah.a -output only_arm64.a
 
 创建新工程, 选择第一个创建`Framework`工程
 
-![staticLibrary](http://pcat1usdp.bkt.clouddn.com/staticLibrary.png)
+![staticLibrary](http://upload-images.jianshu.io/upload_images/4122543-88dc3d5139099895.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 #### 选择编译环境
@@ -210,7 +210,7 @@ lipo -thin arm64 /Users/xxx/Build/Products/hahah.a -output only_arm64.a
 `Target->Build Phases->Headers`中的`Project`中要暴露的头文件拖拽到`Pulic`里面： 
 
 
-![headerfile](http://pcat1usdp.bkt.clouddn.com/headerfile.gif)
+![headerfile](http://upload-images.jianshu.io/upload_images/4122543-6e40f428fc01b99b.gif?imageMogr2/auto-orient/strip)
 
 
 #### 编译 
@@ -245,7 +245,7 @@ lipo -thin arm64 /Users/xxx/Build/Products/hahah.a -output only_arm64.a
 - 静态库本身就是一个小项目, 实现某些功能, 但是这些功能在开发中也需要测试. 而测试代码又不能作为静态库的一部分
 - 建议创建一个复合项目, 在宿主工程中添加一个静态库的工程
 
-![allStatic](http://pcat1usdp.bkt.clouddn.com/allStatic.gif)
+![allStatic](http://upload-images.jianshu.io/upload_images/4122543-768361c8b9d2c1a7.gif?imageMogr2/auto-orient/strip)
 
 
 ### 自动打包

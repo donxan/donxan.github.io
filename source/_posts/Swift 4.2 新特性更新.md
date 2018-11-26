@@ -111,7 +111,7 @@ for item in CarKind.allCases {
 - `#warning`主要用于提醒你或者别人一些工作还没有完成，`Xcode`模板常使用`#warning`标记一些你需要替换成自己代码的方法存根(`method stubs`)。
 - `#error`主要用于如果你发送一个库，需要其他开发者提供一些数据。比如，一个网络 `API`的认证密码，你需要用户输入它们自己的密码，就使用`#error`在继续之前强制他们更改这行代码
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/Snip20180605_3.png)
+![image](http://upload-images.jianshu.io/upload_images/4122543-9babace437ddb9f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 <div class="note info"><p>`#warning`和`#error`可以和已存的`#if`编译指令共同使用，并且只有在条件为`true`时才会激活。例如：</p></div>
 

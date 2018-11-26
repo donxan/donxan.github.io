@@ -26,7 +26,7 @@ image:
 ### 下载`MySQL`
 直接打开[MySQL官网下载页](https://dev.mysql.com/downloads/mysql/), 选择`mac OS`系统后, 选择`DMG`格式下载软件
 
-![SQLDownload1](http://p7hfnfk6u.bkt.clouddn.com/sqlDownload1.png)
+![SQLDownload1](http://upload-images.jianshu.io/upload_images/4122543-4b588c7801a15bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 接着, 会跳转到如下页面, 你只需要选择不登录,直接下载即可(当然也可以选择注册并登录)
@@ -39,7 +39,7 @@ image:
 - 最后打开系统偏好设置, 最后会有一个`MySQL`的图标
 - 打开`MySQL`会看到默认是开启的(安装的时候按照默认设置安装的情况下)
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/MySQLServer.png)
+![image](http://upload-images.jianshu.io/upload_images/4122543-a704a63464f08911.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 <div class="note success"><p>到这里`MySQL`就已经基本安装完成了, 不需要再修改什么配置了</p></div>
@@ -226,7 +226,7 @@ select name, age from student;
 select name as a, age from student;
 ```
 
-![别名](http://p7hfnfk6u.bkt.clouddn.com/sqlselectname.png)
+![别名](http://upload-images.jianshu.io/upload_images/4122543-82c6b03e2d0e3f89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 #### 消除重复行
@@ -240,7 +240,7 @@ select gender from student;
 select distinct gender from student;
 ```
 
-![distinct](http://p7hfnfk6u.bkt.clouddn.com/sqldistinct.png)
+![distinct](http://upload-images.jianshu.io/upload_images/4122543-763a7bd7dcafd230.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 

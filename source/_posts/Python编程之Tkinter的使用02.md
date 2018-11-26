@@ -6,7 +6,7 @@ categories: Python基础
 image: 
 ---
 
-![Tkinter](http://p7hfnfk6u.bkt.clouddn.com/Tkinter1.png)
+![Tkinter](http://upload-images.jianshu.io/upload_images/4122543-9f31000a70814ea9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 <!--more-->
 
@@ -132,7 +132,7 @@ lb.bind('<Double-Button-1>', listboxAction)
 
 <div class="note success"><p>效果图如下</p></div>
 
-![Listbox](http://p7hfnfk6u.bkt.clouddn.com/Listbox.gif)
+![Listbox](https://upload-images.jianshu.io/upload_images/4122543-1c7d4716c89a76f5.gif?imageMogr2/auto-orient/strip)
 
 ```Python
 # 滚动
@@ -176,7 +176,7 @@ scale["command"] = showNumber
 
 <div class="note success"><p>效果图如下</p></div>
 
-![Scale](http://p7hfnfk6u.bkt.clouddn.com/Scale%E6%8E%A7%E4%BB%B6.png)
+![Scale](https://upload-images.jianshu.io/upload_images/4122543-2ebac66c4a3c2535.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ## `Spinbox`数值范围控制器
@@ -213,7 +213,7 @@ spin1.pack()
 
 <div class="note success"><p>效果图如下</p></div>
 
-![Spinbox](http://p7hfnfk6u.bkt.clouddn.com/Spinbox%E6%8E%A7%E4%BB%B6.png)
+![Spinbox](https://upload-images.jianshu.io/upload_images/4122543-e44e2db53b0e111e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ## `Menu`菜单
@@ -281,7 +281,7 @@ menubar.add_cascade(label='颜色', menu=menu2)
 
 <div class="note success"><p>效果图如下</p></div>
 
-![Menu](http://p7hfnfk6u.bkt.clouddn.com/Menu%E9%A1%B6%E5%B1%82%E8%8F%9C%E5%8D%95.png)
+![Menu](https://upload-images.jianshu.io/upload_images/4122543-402ad8e39826b41b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 <div class="note warning"><p>tearoff 属性介绍</p></div>
@@ -316,7 +316,7 @@ window.bind("<Button-2>", showMenu)
 
 <div class="note success"><p>效果图如下</p></div>
 
-![Menu](http://p7hfnfk6u.bkt.clouddn.com/Menu%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95.png)
+![Menu](https://upload-images.jianshu.io/upload_images/4122543-ceec7101898afb22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 添加删除菜单
 菜单中每一项的删除和添加都是根据索引操作的
@@ -370,7 +370,7 @@ combo.bind('<<ComboboxSelected>>', comboboxClick)
 
 <div class="note success"><p>效果图如下</p></div>
 
-![Combobox](http://p7hfnfk6u.bkt.clouddn.com/Combobox.png)
+![Combobox](https://upload-images.jianshu.io/upload_images/4122543-4c8b49d99080812a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ## `Frame`布局
@@ -396,7 +396,7 @@ rightFrame.pack(side=RIGHT)
 
 <div class="note success"><p>效果图如下</p></div>
 
-![Combobox](http://p7hfnfk6u.bkt.clouddn.com/Python-Frame.png)
+![Combobox](https://upload-images.jianshu.io/upload_images/4122543-3b01984505b9a763.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 - 至此, `Tkinter`的大部分组件已经基本都介绍完了

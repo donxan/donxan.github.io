@@ -14,7 +14,7 @@ categories: Python基础
 ## 创建类
 使用 `class` 语句来创建一个新类，`class` 之后为类的名称并以冒号结尾:
 
-```objc
+```python
 class ClassName:
    '类的帮助信息'   #类文档字符串
    class_suite  #类体
@@ -22,7 +22,7 @@ class ClassName:
 
 下面是一个具体的`Python` 类的示例:
 
-```objc
+```python
 class Person:
     '人类的基类'
 
@@ -52,7 +52,7 @@ class Person:
 - 在实例化类的方式中, 每一种语言都有不同的初始化方式, 在OC中用`[[Person alloc] init]`, 在`Swift`中用`Person()`, 在`Java`和`JavaScript`中则是使用关键字`new`
 - 但是在 `Python` 中并没有类似关键字, 其初始化方式和`Swift`的方式类似
 
-```objc
+```python
 # 1.创建第一个对象
 person1 = Person("titan", 'man')
 # 2.创建第二个对象
@@ -62,7 +62,7 @@ person2 = Person('jun', 'woman')
 ### 属性访问
 在`Python`中属性和实例方法的访问都是通过点语法的形式, 如下:
 
-```objc
+```python
 # 1.创建第一个对象
 person1 = Person("titan", 'man')
 person1.displayPerson()
@@ -101,7 +101,7 @@ del person1.age
 
 这里在介绍一些相关函数操作
 
-```objc
+```python
 # 6.常用函数
 # 6.1.检查是否存在一个属性
 print(hasattr(person1, 'age')) #False
@@ -125,7 +125,7 @@ delattr(person2, 'age')
 - `__module__`: 类定义所在的模块（类的全名是`__main__.className`，如果类位于一个导入模块`mymod`中，那么`className.- __module__ `等于 `mymod`）
 - `__bases__ `: 类的所有父类构成元素（包含了一个由所有父类组成的元组）
 
-```objc
+```python
 # Python内置类属性
 # 1.类的文档字符串
 print(Person.__doc__)
@@ -165,7 +165,7 @@ print(Person.__dict__)
 - 在类的内部，使用 `def` 关键字可以为类定义一个方法，与一般函数定义不同，类方法必须包含参数`self`, 且为第一个参数
 - `__private_method`：两个下划线开头，声明该方法为私有方法，不能在类地外部调用。在类的内部调用 `self.__private_methods`
 
-```objc
+```python
 
 ```
 
@@ -188,7 +188,7 @@ print(Person.__dict__)
 
 #### 函数语法：
 
-```objc
+```python
 re.match(pattern, string, flags=0)
 re.search(pattern, string, flags=0)
 ```
@@ -209,7 +209,7 @@ re.search(pattern, string, flags=0)
 - `group(num=0)`: 匹配的整个表达式的字符串，group() 可以一次输入多个组号，在这种情况下它将返回一个包含那些组所对应值的元组
 - `groups()`: 返回一个包含所有小组字符串的元组，从 1 到 所含的小组号
 
-```objc
+```python
 # 正则表达式
 # 1. re.match函数
 match = re.match('https', 'https :// www .titanjun .top')
@@ -251,7 +251,7 @@ www
 
 #### 函数语法：
 
-```objc
+```python
 re.sub(pattern, repl, string, count=0, flags=0)
 ```
 
@@ -261,7 +261,7 @@ re.sub(pattern, repl, string, count=0, flags=0)
 - `string`: 要被查找替换的原始字符串。
 - `count`: 模式匹配后替换的最大次数，默认 0 表示替换所有的匹配
 
-```objc
+```python
 # 3. sub替换函数
 subStr = '2018-05-03 # 文章的写作日期'
 # 删除注释
@@ -286,7 +286,7 @@ print(re.sub('\D', '.', subStr2, 2))
 
 #### 函数语法
 
-```objc
+```python
 re.compile(pattern[, flags])
 ```
 
@@ -294,7 +294,7 @@ re.compile(pattern[, flags])
 - `pattern`: 一个字符串形式的正则表达式
 - `flags`: 可选，表示匹配模式，比如忽略大小写，多行模式等
 
-```objc
+```python
 # 4. compile 函数
 pattern = re.compile(r'\d+')  # 用于匹配至少一个数字
 print(pattern.match('titan0929'))
@@ -327,7 +327,7 @@ None
 
 #### 函数语法
 
-```objc
+```python
 findall(string[, pos[, endpos]])
 ```
 
@@ -336,7 +336,7 @@ findall(string[, pos[, endpos]])
 - `pos`: 可选参数，指定字符串的起始位置，默认为 0。
 - `endpos`: 可选参数，指定字符串的结束位置，默认为字符串的长度
 
-```objc
+```python
 # 5. findall
 pattern2 = re.compile(r'\d+')  # 用于匹配至少一个数字
 fin1 = pattern2.findall('titanjun09-www123titan29')
@@ -355,7 +355,7 @@ print(fin2)
 
 #### 函数语法
 
-```objc
+```python
 re.split(pattern, string[, maxsplit=0, flags=0])
 ```
 
@@ -365,7 +365,7 @@ re.split(pattern, string[, maxsplit=0, flags=0])
 - `maxsplit`: 分隔次数，maxsplit=1 分隔一次，默认为 0，不限制次数
 - `flags`: 标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等
 
-```objc
+```python
 # 6. split
 split1 = re.split('\W+', 'https://www.titanjun.top')
 print(split1)

@@ -30,7 +30,7 @@ categories: Python基础
 
 `Python`的输出语法和`Swift`的输出一样
 
-```objc
+```python
 # 输出
 print("Hello Python")
 ```
@@ -39,7 +39,7 @@ print("Hello Python")
 - `python`中单行注释采用 # 开头。
 - `python` 中多行注释使用三个单引号 `'''` 或三个双引号 `"""`
 
-```objc
+```python
 
 # 这里是单行注释
 
@@ -61,7 +61,7 @@ print("Hello Python")
 ### 变量
 `Python`中的变量不需要声明，变量的赋值操作既是变量声明和定义的过程。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建
 
-```objc
+```python
  counter = 100 # 赋值整型变量
  miles = 1000.0 # 浮点型
  name = "John" # 字符串
@@ -69,7 +69,7 @@ print("Hello Python")
 
 Python允许你同时为多个变量赋值, 也可以为多个对象指定多个变量。例如：
 
-```objc
+```python
 a = b = c = 1 
 
 # 多变量赋值
@@ -112,7 +112,7 @@ int | long | float |	complex
   - 从右到左索引默认-1开始的，最大范围是字符串开头
   - 获取某一部分字符串的格式: [头下标:尾下标]
 
-```objc
+```python
 # 字符串
 str = 'Hello Python'
 
@@ -147,7 +147,7 @@ print("倒数第二个字符--" + str[-2])
 
 下面是以上语法的输出结果
 
-```objc
+```python
 /*
 完整字符串--Hello Python
 第一个字符--H
@@ -170,7 +170,7 @@ Hello PythonHello PythonHello Python
   - 下标可以为空表示取到头或尾。
 - 加号（+）是列表连接运算符，星号（*）是重复操作
 
-```objc
+```python
 # List 列表
 list1 = [12, 34, 3.14, 5.3, 'titan']
 list2 = [10, 'jun']
@@ -205,7 +205,7 @@ print(list2 * 2)
 
 上述语句输出结果如下
 
-```objc
+```python
 [12, 34, 3.14, 5.3, 'titan']
 12
 [34]
@@ -222,7 +222,7 @@ titan
 - 元组用"()"标识。内部元素用逗号隔开
 - 元素不能二次赋值，相当于只读列表
 
-```objc
+```python
 # 元组
 tuple1 = (12, 34, 3.14, 5.3, 'titan')
 tuple2 = (10, 'jun')
@@ -258,7 +258,7 @@ print(tuple2 * 2)
 
 输出结果
 
-```objc
+```python
 (12, 34, 3.14, 5.3, 'titan')
 12
 (3.14,)
@@ -272,7 +272,7 @@ titan
 
 > 这里注意下, 当截取某一范围的数据时, 类似[2:3], [-3:-1], 实际的取值范围是含左不含右, 等同于数学中的半开半闭区间(左闭右开)--[2, 3)
 
-```objc
+```python
 # 因元组的元素是只读的, 不能二次赋值, 所以请注意, 以下写法是错误的
 # 运行会报错: TypeError: 'tuple' object does not support item assignment
 tuple2[0] = 20
@@ -287,7 +287,7 @@ tuple2[1] = "titan"
 - 这里的字典的key值, 不仅仅可以用字符串, 还可以用`Number`类型
 
 
-```objc
+```python
 # 字典
 dict1 = {'name': 'jun', 'age': 18, 'score': 90.98}
 dict2 = {'name': 'titan'}
@@ -328,7 +328,7 @@ del dict3
 
 上述语句的输出结果如下
 
-```objc
+```python
 {'name': 'titan'}
 {'name': 'brother', 'age': 20, 3: '完美', 0.9: 0.9}
 90.98
@@ -342,7 +342,7 @@ dict_values(['jun', 18, 90.98])
 - 集合对象是由一组无序排列的值组成的序列，集合成员可以做字典中的键
 - 集合`sets`有两种不同的类型：可变集合`set`和不可变集合`frozenset`
 
-```objc
+```python
 # 集合
 s = {1, 2, 3, 4}
 
@@ -418,7 +418,7 @@ oct(x) | 将一个整数转换为一个八进制字符串
 
 使用示例如下
 
-```objc
+```python
 # 数据类型转换
 dic = {'name': 'jun', 'age': 18}
 # 1.将x转换为一个整数

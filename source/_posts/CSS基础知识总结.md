@@ -77,7 +77,7 @@ categories: HTML5
 ## CSS语法
 
 
-![cssSelect](http://pcatqk8cn.bkt.clouddn.com/cssSel.png)
+![cssSelect](http://titanjun.oss-cn-hangzhou.aliyuncs.com/html5/cssSel.png)
 
 
 - 每个CSS样式由3个部分组成，选择器，属性和值。
@@ -302,7 +302,7 @@ background-position: 30% 20%;
 - `border-style`: 用来定义边框的样式
 
 
-![BorderStyle](http://pdl544q1e.bkt.clouddn.com/borderstyle.png)
+![BorderStyle](http://titanjun.oss-cn-hangzhou.aliyuncs.com/html5/borderstyle.png)
 
 - `border-radius`: 设置边框圆切角
 - `border-width`: 设置边框宽度

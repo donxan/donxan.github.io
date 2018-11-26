@@ -15,7 +15,7 @@ categories: Python基础
 ## 列表(List)
 先回顾下上一篇[Python数据类型详解01](https://www.titanjun.top/2018/04/10/Python数据类型详解01/)文章中介绍的列表的基础知识
 
-```objc
+```python
 # List 列表
 list1 = [12, 34, 3.14, 5.3, 'titan']
 list2 = [10, 'jun']
@@ -51,7 +51,7 @@ print(list2 * 2)
 ### 添加和删除列表元素
 对列表的数据项进行修改或更新，你也可以使用append()方法来添加列表项
 
-```objc
+```python
 list1 = []          ## 空列表
 list1.append('Google')   ## 使用 append() 添加元素
 list1.append('Baidu')
@@ -63,7 +63,7 @@ print(list1)
 
 使用 `del` 语句来删除列表的元素
 
-```objc
+```python
 del list1[1]
 
 //输出:
@@ -73,7 +73,7 @@ del list1[1]
 ### 列表脚本操作符
 列表对 + 和 星号 的操作符与字符串相似。+ 号用于组合列表，星号 号用于重复列表
 
-```objc
+```python
 # 1. 脚本操作符
 list1 = [1, 2, 3]
 # 元素个数
@@ -120,7 +120,7 @@ for x in list1 :
 #### extend()方法
 用于在列表末尾一次性追加另一个序列(元组和列表)中的多个值（用新列表扩展原来的列表）
 
-```objc
+```python
 list3 = [12, 'as', 45]
 list4 = (23, 'ed')
 list3.extend(list4)
@@ -133,7 +133,7 @@ print(list3)
 #### pop()方法
 用于移除列表中的一个元素（默认最后一个元素），并且返回该元素的值
 
-```objc
+```python
 list.pop(obj=list[-1])
 
 //使用
@@ -154,7 +154,7 @@ ed
 ## 元组
 先回顾一下上篇文章介绍的元组的基础知识
 
-```objc
+```python
 # 元组
 tuple1 = (12, 34, 3.14, 5.3, 'titan')
 tuple2 = (10, 'jun')
@@ -190,7 +190,7 @@ print(tuple2 * 2)
 ### 元组运算符
 与列表的运算符和操作类似, 如下:
 
-```objc
+```python
 # 计算元素个数
 print(len((1, 2, 3)))
 # 合并元组
@@ -221,7 +221,7 @@ for x in tuple1:
 
 ### 元组内置函数
 
-```objc
+```python
 tuple1 = (1, 2, 4, 5) 
 # 元组中元素最大值
 print(max(tuple1))
@@ -239,7 +239,7 @@ print(tuple(['a', 'd', 'f']))
 ## 字典
 先看看上文中介绍到的字典的相关基础知识, 需要注意的是: 键必须不可变，所以可以用数字，字符串或元组充当，所以用列表就不行
 
-```objc
+```python
 # 字典
 dict1 = {'name': 'jun', 'age': 18, 'score': 90.98}
 dict2 = {'name': 'titan'}
@@ -281,7 +281,7 @@ del dict3
 
 ### 内置函数
 
-```objc
+```python
 dic1 = {'name': 'titan', 'age':20}
 # 计算字典元素个数，即键的总数
 print(len(dic1))
@@ -302,7 +302,7 @@ print(type(dic1))
 - `copy() `函数返回一个字典的浅复制
 - 直接赋值和 `copy` 的区别
 
-```objc
+```python
 dict1 =  {'user':'runoob','num':[1,2,3]}
  
 dict2 = dict1          # 浅拷贝: 引用对象
@@ -331,7 +331,7 @@ print(dict3)
 - 参数一: 以序列`seq`中元素做字典的键
 - 参数二: `value`为字典所有键对应的初始值(可选参数)
 
-```objc
+```python
 dict.fromkeys(seq[, value])
 
 # 使用
@@ -351,7 +351,7 @@ print(dic3)
 - 参数一: 字典中要查找的键。
 - 参数二: 如果指定键的值不存在时，返回该默认值值(可选参数)
 
-```objc
+```python
 dict.get(key, default=None)
 
 # 使用
@@ -373,7 +373,7 @@ man
 #### update()方法
 把字典的键/值对更新到另一个字典里(合并字典)
 
-```objc
+```python
 dict.update(dict2)
 
 # 使用
@@ -390,7 +390,7 @@ print(dic5)
  - `popitem()`: 随机返回并删除字典中的一对键和值。
 如果字典已经为空，却调用了此方法，就报出KeyError异常
 
-```objc
+```python
 pop(key[,default])
 popitem()
 
@@ -410,7 +410,7 @@ man
 
 #### 其他方法
 
-```objc
+```python
 dic2 = {'name': 'titan', 'age':20}
 # 判断键是否存在于字典中, 在True, 不在False
 print(dic2.__contains__('name'))
@@ -450,7 +450,7 @@ tm_isdst | 夏令时 |	-1, 0, 1, -1是决定是否为夏令时的旗帜
 
 获取时间的简单示例
 
-```objc
+```python
 # 日期和时间
 import time
 
@@ -472,7 +472,7 @@ Wed Apr 18 19:40:44 2018
 ### 格式化日期
 先看几个简单示例
 
-```objc
+```python
 # 1.格式化日期
 # 格式化成 2018-04-18 19:49:44 形式
 newDate1 = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
@@ -522,7 +522,7 @@ Wed Apr 18 19:52:21 2018
 - `timezone`: 当地时区（未启动夏令时）距离格林威治的偏移秒数（>0，美洲;<=0大部分欧洲，亚洲，非洲）
 - `tzname`: 包含一对根据情况的不同而不同的字符串，分别是带夏令时的本地时区名称，和不带的
 
-```objc
+```python
 print(time.timezone)
 print(time.tzname)
 
@@ -535,7 +535,7 @@ print(time.tzname)
 #### altzone()方法
 返回格林威治西部的夏令时地区的偏移秒数。如果该地区在格林威治东部会返回负值（如西欧，包括英国）。对夏令时启用地区才能使用
 
-```objc
+```python
 print(time.altzone)
 
 # 输出结果:
@@ -545,7 +545,7 @@ print(time.altzone)
 #### asctime()方法
 接受时间元组并返回一个可读的形式为`"Tue Dec 11 18:07:14 2008"`（2008年12月11日 周二18时07分14秒）的24个字符的字符串
 
-```objc
+```python
 localTime = time.localtime()
 print(localTime)
 # 格式化时间
@@ -562,7 +562,7 @@ Wed Apr 18 19:40:44 2018
 - `localtime`: 类似`gmtime`，作用是格式化时间戳为本地的时间
 - 如果参数未给或者为None的时候，将会默认`time.time()`为参数
 
-```objc
+```python
 time.ctime([ sec ])
 time.gmtime([ sec ])
 time.localtime([ sec ])
@@ -590,7 +590,7 @@ time.struct_time(tm_year=2018, tm_mon=4, tm_mday=19, tm_hour=9, tm_min=43, tm_se
 - 如果输入的值不是一个合法的时间，将触发 `OverflowError` 或 `ValueError`
 - 参数: 结构化的时间或者完整的9位元组元素
 
-```objc
+```python
 time.mktime(t)
 
 # 使用
@@ -606,7 +606,7 @@ print(time.mktime(time.localtime()))
 #### sleep()方法
 推迟调用线程，可通过参数`secs`指秒数，表示进程推迟的时间
 
-```objc
+```python
 time.sleep(t)
 
 # 使用
@@ -624,7 +624,7 @@ Thu Apr 19 10:29:54 2018
 - 参数`format` -- 格式字符串
 - 参数`t` -- 可选的参数t是一个`struct_time`对象
 
-```objc
+```python
 time.strftime(format[, t])
 
 # 使用
@@ -640,7 +640,7 @@ print(newDate1)
 - 参数一: 时间字符串
 - 参数二: 格式化字符串
 
-```objc
+```python
 time.strptime(string[, format])
 
 # 使用
@@ -654,7 +654,7 @@ time.struct_time(tm_year=2018, tm_mon=11, tm_mday=20, tm_hour=0, tm_min=0, tm_se
 #### tzset()方法
 根据环境变量TZ重新初始化时间相关设置, 标准TZ环境变量格式：
 
-```objc
+```python
 std offset [dst [offset [,start[/time], end[/time]]]]
 ```
 
@@ -666,7 +666,7 @@ std offset [dst [offset [,start[/time], end[/time]]]]
   - `Mm.n.d`: 日期的月份、周数和日期。`w=1` 指月份中的第一周，而 `w=5` 指月份的最后一周。
   - `time`:（可选）`DST` 开始生效时的时间（24 小时制）。默认值为 02:00（指定时区的本地时间）
 
-```objc
+```python
 # 没有返回值
 time.tzset()
 
@@ -692,7 +692,7 @@ print time.strftime('%X %x %Z')
 - 星期一是默认的每周第一天，星期天是默认的最后一天。
 - 介绍一下`Calendar`模块的相关函数
 
-```objc
+```python
 # 返回当前每周起始日期的设置, 默认情况下，首次载入caendar模块时返回0，即星期一
 print(calendar.firstweekday())
 
@@ -730,7 +730,7 @@ True
 #### `calendar` 和 `prcal`方法
 返回一个多行字符串格式的year年年历，3个月一行，间隔距离为`c`。 每日宽度间隔为`w`字符。每行长度为`21* W+18+2* C`。`l`是每星期行数
 
-```objc
+```python
 calendar.calendar(year,w=2,l=1,c=6)
 calendar.prcal(year,w=2,l=1,c=6)
 
@@ -744,7 +744,7 @@ print(calendar.prcal(2018))
 #### `month` 和 `prmonth`方法
 返回一个多行字符串格式的`year`年`month`月日历，两行标题，一周一行。每日宽度间隔为`w`字符。每行的长度为`7* w+6`。`l`是每星期的行数
 
-```objc
+```python
 calendar.month(year,month,w=2,l=1)
 calendar.prmonth(year,month,w=2,l=1)
 
@@ -758,7 +758,7 @@ print(calendar.prmonth(2018, 4))
 #### `timegm`方法
 和`time.gmtime`相反：接受一个时间元组形式，返回该时刻的时间戳（1970纪元后经过的浮点秒数）
 
-```objc
+```python
 calendar.timegm(tupletime)
 
 # 使用

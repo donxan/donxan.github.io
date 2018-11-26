@@ -18,7 +18,7 @@ categories: Python基础
 ### 语法错误
 语法错误，也被称作解析错误, 使我们在学习`Python`过程中最常遇到的错误, 来看看下面两个错误示例:
 
-```objc
+```python
 if True
     print('titan')
 
@@ -40,7 +40,7 @@ SyntaxError: invalid syntax
 - 运行期检测到的错误称为 异常，并且程序不会无条件的崩溃
 - 异常能够编译通过, 但是不能运行成功; 而语法错误不能编译成功
 
-```objc
+```python
 print(1 / 0)
 # 错误信息:
 File "../5-读文件.py", line 22, in <module>
@@ -80,7 +80,7 @@ NameError: name 'ad' is not defined
 
 #### 第一种格式
 
-```objc
+```python
 # 格式:
 
 try:
@@ -103,7 +103,7 @@ else:
 - 语句中的`else`是可有可无的
 - `except`语句中的`as e`也可以不加
 
-```objc
+```python
 # 错误处理的语句(else可有可无)
 try.......except....else
 
@@ -121,7 +121,7 @@ else:
 #### 第二种格式
 一个 `except` 子句可以在括号中列出多个异常的名字, 对于指定的一些异常做统一处理
 
-```objc
+```python
 try:
     print(7 / 0)
 except (ZeroDivisionError, NameError):
@@ -131,7 +131,7 @@ except (ZeroDivisionError, NameError):
 #### 第三种格式
 无论遇到的是哪一种异常, 均做统一处理
 
-```objc
+```python
 try:
     print(7 / 0)
 except :
@@ -151,7 +151,7 @@ except :
 #### 使用示例:
 一个 `try` 语句可能包含多个 `except` 子句，分别指定处理不同的异常。至多只会有一个分支被执行。异常处理程序只会处理对应的 `try` 子句中发生的异常，在同一个 `try` 语句中，其他子句中发生的异常则不作处理
 
-```objc
+```python
 try:
     print(7 / 0)
 except ZeroDivisionError:
@@ -173,7 +173,7 @@ except (ZeroDivisionError, NameError):
 
 最后一个 `except` 子句可以省略异常名称，以作为通配符使用。你需要慎用此法，因为它会轻易隐藏一个实际的程序错误！可以使用这种方法打印一条错误信息，然后重新抛出异常（允许调用者处理这个异常):
 
-```objc
+```python
 try:
     f = open('myfile.txt')
     s = f.readline()
@@ -189,7 +189,7 @@ except:
 
 `try … except` 语句可以带有一个 else子句，该子句只能出现在所有 except 子句之后。当 try 语句没有抛出异常时，需要执行一些代码，可以使用这个子句。例如:
 
-```objc
+```python
 try:
     print(7 / 0)
 except ZeroDivisionError:
@@ -204,7 +204,7 @@ else:
 ### 抛出异常
 `raise`语句允许程序员强制抛出一个指定的异常
 
-```objc
+```python
 raise NameError('TitanJun')
 
 # 异常信息:
@@ -216,7 +216,7 @@ NameError: TitanJun
 
 如果你需要明确一个异常是否抛出，但不想处理它，`raise` 语句可以让你很简单的重新抛出该异常:
 
-```objc
+```python
 try:
     raise NameError('TitanJun')
 except NameError:
@@ -238,7 +238,7 @@ NameError: TitanJun
 - 当 `try` 语句中发生了未被 `except` 捕获的异常（或者它发生在 `except` 或 `else` 子句中），在 `finally` 子句执行完后它会被重新抛出。 - `try `语句经由 `break`，`continue` 或 `return` 语句退 出也一样会执行 `finally` 子句
 
 
-```objc
+```python
 try:
     print(7 / 0)
 except ZeroDivisionError:
@@ -257,14 +257,14 @@ finally:
 
 有些对象定义了标准的清理行为，无论对象操作是否成功，不再需要该对象的时候就会起作用。以下示例尝试打开文件并把内容打印到屏幕上
 
-```objc
+```python
 for line in open("myfile.txt"):
     print(line)
 ```
 
 这段代码的问题在于在代码执行完后没有立即关闭打开的文件。这在简单的脚本里没什么，但是大型应用程序就会出问题。`with` 语句使得文件之类的对象可以 确保总能及时准确地进行清理
 
-```objc
+```python
 with open("myfile.txt") as f:
     for line in f:
         print(line)
@@ -281,7 +281,7 @@ with open("myfile.txt") as f:
 ### 读取文件
 函数 `open()` 返回文件对象，通常的用法需要两个参数
 
-```objc
+```python
 def open(file, mode='r', buffering=None, encoding=None, errors=None, newline=None, closefd=True)
 
 # 使用
@@ -307,7 +307,7 @@ file = open(path, 'r')
 - 当文件大小为当前机器内存两倍时，就会产生问题。反之，会尽可能按比较大的 `size` 读取和返回数据。
 - 如果到了文件末尾，`file.read()`会返回一个空字符串
 
-```objc
+```python
 # 读取文件
 str = file.read()
 print(str)
@@ -317,7 +317,7 @@ print(str)
 - `file.readline()` 从文件中读取单独一行，字符串结尾会自动加上一个换行符（`\n`），只有当文件最后一行没有以换行符结尾时，这一操作才会被忽略。
 - 这样返回值就不会有混淆，如果 `file.readline()` 返回一个空字符串，那就表示到达了文件末尾，如果是一个空行，就会描述为 `'\n'`，一个只包含换行符的字符串
 
-```objc
+```python
 file.readline()
 ```
 
@@ -331,7 +331,7 @@ for line in file:
 
 <div class='note primary'><p>如果你想把文件中的所有行读到一个列表中，你也可以使用 `list(file)` 或者 `file.readlines()`</p></div>
 
-```objc
+```python
 # 把文件读到列表中
 print(list(file))
 print(file.readlines())
@@ -341,7 +341,7 @@ print(file.readlines())
 - `write`: 将 `string` 的内容写入文件，并返回写入字符的长度
 - `writelines`: 用于向文件中写入一序列的字符串, 没有返回值
 
-```objc
+```python
 # 写入文件
 leng = file.write('我是一只小鸭子')
 print(leng)
@@ -363,7 +363,7 @@ file.writelines(['hello', 'Python'])
 - `from_what` 可以忽略，其默认值为零，此时从文件头开始
 
 
-```objc
+```python
 l = file.readline()
 print(l)
 
@@ -377,7 +377,7 @@ b'https://www.titanjun.top/\n'
 
 重新设置文件读取指针到开头
 
-```objc
+```python
 file.seek(5, 0)
 print(file.readline())
 
@@ -390,7 +390,7 @@ b'://www.titanjun.top/\n'
 - 当你使用完一个文件时，调用 `file.close()` 方法就可以关闭它并释放其占用的所有系统资源。 
 - 在调用 `file.close()` 方法后，试图再次使用文件对象将会自动失败
 
-```objc
+```python
 file.close()
 
 file.read()
@@ -405,7 +405,7 @@ ValueError: read of closed file
 - 它的先进之处在于文件用完后会自动关闭，就算发生异常也没关系。
 - 它是 `try-finally` 块的简写
 
-```objc
+```python
 with open(path, 'rb+') as file:
     str = file.read()
     print(str)
