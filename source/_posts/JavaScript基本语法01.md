@@ -6,7 +6,7 @@ categories: JavaScript笔记
 image:
 ---
 
-![JavaScript](http://pggsan8q9.bkt.clouddn.com/javaScript.jpg)
+![JavaScript](https://titanjun.oss-cn-hangzhou.aliyuncs.com/javascript/javascropt.jpeg)
 
 
 <!-- more -->
