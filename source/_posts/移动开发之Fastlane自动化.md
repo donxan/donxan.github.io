@@ -8,7 +8,7 @@ image:
 
 
 
-![fastlane_text](http://pcat1usdp.bkt.clouddn.com/fastlane_text.png)
+![fastlane_text](https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/fastlanetext.jpg?x-oss-process=style/titanjun)
 
 <!--more-->
 
@@ -190,7 +190,7 @@ git push --tags
 - 打开[官方文档](https://docs.fastlane.tools/actions/)搜索
 - 例如: 搜索`pod install`, 对应的即为`cocoapods`, 如下
 
-![fastlanepod](http://pcat1usdp.bkt.clouddn.com/fastlanepod.png)
+![fastlanepod](https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/fastlanepod.jpg?x-oss-process=style/titanjun)
 
 
 `Fastfile`文件配置内容如下, 可做响应的参考
@@ -279,13 +279,13 @@ end
 - 注意命令规范, 单词之间可用下划线连接
  
 
-![fastlaneaction](http://pcat1usdp.bkt.clouddn.com/fastlaneaction.png)
+![fastlaneaction](https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/fastlaneaction.jpg?x-oss-process=style/titanjun)
 
 
 之后`fastlane`文件内会多一个`actions`的文件件, 内有`delete_tag.rb`文件, 如下
 
 
-![actionsName](http://pcat1usdp.bkt.clouddn.com/actionsName.png)
+![actionsName](https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/fastlanetag.jpg?x-oss-process=style/titanjun)
 
 
 - 最后就是编辑该`rb`文件, 当然可能需要懂一些`ruby`语言的语法, 如果不懂也没关系, 到[Github源码](https://github.com/fastlane/fastlane/tree/master/fastlane/lib/fastlane/actions)找一个类似功能的`rb`文件, 照葫芦画瓢吧! 
@@ -387,6 +387,6 @@ end
 最后需要验证`rb`文件是否格式正确, 终端输入`fastlane action delete_tag`
 
 
-![fastlaneTest](http://pcat1usdp.bkt.clouddn.com/fastlaneTest.png)
+![fastlaneTest](https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/fastlaneTest.jpg?x-oss-process=style/titanjun)
 
 

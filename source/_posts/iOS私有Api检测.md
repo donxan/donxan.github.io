@@ -6,7 +6,9 @@ categories: 入坑指南
 image:
 ---
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/Guide251.png)
+
+![image](http://upload-images.jianshu.io/upload_images/4122543-a28717a02e83f9c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 <!-- more -->
 
@@ -42,7 +44,7 @@ grep -r GraphicsServices .
 
 到这里, 解决上述第三方库的私有`API`的问题, 就是直接替换掉新的`SDK`, 当然如果新的第三方库也有私有`API`的话, 那就只能舍弃了, 否则基本无解
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/Praiteapi23.png)
+![image](http://upload-images.jianshu.io/upload_images/4122543-0e4ccc38035be38b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ### `strings`检测

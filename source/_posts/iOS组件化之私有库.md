@@ -122,7 +122,7 @@ pod 'TitanFMBase', :path => '../AllMoudles/TitanFMBase'
 - 除图中红色箭头外, 其他地方不需要填写, 新建即可
 
 
-![CreateSpec](http://pcat1usdp.bkt.clouddn.com/CreateSpec.png)
+![CreateSpec](http://upload-images.jianshu.io/upload_images/4122543-7cf6d111ae63b9f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
@@ -134,7 +134,7 @@ pod 'TitanFMBase', :path => '../AllMoudles/TitanFMBase'
 - 最后需要打开`Example`目录下的测试工程, 并执行`pod install`命令, 将你的私有库文件安装到测试工程
 - 最后修改`xxx`文件下的`xxx.podspec`文件中相关配置即可
 
-![createLib](http://pcat1usdp.bkt.clouddn.com/createLib.png)
+![createLib](http://upload-images.jianshu.io/upload_images/4122543-dfc5111dd4b02a01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 做完上述工作即可将项目所有文件提交到远程私有库了
@@ -377,7 +377,7 @@ s.resource_bundles = {
 
 在`xib`中加载图片, 需要在图片前面加上组件的主`bundle`, 类似: `MainMoudle.bundle/tabbat_back`
 
-![xibimage](http://pcat1usdp.bkt.clouddn.com/xibimage.png)
+![xibimage](http://upload-images.jianshu.io/upload_images/4122543-5602c779a1e54291.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 私有库中使用代码加载图片, 一定不能使用`imageNamed`方法
@@ -412,7 +412,7 @@ pod repo push TitanjunSpec MainMoudle.podspec --allow-warnings
 ```
 
 
-![podspec](http://pcat1usdp.bkt.clouddn.com/podspec.png)
+![podspec](http://upload-images.jianshu.io/upload_images/4122543-aa9b20f9428c9fd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 

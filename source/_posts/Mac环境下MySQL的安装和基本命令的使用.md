@@ -8,7 +8,7 @@ image:
 
 
 
-![mysql](http://p7hfnfk6u.bkt.clouddn.com/mysql.jpg)
+![mysql](http://upload-images.jianshu.io/upload_images/4122543-9dfa73f3a5747e75.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 <!-- more -->
@@ -31,7 +31,7 @@ image:
 
 接着, 会跳转到如下页面, 你只需要选择不登录,直接下载即可(当然也可以选择注册并登录)
 
-![SQLDownload2](http://p7hfnfk6u.bkt.clouddn.com/SQLDownload2.png)
+![SQLDownload2](http://upload-images.jianshu.io/upload_images/4122543-4d7bddda7663e338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
  
 - 下载好后, 按照`dmg`里面的`pkg`文件一路安装即可, 但是需要注意的是
   - 除了倒数第二步之外按照默认一路安装即可
@@ -53,7 +53,7 @@ image:
 - [正版下载地址](http://www.navicat.com.cn/products/navicat-for-mysql/), 不过正版只有14天的试用时间
 - 安装后, 按照下图完善配置即可, 其中连接名随意, 密码即为安装`MySQL`环境的时候设置的密码
 
-![MySQLConten](http://p7hfnfk6u.bkt.clouddn.com/MySQLContent.png)
+![MySQLConten](http://upload-images.jianshu.io/upload_images/4122543-d826199a57d36385.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ## `MySQL`的基本命令
@@ -105,7 +105,7 @@ select now();
 quit或exit
 ```
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/sqlSelect.png)
+![image](http://upload-images.jianshu.io/upload_images/4122543-64606af819564228.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ### 数据库操作

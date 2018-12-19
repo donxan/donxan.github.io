@@ -49,7 +49,7 @@ pod 'R.swift'
 
 1. 如下图所示, 添加一个`New Run Script Phase`
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/RSwiftRun.png)
+![image](http://upload-images.jianshu.io/upload_images/4122543-ff2333e6b4159280.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 2. 将`Run Script`拖动到`Check Pods Manifest.lock`的下面, 并添加脚本
@@ -59,7 +59,7 @@ pod 'R.swift'
 ```
 
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/RSwiftadd.png)
+![image](http://upload-images.jianshu.io/upload_images/4122543-37ec65a7e32ca6c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 3. `Command+B`编译项目，在项目代码目录下，会生成一个`R.generated.swift` 的文件，将它拖如项目中

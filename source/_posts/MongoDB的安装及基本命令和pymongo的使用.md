@@ -63,7 +63,7 @@ xml数据库 | `Berkeley DB XML` 和 `BaseX` | 高效的存储`XML`数据，并�
 #### 安装包安装
 可以在官网下载安装包: [下载地址](https://www.mongodb.com/download-center#community)
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/mongoDownload.png)
+![image](http://upload-images.jianshu.io/upload_images/4122543-9042ff35edee69ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 接下来我们使用如下命令来下载安装
 
@@ -105,7 +105,7 @@ sudo ./mongod
 
 <div class="note success"><p>打开浏览器, 在浏览器内输入`127.0.0.1:27017`, 如果出现下面这种则说明安装成功</p></div>
 
-![success](http://p7hfnfk6u.bkt.clouddn.com/mongoSuccess.png)
+![success](http://upload-images.jianshu.io/upload_images/4122543-74e0aa1894c837c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 3. 再打开一个终端进入执行以下命令：
 
@@ -128,7 +128,7 @@ $ ./mongo
 - 最后选择你新添加的电脑IP, 点击`Connect`链接
 - 详细步骤如下图所示:
 
-![Stdio 3T](http://pcatqk8cn.bkt.clouddn.com/Stdiocon.png)
+![Stdio 3T](http://upload-images.jianshu.io/upload_images/4122543-566ae508d2b8a580.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## `MongoDB`基本命令操作
 

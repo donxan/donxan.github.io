@@ -8,7 +8,7 @@ image:
 
 
 
-![Redis](http://pcatqk8cn.bkt.clouddn.com/RedisPic.jpg)
+![Redis](http://upload-images.jianshu.io/upload_images/4122543-e831aa18c01dab69.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 

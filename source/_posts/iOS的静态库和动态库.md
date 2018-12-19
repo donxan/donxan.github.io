@@ -6,7 +6,8 @@ categories: 组件化开发
 image:
 ---
 
-![staticFramework](http://pcat1usdp.bkt.clouddn.com/staticFramework.png)
+![staticFramework](
+https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/staticFramework.jpg?x-oss-process=style/titanjun)
 
 <!--more-->
 

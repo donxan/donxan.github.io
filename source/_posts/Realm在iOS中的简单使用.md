@@ -31,7 +31,7 @@ image:
 为了配合`Realm`的使用，`Realm`还提供了一个轻量级的数据库查看工具`Realm Browser`，借助这个工具，开发者可以查看数据库当中的内容，并执行简单的插入和删除操作。`Realm Browser`可以在`App Store`中下载安装
 
 
-![Realm Browser](http://pcat1usdp.bkt.clouddn.com/Realm%20Browser.png)
+![Realm Browser](https://user-gold-cdn.xitu.io/2018/8/10/16521ebc65be0257?w=1017&h=828&f=png&s=624540)
 
 
 <div class="note warning"><p>需要注意的是</p></div>
@@ -52,7 +52,7 @@ image:
 - 在`Xcode`文件导航器中选择您的项目，然后选择您的应用目标，进入到`Build Phases`选项卡中。在`Link Binary with Libraries`中单击 `+` 号然后添加`libc++.tbd`以及`libz.tbd`
 
 
-![RealmResource](http://pcat1usdp.bkt.clouddn.com/RealmResource.png)
+![RealmResource](http://upload-images.jianshu.io/upload_images/4122543-be0044738ece664b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ### 使用`CocoaPods`安装
@@ -78,7 +78,7 @@ image:
 - 当需要新建`RLMObject`类时，在新建类的选项中选择`Realm Model Object`即可
 
 
-![Realm Model](http://pcat1usdp.bkt.clouddn.com/RealmModel.png)
+![Realm Model](http://upload-images.jianshu.io/upload_images/4122543-4275bdc87fc5e24a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
@@ -249,7 +249,7 @@ https://realm.io/docs/objc/latest/api/Classes.html
 
 我们首先创建一个`Student`类，该类是`RLMObject`类的一个子类, 下图就是按照之前安装的`Xcode`插件创建的
 
-![image](http://pcat1usdp.bkt.clouddn.com/RLMObject.png)
+![image](http://upload-images.jianshu.io/upload_images/4122543-7318cedc2fa2df2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 - 在`Student`添加两个属性, `RLMObject`官方建议在`RLMObject`类中添加的属性，是不需要指定属性关键字的，完全交由`Realm`处理
