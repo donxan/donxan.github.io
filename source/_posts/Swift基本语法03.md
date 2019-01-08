@@ -113,4 +113,78 @@ var _tittle: String?
 ```
 
 
+## swift单例
 
+- 单例模式单例模式是设计模式中最简单的一种，甚至有些模式大师都不称其为模式，称其为一种实现技巧
+- 因为设计模式讲究对象之间的关系的抽象，而单例模式只有自己一个对象
+- 下面看看swift中的几种实现方式：
+
+### 静态常量
+
+一句话搞定，静态常理。所有地方用到的都是同一个
+
+```swift
+class SingleOne {
+
+    //单例
+    static let shareSingleOne = SingleOne()
+
+}
+```
+
+
+
+
+### dispatch_once
+
+使用`dispatch_once`可以保证其中的代码只执行一次
+
+```swift
+class SingleTwo {
+
+    //单例
+    class func shareSingleTwo()->SingleTwo{
+        struct Singleton{
+            static var onceToken : dispatch_once_t = 0
+            static var single:SingleTwo?
+        }
+        dispatch_once(&Singleton.onceToken,{
+            Singleton.single=shareSingleTwo()
+        })
+        return Singleton.single!
+    }
+}
+```
+
+
+### 全局常量
+
+
+```swift
+//全局的常量
+let single = SingleThree()
+
+class SingleThree {
+
+    class var sharedInstance : SingleThree {
+        return single
+    }
+}
+```
+
+
+### 静态常量
+
+在方法内定义静态常量
+
+```swift
+class SingleFour {
+
+    static var sharedInstance : SingleFour {
+        struct Static {
+            static let instance : SingleFour = SingleFour()
+        }
+        return Static.instance
+    }
+}
+```
