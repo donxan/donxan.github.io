@@ -274,7 +274,7 @@ mob_share:
 ### 文章底部加上评分小星星
 这里我们先看一个评分的效果图
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/Snip20180508_2.png)
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/hexo-next/nextstart.png)
 
 - 首先先去[WidgetPack](https://widgetpack.com)注册一个账号并登陆, 填一下自己博客的信息，左上角有个 ID
 - 首先打开主题配置文件：`themes/next/_config.yml`
@@ -322,13 +322,13 @@ rating:
 - 通过`leanCloud`统计您网站的文章阅读量
 - 注册[LeanCloud](https://leancloud.cn/), 并创建一个你自己的应用
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/Snip20180508_3.png)
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/hexo-next/createLeanCloud.png?x-oss-process=style/titanjun)
 
 - 点击图片右上角的设置图标进入应用界面
 - 到此，你的应用创建成功，继续表的创建
   - 创建表，并将表的名字命名为：`Counter`, 如图
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/Snip20180508_4.png)
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/hexo-next/LeanCloudSet.png?x-oss-process=style/titanjun)
 
 <div class="note primary"><p>打开设置 -> 应用key 获取`App ID`和`App Key`</p></div>
 
@@ -346,7 +346,7 @@ leancloud_visitors:
 #### WEB安全
 为了保证应用的统计计数功能仅应用于自己的博客系统，你可以在应用->设置->安全中心的Web安全域名中加入自己的博客域名，以保证数据的调用安全
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/Snip20180508_5.png)
+
 
 
 ### 配置Valine评论系统
@@ -392,7 +392,7 @@ valine:
 
 修改后的效果图
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/Snip20180508_8.png)
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/hexo-next/next-value.png?x-oss-process=style/titanjun)
 
 - 首先[下载 Valine.min.js](https://github.com/panjunwen/Valine/releases/tag/v1.1.4.fix), 并把下载好的文件放到文件夹 `themes/next/source/js/src` 
 - 然后打开文件`themes/next/layout/_third-party/comments/valine.swig`, 按照如下修改

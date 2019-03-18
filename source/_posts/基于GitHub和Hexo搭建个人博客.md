@@ -7,7 +7,7 @@ image:
 ---
 
 
-![Hexo博客](http://p7hfnfk6u.bkt.clouddn.com/Snip20180508_10.png)
+![Hexo博客](https://titanjun.oss-cn-hangzhou.aliyuncs.com/hexo-next/hexohome.png?x-oss-process=style/titanjun)
 
 
 <!-- more -->

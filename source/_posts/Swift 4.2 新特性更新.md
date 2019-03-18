@@ -6,7 +6,7 @@ categories: Swift学习笔记
 image:
 ---
 
-![image description](http://p7hfnfk6u.bkt.clouddn.com/Snip20180605_2.png)
+![Swift](https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/swift.jpg?x-oss-process=style/titanjun)
 <!--more-->
 
 
@@ -104,6 +104,40 @@ for item in CarKind.allCases {
  ford
  */
 ```
+
+
+
+### KeyValuePairs
+
+`KeyValuePairs`是一种类似字典的数据类型(类似一种字典数组, 切字典有且仅有一个`key-value`值)，提供了类似字典的功能, 除此之外还具有字典所不具有的功能
+
+- 不需要遵循`Hashable`协议
+- 可以添加具有重复键的成员
+- 每一个成员变量都有其唯一的索引值
+
+
+```swift
+// 具有重复键值的KeyValuePairs数据类型
+var dic: KeyValuePairs = ["first": "titan", "second": "jun", "second": "top"]
+
+// 访问第一个元素的key-value值
+print(dic[0])
+// (key: "first", value: "titan")
+print("first: key = \(dic[0].key), value = \(dic[0].value)")
+// first: key = first, value = titan
+
+
+// 遍历所有的key-value
+for dict in dic {
+    print("key = \(dict.key), value = \(dict.value)")
+}
+/*输出结果
+key = first, value = titan
+key = second, value = jun
+key = second, value = top
+*/
+```
+
 
 ### `#warning`和`#error`编译指令
 - [SE-0196](https://github.com/apple/swift-evolution/blob/master/proposals/0196-diagnostic-directives.md)介绍新的编译指令来强制`Xcode`在`build`时生成警告或错误信息

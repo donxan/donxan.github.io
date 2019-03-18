@@ -12,7 +12,7 @@
 
 # Set to true, if you want to fully override the default configuration.
 # Useful if you don't want to inherit the theme _config.yml configurations.
-override: falsef
+override: false
 
 # ---------------------------------------------------------------
 # Site Information Settings
@@ -130,10 +130,10 @@ scheme: Pisces
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
   GitHub: https://github.com/CoderTitan || github
-  新浪微博: https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place
-  简书: https://www.jianshu.com/u/5bd5e9ed569e
+  新浪微博: https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place || weibo
+  简书: https://www.jianshu.com/u/5bd5e9ed569e || book
   CSDN: http://blog.csdn.net/ShmilyCoder
-  稀土掘金: https://juejin.im/user/5a7a64ae6fb9a0636323fd06/posts
+  稀土掘金: https://juejin.im/user/5a7a64ae6fb9a0636323fd06/posts || database
   E-Mail: mailto:quanjunt@163.com || envelope
   #Google: https://plus.google.com/yourname || google
   Twitter: https://twitter.com/CoderTitan || twitter

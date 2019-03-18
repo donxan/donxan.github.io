@@ -93,7 +93,7 @@ Non-fat file: libStateLib.a is architecture: x86_64
 - 在调试不同机型的过程中, 需要选中每一个模拟器进行编译, 生成支持对应架构的静态库然后合并, 非常蛋疼
 - 怎样一次编译支持多个架构的的静态库?
 
-![bundleActive](http://pcat1usdp.bkt.clouddn.com/bundleActive.png)
+![bundleActive](https://upload-images.jianshu.io/upload_images/4122543-086dd1629ebb028b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/697/format/webp)
 
 - 该选项默认是`YES`, 也就是只编译当前活跃环境的架构, 设置成`No`即可
 - 模拟器环境编译出来的就支持所有的模拟机型号, 真机亦是如此
@@ -130,7 +130,7 @@ Non-fat file: libStateLib.a is architecture: x86_64
 
 选择项目 `-> Edit Scheme -> Run -> Release/Debug` 分别进行编译, 即可得到不同版本的静态库
 
-![EditScheme](http://pcat1usdp.bkt.clouddn.com/EditScheme.png)
+![EditScheme](https://upload-images.jianshu.io/upload_images/4122543-1b00f7f45a6654c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/930/format/webp)
 
 
 
@@ -140,13 +140,13 @@ Non-fat file: libStateLib.a is architecture: x86_64
 - 修改图中2处的路径地址, 即可修改`.h`文件生成的路径, 填空即为和`.a`文件在同级目录下
 
 
-![image](http://pcat1usdp.bkt.clouddn.com/inclode2.png)
+![image](https://upload-images.jianshu.io/upload_images/4122543-727056aa929e2c7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/707/format/webp)
 
 
 
 最后编写好代码, `command+B`编译之后, 如图所示操作即可找到生成的静态库
 
-![image](http://pcat1usdp.bkt.clouddn.com/productA.png)
+![image](https://upload-images.jianshu.io/upload_images/4122543-b1f80d56eccf1990.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/331/format/webp)
 
 
 
@@ -198,7 +198,7 @@ lipo -thin arm64 /Users/xxx/Build/Products/hahah.a -output only_arm64.a
 
 刚创建的工程默认创建的是动态库, 需要手动设置链接类型, `Build Settings -> Mach-o Type`设置成`Static Library`
 
-![machtype](http://pcat1usdp.bkt.clouddn.com/machtype.png)
+![machtype](https://upload-images.jianshu.io/upload_images/4122543-88dc3d5139099895.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/764/format/webp)
 
 
 #### 静态库版本
@@ -275,7 +275,7 @@ pod package xxx.podspec
 - 但是, 如果为了打包静态库单独分离出一个工程用于打包, 那么我们后期就需要维护和更新两套代码, 过于繁琐
 - 所以我们可以用符合工程进行处理, 在`Example`所在的测试工程中添加一个静态库的工程, 如[静态库的测试](#静态库的测试)所示
 
-![exampleTest](http://pcat1usdp.bkt.clouddn.com/exampleTest.png)
+![exampleTest](https://upload-images.jianshu.io/upload_images/4122543-b71694440807f1f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/424/format/webp)
 
 
 
@@ -283,20 +283,20 @@ pod package xxx.podspec
 
 这里我们是以`framework`静态库为例, 静态库工程添加之后, 左侧会多出一个类似`BaseLib`的文件夹, 该文件夹用于存放需要打包的文件, 即`TitanBase/Classes`目录下的文件
 
-![image](http://pcat1usdp.bkt.clouddn.com/addItems.png)
+![image](https://upload-images.jianshu.io/upload_images/4122543-dc1006500bfeecb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/454/format/webp)
 
 
 - 导入文件的时候需要注意, 一定不能勾选`Copy Items`选项, 因为我们需要的是引用`Classes`目录下的文件, 而不是拷贝
 - 如果是拷贝, 静态库和`Classes`目录使用的将会是两套不同的代码(虽然内容可能一样), 由乙方改变, 另一方的代码不会改变
 - 引用则可以做到一改全改
 
-![copyItem](http://pcat1usdp.bkt.clouddn.com/copyItem.png)
+![copyItem](https://upload-images.jianshu.io/upload_images/4122543-f60b374e5952d639.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/764/format/webp)
 
 
 - 接下来选择静态库的工程, 并修改打包静态库的相应的配置, 步骤参考[生成.framework静态库](#生成.framework静态库)
 - 这里生成的静态库的目录是系统默认, 我们也可以自行设置: `File -> WorkSpace Setting`
 
-![selectLib](http://pcat1usdp.bkt.clouddn.com/selectLib.png)
+![selectLib](https://upload-images.jianshu.io/upload_images/4122543-7b193d311de70e01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/412/format/webp)
 
 
 - 最后在`Classes`的统计目录下创建一个`Products`的目录(自定义创建, 你开心就好)

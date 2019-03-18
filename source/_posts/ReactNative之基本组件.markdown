@@ -180,6 +180,8 @@ enablesReturnKeyAutomatically={true}  //如果为true，键盘会在文本框内
 
 autoCorrect={true}  //如果为false，会关闭拼写自动修正。默认值是true。
 
+// 在安卓机上, 输入框下面默认会多出一个下划线, 可设置成透明色
+underlineColorAndroid="transparent"
 ```
 
 - `autoCapitalize`: 控制TextInput是否要自动将特定字符切换为大写

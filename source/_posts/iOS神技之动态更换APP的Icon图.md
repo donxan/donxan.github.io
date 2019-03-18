@@ -192,7 +192,7 @@ extension NoAlertChangeViewController {
 - 具体相关官方文档可参考, [官方介绍](https://developer.apple.com/ios/human-interface-guidelines/overview/themes/#app-icon-sizes)
 - 首先, 针对不同的尺寸, 我们要有不同的命名, 具体参考下图
 
-![不同尺寸图片配置图](http://img.blog.csdn.net/20180316194726671?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2htaWx5Q29kZXI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![不同尺寸图片配置图](https://upload-images.jianshu.io/upload_images/4122543-c86a7e13288a1722?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
 
 - 文件扩展名，如@2x,@3x，要么统一不写，那么系统会自动寻找合适的尺寸。
 - 要写就需要把每张icon的扩展名写上，和上图的格式一样

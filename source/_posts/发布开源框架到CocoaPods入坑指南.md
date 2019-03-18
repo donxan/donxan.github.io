@@ -20,7 +20,7 @@ image:
 - `CocoaPods`项目的源码在`Github`上管理,所以第一步我们需要创建一个属于自己的仓库
 - 根据图下图所示创建自己的项目
 
-![创建仓库](http://p7hfnfk6u.bkt.clouddn.com/creatGitHub.png)
+![创建仓库](https://upload-images.jianshu.io/upload_images/4122543-d600fd516421d3a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/714/format/webp)
 
 ### 上传文件
 - 要开发框架必然就要上传文件, 这里推荐`SourceTree`和`GitHub`客户端, 当然也可以使用终端命令上传
@@ -226,11 +226,11 @@ pod trunk register quanjunt@163.com 'CoderTitan' --description='macbook'
 
 执行该命令后, 你的邮箱会受到一封邮件, 但是邮件要到垃圾邮件中才能找到, 打开邮件找到邮件中的网址并打开
 
-![image](http://p7hfnfk6u.bkt.clouddn.com/Snip20180629_1.png)
+![image](https://upload-images.jianshu.io/upload_images/4122543-a7ec0659f716c755.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
 
 如果打开邮件中的链接和下面的页面一样, 则表示注册成功
 
-![注册成功](http://p7hfnfk6u.bkt.clouddn.com/podspec.png)
+![注册成功](https://upload-images.jianshu.io/upload_images/4122543-cc70f97600d6b4bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/785/format/webp)
 
 最后输入如下命令
 
@@ -240,7 +240,7 @@ pod trunk push TitanModel.podspec
 
 时间较长，耐性等待，大概5-10分钟, 成功后结果如下
 
-![trunk](http://p7hfnfk6u.bkt.clouddn.com/specSuccess.png)
+![trunk](https://upload-images.jianshu.io/upload_images/4122543-de1a8d5fe072d85b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
 
 - 上面图片中可以看到执行了`Updating spec repo master`命令, 该命令主要就是更新本地的`Specs`文件
 - 查看文件夹位置, 打开访达文件夹, `Shift+command+G`快捷键, 打开前往文件夹操作, 输入如下目录即可查看
@@ -273,7 +273,7 @@ rm ~/Library/Caches/CocoaPods/search_index.json
 
 <div class="note success"><p>搜索成功</p></div>
 
-![search](http://p7hfnfk6u.bkt.clouddn.com/podSearch.png)
+![search](https://upload-images.jianshu.io/upload_images/4122543-860729c04860ca64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/649/format/webp)
 
 
 ## 错误整理

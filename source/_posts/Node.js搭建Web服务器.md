@@ -6,7 +6,7 @@ categories: Node.js笔记
 image:
 ---
 
-![Node.js](http://pggsan8q9.bkt.clouddn.com/node.png)
+![Node.js](https://titanjun.oss-cn-hangzhou.aliyuncs.com/javascript/nodejs.png?x-oss-process=style/titanjun)
 
 
  
