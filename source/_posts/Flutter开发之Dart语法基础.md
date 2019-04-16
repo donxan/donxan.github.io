@@ -63,30 +63,99 @@ image:
 - 输出语句使用`print(Object)`
 
 
-
 ## 变量和常量
 
 ### 变量
 
 使用`var`、`Object`或`dynamic`关键字声明变量
 
-```dart
-var name = 'name';
-dynamic name1 = 'name1';
-String name2 = 'name2';
+#### 弱类型变量
 
-// 变量的赋值
-name = 'a';
-name1 = 'a1';
-name2 = 'a2';
+`var`方式声明变量
+
+```dart
+  // 1. 声明变量, 不赋初始值
+  var a;
+  a = 'titanjun';
+  a = 123;
+  a = false;
+  print(a);
+  // 在不初始化的前提下, 变量可以赋值任何类型的值
+
+
+  // 2. 声明变量, 赋初始值
+  var b = 'titanjun.top';
+  // 变量在有初始化值得情况下, 只能赋值相同类型的值, 否则报错
+  // b = 123;
 ```
 
-未初始化的变量的初始值为`null`, 即使是数字也是如此，因为在`Dart`中数字也是一个对象
+`dynamic`声明
 
 ```dart
-var name;
-dynamic name1;
-String name2;
+  dynamic c = 'titannjun';
+  c = 123;
+  c = false;
+  print(c);
+  // 调用未声明的方法, 不会报错, 运行时报错
+  // c.test();
+```
+
+`Object`方式声明变量
+
+```dart
+  Object d = 'titanjun';
+  d = 123;
+  d = false;
+  // 调用未声明的方法, 会直接报错
+  // d.test();
+```
+
+#### 强类型变量
+
+明确指定变量的类型, 声明后，类型被锁定
+
+```dart
+String str = 'titanjun';
+bool isStr = true;
+num number = 1234;
+```
+
+名称 | 	说明
+--|--
+`num` | 	数字
+`int` | 		整型
+`double` | 		浮点
+`bool` | 		布尔
+`String` | 		字符串
+`StringBuffer` | 		字符串 buffer
+`DateTime` | 		时间日期
+`Duration` | 		时间区间
+`List` | 		列表
+`Sets` | 		无重复队列
+`Maps` | 		kv 容器
+`enum` | 		枚举
+
+
+```dart
+String a = 'doucafecat';
+int i = 123;
+double d = 0.12;
+bool b = true;
+DateTime dt = new DateTime.now();
+List l = [ a, i, d, b, dt];
+```
+
+#### 默认值
+
+一切都是`Object`, 未初始化的变量的初始值为`null`, 即使是数字也是如此，因为在`Dart`中数字也是一个对象
+
+```dart
+  bool isNum;
+  String str2;
+  StringBuffer str3;
+  num num1;
+  print([isNum, str2, str3, num1]);
+  // [null, null, null, null]
 ```
 
 > 可选类型
@@ -97,11 +166,14 @@ String name2;
 String name2 = 'name2';
 ```
 
-这种方式可以更加清晰的表达你想要定义的变量的类型, 编译器也可以根据该类型为你提供代码补全、提前发现 bug 等功能
+- 这种方式可以更加清晰的表达你想要定义的变量的类型, 编译器也可以根据该类型为你提供代码补全、提前发现 bug 等功能
+- 注意: 对于局部变量，这里遵守 [代码风格推荐](http://dart.goodev.org/guides/language/effective-dart/design#type-annotations) 部分的建议，使用`var`而不是具体的类型来定义局部变量
 
-<div class="note warning"><p>注意</p></div>
 
-对于局部变量，这里遵守 [代码风格推荐](http://dart.goodev.org/guides/language/effective-dart/design#type-annotations) 部分的建议，使用`var`而不是具体的类型来定义局部变量
+#### 强弱类型
+
+- 在写 API 接口的时候，请用`强类型`，一旦不符合约定，接收数据时能方便排查故障
+- 写个小工具时，可以用`弱类型`，这样代码写起来很快，类型自动适应
 
 
 ### 常量
@@ -110,12 +182,15 @@ String name2 = 'name2';
 - 一个`final`变量只能赋值一次
 - 一个`const`变量是编译时常量
 - 实例变量可以为`final`但是不能是`const`
+- `final`不能和`var`同用
+- `const`不能和`var`同用
 
 #### final
 
 `final`修饰的变量(即常量2)
 
 ```dart
+  // 类型声明可以省略
   final age = 10;
   final int age1 = 20;
 
@@ -131,7 +206,7 @@ String name2 = 'name2';
 - 使用`const`定义的常量, 可以直接给定初始值，也可以使用其他`const`变量的值来初始化其值
 
 ```dart
-  // const
+  // 类型声明可以省略
   const m1 = 12;
   const double m2 = 23;
   const m3 = m1 + m2;
@@ -140,6 +215,45 @@ String name2 = 'name2';
   m1 = 10;
   m2 = 1.02;
 ```
+
+#### final和const的区别
+
+1. 需要确定值
+
+```dart
+// final是运行时的时候判断, const是赋值时进行判断
+final time1 = DateTime.now();
+// const修饰的常量会报错
+const time2 = DateTime.now();
+```
+
+2. 不可变性可传递
+
+```dart
+  final List ls = [11, 22, 33];
+  // final修饰的数组可以改变元素值
+  ls[1] = 44;
+
+  const List ls1 = [11, 22, 33];
+  // const修饰的数组不可以改变元素值, 运行时报错
+  ls1[1] = 44;
+```
+
+3. 内存中重复创建
+
+```dart
+  final arr1 = [11 , 22];
+  final arr2 = [11 , 22];
+  // 判断是否是相同内存
+  print(identical(arr1, arr2));  // false
+
+  // const修饰的常量, 在内存中不会重复创建相同的常量
+  const ls3 = [11 , 22];
+  const ls4 = [11 , 22];
+  print(identical(ls3, ls4));  // true
+```
+
+
 
 ## 操作符
 

@@ -20,13 +20,15 @@ date: 2017-01-10 22:20:12
 ## 学习历程
 作为一名iOS开发程序猿, 总喜欢折腾, 喜欢研究和学习一些开发语言或框架
 
+- `React Native`
+- `Flutter`
 - `C` 和 `C++`
 - `Objective-C` 和 `Cocoa Reactive`
 - `Swift` 和 `RxSwift`
 - `HTML5`
 - `JavaScript`
-- `React Native`
-- `Python` (正在学习中...)
+- `Dart`
+- `Python`
 
 
 
@@ -34,13 +36,14 @@ date: 2017-01-10 22:20:12
 
 <div style="text-align: center">
     <p>欢迎您扫一扫二维码, 关注我的微信公众号！</p>
-    <img src="http://p7hfnfk6u.bkt.clouddn.com/qrcode1280.jpg" width="250" height="250">
+    <img src="https://titanjun.oss-cn-hangzhou.aliyuncs.com/hexo-next/qrcode_1280.jpg?x-oss-process=style/titanjun" width="250" height="250">
 </div>
 
 - 简书: https://www.jianshu.com/u/5bd5e9ed569e
 - CSDN: https://blog.csdn.net/shmilycoder
 - Github: https://github.com/CoderTitan
 - 掘金: https://juejin.im/user/5a7a64ae6fb9a0636323fd06
+- QQ: 3317016694
 
 
 ## MyMusic
