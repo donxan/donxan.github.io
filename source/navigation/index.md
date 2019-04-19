@@ -221,7 +221,6 @@ date: 2018-05-10 14:14:02
 
 ### 网络资源
 - [MaxMind(ip数据库下载平台)](https://dev.maxmind.com/)
-- [花瓣（图片素材）](http://huaban.com/)
 - [mp4pa电影](http://www.mp4pa.com/index.html)
 - [电影大全](http://dianying.fm/search/)
 - [百度网盘搜索平台](https://www.panc.cc/)
@@ -279,5 +278,18 @@ date: 2018-05-10 14:14:02
 - [Mooc学院](https://mooc.guokr.com/)
 - [农夫安全(免费视频)](https://dnspod.qcloud.com/static/block.html?d=www.farmsec.org)
 
+
+### 图片素材资源
+- [花瓣（图片素材）](http://huaban.com/)
+- [Unsplash](https://unsplash.com/)
+- [Pixabay](https://pixabay.com/)
+- [Pexels](https://www.pexels.com/)
+- [visualhunt](https://visualhunt.com/)
+- [别样网](https://www.ssyer.com/home)
+- [Fancycrave](https://fancycrave.com/)
+- [Lifeofpix](https://www.lifeofpix.com/)
+- [Kaboompics](https://kaboompics.com/)
+- [泼辣有图](http://www.polayoutu.com/collections)
+- [Free stock photos ](http://photos.oliur.com/)
 
 
