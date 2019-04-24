@@ -170,8 +170,8 @@ Text('titanjun')
 
 3. fontSize: 字体大小, 默认是14.0
 
-4. fontWeight: 字体的粗体
-
+4. fontWeight: 字体的粗体, FontWeight.w500
+  
 5. fontStyle: 字体的样式
     normal正常 italic 斜体
 
