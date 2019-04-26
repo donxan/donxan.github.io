@@ -1,14 +1,14 @@
 ---
-title: Flutter之Text和Image
+title: Flutter之基础Widget
 date: 2019-04-19 18:21:20
-tags: [Flutter, Widget, Text, Image, Dart]
+tags: [Flutter, Widget, Dart]
 categories: Flutter笔记
 image:
 ---
 
 
 
-![Flutter](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/flutter.jpeg?x-oss-process=style/titanjun)
+![Flutter](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/widget_base.png?x-oss-process=style/titanjun)
 
 
 
@@ -537,9 +537,494 @@ Image.memory(Uint8List bytes, {
 - 加载`Uint8List`资源图片
 - 主要解析`bytes`参数，其他与`Image()`构造的参数一致！
 
+## Icon
+
+- `Flutter`中，`Icon`是类似于`web`开发中一样使用`iconfont`(字体图标)，它是将图标做成字体文件，然后通过指定不同的字符而显示不同的图片
+- 在字体文件中，每一个字符都对应一个位码，而每一个位码对应一个显示字形，不同的字体就是指字形不同，即字符对应的字形是不同的
+- 而在`iconfont`中，只是将位码对应的字形做成了图标，所以不同的字符最终就会渲染成不同的图标。
+- 在`Flutter`中`iconfont`相较于图片的优势如下:
+  - 体积小：可以减小安装包大小。
+  - 矢量的：`iconfont`都是矢量图标，放大不会影响其清晰度。
+  - 可以应用文本样式：可以像文本一样改变字体图标的颜色、大小对齐等。
+  - 可以通过`TextSpan`和文本混用。
+
+### 使用Material Design字体图标
+
+`Flutter`默认包含了一套`Material Design`的字体图标，在`pubspec.yaml`文件中的配置如下
+
+```yaml
+flutter:
+  uses-material-design: true
+```
+
+<div class="note warning"><p>如果设置成false, 则图片效果如下, 图片颜色为自己设置的颜色</p></div>
+
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/icon_false.png)
+
+
+- `Material Design`所有图标可以在其官网查看：https://material.io/tools/icons/
+- `Material Design`所有图标对应的字符编码可在[material-design-icons](https://github.com/google/material-design-icons/blob/master/iconfont/codepoints)中搜索查找
+
+
+### 在Text中使用
+
+下面看一个在`Text`中使用`iconfont`的示例
+
+```dart
+String iconStr = "";
+// accessible: &#xE914; or 0xE914 or E914
+iconStr += "\uE914";
+// error: &#xE000; or 0xE000 or E000
+iconStr += " \uE000";
+// fingerprint: &#xE90D; or 0xE90D or E90D
+iconStr += " \uE90D";
+
+
+Text(iconStr,
+  style: TextStyle(
+    fontFamily: "MaterialIcons",
+    fontSize: 80.0,
+    color: Colors.green
+  ),
+)
+```
+
+上述代码的运行效果如下
+
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/icon_image.png)
+
+> 任何一个图片我们都可以使用`Text`文本进行展示, 但是这需要我们提供每一个图标的字符码点, 可在[material-design-icons](https://github.com/google/material-design-icons/blob/master/iconfont/codepoints)中搜索查找, 而且并不能固定指定图片的大小, 只能设置字体的大小, 这并对开发者不友好
+
+
+
+
+### Icon介绍
+
+`Flutter`封装了一个`Icon`来专门显示字体图标，上面的例子也可以用如下方式实现
+
+```dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: <Widget>[
+    Icon(Icons.accessible, color: Colors.green, size: 80),
+    Icon(Icons.error, color: Colors.green, size: 80),
+    Icon(Icons.fingerprint, color: Colors.green, size: 80),
+  ],
+)
+```
+
+`Icons`类中包含了所有`Material Design`图标的`IconData`静态变量定义, .....我大概算了一下, `Icons`中大概一共定义了984中图标
+
+```dart
+// icon的构造函数
+const Icon(this.icon, {
+    Key key,
+    // double, 设置图片的大小, 同事设置宽高
+    this.size,
+    // Color, 设置图片的颜色
+    this.color,
+    // String, 图标的语义标签
+    this.semanticLabel,
+    // TextDirection, 从左/右开始排列
+    this.textDirection,
+})
+```
+
+## 按钮
+
+- `Flutter`提供了`RaisedButton`、`FlatButton`、`OutlineButton`和`IconButton`四种按钮, 除了`IconButton`之外都是继承自`MaterialButton`
+- 所有`Material`库中的按钮都有如下相同点：
+  - 按下时都会有“水波动画”。
+  - 有一个`onPressed`属性来设置点击回调，当按钮按下时会执行该回调，如果不提供该回调则按钮会处于禁用状态，禁用状态不响应用户点击
+
+
+### MaterialButton
+
+`MaterialButton`是除`IconButton`按钮之外的其他按钮的父类, 下面介绍一下各属性的使用
+
+```dart
+const MaterialButton({
+    Key key,
+    // 点击事件
+    @required this.onPressed,
+    // 高亮状态变化回调，参数：是否高亮，按下时高亮，抬起不高亮
+    this.onHighlightChanged,
+    // 字体的主体
+    this.textTheme,
+    // 按钮文字颜色
+    this.textColor,
+    // 禁用状态下按钮字体颜色
+    this.disabledTextColor,
+    // 按钮背景颜色
+    this.color,
+    // 禁用状态下背景颜色
+    this.disabledColor,
+    // 高亮状态(按下时的背景颜色)
+    this.highlightColor,
+    // 按钮的水波纹的颜色
+    this.splashColor,
+    // 字体亮度
+    this.colorBrightness,
+    // 按钮底部阴影效果的偏移量, double
+    this.elevation,
+    // 高亮状态下, 按钮底部阴影效果的偏移量, double
+    this.highlightElevation,
+    // 禁用状态下, 按钮底部阴影效果的偏移量, double
+    this.disabledElevation,
+    // 内边距
+    this.padding,
+    // 按钮的形状
+    this.shape,
+    this.clipBehavior = Clip.none,
+    this.materialTapTargetSize,
+    this.animationDuration,
+    // 按钮的最小宽度
+    this.minWidth,
+    // 按钮的高度
+    this.height,
+    // 子widget
+    this.child,
+})
+```
+
+#### onPressed
+
+按钮触发时触发的函数，如果不设置此属性`Button`为不可用状态
+
+```dart
+onPressed: () => print('被点击了'),
+```
+
+#### textTheme
+
+按钮字体的主题, 在`onPressed`不为空的时候才有效果
+
+```dart
+/// 三个取值
+ButtonTextTheme.normal
+ButtonTextTheme.accent
+ButtonTextTheme.primary
+```
+
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/button_theme.png)
+
+#### colorBrightness
+
+设置按钮的字体亮度, 取值分别是`Brightness.light`和`Brightness.darks`
+
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/button_.png)
+
+
+#### padding
+
+内边距，其接收值的类型是`EdgeInsetsGeometry`类型的，`EdgeInsetsGeometry`是一个抽象类, 只能使用其子类`EdgeInsets`来实现
+
+```dart
+padding: EdgeInsets.all(10)
+```
+
+#### shape
+
+- 设置按钮的形状，其接收值是`ShapeBorder`类型，`ShapeBorder`也是一个抽象类
+- `ShapeBorder`的子类中比较常用的几个如下所示
+  - `BeveledRectangleBorder` 带斜角的长方形边框
+  - `CircleBorder` 圆形边框
+  - `RoundedRectangleBorder` 圆角矩形
+  - `StadiumBorder` 两端是半圆的边框
+
+```dart
+// 带斜角的长方形边框
+const BeveledRectangleBorder({
+    // 边框的样式 
+    this.side = BorderSide.none,
+    // 圆角大小
+    this.borderRadius = BorderRadius.zero,
+})
+
+// 圆形边框
+const CircleBorder({ 
+    this.side = BorderSide.none 
+})
+
+// 圆角矩形
+const RoundedRectangleBorder({
+    this.side = BorderSide.none,
+    this.borderRadius = BorderRadius.zero,
+})
+
+// 两端是半圆的边框
+const StadiumBorder({ 
+    this.side = BorderSide.none 
+})
+
+// 边框样式的设置
+const BorderSide({
+    // 边框颜色, 默认黑色 
+    this.color = const Color(0xFF000000),
+    // 边框宽度, 默认1.0
+    this.width = 1.0,
+    // 边框样式, solid: 实线边框(默认值), none: 不显示边框
+    this.style = BorderStyle.solid,
+})
+```
+
+下面就来看一下`shape`的配置和使用, 设置默认状态(即所有的边框样式和圆角都是默认值)的效果如下
+
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/button_shape1.png)
+
+```dart
+children: <Widget>[
+  // BeveledRectangleBorder
+  RaisedButton(
+    child: Text('BeveledRectangleBorder'),
+    onPressed: () => print('RaisedButton'),
+    shape: BeveledRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+      side: BorderSide(
+        color: Colors.red,
+        width: 2,
+        style: BorderStyle.solid
+      )
+    ),
+  ),
+  RaisedButton(
+    child: Icon(Icons.supervisor_account, color: Colors.green, size: 40),
+    onPressed: () => print('RaisedButton'),
+    padding: EdgeInsets.all(10),
+    shape: CircleBorder(
+      side: BorderSide(
+        color: Colors.red,
+        width: 2,
+        style: BorderStyle.solid
+      )
+    ),
+  ),
+  RaisedButton(
+    child: Text('RoundedRectangleBorder'),
+    onPressed: () => print('RaisedButton'),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+      side: BorderSide(
+        color: Colors.red,
+        width: 2,
+        style: BorderStyle.solid
+      )
+    ),
+  ),
+  RaisedButton(
+    child: Text('StadiumBorder'),
+    onPressed: () => print('RaisedButton'),
+    shape: StadiumBorder(
+      side: BorderSide(
+        color: Colors.red,
+        width: 2,
+        style: BorderStyle.solid
+      )
+    ),
+  ),
+],
+```
+
+上述代码是分别设置圆角和边框后的代码, 效果如下
+
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/button_shape2.png)
+
+
+### RaisedButton
+
+- `RaisedButton`即"漂浮"按钮，它默认带有阴影和灰色背景。按下后阴影会变大
+- `RaisedButton`继承自`MaterialButton`, 相关属性和父类一样
+
+```dart
+RaisedButton(
+    child: Text('RaisedButton'),
+    onPressed: () => print('RaisedButton'),
+)
+```
+
+### FlatButton
+
+- `FlatButton`即扁平按钮，默认背景透明并不带阴影。按下后，会有背景色
+- `RaisedButton`继承自`MaterialButton`, 相关属性和父类一样
+
+```dart
+FlatButton(
+    child: Text('FlatButton'),
+    onPressed: () => print('FlatButton'),
+)
+```
+
+
+### OutlineButton
+
+- `OutlineButton`默认有一个边框，不带阴影且背景透明。按下后，边框颜色会变亮、同时出现背景和阴影(较弱)
+- `RaisedButton`继承自`MaterialButton`, 相关属性和父类一样
+
+```dart
+OutlineButton(
+    child: Text('OutlineButton'),
+    onPressed: () => print('OutlineButton'),
+)
+```
+
+### IconButton
+
+`IconButton`是一个可点击的Icon，不包括文字，默认没有背景，点击后会出现背景
+
+```dart
+// 继承自StatelessWidget
+class IconButton extends StatelessWidget {
+  const IconButton({
+    Key key,
+    // 按钮的大小
+    this.iconSize = 24.0,
+    // 内边距
+    this.padding = const EdgeInsets.all(8.0),
+    // 按钮中图片的对齐方式
+    this.alignment = Alignment.center,
+    // 图片按钮的图片Icon
+    @required this.icon,
+    // 背景色
+    this.color,
+    // 高亮状态下的背景色
+    this.highlightColor,
+    // 按钮按下时, 水波纹的颜色
+    this.splashColor,
+    // 禁用状态下, 按钮的背景色
+    this.disabledColor,
+    // 点击事件
+    @required this.onPressed,
+    // String, 描述按钮按下时的描述文本, 需要长按才能出现(黑框显示文本)
+    this.tooltip
+  })
+}
+```
+
+使用示例
+
+```dart
+IconButton(
+    icon: Icon(Icons.mail_outline, color:Colors.orange, size: 40),
+    color: Colors.yellow,
+    iconSize: 100,
+    alignment: Alignment.topLeft,
+    onPressed: () => print('IconButton'),
+    tooltip: 'titanjun.top',
+)
+```
+
+### 图文按钮
+
+每一个继承自`MaterialButton`的按钮`Widget`都有一个工厂构造函数, 返回一个图片在左, 文字在右的按钮
+
+```dart
+factory RaisedButton.icon({
+    // 这里包含MaterialButton的所有属性
+    ....
+    // 图片Widget
+    @required Widget icon,
+    // 文字Widget
+    @required Widget label,
+  })
+  
+factory FlatButton.icon({
+    ....
+    @required Widget icon,
+    @required Widget label,
+  })
+  
+factory OutlineButton.icon({
+    ....
+    @required Widget icon,
+    @required Widget label,
+  })
+  
+// 使用示例
+RaisedButton.icon(
+  label: Text('data'),
+  icon: Icon(Icons.mail),
+  onPressed: () => {},
+),
+```
+
+
+## 单选开关和复选框
+
+- `Material widgets`库中提供了`Material`风格的单选开关`Switch`和复选框`Checkbox`，它们都是继承自`StatelessWidget`
+- 它们本身不会保存当前选择状态，所以一般都是在父`widget`中管理选中状态
+- 当用户点击`Switch`或`Checkbox`时，它们会触发`onChanged`回调，我们可以在此回调中处理选中状态改变逻辑
+
+```dart
+// Switch属性
+const Switch({
+    Key key,
+    // Switch的状态值, true开启, false关闭
+    @required this.value,
+    // Switch改变状态所执行的操作
+    @required this.onChanged,
+    // 开启状态下选项条的颜色
+    this.activeColor,
+    // 开启状态下圆球的颜色
+    this.activeTrackColor,
+    // 关闭状态下选项条的颜色
+    this.inactiveThumbColor,
+    // 关闭状态下圆球的颜色
+    this.inactiveTrackColor,
+    // 设置开启状态下圆球的图片
+    this.activeThumbImage,
+    // 设置关闭状态下圆球的图片
+    this.inactiveThumbImage,
+    // 设置Switch的尺寸样式, padded: 建议大小48, shrinkWrap: 可能的最小尺寸
+    this.materialTapTargetSize,
+})
+
+// Checkbox属性
+const Checkbox({
+    Key key,
+    // Switch的状态值, true选中, false未选中
+    @required this.value,
+    // 如果为 true，那么复选框的值可以是 true，false 或 null
+    // 如果为false(默认值), 那么只有true和false两种状态
+    this.tristate = false,
+    // 改变状态时执行的函数
+    @required this.onChanged,
+    // 选中时的颜色
+    this.activeColor,
+    // 设置Checkbox的尺寸样式, padded: 建议大小48, shrinkWrap: 可能的最小尺寸
+    this.materialTapTargetSize,
+})
+```
+
+使用代码
+
+```dart
+children: <Widget>[
+  Switch(
+    value: false,
+    onChanged: (value) {},
+    activeColor: Colors.red,
+    activeTrackColor: Colors.yellow,
+    inactiveThumbColor: Colors.blue,
+    inactiveTrackColor: Colors.cyan,
+    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap
+  ),
+  Checkbox(
+    value: true,
+    onChanged: (value) { },
+    activeColor: Colors.orange,
+    tristate: true,
+  )
+],
+```
+
+![image](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/widget_switch.png)
+
 
 
 ## 参考文档
 
 - [Flutter中文网](https://book.flutterchina.club/chapter3/text.html)
 - [Widgets 目录](https://flutterchina.club/widgets/)
+
+
+---

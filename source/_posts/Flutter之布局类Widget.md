@@ -6,7 +6,7 @@ categories: Flutter笔记
 image:
 ---
 
-![Flutter](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/flutter.jpeg?x-oss-process=style/titanjun)
+![Flutter](https://titanjun.oss-cn-hangzhou.aliyuncs.com/flutter/flutter_layout.png?x-oss-process=style/titanjun)
 
 
 
