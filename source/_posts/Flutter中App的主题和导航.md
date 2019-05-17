@@ -722,7 +722,7 @@ const BottomNavigationBarItem({
 ## 参考文献
 - [Cupertino (iOS风格) Widgets](https://flutterchina.club/widgets/cupertino/)
 - [Material (安卓风格) Widgets](https://flutterchina.club/widgets/material/)
-- [Scaffold、TabBar和AppBar](https://book.flutterchina.club/chapter5/material_scaffold.htmlv)
+- [Scaffold、TabBar和AppBar](https://book.flutterchina.club/chapter5/material_scaffold.html)
 
 
 
