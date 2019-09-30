@@ -2,7 +2,7 @@
 title: iOS之UIMenuController的简单使用
 date: 2016-11-22 11:52:30
 tags: [Objective-C, UIMenuController]
-categories: iOS高阶功能
+categories: iOS进阶指南
 ---
 
 ## UIMenuController须知

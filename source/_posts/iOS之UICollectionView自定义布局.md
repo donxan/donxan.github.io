@@ -2,7 +2,7 @@
 title: iOS之UICollectionView自定义布局
 date: 2016-11-15 10:22:30
 tags: [Objective-C, UICollectionView]
-categories: iOS高阶功能
+categories: iOS进阶指南
 ---
 
 ## UICollectionView基础

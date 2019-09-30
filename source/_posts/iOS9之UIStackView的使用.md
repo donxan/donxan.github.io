@@ -2,7 +2,7 @@
 title: iOS9之UIStackView的使用
 date: 2017-06-10 17:12
 tags: [Objective-C, UIStackView]
-categories: iOS高阶功能
+categories: iOS进阶指南
 ---
 
 苹果在iOS9新增了一个简易的布局控件UIStackView,它是一个基于 Auto Layout 的抽象层从而使布局属性的创建简单化,它可以将一组 UIView 视图进行垂直或水平方向的排列。

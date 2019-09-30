@@ -2,7 +2,7 @@
 title: iOS之NSDate的Category
 date: 2016-11-25 21:56:30
 tags: [Objective-C, Category]
-categories: iOS高阶功能
+categories: iOS进阶指南
 ---
 
 #### 判断日期是是否是今年？今天？

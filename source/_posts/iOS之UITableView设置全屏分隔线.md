@@ -2,7 +2,7 @@
 title: iOS之UITableView设置全屏分隔线
 date: 2016-11-20 13:41:14
 tags: [Objective-C, UITableView]
-categories: iOS高阶功能
+categories: iOS进阶指南
 ---
 
 ## UICollectionView基础
