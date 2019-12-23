@@ -455,7 +455,163 @@ Animal.name = "animal"
 
 
 
-<div class="note danger"><p>至于`static`和`class`两者的区别, 这里先留一个坑,很快会把这个坑填上的</p></div>
+### `static`
+
+- 可以修饰`class`、`struct`、`enum`类型的属性或者方法
+- 被修饰的`class`中的属性和方法不可以在子类中被重写, 重写会报错
+- 修饰存储属性
+- 修饰计算属性
+- 修饰类型方法
+
+
+```swift
+struct Person {
+    // 存储属性
+    static var weight: Int = 30
+    // 计算属性
+    static var height: Int {
+        get { 140 }
+    }
+    // 类型方法
+    static func goShoping() {
+        print("Person shoping")
+    }
+}
+```
+
+
+### `class`
+
+- 只能修饰类的计算属性和方法
+- 不能修饰类的存储属性
+- 修饰的计算属性和方法可以被子类重写
+
+
+```swift
+class Animal {
+    // 计算属性
+    class var height: Int {
+        get { 140 }
+    }
+    // 类型方法
+    class func running() {
+        print("Person running")
+    }
+}
+```
+
+
+### 内存分析
+
+先看下下面这行代码的内存地址
+
+```swift
+var num1 = 3
+var num2 = 5
+var num3 = 7
+```
+
+
+- 看到的核心汇编代码如下所示, 就是把3, 5, 7分别赋值给了三个全局变量
+- 在汇编语言中, `rip`作为指令指针,
+- `rip`中存储着`CPU`下一条要执行的指令的地址
+- 一旦`CPU`读取一条指令, `rip`会自动指向下一条指令(存储下一条指令的地址)
+- 比如下面代码中第二条指令中的`rip`存储的地址就是第三条指令的地址`0x10000138c`
+
+
+```objc
+0x10000137f <+15>:  xorl   %ecx, %ecx
+// $0x3赋值给num1, 则num1的地址值就是: 0x10000138c + 0x5e6c = 0x1000071F8
+0x100001381 <+17>:  movq   $0x3, 0x5e6c(%rip)        ; lazy cache variable for type metadata for Swift.Array<Swift.UInt8> + 4
+// $0x5赋值给num2, 则num2的地址值就是: 0x100001397 + 0x5e69 = 0x100007200
+0x10000138c <+28>:  movq   $0x5, 0x5e69(%rip)        ; SwiftLanguage.num1 : Swift.Int + 4
+// $0x7赋值给num3, 则num3的地址值就是: 0x1000013a2 + 0x5e66 = 0x100007208
+0x100001397 <+39>:  movq   $0x7, 0x5e66(%rip)        ; SwiftLanguage.num2 : Swift.Int + 4
+0x1000013a2 <+50>:  movl   %edi, -0x1c(%rbp)
+```
+
+
+- 从上面三个内存地址可以看出三个全局变量的内存地址是相邻的
+- 并且彼此相差8个字节, 因为每一个`Int`就占用8个字节
+- 下面再看一下类型属性和全局变量的内存地址
+
+
+```swift
+class Animal {
+    static var age: Int = 10
+}
+
+var num1 = 3
+Animal.age = 7
+var num2 = 5
+```
+
+<div class="note info"><p>相关汇编代码如图所示</p></div>
+
+
+
+![property](https://titanjun.oss-cn-hangzhou.aliyuncs.com/swift/property.png)
+
+
+根据图中的相关核心代码, 分别计算出`num1`, `age`和`num2`的内存地址如下
+
+```objc
+// $0x3赋值给num1, 则num1的地址值就是: 0x100000fd3 + 0x6785 = 0x100007330
+
+// 通过register命令得到rax的地址为0x100007338, 即为age所在的内存地址
+
+// $0x5赋值给num2, 则num2的地址值就是: 0x100001027 + 0x6319 = 0x100007340
+
+/*
+0x100007330
+0x100007338
+0x100007340
+*/
+// 上述三个内存地址同样也是相邻, 并且彼此相差8个字节
+```
+
+
+<div class="note success"><p>所以</p></div>
+
+类型属性也可以理解为全局变量, 不同的是全局变量可以直接访问, 类型属性必须通过类名访问, 有一定的访问限制而已
+
+
+### 线程安全
+
+- 上面有提到, 存储类型属性默认就是延迟属性(`lazy`), 不需要使用`lazy`修饰符标记, 只会在第一次使用的时候初始化
+- 即使是被多个线程访问, 也能保证只会被初始化一次, 是线程安全的
+
+
+
+![property](https://titanjun.oss-cn-hangzhou.aliyuncs.com/swift/property.png)
+
+
+- 从图中可以看出, 在断点处给类型属性`age`赋值之前, 执行了很多汇编代码
+- 其中最重要的一条函数跳转指令`callq`
+
+
+```objc
+// 进入查看具体执行的那些操作
+0x100000fda <+26>:  callq  0x1000010d0  ; SwiftLanguage.Animal.age.unsafeMutableAddressor : Swift.Int at main.swift
+```
+
+将断点加在此处, 执行`si`指令即可进入该模块
+
+
+![property1](https://titanjun.oss-cn-hangzhou.aliyuncs.com/swift/property1.png)
+
+
+- 这里看到`swift_once`, 自然就能够联想到`dispatch_once`和`OC`中的单例模式
+- 那就继续向下看, 看看`swift_once`里面到底是如何操作的, 还是在`swift_once`加上断点, 并执行`si`指令, 如下图所示
+
+
+![property2](https://titanjun.oss-cn-hangzhou.aliyuncs.com/swift/property2.png)
+
+
+<div class="note success"><p>所以</p></div>
+
+- 类型属性的线程安全最终就是通过`dispatch_once`实现的
+- 属性的赋值操作相当于就是放在`dispatch_once`里面执行的, 保证`age`的初始化操作永远只被执行一次, 类似`OC`中的单例
 
 
 ---
@@ -463,9 +619,6 @@ Animal.name = "animal"
 
 
 
-> 欢迎您扫一扫下面的微信公众号，订阅我的博客！
-
-![微信公众号](https://titanjun.oss-cn-hangzhou.aliyuncs.com/hexo-next/qrcode_258.jpg)
 
 
 
