@@ -11,24 +11,28 @@ date: 2017-01-10 22:20:12
 ## 个人简介
 
 - 本科学历
-- 90后程序猿(93年)
-- iOS开发工程师
-- 毕业于某某大学
-- 目前工作于杭州, 很美的城市
+- iOS开发工程师(`Swift`和`OC`)
+- 擅长原生开发和跨平台开发(`React Native`和`Flutter`)
+- 目前定居于杭州, 工作于杭州
+
+
+
 
 
 ## 学习历程
-作为一名iOS开发程序猿, 总喜欢折腾, 喜欢研究和学习一些开发语言或框架
+
+作为一名程序猿, 总喜欢折腾, 喜欢研究和学习一些新的技术
 
 - `React Native`
-- `Flutter`
-- `C` 和 `C++`
-- `Objective-C` 和 `Cocoa Reactive`
-- `Swift` 和 `RxSwift`
-- `HTML5`
+- `Objective-C`
 - `JavaScript`
-- `Dart`
+- `Flutter`
 - `Python`
+- `Swift`
+- `Dart`
+- `C++` 
+- `C`
+
 
 
 
@@ -43,7 +47,7 @@ date: 2017-01-10 22:20:12
 - CSDN: https://blog.csdn.net/shmilycoder
 - Github: https://github.com/CoderTitan
 - 掘金: https://juejin.im/user/5a7a64ae6fb9a0636323fd06
-- QQ: 3317016694
+- QQ: 741700649
 
 
 ## MyMusic
