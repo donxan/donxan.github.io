@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: TitanKing
+title: 运维手札
 subtitle: 技术博客
 description: 我还年轻，我渴望上路。带着最初的激情，追寻着最初的梦想，感受着最初的体验，我们上路吧!
-author: TitanKing
+author: Dongxiang Zhao
 language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://titanjun.top
+url: https://blog.iuops.com
 root: /
 permalink: :title.html
 permalink_defaults:
@@ -138,5 +138,6 @@ plugins: hexo-generate-feed
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/CoderTitan/CoderTitan.github.io.git
-  branch: master
+  repo:
+    github: git@github.com:donxan/donxan.github.io.git,master
+    coding: git@e.coding.net:gitcto/blogs.git,master

@@ -45,7 +45,7 @@ rss: /atom.xml
 footer:
   # Specify the date when the site was setup.
   # If not defined, current year will be used.
-  since: 2016
+  since: 2015
 
   # Icon between year and copyright info.
   icon: heart
@@ -92,16 +92,16 @@ index_with_subtitle: true
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
-  home: / || home
-  archives: /archives/ || archive
-  # top: /top/ || signal
-  categories: /categories/ || th
-  tags: /tags/ || tags
-  about: /about/ || user
-  navigation: /navigation/ || globe
-  #schedule: /schedule/ || calendar
-  #sitemap: /sitemap.xml || sitemap
-  # commonweal: /404/ || heartbeat
+  home: /|| home
+  archives: /archives/|| archive
+  # top: /top/|| signal
+  categories: /categories/|| th
+  tags: /tags/|| tags
+  about: /about/|| user
+  navigation: /navigation/|| globe
+  #schedule: /schedule/|| calendar
+  #sitemap: /sitemap.xml|| sitemap
+  # commonweal: /404/|| heartbeat
 
 # Enable/Disable menu icons.
 menu_icons:
@@ -129,15 +129,15 @@ scheme: Pisces
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
-  GitHub: https://github.com/CoderTitan || github
-  新浪微博: https://weibo.com/p/1005056052774133/home?from=page_100505&mod=TAB&is_all=1#place || weibo
-  简书: https://www.jianshu.com/u/5bd5e9ed569e || book
-  CSDN: http://blog.csdn.net/ShmilyCoder
-  稀土掘金: https://juejin.im/user/5a7a64ae6fb9a0636323fd06/posts || database
-  E-Mail: mailto:quanjunt@163.com || envelope
+  GitHub: https://github.com/donxan || github
+  #新浪微博: https://weibo.com/p/user || weibo
+  #简书: https://www.jianshu.com/u/user || book
+  #CSDN: http://blog.csdn.net/ShmilyCoder
+  #稀土掘金: https://juejin.im/user/*/posts || database
+  E-Mail: donxan@gmail.com || envelope
   #Google: https://plus.google.com/yourname || google
-  Twitter: https://twitter.com/CoderTitan || twitter
-  #FB Page: https://www.facebook.com/yourname || facebook
+  Twitter: https://twitter.com/Aiker || twitter
+  FB Page: https://www.facebook.com/edward.aiker || facebook
   #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
   #YouTube: https://youtube.com/yourname || youtube
@@ -241,11 +241,12 @@ post_meta:
 
 # Post wordcount display settings
 # Dependencies: https://github.com/willin/hexo-wordcount
+#增加文章字数统计及阅读时常功能
 post_wordcount:
   item_text: true
-  wordcount: true
-  min2read: true
-  totalcount: false
+  wordcount: true #单篇文章字数
+  min2read: true #单篇阅读时长
+  totalcount: false #站点总字数
   separated_meta: true
 
 # Wechat Subscriber
@@ -366,7 +367,7 @@ han: false
 #swiftype_key:
 
 # Baidu Analytics ID
-baidu_analytics: d6dd8cf28eb4a5f6451fa0cd10918824
+baidu_analytics: b30cf4954da6e7528743f8b2819ad809
 
 # Duoshuo ShortName
 #duoshuo_shortname:
@@ -381,25 +382,25 @@ disqus:
 # hypercomments_id: 103218
 
 # changyan
-changyan:
-  enable: false
-  appid: cytxBlW1c
-  appkey: f8aac57d7f4e06a44063cac7eff0634a
+#changyan:
+  #enable: false
+  #appid: cytxBlW1c
+  #appkey: f8aac57d7f4e06a44063cac7eff0634a
 
 
 # Valine.
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
-valine:
-  enable: true
-  appid: m7FB3zoFkQnVKAyykKJlY8QR-gzGzoHsz # your leancloud application appid
-  appkey: 7X31Wl5lm6BXqgtV9k3sm7yI # your leancloud application appkey
-  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
-  verify: false # Verification code
-  placeholder: 在这里说点什么吧... # comment box placeholder
-  avatar: identicon # 评论表头样式  /mm/identicon/monsterid/wavatar/retro/hide
-  guest_info: nick,mail,link # custom comment header
-  pageSize: 10 # pagination size
+#valine:
+#  enable: true
+#  appid: m7FB3zoFkQnVKAyykKJlY8QR-gzGzoHsz # your leancloud application appid
+#  appkey: 7X31Wl5lm6BXqgtV9k3sm7yI # your leancloud application appkey
+#  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
+#  verify: false # Verification code
+#  placeholder: 在这里说点什么吧... # comment box placeholder
+#  avatar: identicon # 评论表头样式  /mm/identicon/monsterid/wavatar/retro/hide
+#  guest_info: nick,mail,link # custom comment header
+#  pageSize: 10 # pagination size
 
 
 # Support for youyan comments system.
@@ -410,22 +411,26 @@ valine:
 # You can get your uid from https://livere.com/insight/myCode (General web site)
 # livere_uid: MTAyMC8zNTM1MS8xMTg4Nw==
 
-# Gitment
-# Introduction: https://imsun.net/posts/gitment-introduction/
-# You can get your Github ID from https://api.github.com/users/<Github username>
-gitment:
+gitalk:
   enable: true
-  mint: true # RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway
-  count: true # Show comments count in post meta area
-  lazy: false # Comments lazy loading with a button
-  cleanly: true # Hide 'Powered by ...' on footer, and more
-  language: zh-Hans  # Force language, or auto switch by theme
-  github_user: CoderTitan # MUST HAVE, Your Github ID
-  github_repo: CoderTitan.github.io # MUST HAVE, The repo you use to store Gitment comments
-  client_id: 47d71683076aa93948d8 # MUST HAVE, Github client id for the Gitment
-  client_secret: 218676a3ad406ae623f3974be77590653ee351d5 # EITHER this or proxy_gateway, Github access secret token for the Gitment
-  proxy_gateway: # Address of api proxy, See: https://github.com/aimingoo/intersect
-  redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint enabled
+  githubID: donxan #github帐号  # 例：asdfv1929   
+  repo: iuops   # 例：asdfv1929.github.io
+  ClientID: cc8956762f73715eb45d
+  ClientSecret: 783fd73c95feb79d36129f56563da6d828bd7fa9
+  adminUser: donxan #指定可初始化评论账户
+  distractionFreeMode: true
+#gitalk:
+#  enable: true
+#  clientID: cc8956762f73715eb45d # 申请的Client Secret
+#  clientSecret: 783fd73c95feb79d36129f56563da6d828bd7fa9 # 申请的OAuth AppID
+#  repo: iuops # 新建的repository名
+#  owner: donxan
+#  adminUser: donxan # 管理员用户
+#  labels: "['Gitalk']" # issue 的标签
+#  perPage: 15 # 每页展示条数
+#  pagerDirection: last # 排序方式是从旧到新（first）还是从新到旧（last）
+#  createIssueManually: true #如果当前页面没有相应的 isssue ，且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。
+#  distractionFreeMode: false #是否启用快捷键(cmd|ctrl + enter) 提交评论.
 
 # Baidu Share
 # Available value:
@@ -447,7 +452,7 @@ gitment:
 
 mob_share:
   enable: true
-  appkey: 24fc497bb07bc
+  appkey: 2e8b32e698100
 
 # NeedMoreShare2
 # This plugin is a pure javascript sharing lib which is useful in China.
@@ -541,16 +546,16 @@ vkontakte_api:
 # To get your ID visit https://widgetpack.com
 rating:
   enable: true
-  id: 10998    #<app_id>
+  id: 24158    #<app_id>
   color: f79533
 # ---------------------------------------------------------------
 
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
-leancloud_visitors:
-  enable: true
-  app_id: m7FB3zoFkQnVKAyykKJlY8QR-gzGzoHsz
-  app_key: 7X31Wl5lm6BXqgtV9k3sm7yI
+#leancloud_visitors:
+#  enable: true
+#  app_id: m7FB3zoFkQnVKAyykKJlY8QR-gzGzoHsz
+#  app_key: 7X31Wl5lm6BXqgtV9k3sm7yI
 
 # Another tool to show number of visitors to each article.
 # visit https://console.firebase.google.com/u/0/ to get apiKey and projectId
@@ -561,6 +566,8 @@ firestore:
   apiKey: #required
   projectId: #required
   bluebird: false #enable this if you want to include bluebird 3.5.1(core version) Promise polyfill
+
+# 不蒜子统计，用于在页脚显示总访客数和总浏览量，将 false 改为 true 就能直接使用
 
 # Show PV/UV of the website/page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
@@ -835,10 +842,14 @@ passage_end_tag:
 
 # Online contact
 daovoice: true
-daovoice_app_id: a85a9be2
+daovoice_app_id: 6b1cb9a7
 
+utterances:
+  enable: true
+  repo: donxan/iuops # owner/repo
+  issue_term: # pathname, url, title, og:title [ISSUE NUMBER] or [SPECIFIC TERM]
+  theme: github-light # github-light or github-dark
+  cdn: https://utteranc.es/client.js
 
-
-# 百度和谷歌收录
-baidu-site-verification: MPBGB4Q8wr
+baidu-site-verification: 73GQgcb3uf
 #google_site_verification:
