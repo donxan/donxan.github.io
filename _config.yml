@@ -5,7 +5,7 @@
 # Site
 title: 运维手札
 subtitle: 技术博客
-description: 我还年轻，我渴望上路。带着最初的激情，追寻着最初的梦想，感受着最初的体验，我们上路吧!
+description: 给自己充电，每天努力一点点！
 author: Dongxiang Zhao
 language: zh-Hans
 timezone:
@@ -14,8 +14,8 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://blog.iuops.com
 root: /
-permalink: posts/:abbrlink/    #这里就是永久链接的参数设置
-#permalink: :title.html
+#permalink: posts/:abbrlink/    #这里就是永久链接的参数设置
+permalink: :title.html
 permalink_defaults:
 
 # abbrlink config

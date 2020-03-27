@@ -1,7 +1,10 @@
 ---
 title: hexo next 配置 DaoVoice实现在线聊天
+tags:
+  - Hexo
+categories: Hexo博客
+abbrlink: 68d038bb
 date: 2020-03-27 16:08:03
-tags:[hexo]
 ---
 
 之前有访问过一些大佬的个人博客，里面有个在线联系功能，看着不错，所以也试着在自己的站点上接入了此功能。
