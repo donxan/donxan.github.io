@@ -1,8 +1,12 @@
 ---
 title: CSS基础知识总结
-date: 2018-08-20 17:16
-tags: [HTML5, CSS, WebStorm]
+date: '2018-08-20 17:16'
+tags:
+  - HTML5
+  - CSS
+  - WebStorm
 categories: HTML5
+abbrlink: 6b2d1dfa
 ---
 
 

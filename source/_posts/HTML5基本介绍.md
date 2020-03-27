@@ -1,8 +1,12 @@
 ---
 title: HTML5基本介绍
-date: 2017-06-15 20:16
-tags: [HTML5标签, CSS, WebStorm]
+date: '2017-06-15 20:16'
+tags:
+  - HTML5标签
+  - CSS
+  - WebStorm
 categories: HTML5
+abbrlink: 7334fb9a
 ---
 
 ## 一.网页固定格式

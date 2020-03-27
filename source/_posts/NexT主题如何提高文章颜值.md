@@ -1,12 +1,16 @@
 ---
 title: NexT主题如何提高文章颜值
-date: 2018-05-07 16:13
-tags: [Hexo, NexT, 自定义样式]
+date: '2018-05-07 16:13'
+tags:
+  - Hexo
+  - NexT
+  - 自定义样式
 categories: Hexo博客
+abbrlink: 5a30761b
 ---
 
 
-- 博客搭建和主题配置教程: [Hexo博客相关分类](https://www.titanjun.top/categories/Hexo%E5%8D%9A%E5%AE%A2/)
+- 博客搭建和主题配置教程: [Hexo博客相关分类](https://blog.iuops.com/categories/Hexo%E5%8D%9A%E5%AE%A2/)
 - 博客主题配置好了, 也算穿上了华丽的外衣, 但是真正高质量的文章不但要有好的内容更要有美丽的外表结构
 - 所以在提高外在美的同时, 我们也要提高文章的内在美
 - 这里我们就介绍一些在NexT主题下提高文章颜值的方法
@@ -246,7 +250,7 @@ password:
 主题自带样式 代码块高亮
 
 ```
-```[language] [title] [url] [link-text]
+​```[language] [title] [url] [link-text]
 
 `代码`
 

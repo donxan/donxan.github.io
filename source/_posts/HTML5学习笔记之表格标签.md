@@ -1,9 +1,13 @@
 ---
 title: HTML5学习笔记之表格标签
-date: 2017-06-15 20:18
-tags: [HTML5标签, CSS, WebStorm]
+date: '2017-06-15 20:18'
+tags:
+  - HTML5标签
+  - CSS
+  - WebStorm
 categories: HTML5
-image: 
+abbrlink: 9483b8e
+image:
 ---
 
 

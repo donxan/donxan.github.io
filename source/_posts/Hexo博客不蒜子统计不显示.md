@@ -1,15 +1,19 @@
 ---
 title: Hexo博客不蒜子统计不显示
-date: 2018-10-23 16:55:45
-tags: [Hexo, busuanzi, 不蒜子]
+tags:
+  - Hexo
+  - busuanzi
+  - 不蒜子
 categories: Hexo博客
+abbrlink: 641ca9b6
+date: 2018-10-23 16:55:45
 ---
 
 
 
 
 
-![image](http://titanjun.oss-cn-hangzhou.aliyuncs.com/hexo-next/busuanzi.png)
+
 
 
 <!-- more -->
@@ -51,4 +55,4 @@ categories: Hexo博客
 ```
 
 
-我的博客: https://www.titanjun.top/
+我的博客: https://blog.iuops.com/

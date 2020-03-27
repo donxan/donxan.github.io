@@ -14,8 +14,16 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://blog.iuops.com
 root: /
-permalink: :title.html
+permalink: posts/:abbrlink/    #这里就是永久链接的参数设置
+#permalink: :title.html
 permalink_defaults:
+
+# abbrlink config
+#参数：alg 对应随机值算法参数，可选为crc16和crc32
+#参数：rep 对应生成链接的表示方法，hex：十六进制，dec:十进制
+abbrlink:
+  alg: crc32  #support crc16(default) and crc32
+  rep: hex    #support dec(default) and hex
 
 # Directory
 source_dir: source

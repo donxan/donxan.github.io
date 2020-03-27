@@ -1,8 +1,12 @@
 ---
 title: Node.js搭建Web服务器
-date: 2018-01-20 11:13
-tags: [Node.js, Web, Express]
+date: '2018-01-20 11:13'
+tags:
+  - Node.js
+  - Web
+  - Express
 categories: Node.js笔记
+abbrlink: 51f133d4
 image:
 ---
 

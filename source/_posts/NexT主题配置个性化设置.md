@@ -1,9 +1,11 @@
 ---
 title: NexT主题配置个性化设置
-date: 2018-04-03 15:03:13
-tags: [Hexo, NexT]
+tags:
+  - Hexo
+  - NexT
 categories: Hexo博客
-
+abbrlink: 9eda55ce
+date: 2018-04-03 15:03:13
 ---
 
 
@@ -47,7 +49,6 @@ categories: Hexo博客
   - 侧边栏推荐阅读
   - 自定义鼠标样式
   - 为博客加上萌萌的宠物
-  - DaoVoice 在线联系
   - 点击爆炸效果
 
 ### https技术博客配置社会化分享
