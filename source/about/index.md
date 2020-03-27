@@ -16,8 +16,9 @@ date: 2017-01-10 22:20:12
 
 <div style="text-align: center">
     <p>欢迎您扫一扫二维码, 关注我的微信公众号！</p>
-    <img src="https://i.imgur.com/4l0WT8W.png" width="250" height="250">
+    <img src="https://blog.iuops.com/images/wechat_gzh.svg" width="250" height="250">
 </div>
+
 
 - Github: https://github.com/donxan
 - 51CTO: [http://m51cto.blog.51cto.com](http://m51cto.blog.51cto.com/)
