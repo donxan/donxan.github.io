@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="73GQgcb3uf">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+<script src="//code.tidio.co/hu2i5phnopp48fyrd8uewz5qspsrfidn.js" async></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,Pillow,pip3,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="运维手札" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="做过开发工作的童鞋应该都知道, 在一个完整的项目中, 会有大量的代码, 而且慢慢代码量会越来越多, 代码也就越来越难以维护; 随着你的程序变得越来越长，你可能想要将它分割成几个更易于维护的文件。 你也可能想在不同的程序中使用顺手的函数，而不是把代码在它们之间中拷来拷去 为了解决类似问题, 我们把很多功能相似的函数分组, 分别放到不同的文件中,这样每个文件中的代码相对较少, 且函数功能相似; Gi">
+<meta name="keywords" content="Python,Pillow,pip3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python中模块的使用">
+<meta property="og:url" content="https://blog.iuops.com/posts/fe2495d8/index.html">
+<meta property="og:site_name" content="运维手札">
+<meta property="og:description" content="做过开发工作的童鞋应该都知道, 在一个完整的项目中, 会有大量的代码, 而且慢慢代码量会越来越多, 代码也就越来越难以维护; 随着你的程序变得越来越长，你可能想要将它分割成几个更易于维护的文件。 你也可能想在不同的程序中使用顺手的函数，而不是把代码在它们之间中拷来拷去 为了解决类似问题, 我们把很多功能相似的函数分组, 分别放到不同的文件中,这样每个文件中的代码相对较少, 且函数功能相似; Gi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p7hfnfk6u.bkt.clouddn.com/Snip20180531_1.png">
+<meta property="og:updated_time" content="2020-05-14T15:59:32.614Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python中模块的使用">
+<meta name="twitter:description" content="做过开发工作的童鞋应该都知道, 在一个完整的项目中, 会有大量的代码, 而且慢慢代码量会越来越多, 代码也就越来越难以维护; 随着你的程序变得越来越长，你可能想要将它分割成几个更易于维护的文件。 你也可能想在不同的程序中使用顺手的函数，而不是把代码在它们之间中拷来拷去 为了解决类似问题, 我们把很多功能相似的函数分组, 分别放到不同的文件中,这样每个文件中的代码相对较少, 且函数功能相似; Gi">
+<meta name="twitter:image" content="http://p7hfnfk6u.bkt.clouddn.com/Snip20180531_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":3,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.iuops.com/posts/fe2495d8/">
+
+
+
+
+
+  <title>Python中模块的使用 | 运维手札</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b30cf4954da6e7528743f8b2819ad809";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/donxan" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">运维手札</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">技术博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            列表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-navigation">
+          <a href="/navigation/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-globe"></i> <br>
+            
+            导航
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.iuops.com/posts/fe2495d8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dongxiang Zhao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="运维手札">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python中模块的使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T16:20:12+08:00">
+                2018-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Python基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+                    
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>做过开发工作的童鞋应该都知道, 在一个完整的项目中, 会有大量的代码, 而且慢慢代码量会越来越多, 代码也就越来越难以维护;</li>
+<li>随着你的程序变得越来越长，你可能想要将它分割成几个更易于维护的文件。</li>
+<li>你也可能想在不同的程序中使用顺手的函数，而不是把代码在它们之间中拷来拷去</li>
+<li>为了解决类似问题, 我们把很多功能相似的函数分组, 分别放到不同的文件中,这样每个文件中的代码相对较少, 且函数功能相似;</li>
+<li><a href="https://github.com/CoderTitan/PythonDemo" target="_blank" rel="noopener">GitHub代码示例目地址</a></li>
+</ul>
+<a id="more"></a>
+
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="模块简述"><a href="#模块简述" class="headerlink" title="模块简述"></a>模块简述</h3><ul>
+<li>在<code>Python</code>中提供了一个方法可以从文件中获取定义，在脚本或者解释器的一个交互式实例中使用, 这样的文件被称为模块；</li>
+<li>模块中的定义可以导入到另一个模块或主模块中（在脚本执行时可以调用的变量集位于最高级，并且处于计算器模式）</li>
+<li>模块是包括 Python 定义和声明的文件。文件名就是模块名加上 .py 后缀。</li>
+<li>模块的模块名（做为一个字符串）可以由全局变量 <code>__name__</code> 得到</li>
+<li>模块主要分为内置模块, 三方模块和自定义模块</li>
+</ul>
+<h3 id="模块优点"><a href="#模块优点" class="headerlink" title="模块优点"></a>模块优点</h3><ul>
+<li>提高了代码的可维护性</li>
+<li>提高了代码的服用度, 当一个模块完毕, 可以被多个地方引用</li>
+<li>可避免函数名和变量名的冲突</li>
+</ul>
+<h3 id="标准库模块"><a href="#标准库模块" class="headerlink" title="标准库模块"></a>标准库模块</h3><p>下面是一个使用<code>python</code>标准库中模块的例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">print(<span class="string">'命令行参数如下:'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> sys.argv:</span><br><span class="line">   print(i)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'\n\nPython 路径为：'</span>, sys.path, <span class="string">'\n'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果如下</span></span><br><span class="line">命令行参数如下:</span><br><span class="line">../GitHub/PythonDemo/PythonStudy/<span class="number">7</span>-模块/<span class="number">1</span>-模块概述.py</span><br><span class="line"></span><br><span class="line">Python 路径为： [<span class="string">'/Users/../GitHub/PythonDemo/PythonStudy/7-模块'</span>, <span class="string">'/Users/../GitHub/PythonDemo/PythonStudy'</span>, <span class="string">'/Library/Frameworks/Python.framework/Versions/3.6/lib/python36.zip'</span>, <span class="string">'/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6'</span>, <span class="string">'/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/lib-dynload'</span>, <span class="string">'/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages'</span>, <span class="string">'/Applications/PyCharm.app/Contents/helpers/pycharm_matplotlib_backend'</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>argv</code>: 获取命令行参数的列表</li>
+<li><code>import sys</code> 引入<code>python</code>标准库中的<code>sys.py</code>模块</li>
+<li><code>import</code>: 这是引入一个模块的方法(后面会提到)</li>
+<li><code>sys.path</code>: 包含了一个<code>Python</code>解释器自动查找所需模块的路径的列表</li>
+</ul>
+<h2 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h2><ul>
+<li><code>Python</code>中不但可以使用第三方模块和系统模块, 同时我们还可以使用自定义模块, </li>
+<li>在<code>Python</code>中一个<code>.py</code>文件就是一个模块</li>
+<li>下面是我自定义的一个<code>Titan.py</code>模块, 代码如下</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'这是Titan模块'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义变量</span></span><br><span class="line">age = <span class="number">20</span></span><br><span class="line">name = <span class="string">'titan'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义方法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sayGood</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'good'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sayNice</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'nice'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sayBad</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'bad'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h2><h3 id="import方式"><a href="#import方式" class="headerlink" title="import方式"></a><code>import</code>方式</h3><p>在<code>Python</code>中导入另一个文件或者模块, 受用的语法是<code>import</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入单个或多个模块</span></span><br><span class="line"><span class="keyword">import</span> module1[, module2[,... moduleN]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例</span></span><br><span class="line"><span class="comment"># 一次导入多个模块</span></span><br><span class="line"><span class="keyword">import</span> time, random, os</span><br><span class="line"><span class="comment"># 一次导入一个模块</span></span><br><span class="line"><span class="keyword">import</span> calendar</span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>需要注意的是: </p></div>
+
+<ul>
+<li>一个模块只会被导入一次，不管你执行了多少次<code>import</code>, 可以防止模块被重复引用</li>
+<li>引入任何模块时(包括自定义模块), 不用加<code>.py</code>后缀</li>
+<li>当我们使用<code>import</code>语句的时候，<code>Python</code>解释器是怎样找到对应的文件的呢？<ul>
+<li>这就涉及到<code>Python</code>的搜索路径，搜索路径是由一系列目录名组成的，<code>Python</code>解释器就依次从这些目录中去寻找所引入的模块。</li>
+<li>这看起来很像环境变量，事实上，也可以通过定义环境变量的方式来确定搜索路径。</li>
+<li>搜索路径是在<code>Python</code>编译或安装的时候确定的，安装新的库应该也会修改。搜索路径被存储在<code>sys</code>模块中的<code>path</code>变量</li>
+</ul>
+</li>
+</ul>
+<div class="note info"><p>使用示例</p></div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Titan</span><br><span class="line"></span><br><span class="line">Titan.sayBad()</span><br><span class="line">Titan.sayGood()</span><br><span class="line">print(Titan.name)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果:</span></span><br><span class="line">bad</span><br><span class="line">good</span><br><span class="line">titan</span><br></pre></td></tr></table></figure>
+
+<h3 id="from…import方式"><a href="#from…import方式" class="headerlink" title="from…import方式"></a><code>from…import</code>方式</h3><p>从模块中导入一个指定的部分到当前的命名空间, 同样也可以导入一个模块中的多个部分(或者导入多个方法或变量), 格式如下:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from modname import name1[, name2[, ... nameN]]</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p>使用示例</p></div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Titan <span class="keyword">import</span> sayGood, sayBad, age</span><br><span class="line"></span><br><span class="line">sayBad()</span><br><span class="line">sayGood()</span><br><span class="line">print(age)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果:</span></span><br><span class="line">bad</span><br><span class="line">good</span><br><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>需要注意的是:</p></div>
+
+<p>这种方式, 可能会导致和本文件中定义的方法或者变量重名, 这里需要注意</p>
+<h3 id="from…import-方式"><a href="#from…import-方式" class="headerlink" title="from…import*方式"></a><code>from…import*</code>方式</h3><p>把一个模块中所有的内容, 全部倒入当前命名空间, 但是最好不要过多地使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式:</span></span><br><span class="line"><span class="keyword">from</span> modname <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用:</span></span><br><span class="line"><span class="keyword">from</span> Titan <span class="keyword">import</span> *</span><br><span class="line">sayGood()</span><br><span class="line">print(age)</span><br></pre></td></tr></table></figure>
+
+<h2 id="模块内置属性和函数"><a href="#模块内置属性和函数" class="headerlink" title="模块内置属性和函数"></a>模块内置属性和函数</h2><h3 id="name-属性"><a href="#name-属性" class="headerlink" title="__name__属性"></a><code>__name__</code>属性</h3><ul>
+<li>除了包含函数定义外，模块也可以包含可执行语句, 这些语句一般用来初始化模块, 他们仅在第一次被导入的地方执行一次</li>
+<li>模块就是一个可执行的<code>.py</code>文件, 一个模块呗另一个程序引用, 模块中的一些可执行语句便会执行</li>
+<li>如果我们不想让模块中的某些代码执行, 可以用<code>__name__</code>属性来使程序仅调用模块中的一部分</li>
+<li>现在我们将模块中的代码修改如下:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    print(<span class="string">'这是Titan模块'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayGood</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">'good'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayNice</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">'nice'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayBad</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">'bad'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    age = <span class="number">20</span></span><br><span class="line">    name = <span class="string">'titan'</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>name</code>和<code>main</code>前后都是双下划线</li>
+<li>每一个模块中都有一个<code>__name__</code>属性, 当其值等于<code>__main__</code>时, 表明该模块自身在执行, 否则被引入了其他文件</li>
+<li>当前文件如果为程序的入口文件, 则<code>__name__</code>属性的值为<code>__main__</code></li>
+</ul>
+<h3 id="dir-函数"><a href="#dir-函数" class="headerlink" title="dir()函数"></a><code>dir()</code>函数</h3><ul>
+<li>内置的函数<code>dir()</code> 可以找到模块内定义的所有名称, 以一个字符串列表的形式返回</li>
+<li>如果没有给定参数，那么<code>dir()</code>函数会罗列出当前定义的所有名称</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Titan</span><br><span class="line"></span><br><span class="line">print(dir(Titan))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果:</span></span><br><span class="line">[<span class="string">'__builtins__'</span>, <span class="string">'__cached__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__file__'</span>, <span class="string">'__loader__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'__spec__'</span>, <span class="string">'age'</span>, <span class="string">'name'</span>, <span class="string">'sayBad'</span>, <span class="string">'sayGood'</span>, <span class="string">'sayNice'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(dir())</span><br><span class="line"><span class="comment"># 输出结果:</span></span><br><span class="line">[<span class="string">'Titan'</span>, <span class="string">'__annotations__'</span>, <span class="string">'__builtins__'</span>, <span class="string">'__cached__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__file__'</span>, <span class="string">'__loader__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'__spec__'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里定义一个新的变量</span></span><br><span class="line">sum = <span class="number">30</span></span><br><span class="line">print(dir())</span><br><span class="line"><span class="comment"># 输出结果:</span></span><br><span class="line">[<span class="string">'Titan'</span>, <span class="string">'__annotations__'</span>, <span class="string">'__builtins__'</span>, <span class="string">'__cached__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__file__'</span>, <span class="string">'__loader__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'__spec__'</span>, <span class="string">'sum'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把定义的变量删除后</span></span><br><span class="line"><span class="keyword">del</span> sum</span><br><span class="line">print(dir())</span><br><span class="line"><span class="comment"># 输出结果:</span></span><br><span class="line">[<span class="string">'Titan'</span>, <span class="string">'__annotations__'</span>, <span class="string">'__builtins__'</span>, <span class="string">'__cached__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__file__'</span>, <span class="string">'__loader__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'__spec__'</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><p>这里我们先思考这样一个问题: 在同一个项目中有两个或两个以上的开发者分别定义了相同名字的模块(当然狮子啊不同的目录中, 同一个目录下不可能创建出相同名字的文件), 那么模块该如何调用</p>
+<div class="note success"><p>解决</p></div>
+
+<ul>
+<li>为了解决上述模块命名的冲突, 引入了按照目录来组织模块的方法, 成为包</li>
+<li>包是一种管理<code>Python</code>模块命名空间的形式，采用”点模块名称”</li>
+<li>引入包以后, 只要顶层的包不与其他人的发生冲突, 那么模块就都不会与别人的发生冲突</li>
+<li>所谓顶层的包指的是上一层的文件目录</li>
+<li>同一个包可以包含多个模块</li>
+<li>例如: 名为<code>A.B</code>的模块表示了名为<code>A</code>的包中名为<code>B</code>的子模块</li>
+</ul>
+<div class="note warning"><p>需要注意的是:</p></div>
+
+<p>在每一个包内(模块的同级目录下)必须要创建一个名为<code>__init__.py</code>的文件, 主要是为了避免一些滥竽充数的名字, 目前该文件内可以什么都不用写, 如图所示:</p>
+<p><img src="http://p7hfnfk6u.bkt.clouddn.com/Snip20180531_1.png" alt="包.png"></p>
+<div class="note success"><p>调用方法</p></div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> a.Titan</span><br><span class="line"><span class="keyword">import</span> b.Titan</span><br><span class="line"><span class="keyword">import</span> b.coder</span><br><span class="line"></span><br><span class="line">a.Titan.sayGood()</span><br><span class="line">b.Titan.sayGood()</span><br><span class="line">b.coder.sayGood()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果:</span></span><br><span class="line">good--a</span><br><span class="line">good--b</span><br><span class="line">good--coder</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装使用第三方模块"><a href="#安装使用第三方模块" class="headerlink" title="安装使用第三方模块"></a>安装使用第三方模块</h2><h3 id="pip简介"><a href="#pip简介" class="headerlink" title="pip简介"></a><code>pip</code>简介</h3><ul>
+<li>在<code>Python</code>中第三方库是通过<code>pip</code>安装和管理的, <code>pip</code>就像<code>iOS</code>中的<code>pod</code>一样, 负责安装和管理第三方库</li>
+<li>在<code>Mac</code>和<code>Linux</code>系统中<code>pip</code>是默认安装过的, 一般无需重新安装, 如有问题, 请自行百度解决</li>
+<li>在<code>Mac</code>系统中会有一个默认的<code>Python2.7</code>版本的, 我自己安装了一个3.6的版本, 自然默认也安装了<code>pip</code></li>
+<li>下面是一些<code>Python3.6</code>中<code>pip</code>的命令, 这里需要以<code>pip3</code>为命令头执行</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前pip版本</span></span><br><span class="line">pip3 -V</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装第三方库</span></span><br><span class="line">pip3 install ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对pip进行升级</span></span><br><span class="line">pip3 install --upgrade pip3</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装第三方库"><a href="#安装第三方库" class="headerlink" title="安装第三方库"></a>安装第三方库</h3><ul>
+<li><code>Mac</code>系统安装第三方库, 直接打开终端执行安装命令即可</li>
+<li><code>Pillow</code>已经是<code>Python</code>平台事实上的图像处理标准库了</li>
+<li><code>PIL</code>功能非常强大，但<code>API</code>却非常简单易用</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install Pillow</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三方模块的使用"><a href="#第三方模块的使用" class="headerlink" title="第三方模块的使用"></a>第三方模块的使用</h3><h4 id="操作图像"><a href="#操作图像" class="headerlink" title="操作图像"></a>操作图像</h4><p>下面是最常见的图像缩放操作示例代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开一个jpg图像文件，注意是当前路径:</span></span><br><span class="line">im = Image.open(<span class="string">'titan.jpg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获得图像尺寸</span></span><br><span class="line">w, h = im.size</span><br><span class="line">print(<span class="string">'image size: %sx%s'</span> % (w, h))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 缩放到50%:</span></span><br><span class="line">im.thumbnail((w//<span class="number">2</span>, h//<span class="number">2</span>))</span><br><span class="line">print(<span class="string">'image to: %sx%s'</span> % (w//<span class="number">2</span>, h//<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把缩放后的图像用jpeg格式保存:</span></span><br><span class="line">im.save(<span class="string">'jun.jpg'</span>, <span class="string">'jpeg'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>其他功能如切片、旋转、滤镜、输出文字、调色板等一应俱全, 代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开一个jpg图像文件，注意是当前路径:</span></span><br><span class="line">im = Image.open(<span class="string">'jun.jpg'</span>)</span><br><span class="line"><span class="comment"># 应用模糊滤镜:</span></span><br><span class="line">im2 = im.filter(ImageFilter.BLUR)</span><br><span class="line">im2.save(<span class="string">'jun1.jpg'</span>, <span class="string">'jpeg'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>相关参考</p></div>
+
+<ul>
+<li><a href="https://github.com/CoderTitan/PythonDemo" target="_blank" rel="noopener">GitHub代码示例目地址</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014320027235877860c87af5544f25a8deeb55141d60c5000" target="_blank" rel="noopener">Pillow简单实用</a></li>
+</ul>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:17px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+    
+    
+      <div>
+        
+      </div>
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+
+	<div>欢迎您扫一扫下面的微信公众号，订阅我的博客！</div>
+    <img id="wechat_subscriber_qcode" src="/images/wechat_gzh.svg" alt="Dongxiang Zhao wechat" style="width: 200px; max-width: 100%;">
+    
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.svg" alt="Dongxiang Zhao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.svg" alt="Dongxiang Zhao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Dongxiang Zhao
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.iuops.com/posts/fe2495d8/" title="Python中模块的使用">https://blog.iuops.com/posts/fe2495d8/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/Pillow/" rel="tag"><i class="fa fa-tag"></i> Pillow</a>
+          
+            <a href="/tags/pip3/" rel="tag"><i class="fa fa-tag"></i> pip3</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div style="color: rgba(0, 0, 0, 0.75); font-size:15px; letter-spacing:3px">(&gt;看完记得五星好评哦&lt;)</div>
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/7f54d88f/" rel="prev" title="Python之高阶函数">
+                <i class="fa fa-chevron-left"></i> Python之高阶函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/64abe4fe/" rel="next" title="Python之错误异常和文件处理">
+                Python之错误异常和文件处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!--MOB SHARE BEGIN-->
+<div class="-hoofoo-share-title">分享到：</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-qq -hoofoo-share-qq -hoofoo-share-ui-button"><i class="fa fa-qq" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=2e8b32e698100"></script>
+<!--MOB SHARE END-->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+	<div id="gitalk-container"></div>
+	
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/" class="site-author-image" rel="start" style="border:none">
+                <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Dongxiang Zhao">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">Dongxiang Zhao</p>
+              <p class="site-description motion-element" itemprop="description">给自己充电，每天努力一点点！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/donxan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="donxan@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/Aiker" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/edward.aiker" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模块简述"><span class="nav-number">1.1.</span> <span class="nav-text">模块简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块优点"><span class="nav-number">1.2.</span> <span class="nav-text">模块优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准库模块"><span class="nav-number">1.3.</span> <span class="nav-text">标准库模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义模块"><span class="nav-number">2.</span> <span class="nav-text">自定义模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入模块"><span class="nav-number">3.</span> <span class="nav-text">导入模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#import方式"><span class="nav-number">3.1.</span> <span class="nav-text">import方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from…import方式"><span class="nav-number">3.2.</span> <span class="nav-text">from…import方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from…import-方式"><span class="nav-number">3.3.</span> <span class="nav-text">from…import*方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块内置属性和函数"><span class="nav-number">4.</span> <span class="nav-text">模块内置属性和函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#name-属性"><span class="nav-number">4.1.</span> <span class="nav-text">__name__属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dir-函数"><span class="nav-number">4.2.</span> <span class="nav-text">dir()函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包"><span class="nav-number">5.</span> <span class="nav-text">包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装使用第三方模块"><span class="nav-number">6.</span> <span class="nav-text">安装使用第三方模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pip简介"><span class="nav-number">6.1.</span> <span class="nav-text">pip简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装第三方库"><span class="nav-number">6.2.</span> <span class="nav-text">安装第三方库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三方模块的使用"><span class="nav-number">6.3.</span> <span class="nav-text">第三方模块的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#操作图像"><span class="nav-number">6.3.1.</span> <span class="nav-text">操作图像</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+  
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongxiang Zhao</span>
+
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+  
+</div>
+
+
+
+<!--
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+-->
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+  本站总访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+
+<span>|</span>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共82k字</span>
+</div>
+
+
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'cc8956762f73715eb45d',
+          clientSecret: '783fd73c95feb79d36129f56563da6d828bd7fa9',
+          repo: 'iuops',
+          owner: 'donxan',
+          admin: ['donxan'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 24158,
+    el: 'wpac-rating',
+    color: 'f79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

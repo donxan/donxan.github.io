@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="73GQgcb3uf">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+<script src="//code.tidio.co/hu2i5phnopp48fyrd8uewz5qspsrfidn.js" async></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS13,iOS,Swift5.0,Xcode11,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="运维手札" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="keywords" content="iOS13,iOS,Swift5.0,Xcode11">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sign In with Apple">
+<meta property="og:url" content="https://blog.iuops.com/posts/de12f33/index.html">
+<meta property="og:site_name" content="运维手札">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/donxan/pics@master/upic/YbIFdW_202005142352.png">
+<meta property="og:image" content="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_apple.png">
+<meta property="og:image" content="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/applesign.png">
+<meta property="og:image" content="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_type.png">
+<meta property="og:image" content="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_style.jpg">
+<meta property="og:image" content="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_sign.jpeg?x-oss-process=image/resize,m_lfit,h_500">
+<meta property="og:image" content="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_name.jpeg?x-oss-process=image/resize,m_lfit,h_500">
+<meta property="og:image" content="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_has.jpeg?x-oss-process=image/resize,m_lfit,h_500">
+<meta property="og:image" content="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_noid.png">
+<meta property="og:updated_time" content="2020-05-14T15:59:32.614Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sign In with Apple">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/donxan/pics@master/upic/YbIFdW_202005142352.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":3,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.iuops.com/posts/de12f33/">
+
+
+
+
+
+  <title>Sign In with Apple | 运维手札</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b30cf4954da6e7528743f8b2819ad809";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/donxan" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">运维手札</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">技术博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            列表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-navigation">
+          <a href="/navigation/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-globe"></i> <br>
+            
+            导航
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.iuops.com/posts/de12f33/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dongxiang Zhao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="运维手札">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Sign In with Apple</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-30T17:36:20+08:00">
+                2019-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS进阶指南/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS进阶指南</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+                    
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://cdn.jsdelivr.net/gh/donxan/pics@master/upic/YbIFdW_202005142352.png" alt="YbIFdW_202005142352"></p>
+<a id="more"></a>
+
+
+
+
+
+<ul>
+<li>原文博客地址: <a href="https://www.titanjun.top/" target="_blank" rel="noopener">Sign In With Apple</a></li>
+<li>在之前的文章<a href="https://www.titanjun.top/iOS13%E9%80%82%E9%85%8D%E6%B7%B1%E8%89%B2%E6%A8%A1%E5%BC%8F(Dark%20Mode).html" target="_blank" rel="noopener">iOS13适配深色模式(Dark Mode)</a>中只是简单提到了关于<a href="https://www.titanjun.top/" target="_blank" rel="noopener">Sign In With Apple</a>的问题, 下面就着重介绍一下什么是<code>Apple</code>登录</li>
+<li>对于很多应用都会有自己的账号登录体系, 但是一般都相对繁琐, 或者用户会忘记密码等, 为此一般都会接入微信、<code>QQ</code>登录, 国外应用也会有<code>Google</code>、<code>Facebook</code>等第三方登录方式</li>
+<li>在<code>WWDC 2019</code>上, 苹果要求使用第三方登录的应用也必须接入苹果账号登录(2020年必须适配)</li>
+<li>当然了如果你的<code>App</code>没有提供第三方登录，那就不用集成; 如果用到了第三方登录，那么需要提供<code>Sign in with Apple</code></li>
+</ul>
+<h2 id="Sign-in-with-Apple"><a href="#Sign-in-with-Apple" class="headerlink" title="Sign in with Apple"></a>Sign in with Apple</h2><blockquote>
+<p>Sign in with Apple makes it easy for users to sign in to your apps and websites using their Apple ID. Instead of filling out forms, verifying email addresses, and choosing new passwords, they can use Sign in with Apple to set up an account and start using your app right away. All accounts are protected with two-factor authentication for superior security, and Apple will not track users’ activity in your app or website.</p>
+</blockquote>
+<blockquote>
+<p>Make signing in easy</p>
+</blockquote>
+<ul>
+<li><code>Sign In with Apple</code>为用户提供一种快速安全的登录方式, 用户可以轻松登录开发者的应用和网站</li>
+<li>使用<code>Apple</code>登录可以让用户在系统中设置用户帐户，开发者可以获取到用户名称(<code>Name</code>), 用户唯一标识符(<code>ID</code>)以及经过验证的电子邮件地址(<code>email</code>)</li>
+<li><code>Sign In with Apple</code>相关特性<ul>
+<li>尊重用户隐私: 开发人员仅仅只能获取到用户的姓名和邮箱, 苹果也不会收集用户和应用交互的任何信息</li>
+<li>系统内置的安全性：<code>2F</code>双重验证(<code>Face ID</code>或<code>Touch ID</code>)，从此登录不再需要密码</li>
+<li>简化账号的创建和登录流程，无缝跨设备使用</li>
+<li>开发者可以获取到已验证过的邮箱作为登录账号或者与用户进行通信（注：用户可以选择隐藏真实邮箱，并使用苹果提供的虚拟邮箱进行授权）</li>
+<li>可跨平台使用, Apple登录支持<code>iOS</code>，<code>macOS</code>，<code>tvOS</code>和<code>watchOS</code>以及<code>JavaScript</code></li>
+<li>更多信息可惨考<a href="https://developer.apple.com/sign-in-with-apple/" target="_blank" rel="noopener"><br>使用Apple登录</a></li>
+</ul>
+</li>
+</ul>
+<div class="note info"><p>在代码集成之前还需要做一些准备工作</p></div>
+
+
+<ol>
+<li>在开发者网站，在需要添加<code>Sign in with Apple</code>功能</li>
+</ol>
+<p><img src="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_apple.png" alt="image"></p>
+<ol start="2">
+<li>在<code>Xcode</code>里面开启<code>Sign in with Apple</code>功能</li>
+</ol>
+<p><img src="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/applesign.png" alt="Xcode"></p>
+<h2 id="登录按钮"><a href="#登录按钮" class="headerlink" title="登录按钮"></a>登录按钮</h2><p><code>Apple</code>苹果登录按钮, 需要使用<code>ASAuthorizationAppleIDButton</code>类创建添加, 该类是<code>iOS 13</code>苹果提供的创建<code>Apple</code>登录按钮的专属类</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@available</span>(iOS <span class="number">13.0</span>, *)</span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">ASAuthorizationAppleIDButton</span> : <span class="title">UIControl</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">convenience</span> <span class="keyword">init</span>(type: <span class="type">ASAuthorizationAppleIDButton</span>.<span class="type">ButtonType</span>, style: <span class="type">ASAuthorizationAppleIDButton</span>.<span class="type">Style</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(authorizationButtonType type: <span class="type">ASAuthorizationAppleIDButton</span>.<span class="type">ButtonType</span>, authorizationButtonStyle style: <span class="type">ASAuthorizationAppleIDButton</span>.<span class="type">Style</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置按钮的圆切角</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> cornerRadius: <span class="type">CGFloat</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>开始创建<code>Apple</code>登录按钮</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// apple登录按钮</span></span><br><span class="line"><span class="keyword">let</span> appleButton = <span class="type">ASAuthorizationAppleIDButton</span>(type: .<span class="keyword">continue</span>, style: .black)</span><br><span class="line">appleButton.frame = <span class="type">CGRect</span>(x: <span class="number">100</span>, y: showLabel.frame.maxY + <span class="number">40</span>, width: <span class="number">200</span>, height: <span class="number">50</span>)</span><br><span class="line">appleButton.cornerRadius = <span class="number">10</span></span><br><span class="line">appleButton.addTarget(<span class="keyword">self</span>, action: #selector(appleAction), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">view.addSubview(appleButton)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>ASAuthorizationAppleIDButton</code>的初始化方法中有两个参数<code>type</code>和<code>style</code></li>
+<li><code>type</code>是设置按钮的类型<code>ASAuthorizationAppleIDButton.ButtonType</code></li>
+<li><code>style</code>设置按钮的样式<code>ASAuthorizationAppleIDButton.Style</code></li>
+<li>可参考官网介绍<a href="https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple/overview/" target="_blank" rel="noopener">Sign In with Apple</a></li>
+</ul>
+<h3 id="ButtonType"><a href="#ButtonType" class="headerlink" title="ButtonType"></a>ButtonType</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">ButtonType</span> : <span class="title">Int</span> </span>&#123;</span><br><span class="line">    <span class="comment">// signIn登录类型</span></span><br><span class="line">    <span class="keyword">case</span> signIn</span><br><span class="line">    <span class="comment">// continue类型</span></span><br><span class="line">    <span class="keyword">case</span> `<span class="keyword">continue</span>`</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">var</span> `<span class="keyword">default</span>`: <span class="type">ASAuthorizationAppleIDButton</span>.<span class="type">ButtonType</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不同<code>ButtonType</code>展示效果如下</p>
+<p><img src="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_type.png" alt="ButtonType"></p>
+<h3 id="Style"><a href="#Style" class="headerlink" title="Style"></a>Style</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@available</span>(iOS <span class="number">13.0</span>, *)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Style</span> : <span class="title">Int</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">case</span> white</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> whiteOutline</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> black</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不同<code>Style</code>展示效果和使用场景如下</p>
+<p><img src="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_style.jpg" alt="Style"></p>
+<h3 id="cornerRadius"><a href="#cornerRadius" class="headerlink" title="cornerRadius"></a>cornerRadius</h3><p>设置按钮的圆角大小</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认值大概5左右, 具体值不知</span></span><br><span class="line">appleButton.cornerRadius = <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="发起授权请求"><a href="#发起授权请求" class="headerlink" title="发起授权请求"></a>发起授权请求</h2><p>在创建好登录按钮后, 点击按钮的操作就是, 根据用户登录的<code>AppleID</code>发起授权请求, 并获得授权码</p>
+<ul>
+<li><code>iOS 13</code>系统给我们提供了一个<code>ASAuthorizationAppleIDProvider</code>类</li>
+<li>该类就是一种基于用户的<code>AppleID</code>生成用户的授权请求的一种机制</li>
+<li>在发起授权请求之前, 需要配置要获取的数据权限范围（例如：用户名、邮箱等）</li>
+<li>为获取授权结果, 还需要设置回调代理, 并发起授权请求</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@objc</span> <span class="keyword">fileprivate</span> <span class="function"><span class="keyword">func</span> <span class="title">appleAction</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 基于用户的Apple ID授权用户，生成用户授权请求的一种机制</span></span><br><span class="line">    <span class="keyword">let</span> appleIDProvider = <span class="type">ASAuthorizationAppleIDProvider</span>()</span><br><span class="line">    <span class="comment">// 创建新的AppleID授权请求</span></span><br><span class="line">    <span class="keyword">let</span> request = appleIDProvider.createRequest()</span><br><span class="line">    <span class="comment">// 所需要请求的联系信息</span></span><br><span class="line">    request.requestedScopes = [.fullName, .email]</span><br><span class="line">    <span class="comment">// 管理授权请求的控制器</span></span><br><span class="line">    <span class="keyword">let</span> controller = <span class="type">ASAuthorizationController</span>(authorizationRequests: [request])</span><br><span class="line">    <span class="comment">// 授权成功或者失败的代理</span></span><br><span class="line">    controller.delegate = <span class="keyword">self</span></span><br><span class="line">    <span class="comment">// 显示上下文的代理, 系统可以在上下文中向用户展示授权页面</span></span><br><span class="line">    controller.presentationContextProvider = <span class="keyword">self</span></span><br><span class="line">    <span class="comment">// 在控制器初始化期间启动授权流</span></span><br><span class="line">    controller.performRequests()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="delegate"><a href="#delegate" class="headerlink" title="delegate"></a>delegate</h3><p>设置授权控制器通知授权请求的成功与失败的代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 代理</span><br><span class="line">weak open var delegate: ASAuthorizationControllerDelegate?</span><br><span class="line"></span><br><span class="line">// 代理方法如下</span><br><span class="line">@available(iOS 13.0, *)</span><br><span class="line">public protocol ASAuthorizationControllerDelegate : NSObjectProtocol &#123;</span><br><span class="line">    // 授权成功的回调</span><br><span class="line">    optional func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization)</span><br><span class="line"></span><br><span class="line">    // 授权失败的回调</span><br><span class="line">    optional func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="presentationContextProvider"><a href="#presentationContextProvider" class="headerlink" title="presentationContextProvider"></a>presentationContextProvider</h3><p>需要向用户展示授权页面时, 需要遵循该协议</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示上下文的代理, 系统可以在上下文中向用户展示授权页面</span></span><br><span class="line"><span class="keyword">weak</span> <span class="keyword">open</span> <span class="keyword">var</span> presentationContextProvider: <span class="type">ASAuthorizationControllerPresentationContextProviding?</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 协议方法</span></span><br><span class="line"><span class="meta">@available</span>(iOS <span class="number">13.0</span>, *)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">protocol</span> <span class="title">ASAuthorizationControllerPresentationContextProviding</span> : <span class="title">NSObjectProtocol</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 该方法返回一个视图锚点, 告诉代理应该在哪个window 展示内容给用户</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">presentationAnchor</span><span class="params">(<span class="keyword">for</span> controller: ASAuthorizationController)</span></span> -&gt; <span class="type">ASPresentationAnchor</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法执行示例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">presentationAnchor</span><span class="params">(<span class="keyword">for</span> controller: ASAuthorizationController)</span></span> -&gt; <span class="type">ASPresentationAnchor</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.view.window!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ASAuthorization"><a href="#ASAuthorization" class="headerlink" title="ASAuthorization"></a>ASAuthorization</h3><ul>
+<li>在控制器获得授权的成功回调中, 协议方法提供了一个<code>ASAuthorization</code></li>
+<li><code>ASAuthorization</code>是对控制器成功授权的封装, 包括两个属性</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@available</span>(iOS <span class="number">13.0</span>, *)</span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">ASAuthorization</span> : <span class="title">NSObject</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建发起成功授权的发起者</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> provider: <span class="type">ASAuthorizationProvider</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 成功授权后返回的相关凭证, 包含授权后的相关信息,是一个协议</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> credential: <span class="type">ASAuthorizationCredential</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ASAuthorizationCredential"><a href="#ASAuthorizationCredential" class="headerlink" title="ASAuthorizationCredential"></a>ASAuthorizationCredential</h3><p>是一个协议, 在处理授权成功的结果中, 需要使用遵循该协议的类, 有以下三个</p>
+<ul>
+<li><code>ASPasswordCredential</code>: 密码凭证</li>
+<li><code>ASAuthorizationAppleIDCredential</code>: Apple ID身份验证成功产生的凭证</li>
+<li><code>ASAuthorizationSingleSignOnCredential</code>: 单点登录（SSO）身份验证产生的凭据</li>
+</ul>
+<h4 id="ASPasswordCredential"><a href="#ASPasswordCredential" class="headerlink" title="ASPasswordCredential"></a>ASPasswordCredential</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@available</span>(iOS <span class="number">12.0</span>, *)</span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">ASPasswordCredential</span> : <span class="title">NSObject</span>, <span class="title">ASAuthorizationCredential</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(user: <span class="type">String</span>, password: <span class="type">String</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户名</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> user: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户密码</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> password: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ASAuthorizationAppleIDCredential"><a href="#ASAuthorizationAppleIDCredential" class="headerlink" title="ASAuthorizationAppleIDCredential"></a>ASAuthorizationAppleIDCredential</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@available</span>(iOS <span class="number">13.0</span>, *)</span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">ASAuthorizationAppleIDCredential</span> : <span class="title">NSObject</span>, <span class="title">ASAuthorizationCredential</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 和用户AppleID关联的用户ID(标识符)</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> user: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 传送给ASAuthorizationRequest的字符串</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> state: <span class="type">String?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户授权的可访问的联系信息的种类</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> authorizedScopes: [<span class="type">ASAuthorization</span>.<span class="type">Scope</span>] &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 为APP提供的授权证明的有效token</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> authorizationCode: <span class="type">Data?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// JSON Web Token (JWT), 用于以安全的方式向应用程序传递关于用户身份的信息</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> identityToken: <span class="type">Data?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户的email</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> email: <span class="type">String?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户名</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> fullName: <span class="type">PersonNameComponents?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户是否是真实用户的状态</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> realUserStatus: <span class="type">ASUserDetectionStatus</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用户是否是真实用户的枚举值</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">ASUserDetectionStatus</span> : <span class="title">Int</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> unsupported</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> unknown</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> likelyReal</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ASAuthorizationSingleSignOnCredential"><a href="#ASAuthorizationSingleSignOnCredential" class="headerlink" title="ASAuthorizationSingleSignOnCredential"></a>ASAuthorizationSingleSignOnCredential</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@available</span>(iOS <span class="number">13.0</span>, *)</span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">ASAuthorizationSingleSignOnCredential</span> : <span class="title">NSObject</span>, <span class="title">ASAuthorizationCredential</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// AuthenticationServices返回的字符串</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> state: <span class="type">String?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户获取授权范围的token</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> accessToken: <span class="type">Data?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// JSON Web Token (JWT), 用于以安全的方式向应用程序传递关于用户身份的信息</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> identityToken: <span class="type">Data?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用户授权的可访问的联系信息的种类</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> authorizedScopes: [<span class="type">ASAuthorization</span>.<span class="type">Scope</span>] &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 完整的身份验证响应信息</span></span><br><span class="line">    <span class="meta">@NSCopying</span> <span class="keyword">open</span> <span class="keyword">var</span> authenticatedResponse: <span class="type">HTTPURLResponse?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="授权成功"><a href="#授权成功" class="headerlink" title="授权成功"></a>授权成功</h3><p>上面有提到, 在<code>ASAuthorizationControllerDelegate</code>有两个协议方法, 分别是授权成功和失败的回调, 下面就具体看看</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">SignViewController</span>: <span class="title">ASAuthorizationControllerDelegate</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 处理成功的授权</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">authorizationController</span><span class="params">(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization)</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"授权成功"</span>)</span><br><span class="line">        <span class="comment">// 成功的Apple ID身份验证信息</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> appleIDCreden = authorization.credential <span class="keyword">as</span>? <span class="type">ASAuthorizationAppleIDCredential</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> userIdentifier = appleIDCreden.user</span><br><span class="line">            <span class="keyword">let</span> fullName = appleIDCreden.fullName</span><br><span class="line">            <span class="keyword">let</span> email = appleIDCreden.email</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 这里需要我们在系统中创建一个账户, 用于存储用户的唯一标识userIdentifier</span></span><br><span class="line">            <span class="comment">// 可以在系统的钥匙串中存储</span></span><br><span class="line">            <span class="keyword">let</span> webVC = <span class="type">WebViewController</span>()</span><br><span class="line">            webVC.user = userIdentifier</span><br><span class="line">            webVC.giveName = fullName?.givenName ?? <span class="string">""</span></span><br><span class="line">            webVC.familyName = fullName?.familyName ?? <span class="string">""</span></span><br><span class="line">            webVC.email = email ?? <span class="string">""</span></span><br><span class="line">            navigationController?.pushViewController(webVC, animated: <span class="literal">true</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> <span class="keyword">let</span> passwordCreden = authorization.credential <span class="keyword">as</span>? <span class="type">ASPasswordCredential</span> &#123;</span><br><span class="line">            <span class="comment">// 密码凭证用户的唯一标识</span></span><br><span class="line">            <span class="keyword">let</span> userIdentifiler = passwordCreden.user</span><br><span class="line">            <span class="comment">// 密码凭证的密码</span></span><br><span class="line">            <span class="keyword">let</span> password = passwordCreden.password</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 显示相关信息</span></span><br><span class="line">            <span class="keyword">let</span> message = <span class="string">"APP已经收到您选择的秘钥凭证\nUsername: \(userIdentifiler)\n Password: \(password)"</span></span><br><span class="line">            showLabel.text = message</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            showLabel.text = <span class="string">"授权信息均不符"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 处理授权错误</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">authorizationController</span><span class="params">(controller: ASAuthorizationController, didCompleteWithError error: Error)</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"授权错误: \(error)"</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> showText = <span class="string">""</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> authError = error <span class="keyword">as</span>? <span class="type">ASAuthorizationError</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> code = authError.code</span><br><span class="line">            <span class="keyword">switch</span> code &#123;</span><br><span class="line">            <span class="keyword">case</span> .canceled:</span><br><span class="line">                showText = <span class="string">"用户取消了授权请求"</span></span><br><span class="line">            <span class="keyword">case</span> .failed:</span><br><span class="line">                showText = <span class="string">"授权请求失败"</span></span><br><span class="line">            <span class="keyword">case</span> .invalidResponse:</span><br><span class="line">                showText = <span class="string">"授权请求响应无效"</span></span><br><span class="line">            <span class="keyword">case</span> .notHandled:</span><br><span class="line">                showText = <span class="string">"未能处理授权请求"</span></span><br><span class="line">            <span class="keyword">case</span> .unknown:</span><br><span class="line">                showText = <span class="string">"授权请求失败, 未知的错误原因"</span></span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                showText = <span class="string">"其他未知的错误原因"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        showLabel.text = showText</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note success"><p>做好了上面配置, 就可以看到下面的登录页面</p></div>
+
+
+
+<p><img src="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_sign.jpeg?x-oss-process=image/resize,m_lfit,h_500" alt="image"></p>
+<ul>
+<li>如果不修改姓名, 授权成功后将获取到用户的姓名</li>
+<li>如果选择共享我的电子邮件, 授权成功将获取到用户的电子邮件地址</li>
+<li>如果选择隐藏邮件地址, 授权成功将获取到一个虚拟的电子邮件地址</li>
+<li>点击姓名右侧的清除按钮可以修改用户名, 如下页面</li>
+</ul>
+<p><img src="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_name.jpeg?x-oss-process=image/resize,m_lfit,h_500" alt="name"></p>
+<ul>
+<li>如果登录用户修改了用户名, 那么授权成功后获取到的用户名就是修改后的</li>
+<li>使用过<code>AppleID</code>登录过<code>App</code>，进入应用的时候会提示使用<code>TouchID</code>登录的场景如下</li>
+</ul>
+<p><img src="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_has.jpeg?x-oss-process=image/resize,m_lfit,h_500" alt="image"></p>
+<ul>
+<li>如果使用指纹登录三次失败后, 下面会有一个使用密码继续的按钮, 可以使用手机密码继续登录</li>
+<li>如果手机没有设置<code>Apple ID</code>, 使用苹果登录, 将会有弹窗提示, </li>
+</ul>
+<p><img src="https://titanjun.oss-cn-hangzhou.aliyuncs.com/ios/sign_noid.png" alt="image"></p>
+<h2 id="监听授权状态"><a href="#监听授权状态" class="headerlink" title="监听授权状态"></a>监听授权状态</h2><p>在特殊情况下我们还需要监听授权状态的改变, 并进行相应的处理</p>
+<ul>
+<li>用户终止在该<code>App</code>中使用<code>Sign in with Apple</code>功能</li>
+<li>用户在设置里注销了<code>Apple ID</code></li>
+<li>针对类似这种情况, <code>App</code>需要获取到这些状态，然后做退出登录操作</li>
+<li>我们需要在<code>App</code>启动的时候，来获取当前用户的授权状态</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ASAuthorizationAppleIDProvider提供了一个获取用户授权状态和授权凭据是否有效</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getCredentialState</span><span class="params">(forUserID: String, completion: <span class="params">(ASAuthorizationAppleIDProvider.CredentialState, Error?)</span></span></span> -&gt; <span class="type">Void</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// ASAuthorizationAppleIDProvider.CredentialState的所有枚举值</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">CredentialState</span> : <span class="title">Int</span> </span>&#123;</span><br><span class="line">    <span class="keyword">case</span> revoked</span><br><span class="line">    <span class="keyword">case</span> authorized</span><br><span class="line">    <span class="keyword">case</span> notFound</span><br><span class="line">    <span class="keyword">case</span> transferred</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note success"><p>示例代码如下</p></div>
+
+
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: <span class="keyword">Any</span>]?)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> #available(iOS <span class="number">13.0</span>, *) &#123;</span><br><span class="line">        <span class="comment">// 钥匙串中取出的</span></span><br><span class="line">        <span class="keyword">let</span> userIdentifier = <span class="string">"userIdentifier"</span></span><br><span class="line">        <span class="keyword">if</span> (!userIdentifier.isEmpty) &#123;</span><br><span class="line">            <span class="comment">// 基于用户的Apple ID授权用户，生成用户授权请求的一种机制</span></span><br><span class="line">            <span class="keyword">let</span> appleIDProvider = <span class="type">ASAuthorizationAppleIDProvider</span>()</span><br><span class="line">            <span class="comment">// 返回完成处理程序中给定用户的凭据状态</span></span><br><span class="line">            appleIDProvider.getCredentialState(forUserID: userIdentifier) &#123; (state, error) <span class="keyword">in</span></span><br><span class="line">                <span class="keyword">switch</span> state &#123;</span><br><span class="line">                <span class="keyword">case</span> .authorized:</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">"授权状态有效"</span>)</span><br><span class="line">                <span class="keyword">case</span> .notFound:</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">"授权凭证缺失（可能是使用AppleID 登录过App）"</span>)</span><br><span class="line">                <span class="keyword">case</span> .revoked:</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">"上次使用苹果账号登录的凭据已被移除，需解除绑定并重新引导用户使用苹果登录"</span>)</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">"未知状态"</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除此之外还可以通过通知方法来监听<code>revoked</code>状态, 在<code>ASAuthorizationAppleIDProvider</code>中增加了一个属性, 用于监听<code>revoked</code>状态</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@available</span>(iOS <span class="number">13.0</span>, *)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">let</span> <span class="title">credentialRevokedNotification</span>: <span class="title">NSNotification</span>.<span class="title">Name</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">// 使用方法</span></span><br><span class="line"><span class="class"><span class="title">fileprivate</span> <span class="title">func</span> <span class="title">observeAppleSignInState</span>() </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> #available(iOS <span class="number">13.0</span>, *) &#123;</span><br><span class="line">        <span class="keyword">let</span> center = <span class="type">NotificationCenter</span>.<span class="keyword">default</span></span><br><span class="line">        center.addObserver(<span class="keyword">self</span>, selector: #selector(handleStateChange(noti:)), name: <span class="type">ASAuthorizationAppleIDProvider</span>.credentialRevokedNotification, object: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@objc</span> <span class="keyword">fileprivate</span> <span class="function"><span class="keyword">func</span> <span class="title">handleStateChange</span><span class="params">(noti: <span class="keyword">Any</span>)</span></span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"授权状态发生改变"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><code>Sign In with Apple</code>涉及到的相关资料文档如下</p>
+<ul>
+<li><a href="https://developer.apple.com/documentation/authenticationservices" target="_blank" rel="noopener">Sign In with Apple Entitlement</a></li>
+<li><a href="https://developer.apple.com/documentation/signinwithapplerestapi/generate_and_validate_tokens" target="_blank" rel="noopener">Generate and validate tokens</a></li>
+<li><a href="https://developer.apple.com/documentation/authenticationservices/adding_the_sign_in_with_apple_flow_to_your_app" target="_blank" rel="noopener">Adding the Sign In with Apple Flow to Your App</a></li>
+<li><a href="https://docs-assets.developer.apple.com/published/8f9ca51349/AddingTheSignInWithAppleFlowToYourApp.zip" target="_blank" rel="noopener">Sign In With Apple官方Demo(Swift版)</a></li>
+<li><a href="https://blog.csdn.net/wpf199402076118/article/details/99677412" target="_blank" rel="noopener">Sign In with Apple后台配置</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:17px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+    
+    
+      <div>
+        
+      </div>
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+
+	<div>欢迎您扫一扫下面的微信公众号，订阅我的博客！</div>
+    <img id="wechat_subscriber_qcode" src="/images/wechat_gzh.svg" alt="Dongxiang Zhao wechat" style="width: 200px; max-width: 100%;">
+    
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.svg" alt="Dongxiang Zhao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.svg" alt="Dongxiang Zhao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Dongxiang Zhao
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.iuops.com/posts/de12f33/" title="Sign In with Apple">https://blog.iuops.com/posts/de12f33/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS13/" rel="tag"><i class="fa fa-tag"></i> iOS13</a>
+          
+            <a href="/tags/iOS/" rel="tag"><i class="fa fa-tag"></i> iOS</a>
+          
+            <a href="/tags/Swift5-0/" rel="tag"><i class="fa fa-tag"></i> Swift5.0</a>
+          
+            <a href="/tags/Xcode11/" rel="tag"><i class="fa fa-tag"></i> Xcode11</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div style="color: rgba(0, 0, 0, 0.75); font-size:15px; letter-spacing:3px">(&gt;看完记得五星好评哦&lt;)</div>
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/68d038bb/" rel="prev" title="hexo next 配置 DaoVoice实现在线聊天">
+                <i class="fa fa-chevron-left"></i> hexo next 配置 DaoVoice实现在线聊天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/14d4f061/" rel="next" title="效率提升方法论">
+                效率提升方法论 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!--MOB SHARE BEGIN-->
+<div class="-hoofoo-share-title">分享到：</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-qq -hoofoo-share-qq -hoofoo-share-ui-button"><i class="fa fa-qq" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=2e8b32e698100"></script>
+<!--MOB SHARE END-->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+	<div id="gitalk-container"></div>
+	
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/" class="site-author-image" rel="start" style="border:none">
+                <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Dongxiang Zhao">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">Dongxiang Zhao</p>
+              <p class="site-description motion-element" itemprop="description">给自己充电，每天努力一点点！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/donxan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="donxan@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/Aiker" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/edward.aiker" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sign-in-with-Apple"><span class="nav-number">1.</span> <span class="nav-text">Sign in with Apple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录按钮"><span class="nav-number">2.</span> <span class="nav-text">登录按钮</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ButtonType"><span class="nav-number">2.1.</span> <span class="nav-text">ButtonType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Style"><span class="nav-number">2.2.</span> <span class="nav-text">Style</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cornerRadius"><span class="nav-number">2.3.</span> <span class="nav-text">cornerRadius</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发起授权请求"><span class="nav-number">3.</span> <span class="nav-text">发起授权请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#delegate"><span class="nav-number">3.1.</span> <span class="nav-text">delegate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#presentationContextProvider"><span class="nav-number">3.2.</span> <span class="nav-text">presentationContextProvider</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASAuthorization"><span class="nav-number">3.3.</span> <span class="nav-text">ASAuthorization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASAuthorizationCredential"><span class="nav-number">3.4.</span> <span class="nav-text">ASAuthorizationCredential</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ASPasswordCredential"><span class="nav-number">3.4.1.</span> <span class="nav-text">ASPasswordCredential</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ASAuthorizationAppleIDCredential"><span class="nav-number">3.4.2.</span> <span class="nav-text">ASAuthorizationAppleIDCredential</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ASAuthorizationSingleSignOnCredential"><span class="nav-number">3.4.3.</span> <span class="nav-text">ASAuthorizationSingleSignOnCredential</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权成功"><span class="nav-number">3.5.</span> <span class="nav-text">授权成功</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监听授权状态"><span class="nav-number">4.</span> <span class="nav-text">监听授权状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">5.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+  
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongxiang Zhao</span>
+
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+  
+</div>
+
+
+
+<!--
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+-->
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+  本站总访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+
+<span>|</span>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共82k字</span>
+</div>
+
+
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'cc8956762f73715eb45d',
+          clientSecret: '783fd73c95feb79d36129f56563da6d828bd7fa9',
+          repo: 'iuops',
+          owner: 'donxan',
+          admin: ['donxan'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 24158,
+    el: 'wpac-rating',
+    color: 'f79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

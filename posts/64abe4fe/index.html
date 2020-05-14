@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="73GQgcb3uf">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+<script src="//code.tidio.co/hu2i5phnopp48fyrd8uewz5qspsrfidn.js" async></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,错误异常,文件,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="运维手札" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="之前的文章介绍的都是Python的一些语法和使用方法, 详情可参考Python基础知识  然而这里我们要说的是编程中我们最不想见到的, 但是却也是不得不面对的Bug 除此之外, 这里还会介绍一下Python中的文件读取">
+<meta name="keywords" content="Python,错误异常,文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python之错误异常和文件处理">
+<meta property="og:url" content="https://blog.iuops.com/posts/64abe4fe/index.html">
+<meta property="og:site_name" content="运维手札">
+<meta property="og:description" content="之前的文章介绍的都是Python的一些语法和使用方法, 详情可参考Python基础知识  然而这里我们要说的是编程中我们最不想见到的, 但是却也是不得不面对的Bug 除此之外, 这里还会介绍一下Python中的文件读取">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-14T15:59:32.614Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python之错误异常和文件处理">
+<meta name="twitter:description" content="之前的文章介绍的都是Python的一些语法和使用方法, 详情可参考Python基础知识  然而这里我们要说的是编程中我们最不想见到的, 但是却也是不得不面对的Bug 除此之外, 这里还会介绍一下Python中的文件读取">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":3,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.iuops.com/posts/64abe4fe/">
+
+
+
+
+
+  <title>Python之错误异常和文件处理 | 运维手札</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b30cf4954da6e7528743f8b2819ad809";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/donxan" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">运维手札</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">技术博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            列表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-navigation">
+          <a href="/navigation/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-globe"></i> <br>
+            
+            导航
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.iuops.com/posts/64abe4fe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dongxiang Zhao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="运维手札">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python之错误异常和文件处理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-22T21:56:12+08:00">
+                2018-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Python基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.1k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+                    
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>之前的文章介绍的都是<code>Python</code>的一些语法和使用方法, 详情可参考<a href="https://www.titanjun.top/categories/Python%E5%9F%BA%E7%A1%80/" target="_blank" rel="noopener">Python基础知识</a> </li>
+<li>然而这里我们要说的是编程中我们最不想见到的, 但是却也是不得不面对的<code>Bug</code></li>
+<li>除此之外, 这里还会介绍一下<code>Python</code>中的文件读取</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="错误和异常"><a href="#错误和异常" class="headerlink" title="错误和异常"></a>错误和异常</h2><p><code>Python</code> 中（至少）有两种错误：语法错误和异常（<code>syntax errors</code> 和 <code>exceptions</code> ）</p>
+<h3 id="语法错误"><a href="#语法错误" class="headerlink" title="语法错误"></a>语法错误</h3><p>语法错误，也被称作解析错误, 使我们在学习<code>Python</code>过程中最常遇到的错误, 来看看下面两个错误示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="literal">True</span></span><br><span class="line">    print(<span class="string">'titan'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 错误信息:</span></span><br><span class="line">File <span class="string">"../5-读文件.py"</span>, line <span class="number">19</span></span><br><span class="line">    <span class="keyword">if</span> <span class="literal">True</span></span><br><span class="line">          ^</span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>语法分析器指出错误出现的文件(<code>File</code>)和错误行(<code>line 19</code>)</li>
+<li>在检测到错误的位置前面显示一个小“箭头”</li>
+<li>错误是由箭头前面的标记引起的（或者至少是这么检测的）</li>
+<li>此处错误是因为<code>Print</code>函数的前面, <code>if</code>语句后面少了一个冒号(<code>:</code>)</li>
+</ul>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><ul>
+<li>在没有语法错误的情况下, 当我们执行当前程序的时候也可能会引发错误</li>
+<li>运行期检测到的错误称为 异常，并且程序不会无条件的崩溃</li>
+<li>异常能够编译通过, 但是不能运行成功; 而语法错误不能编译成功</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="number">1</span> / <span class="number">0</span>)</span><br><span class="line"><span class="comment"># 错误信息:</span></span><br><span class="line">File <span class="string">"../5-读文件.py"</span>, line <span class="number">22</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    print(<span class="number">1</span> / <span class="number">0</span>)</span><br><span class="line">ZeroDivisionError: division by zero</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="number">1</span> + <span class="string">"12"</span>)</span><br><span class="line"><span class="comment"># 错误信息:</span></span><br><span class="line">File <span class="string">"../5-读文件.py"</span>, line <span class="number">22</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    print(<span class="number">1</span> + <span class="string">"12"</span>)</span><br><span class="line">TypeError: unsupported operand type(s) <span class="keyword">for</span> +: <span class="string">'int'</span> <span class="keyword">and</span> <span class="string">'str'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="number">1</span> + ad * <span class="number">2</span>)</span><br><span class="line"><span class="comment"># 错误信息:</span></span><br><span class="line">File <span class="string">"../5-读文件.py"</span>, line <span class="number">22</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    print(<span class="number">1</span> + ad * <span class="number">2</span>)</span><br><span class="line">NameError: name <span class="string">'ad'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>错误信息的第一行, 指出了异常出现的文件和错误行</li>
+<li>第二行, 提示了是哪一条语句出现了错误</li>
+<li>第三行, 指出了是哪一种异常信息;异常也有不同的类型，异常类型做为错误信息的一部分显示出来</li>
+<li>以上三种异常分别为: 零除错误(<code>ZeroDivisionError</code>), 类型错误(<code>TypeError</code>) 和 命名错误(<code>NameError</code>)</li>
+<li>相关异常信息<a href="https://docs.python.org/3/library/exceptions.html" target="_blank" rel="noopener">官方文档</a></li>
+</ul>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><ul>
+<li>我们都知道, 正常情况下, 程序执行过程中遇到错误或者异常, 程序便会中断执行, 这也就以为着后面的程序将无法执行</li>
+<li>但是在<code>Python</code>中, 我们可以针对异常做出一些处理, 使之在遇到异常错误时, 继续执行后面的代码</li>
+<li>异常类其实是<code>class</code>类, 所有的错误都是继承自<code>BaseException</code></li>
+</ul>
+<p>注意: 还有一些错误是无法跳过的, 比如内存错误</p>
+<div class="note info"><p>错误处理的语句 </p></div>
+
+<h4 id="第一种格式"><a href="#第一种格式" class="headerlink" title="第一种格式"></a>第一种格式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式:</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    语句t</span><br><span class="line"><span class="keyword">except</span> 错误码 <span class="keyword">as</span> e:</span><br><span class="line">    语句<span class="number">1</span></span><br><span class="line"><span class="keyword">except</span> 错误码 <span class="keyword">as</span> e:</span><br><span class="line">    语句<span class="number">2</span></span><br><span class="line"><span class="keyword">except</span> 错误码 <span class="keyword">as</span> e:</span><br><span class="line">    语句<span class="number">3</span></span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">except</span> 错误码 <span class="keyword">as</span> e:</span><br><span class="line">    语句n</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    语句e</span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>需要注意的是: </p></div>
+
+<ul>
+<li>语句中的<code>else</code>是可有可无的</li>
+<li><code>except</code>语句中的<code>as e</code>也可以不加</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误处理的语句(else可有可无)</span></span><br><span class="line"><span class="keyword">try</span>.......<span class="keyword">except</span>....<span class="keyword">else</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 格式:</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    语句t</span><br><span class="line"><span class="keyword">except</span> 错误码<span class="number">1</span>:</span><br><span class="line">    语句<span class="number">1</span></span><br><span class="line"><span class="keyword">except</span> 错误码<span class="number">2</span>:</span><br><span class="line">    语句<span class="number">2</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    语句<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="第二种格式"><a href="#第二种格式" class="headerlink" title="第二种格式"></a>第二种格式</h4><p>一个 <code>except</code> 子句可以在括号中列出多个异常的名字, 对于指定的一些异常做统一处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    print(<span class="number">7</span> / <span class="number">0</span>)</span><br><span class="line"><span class="keyword">except</span> (ZeroDivisionError, NameError):</span><br><span class="line">    print(<span class="string">'程序异常'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="第三种格式"><a href="#第三种格式" class="headerlink" title="第三种格式"></a>第三种格式</h4><p>无论遇到的是哪一种异常, 均做统一处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    print(<span class="number">7</span> / <span class="number">0</span>)</span><br><span class="line"><span class="keyword">except</span> :</span><br><span class="line">    print(<span class="string">'程序异常'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="try-语句工作方式"><a href="#try-语句工作方式" class="headerlink" title="try 语句工作方式"></a><code>try</code> 语句工作方式</h4><ul>
+<li>首先，执行 <code>try</code> 子句 （在 <code>try</code> 和 <code>except</code> 关键字之间的部分）</li>
+<li>如果没有异常发生， <code>except</code> 子句 在 <code>try</code> 语句执行完毕后就被忽略了</li>
+<li>如果在 <code>try</code> 子句执行过程中发生了异常，那么该子句其余的部分就会被忽略</li>
+<li>如果异常匹配于 <code>except</code> 关键字后面指定的异常类型，就执行对应的<code>except</code>子句。然后继续执行 <code>try</code> 语句之后的代码</li>
+<li>如果发生了一个异常，在 <code>except</code> 子句中没有与之匹配的分支，它就会传递到上一级 <code>try</code> 语句中</li>
+<li>如果最终仍找不到对应的处理语句，它就成为一个 未处理异常，终止程序运行，显示提示信息</li>
+</ul>
+<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例:"></a>使用示例:</h4><p>一个 <code>try</code> 语句可能包含多个 <code>except</code> 子句，分别指定处理不同的异常。至多只会有一个分支被执行。异常处理程序只会处理对应的 <code>try</code> 子句中发生的异常，在同一个 <code>try</code> 语句中，其他子句中发生的异常则不作处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    print(<span class="number">7</span> / <span class="number">0</span>)</span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">    print(<span class="string">'除数为0'</span>)</span><br><span class="line"><span class="keyword">except</span> NameError:</span><br><span class="line">    print(<span class="string">'没有改变量'</span>)</span><br><span class="line"><span class="keyword">except</span> SyntaxError:</span><br><span class="line">    print(<span class="string">'不知道'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>一个 <code>except</code> 子句可以在括号中列出多个异常的名字</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    print(<span class="number">7</span> / <span class="number">0</span>)</span><br><span class="line">except (ZeroDivisionError, NameError):</span><br><span class="line">    print(<span class="string">'程序异常'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>最后一个 <code>except</code> 子句可以省略异常名称，以作为通配符使用。你需要慎用此法，因为它会轻易隐藏一个实际的程序错误！可以使用这种方法打印一条错误信息，然后重新抛出异常（允许调用者处理这个异常):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = open(<span class="string">'myfile.txt'</span>)</span><br><span class="line">    s = f.readline()</span><br><span class="line">    i = int(s.strip())</span><br><span class="line"><span class="keyword">except</span> OSError <span class="keyword">as</span> err:</span><br><span class="line">    print(<span class="string">"OS error: &#123;0&#125;"</span>.format(err))</span><br><span class="line"><span class="keyword">except</span> ValueError:</span><br><span class="line">    print(<span class="string">"Could not convert data to an integer."</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"Unexpected error:"</span>, sys.exc_info()[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">raise</span></span><br></pre></td></tr></table></figure>
+
+<p><code>try … except</code> 语句可以带有一个 else子句，该子句只能出现在所有 except 子句之后。当 try 语句没有抛出异常时，需要执行一些代码，可以使用这个子句。例如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    print(<span class="number">7</span> / <span class="number">0</span>)</span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">    print(<span class="string">'除数为0'</span>)</span><br><span class="line"><span class="keyword">except</span> NameError:</span><br><span class="line">    print(<span class="string">'没有改变量'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'代码OK'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h3><p><code>raise</code>语句允许程序员强制抛出一个指定的异常</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">raise</span> NameError(<span class="string">'TitanJun'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 异常信息:</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"../1-异常处理.py"</span>, line <span class="number">95</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">raise</span> NameError(<span class="string">'TitanJun'</span>)</span><br><span class="line">NameError: TitanJun</span><br></pre></td></tr></table></figure>
+
+<p>如果你需要明确一个异常是否抛出，但不想处理它，<code>raise</code> 语句可以让你很简单的重新抛出该异常:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">raise</span> NameError(<span class="string">'TitanJun'</span>)</span><br><span class="line"><span class="keyword">except</span> NameError:</span><br><span class="line">    print(<span class="string">'NameError错误'</span>)</span><br><span class="line">    <span class="keyword">raise</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 错误信息:</span></span><br><span class="line">NameError错误</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"../1-异常处理.py"</span>, line <span class="number">97</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">raise</span> NameError(<span class="string">'TitanJun'</span>)</span><br><span class="line">NameError: TitanJun</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义清理行为"><a href="#定义清理行为" class="headerlink" title="定义清理行为"></a>定义清理行为</h3><ul>
+<li><code>try</code> 语句还有另一个可选的子句: <code>try--except--finally</code>，目的在于定义在任何情况下都一定要执行的功能</li>
+<li>不管有没有发生异常，<code>finally</code>子句 在程序离开 <code>try</code> 后都一定会被执行</li>
+<li>当 <code>try</code> 语句中发生了未被 <code>except</code> 捕获的异常（或者它发生在 <code>except</code> 或 <code>else</code> 子句中），在 <code>finally</code> 子句执行完后它会被重新抛出。 - <code>try</code>语句经由 <code>break</code>，<code>continue</code> 或 <code>return</code> 语句退 出也一样会执行 <code>finally</code> 子句</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    print(<span class="number">7</span> / <span class="number">0</span>)</span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">    print(<span class="string">'除数为0'</span>)</span><br><span class="line"><span class="keyword">except</span> NameError:</span><br><span class="line">    print(<span class="string">'没有改变量'</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    print(<span class="string">'我一定要执行'</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 输出:</span></span><br><span class="line">除数为<span class="number">0</span></span><br><span class="line">我一定要执行</span><br></pre></td></tr></table></figure>
+
+<h3 id="预定义清理行为"><a href="#预定义清理行为" class="headerlink" title="预定义清理行为"></a>预定义清理行为</h3><p>有些对象定义了标准的清理行为，无论对象操作是否成功，不再需要该对象的时候就会起作用。以下示例尝试打开文件并把内容打印到屏幕上</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">"myfile.txt"</span>):</span><br><span class="line">    print(line)</span><br></pre></td></tr></table></figure>
+
+<p>这段代码的问题在于在代码执行完后没有立即关闭打开的文件。这在简单的脚本里没什么，但是大型应用程序就会出问题。<code>with</code> 语句使得文件之类的对象可以 确保总能及时准确地进行清理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"myfile.txt"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        print(line)</span><br></pre></td></tr></table></figure>
+
+<p>语句执行后，文件 <code>f</code> 总会被关闭，即使是在处理文件中的数据时出错也一样。其它对象是否提供了预定义的清理行为要查看它们的文档</p>
+<h2 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h2><ul>
+<li>在<code>Python</code>中文件的读写, 通常以文本打开，这意味着，你从文件读出和向文件写入的字符串会被特定的编码方式（默认是UTF-8）编码。</li>
+<li>模式后面的 <code>&#39;b&#39;</code> 以 二进制模式 打开文件：数据会以字节对象的形式读出和写入。</li>
+<li>这种模式应该用于所有不包含文本的文件</li>
+</ul>
+<h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><p>函数 <code>open()</code> 返回文件对象，通常的用法需要两个参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">open</span><span class="params">(file, mode=<span class="string">'r'</span>, buffering=None, encoding=None, errors=None, newline=None, closefd=True)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"># 使用</span></span><br><span class="line">path = r'/Users/xxx/text.txt'</span><br><span class="line">file = open(path, <span class="string">'r'</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数一: 一个含有文件名的字符串</li>
+<li>参数二: 描述如何使用该文件的字符串, 默认为 <code>&#39;r&#39;</code><ul>
+<li><code>&#39;r&#39;</code>: 时表示只是读取文件</li>
+<li><code>&#39;rb&#39;</code>: 以二进制形式打开一个文件用于只读, 文件描述放在文件的开头</li>
+<li><code>&#39;w&#39;</code>: 表示只是写入文件（已经存在的同名文件将被删掉)</li>
+<li><code>&#39;wb&#39;</code>: 打开一个文件用于写入二进制, 如果该文件已经存在会覆盖, 如果不存在则创建新文件</li>
+<li><code>&#39;w+&#39;</code>: 打开一个文件用于读写</li>
+<li><code>&#39;a&#39;</code>: 表示打开文件进行追加，写入到文件中的任何数据将自动添加到末尾</li>
+<li><code>&#39;r+&#39;</code>: 表示打开文件进行读取和写入</li>
+<li><code>&#39;b&#39;</code>: 以 二进制模式 打开文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件对象方法"><a href="#文件对象方法" class="headerlink" title="文件对象方法"></a>文件对象方法</h3><h4 id="read"><a href="#read" class="headerlink" title="read()"></a>read()</h4><ul>
+<li>要读取文件内容，需要调用 <code>file.read(size)</code>，该方法读取若干数量的数据并以字符串形式返回其内容</li>
+<li><code>size</code> 是可选的数值，指定字符串长度, 如果没有指定 <code>size</code> 或者指定为负数，就会读取并返回整个文件。</li>
+<li>当文件大小为当前机器内存两倍时，就会产生问题。反之，会尽可能按比较大的 <code>size</code> 读取和返回数据。</li>
+<li>如果到了文件末尾，<code>file.read()</code>会返回一个空字符串</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取文件</span></span><br><span class="line">str = file.read()</span><br><span class="line">print(str)</span><br></pre></td></tr></table></figure>
+
+<h4 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h4><ul>
+<li><code>file.readline()</code> 从文件中读取单独一行，字符串结尾会自动加上一个换行符（<code>\n</code>），只有当文件最后一行没有以换行符结尾时，这一操作才会被忽略。</li>
+<li>这样返回值就不会有混淆，如果 <code>file.readline()</code> 返回一个空字符串，那就表示到达了文件末尾，如果是一个空行，就会描述为 <code>&#39;\n&#39;</code>，一个只包含换行符的字符串</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.readline()</span><br></pre></td></tr></table></figure>
+
+<h4 id="遍历文件对象"><a href="#遍历文件对象" class="headerlink" title="遍历文件对象"></a>遍历文件对象</h4><p>可以循环遍历文件对象来读取文件中的每一行。这是一种内存高效、快速，并且代码简介的方式</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> file:</span><br><span class="line">    print(line)</span><br></pre></td></tr></table></figure>
+
+<div class="note primary"><p>如果你想把文件中的所有行读到一个列表中，你也可以使用 `list(file)` 或者 `file.readlines()`</p></div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把文件读到列表中</span></span><br><span class="line">print(list(file))</span><br><span class="line">print(file.readlines())</span><br></pre></td></tr></table></figure>
+
+<h4 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h4><ul>
+<li><code>write</code>: 将 <code>string</code> 的内容写入文件，并返回写入字符的长度</li>
+<li><code>writelines</code>: 用于向文件中写入一序列的字符串, 没有返回值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写入文件</span></span><br><span class="line">leng = file.write(<span class="string">'我是一只小鸭子'</span>)</span><br><span class="line">print(leng)</span><br><span class="line"><span class="comment"># 输出: 7</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入一个序列</span></span><br><span class="line">file.writelines([<span class="string">'hello'</span>, <span class="string">'Python'</span>])</span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>想要写入其他非字符串内容，首先要将它转换为字符串</p></div>
+
+
+<h4 id="tell-seek"><a href="#tell-seek" class="headerlink" title="tell/seek"></a>tell/seek</h4><ul>
+<li><code>tell</code>: 返回一个整数，代表文件对象在文件中的指针位置，该数值计量了自文件开头到指针处的比特数。</li>
+<li>需要改变文件对象指针话话，使用 <code>file.seek(offset,from_what)</code>。</li>
+<li>指针在该操作中从指定的引用位置移动 <code>offset</code> 比特，引用位置由 <code>from_what</code> 参数指定。 </li>
+<li><code>from_what</code> 值为 0 表示自文件起始处开始，1 表示自当前文件指针位置开始，2 表示自文件末尾开始。</li>
+<li><code>from_what</code> 可以忽略，其默认值为零，此时从文件头开始</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">l = file.readline()</span><br><span class="line">print(l)</span><br><span class="line"></span><br><span class="line">pos = file.tell()</span><br><span class="line">print(pos)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出:</span></span><br><span class="line"><span class="string">b'https://www.titanjun.top/\n'</span></span><br><span class="line"><span class="number">26</span></span><br></pre></td></tr></table></figure>
+
+<p>重新设置文件读取指针到开头</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">file.seek(<span class="number">5</span>, <span class="number">0</span>)</span><br><span class="line">print(file.readline())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出:</span></span><br><span class="line"><span class="string">b'https://www.titanjun.top/\n'</span></span><br><span class="line"><span class="string">b'://www.titanjun.top/\n'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="close"><a href="#close" class="headerlink" title="close"></a>close</h4><ul>
+<li>当你使用完一个文件时，调用 <code>file.close()</code> 方法就可以关闭它并释放其占用的所有系统资源。 </li>
+<li>在调用 <code>file.close()</code> 方法后，试图再次使用文件对象将会自动失败</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">file.close()</span><br><span class="line"></span><br><span class="line">file.read()</span><br><span class="line"></span><br><span class="line">File <span class="string">"../5-读文件.py"</span>, line <span class="number">64</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    file.read()</span><br><span class="line">ValueError: read of closed file</span><br></pre></td></tr></table></figure>
+
+<h4 id="关键字with"><a href="#关键字with" class="headerlink" title="关键字with"></a>关键字<code>with</code></h4><ul>
+<li>用关键字 <code>with</code> 处理文件对象是个好习惯。</li>
+<li>它的先进之处在于文件用完后会自动关闭，就算发生异常也没关系。</li>
+<li>它是 <code>try-finally</code> 块的简写</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(path, <span class="string">'rb+'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    str = file.read()</span><br><span class="line">    print(str)</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:17px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+    
+    
+      <div>
+        
+      </div>
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+
+	<div>欢迎您扫一扫下面的微信公众号，订阅我的博客！</div>
+    <img id="wechat_subscriber_qcode" src="/images/wechat_gzh.svg" alt="Dongxiang Zhao wechat" style="width: 200px; max-width: 100%;">
+    
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.svg" alt="Dongxiang Zhao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.svg" alt="Dongxiang Zhao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Dongxiang Zhao
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.iuops.com/posts/64abe4fe/" title="Python之错误异常和文件处理">https://blog.iuops.com/posts/64abe4fe/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/错误异常/" rel="tag"><i class="fa fa-tag"></i> 错误异常</a>
+          
+            <a href="/tags/文件/" rel="tag"><i class="fa fa-tag"></i> 文件</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div style="color: rgba(0, 0, 0, 0.75); font-size:15px; letter-spacing:3px">(&gt;看完记得五星好评哦&lt;)</div>
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/fe2495d8/" rel="prev" title="Python中模块的使用">
+                <i class="fa fa-chevron-left"></i> Python中模块的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/5a30761b/" rel="next" title="NexT主题如何提高文章颜值">
+                NexT主题如何提高文章颜值 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!--MOB SHARE BEGIN-->
+<div class="-hoofoo-share-title">分享到：</div>
+<div class="-hoofoo-share-buttons">
+    <div class="-mob-share-weibo -hoofoo-share-weibo -hoofoo-share-ui-button"><i class="fa fa-weibo" aria-hidden="true"></i></div>
+    <div class="-mob-share-weixin -hoofoo-share-weixin -hoofoo-share-ui-button"><i class="fa fa-weixin" aria-hidden="true"></i></div>
+    <div class="-mob-share-qq -hoofoo-share-qq -hoofoo-share-ui-button"><i class="fa fa-qq" aria-hidden="true"></i></div>
+    <div class="-mob-share-twitter -hoofoo-share-twitter -hoofoo-share-ui-button"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div class="-hoofoo-share-more -hoofoo-share-ui-button -mob-share-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+        <li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+        <li class="-mob-share-renren"><p>人人网</p></li>
+        <li class="-mob-share-kaixin"><p>开心网</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-youdao"><p>有道云笔记</p></li>
+        <li class="-mob-share-mingdao"><p>明道</p></li>
+        <li class="-mob-share-pengyou"><p>朋友网</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+        <li class="-mob-share-pocket"><p>Pocket</p></li>
+        <li class="-mob-share-google"><p>Google+</p></li>
+        <li class="-mob-share-tumblr"><p>Tumblr</p></li>
+        <li class="-mob-share-instapaper"><p>Instapaper</p></li>
+        <li class="-mob-share-linkedin"><p>Linkedin</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=2e8b32e698100"></script>
+<!--MOB SHARE END-->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+	<div id="gitalk-container"></div>
+	
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/" class="site-author-image" rel="start" style="border:none">
+                <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Dongxiang Zhao">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">Dongxiang Zhao</p>
+              <p class="site-description motion-element" itemprop="description">给自己充电，每天努力一点点！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/donxan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="donxan@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/Aiker" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/edward.aiker" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误和异常"><span class="nav-number">1.</span> <span class="nav-text">错误和异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法错误"><span class="nav-number">1.1.</span> <span class="nav-text">语法错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常"><span class="nav-number">1.2.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理"><span class="nav-number">1.3.</span> <span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一种格式"><span class="nav-number">1.3.1.</span> <span class="nav-text">第一种格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种格式"><span class="nav-number">1.3.2.</span> <span class="nav-text">第二种格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三种格式"><span class="nav-number">1.3.3.</span> <span class="nav-text">第三种格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try-语句工作方式"><span class="nav-number">1.3.4.</span> <span class="nav-text">try 语句工作方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用示例"><span class="nav-number">1.3.5.</span> <span class="nav-text">使用示例:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抛出异常"><span class="nav-number">1.4.</span> <span class="nav-text">抛出异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义清理行为"><span class="nav-number">1.5.</span> <span class="nav-text">定义清理行为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预定义清理行为"><span class="nav-number">1.6.</span> <span class="nav-text">预定义清理行为</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件读写"><span class="nav-number">2.</span> <span class="nav-text">文件读写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读取文件"><span class="nav-number">2.1.</span> <span class="nav-text">读取文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件对象方法"><span class="nav-number">2.2.</span> <span class="nav-text">文件对象方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#read"><span class="nav-number">2.2.1.</span> <span class="nav-text">read()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#readline"><span class="nav-number">2.2.2.</span> <span class="nav-text">readline()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历文件对象"><span class="nav-number">2.2.3.</span> <span class="nav-text">遍历文件对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写入文件"><span class="nav-number">2.2.4.</span> <span class="nav-text">写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tell-seek"><span class="nav-number">2.2.5.</span> <span class="nav-text">tell/seek</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#close"><span class="nav-number">2.2.6.</span> <span class="nav-text">close</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字with"><span class="nav-number">2.2.7.</span> <span class="nav-text">关键字with</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+  
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongxiang Zhao</span>
+
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/sitemap.xml">Google网站地图</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/baidusitemap.xml">百度网站地图</a></span>
+
+  
+</div>
+
+
+
+<!--
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+-->
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+  本站总访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+&nbsp;&nbsp;|&nbsp;&nbsp;您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+
+<span>|</span>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共82k字</span>
+</div>
+
+
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'cc8956762f73715eb45d',
+          clientSecret: '783fd73c95feb79d36129f56563da6d828bd7fa9',
+          repo: 'iuops',
+          owner: 'donxan',
+          admin: ['donxan'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 24158,
+    el: 'wpac-rating',
+    color: 'f79533'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+<script type="text/javascript">
+    //微信二维码点击背景关闭
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
